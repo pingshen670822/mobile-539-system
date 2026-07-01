@@ -1,0 +1,300 @@
+{
+  "based_on_period": 115000153,
+  "based_on_date": "2026-06-24",
+  "target_period": 115000154,
+  "target_expected_date": "2026-06-25",
+  "top5": [
+    8,
+    29,
+    30,
+    31,
+    20
+  ],
+  "top10": [
+    8,
+    29,
+    30,
+    31,
+    20,
+    25,
+    5,
+    28,
+    27,
+    22
+  ],
+  "top15": [
+    8,
+    29,
+    30,
+    31,
+    20,
+    25,
+    5,
+    28,
+    27,
+    22,
+    11,
+    35,
+    23,
+    26,
+    36
+  ],
+  "unlikely_packs": {
+    "five_miss": {
+      "name": "5不中暫避",
+      "numbers": [
+        4,
+        9,
+        15,
+        18,
+        33
+      ],
+      "target": "不中",
+      "hit_goal": 0,
+      "confidence_index": 99.0,
+      "avg_avoid_score": 1.0,
+      "min_avoid_score": 1.0,
+      "source": "historical_backfill_from_saved_candidates",
+      "rule": "使用當時已保存候選排序的最低分號碼回填，避免使用未來資料。"
+    },
+    "ten_miss": {
+      "name": "10不中暫避",
+      "numbers": [
+        2,
+        3,
+        4,
+        6,
+        9,
+        12,
+        15,
+        17,
+        18,
+        33
+      ],
+      "target": "不中",
+      "hit_goal": 0,
+      "confidence_index": 98.3,
+      "avg_avoid_score": 0.9858,
+      "min_avoid_score": 0.8703,
+      "source": "historical_backfill_from_saved_candidates",
+      "rule": "使用當時已保存候選排序的最低分號碼回填，避免使用未來資料。"
+    },
+    "fifteen_miss": {
+      "name": "15不中暫避",
+      "numbers": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9,
+        12,
+        15,
+        17,
+        18,
+        19,
+        21,
+        33,
+        39
+      ],
+      "target": "不中",
+      "hit_goal": 0,
+      "confidence_index": 94.4,
+      "avg_avoid_score": 0.9054,
+      "min_avoid_score": 0.6851,
+      "source": "historical_backfill_from_saved_candidates",
+      "rule": "使用當時已保存候選排序的最低分號碼回填，避免使用未來資料。"
+    }
+  },
+  "actual_period": 115000154,
+  "actual_date": "2026-06-25",
+  "actual_numbers": [
+    6,
+    13,
+    21,
+    29,
+    34
+  ],
+  "top5_hits": 1,
+  "top10_hits": 1,
+  "top15_hits": 1,
+  "top10_hit_numbers": [
+    29
+  ],
+  "strong_pack_hits": {
+    "strong_single": {
+      "name": "最強單支",
+      "hit_goal": 1,
+      "numbers": [
+        8
+      ],
+      "hits": 0,
+      "passed": false
+    },
+    "two_hit_one": {
+      "name": "最強2中1",
+      "hit_goal": 1,
+      "numbers": [
+        8,
+        29
+      ],
+      "hits": 1,
+      "passed": true
+    },
+    "three_hit_one": {
+      "name": "最強3中1",
+      "hit_goal": 1,
+      "numbers": [
+        5,
+        8,
+        29
+      ],
+      "hits": 1,
+      "passed": true
+    },
+    "five_hit_two": {
+      "name": "最強5中2",
+      "hit_goal": 2,
+      "numbers": [
+        5,
+        8,
+        20,
+        29,
+        31
+      ],
+      "hits": 1,
+      "passed": false
+    },
+    "nine_hit_three": {
+      "name": "最強9中3",
+      "hit_goal": 3,
+      "numbers": [
+        5,
+        8,
+        20,
+        25,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "hits": 1,
+      "passed": false
+    }
+  },
+  "unlikely_pack_hits": {
+    "five_miss": {
+      "name": "5不中暫避",
+      "numbers": [
+        4,
+        9,
+        15,
+        18,
+        33
+      ],
+      "target": "不中",
+      "hit_goal": 0,
+      "accidental_hits": 0,
+      "hit_numbers": [],
+      "avoided_numbers": [
+        4,
+        9,
+        15,
+        18,
+        33
+      ],
+      "passed": true,
+      "confidence_index": 99.0,
+      "avg_avoid_score": 1.0,
+      "min_avoid_score": 1.0
+    },
+    "ten_miss": {
+      "name": "10不中暫避",
+      "numbers": [
+        2,
+        3,
+        4,
+        6,
+        9,
+        12,
+        15,
+        17,
+        18,
+        33
+      ],
+      "target": "不中",
+      "hit_goal": 0,
+      "accidental_hits": 1,
+      "hit_numbers": [
+        6
+      ],
+      "avoided_numbers": [
+        2,
+        3,
+        4,
+        9,
+        12,
+        15,
+        17,
+        18,
+        33
+      ],
+      "passed": false,
+      "confidence_index": 98.3,
+      "avg_avoid_score": 0.9858,
+      "min_avoid_score": 0.8703
+    },
+    "fifteen_miss": {
+      "name": "15不中暫避",
+      "numbers": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9,
+        12,
+        15,
+        17,
+        18,
+        19,
+        21,
+        33,
+        39
+      ],
+      "target": "不中",
+      "hit_goal": 0,
+      "accidental_hits": 2,
+      "hit_numbers": [
+        6,
+        21
+      ],
+      "avoided_numbers": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        9,
+        12,
+        15,
+        17,
+        18,
+        19,
+        33,
+        39
+      ],
+      "passed": false,
+      "confidence_index": 94.4,
+      "avg_avoid_score": 0.9054,
+      "min_avoid_score": 0.6851
+    }
+  },
+  "status": "settled",
+  "created_at": "2026-06-25T08:51:20",
+  "settled_at": "2026-06-26T06:43:02",
+  "snapshot_count": 9
+}

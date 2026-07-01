@@ -1,0 +1,1217 @@
+{
+  "generated_at": "2026-07-02T07:35:34",
+  "status": "ok",
+  "checked_files": 191,
+  "failed_count": 0,
+  "warning_count": 0,
+  "files": [
+    {
+      "path": "539一鍵全自動啟動.bat",
+      "status": "ok",
+      "warnings": [],
+      "size": 153
+    },
+    {
+      "path": "aerospace_engine.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 7941
+    },
+    {
+      "path": "analyze_539.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 74706
+    },
+    {
+      "path": "auto_update_monitor.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 1597
+    },
+    {
+      "path": "battle_report.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 262688
+    },
+    {
+      "path": "build_tw539_release.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 8742
+    },
+    {
+      "path": "cleanup_obsolete_runtime.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 3523
+    },
+    {
+      "path": "cleanup_old_startup_tasks_admin.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 2830
+    },
+    {
+      "path": "cloud_entry.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 1267
+    },
+    {
+      "path": "crowd_consensus.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 21385
+    },
+    {
+      "path": "daily_integrity_audit.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 9623
+    },
+    {
+      "path": "daily_midnight_recompute.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 5029
+    },
+    {
+      "path": "dashboard.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 6443
+    },
+    {
+      "path": "health_check.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 15233
+    },
+    {
+      "path": "industrial_engine.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 251695
+    },
+    {
+      "path": "install_all_auto_tasks.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 541
+    },
+    {
+      "path": "install_app.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 6226
+    },
+    {
+      "path": "install_daily_task.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 379
+    },
+    {
+      "path": "install_mobile_control.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 379
+    },
+    {
+      "path": "install_startup_folder.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 1052
+    },
+    {
+      "path": "install_startup_task.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 379
+    },
+    {
+      "path": "line_push.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 6995
+    },
+    {
+      "path": "line_settings.example.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 130
+    },
+    {
+      "path": "main_one_click.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 8218
+    },
+    {
+      "path": "mobile_server.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 20692
+    },
+    {
+      "path": "model_competition.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 14772
+    },
+    {
+      "path": "network_permission_diagnostic.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 4552
+    },
+    {
+      "path": "pages_build.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 15968
+    },
+    {
+      "path": "post_draw_mobile_sync.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 9788
+    },
+    {
+      "path": "publish_free_github.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 10021
+    },
+    {
+      "path": "README.md",
+      "status": "ok",
+      "warnings": [],
+      "size": 909
+    },
+    {
+      "path": "repair_current_tasks.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 13564
+    },
+    {
+      "path": "repair_mobile_display.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 3524
+    },
+    {
+      "path": "repair_network_permission.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 2540
+    },
+    {
+      "path": "research_kpi.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 3121
+    },
+    {
+      "path": "run_539_once.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 7848
+    },
+    {
+      "path": "setup_line_push.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 6084
+    },
+    {
+      "path": "stability_governor.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 15679
+    },
+    {
+      "path": "system_file_check.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 8794
+    },
+    {
+      "path": "uninstall_app.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 1685
+    },
+    {
+      "path": "uninstall_startup_folder.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 361
+    },
+    {
+      "path": "uninstall_startup_task.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 336
+    },
+    {
+      "path": "update_539.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 71712
+    },
+    {
+      "path": "verify_mobile_sync.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 4917
+    },
+    {
+      "path": "修復手機版顯示.bat",
+      "status": "ok",
+      "warnings": [],
+      "size": 128
+    },
+    {
+      "path": "手機戰報即時網址.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 81
+    },
+    {
+      "path": "手機戰報更新狀態.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 542
+    },
+    {
+      "path": "手機控制台網址.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 75
+    },
+    {
+      "path": "手機獨立版網址.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 104
+    },
+    {
+      "path": "手機雲端版網址.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 104
+    },
+    {
+      "path": "手機雲端發布狀態.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 841
+    },
+    {
+      "path": "打開最新手機版.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 907
+    },
+    {
+      "path": "清理舊開機自動啟動_管理員.bat",
+      "status": "ok",
+      "warnings": [],
+      "size": 176
+    },
+    {
+      "path": "網路權限診斷.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 293
+    },
+    {
+      "path": "data\\539.csv",
+      "status": "ok",
+      "warnings": [],
+      "size": 712539
+    },
+    {
+      "path": "data\\mobile_access_token.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 14
+    },
+    {
+      "path": "data\\網路人氣人工匯入.csv",
+      "status": "ok",
+      "warnings": [],
+      "size": 307
+    },
+    {
+      "path": "data\\網路大神來源清單.csv",
+      "status": "ok",
+      "warnings": [],
+      "size": 1128
+    },
+    {
+      "path": "reports\\539低機率精準暫避.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 8433
+    },
+    {
+      "path": "reports\\539最新強化戰報.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 64699
+    },
+    {
+      "path": "reports\\539每月預測總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 9532
+    },
+    {
+      "path": "reports\\539每期預測對比.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 22350
+    },
+    {
+      "path": "reports\\cleanup_obsolete_runtime.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 397
+    },
+    {
+      "path": "reports\\crowd_consensus.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 7593
+    },
+    {
+      "path": "reports\\daily_integrity_audit.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5231
+    },
+    {
+      "path": "reports\\daily_integrity_audit.md",
+      "status": "ok",
+      "warnings": [],
+      "size": 2853
+    },
+    {
+      "path": "reports\\dashboard.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 5887
+    },
+    {
+      "path": "reports\\file_integrity_report.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 26707
+    },
+    {
+      "path": "reports\\file_integrity_report.md",
+      "status": "ok",
+      "warnings": [],
+      "size": 286
+    },
+    {
+      "path": "reports\\full_system_scan.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 3529
+    },
+    {
+      "path": "reports\\health_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5979
+    },
+    {
+      "path": "reports\\health_status.md",
+      "status": "ok",
+      "warnings": [],
+      "size": 433
+    },
+    {
+      "path": "reports\\latest_analysis.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1944040
+    },
+    {
+      "path": "reports\\latest_analysis.md",
+      "status": "ok",
+      "warnings": [],
+      "size": 6715
+    },
+    {
+      "path": "reports\\latest_battle_report.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 64699
+    },
+    {
+      "path": "reports\\latest_battle_report.md",
+      "status": "ok",
+      "warnings": [],
+      "size": 23365
+    },
+    {
+      "path": "reports\\latest_battle_report.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 23365
+    },
+    {
+      "path": "reports\\line_push_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 152
+    },
+    {
+      "path": "reports\\mobile_sync_verification.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1106
+    },
+    {
+      "path": "reports\\mobile_update_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 199
+    },
+    {
+      "path": "reports\\model_competition.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 28654
+    },
+    {
+      "path": "reports\\model_competition.md",
+      "status": "ok",
+      "warnings": [],
+      "size": 3122
+    },
+    {
+      "path": "reports\\monthly_prediction_review.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 25636
+    },
+    {
+      "path": "reports\\network_permission_diagnostic.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 2042
+    },
+    {
+      "path": "reports\\network_permission_diagnostic.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 937
+    },
+    {
+      "path": "reports\\post_draw_mobile_sync_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 3728
+    },
+    {
+      "path": "reports\\prediction_history.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 221467
+    },
+    {
+      "path": "reports\\previous_complete_month_review.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 25324
+    },
+    {
+      "path": "reports\\startup_cleanup_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1423
+    },
+    {
+      "path": "reports\\startup_task_delete_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1198
+    },
+    {
+      "path": "reports\\task_repair_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 12987
+    },
+    {
+      "path": "site\\539低機率精準暫避.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 8433
+    },
+    {
+      "path": "site\\539每月預測總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 9532
+    },
+    {
+      "path": "site\\clear-cache.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 1210
+    },
+    {
+      "path": "site\\crowd_consensus.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 8334
+    },
+    {
+      "path": "site\\health_status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5979
+    },
+    {
+      "path": "site\\index.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 68219
+    },
+    {
+      "path": "site\\latest.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 744
+    },
+    {
+      "path": "site\\latest_analysis.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1944040
+    },
+    {
+      "path": "site\\low-probability.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 8433
+    },
+    {
+      "path": "site\\model_competition.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 28654
+    },
+    {
+      "path": "site\\monthly-summary.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 9532
+    },
+    {
+      "path": "site\\prediction-history.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 22350
+    },
+    {
+      "path": "site\\prediction_history.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 221467
+    },
+    {
+      "path": "site\\version.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 241
+    },
+    {
+      "path": "reports\\history\\2026-06_每月預測總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 33985
+    },
+    {
+      "path": "reports\\history\\2026-07_每月預測總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 9532
+    },
+    {
+      "path": "reports\\history\\period_115000077.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 606
+    },
+    {
+      "path": "reports\\history\\period_115000078.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000079.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000080.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000081.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000082.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000083.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "reports\\history\\period_115000084.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000085.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000086.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000087.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 657
+    },
+    {
+      "path": "reports\\history\\period_115000088.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000089.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000090.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000091.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "reports\\history\\period_115000092.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000093.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000094.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000095.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "reports\\history\\period_115000096.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000097.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "reports\\history\\period_115000098.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000099.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000100.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000101.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "reports\\history\\period_115000102.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000103.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000104.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000105.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000106.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000107.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000108.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000109.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000110.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000111.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000112.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000113.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "reports\\history\\period_115000114.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "reports\\history\\period_115000115.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000116.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000117.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 657
+    },
+    {
+      "path": "reports\\history\\period_115000118.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000119.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000120.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000121.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000122.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000123.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000124.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000125.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000126.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "reports\\history\\period_115000127.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000128.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000129.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000130.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "reports\\history\\period_115000131.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "reports\\history\\period_115000132.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "reports\\history\\period_115000133.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5375
+    },
+    {
+      "path": "reports\\history\\period_115000134.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5379
+    },
+    {
+      "path": "reports\\history\\period_115000135.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5393
+    },
+    {
+      "path": "reports\\history\\period_115000136.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5374
+    },
+    {
+      "path": "reports\\history\\period_115000137.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5414
+    },
+    {
+      "path": "reports\\history\\period_115000138.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5370
+    },
+    {
+      "path": "reports\\history\\period_115000139.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5165
+    },
+    {
+      "path": "reports\\history\\period_115000140.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 4723
+    },
+    {
+      "path": "reports\\history\\period_115000141.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 4485
+    },
+    {
+      "path": "reports\\history\\period_115000142.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5384
+    },
+    {
+      "path": "reports\\history\\period_115000143.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5379
+    },
+    {
+      "path": "reports\\history\\period_115000144.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5381
+    },
+    {
+      "path": "reports\\history\\period_115000145.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5392
+    },
+    {
+      "path": "reports\\history\\period_115000146.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5393
+    },
+    {
+      "path": "reports\\history\\period_115000147.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5356
+    },
+    {
+      "path": "reports\\history\\period_115000148.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5377
+    },
+    {
+      "path": "reports\\history\\period_115000149.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5359
+    },
+    {
+      "path": "reports\\history\\period_115000150.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5406
+    },
+    {
+      "path": "reports\\history\\period_115000151.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5354
+    },
+    {
+      "path": "reports\\history\\period_115000152.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5383
+    },
+    {
+      "path": "reports\\history\\period_115000153.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5375
+    },
+    {
+      "path": "reports\\history\\period_115000154.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5351
+    },
+    {
+      "path": "reports\\history\\period_115000155.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5370
+    },
+    {
+      "path": "reports\\history\\period_115000156.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5397
+    },
+    {
+      "path": "reports\\history\\period_115000157.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5373
+    },
+    {
+      "path": "reports\\history\\period_115000158.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5185
+    },
+    {
+      "path": "reports\\history\\period_115000159.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5151
+    },
+    {
+      "path": "reports\\history\\period_115000160.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 4018
+    }
+  ],
+  "data_consistency": {
+    "status": "ok",
+    "csv_latest": {
+      "period": 115000159,
+      "draw_date": "2026-07-01",
+      "numbers": [
+        1,
+        3,
+        12,
+        14,
+        34
+      ]
+    },
+    "checks": [
+      {
+        "name": "analysis_matches_csv_latest_draw",
+        "status": "ok",
+        "csv_latest": {
+          "period": 115000159,
+          "draw_date": "2026-07-01",
+          "numbers": [
+            1,
+            3,
+            12,
+            14,
+            34
+          ]
+        },
+        "analysis_latest": {
+          "period": 115000159,
+          "draw_date": "2026-07-01",
+          "numbers": [
+            1,
+            3,
+            12,
+            14,
+            34
+          ]
+        }
+      },
+      {
+        "name": "health_matches_csv_latest_draw",
+        "status": "ok",
+        "csv_latest": {
+          "period": 115000159,
+          "draw_date": "2026-07-01",
+          "numbers": [
+            1,
+            3,
+            12,
+            14,
+            34
+          ]
+        },
+        "health_latest": {
+          "period": 115000159,
+          "draw_date": "2026-07-01",
+          "freshness_status": "fresh"
+        }
+      }
+    ]
+  }
+}

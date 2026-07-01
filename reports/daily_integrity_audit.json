@@ -1,0 +1,206 @@
+{
+  "generated_at": "2026-07-02T07:34:35",
+  "status": "passed",
+  "failed_count": 0,
+  "checks": [
+    {
+      "name": "draw_count_minimum",
+      "passed": true,
+      "detail": {
+        "count": 5903,
+        "min_period": 96000001,
+        "max_period": 115000159,
+        "min_date": "2007-01-01",
+        "max_date": "2026-07-01"
+      }
+    },
+    {
+      "name": "latest_date_fresh",
+      "passed": true,
+      "detail": {
+        "latest": "2026-07-01",
+        "expected": "2026-07-01"
+      }
+    },
+    {
+      "name": "no_duplicate_periods",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no_duplicate_dates",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no_invalid_draw_rows",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no_stale_pending_predictions",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "recent_predictions_settled",
+      "passed": true,
+      "detail": [
+        {
+          "target_period": 115000154,
+          "status": "settled",
+          "actual_period": 115000154,
+          "top5_hits": 1,
+          "top10_hits": 1,
+          "top15_hits": 1
+        },
+        {
+          "target_period": 115000155,
+          "status": "settled",
+          "actual_period": 115000155,
+          "top5_hits": 1,
+          "top10_hits": 1,
+          "top15_hits": 2
+        },
+        {
+          "target_period": 115000156,
+          "status": "settled",
+          "actual_period": 115000156,
+          "top5_hits": 0,
+          "top10_hits": 1,
+          "top15_hits": 2
+        },
+        {
+          "target_period": 115000157,
+          "status": "settled",
+          "actual_period": 115000157,
+          "top5_hits": 1,
+          "top10_hits": 2,
+          "top15_hits": 3
+        },
+        {
+          "target_period": 115000158,
+          "status": "settled",
+          "actual_period": 115000158,
+          "top5_hits": 0,
+          "top10_hits": 2,
+          "top15_hits": 3
+        },
+        {
+          "target_period": 115000159,
+          "status": "settled",
+          "actual_period": 115000159,
+          "top5_hits": 0,
+          "top10_hits": 1,
+          "top15_hits": 1
+        }
+      ]
+    },
+    {
+      "name": "no_missing_recent_prediction_records",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "latest_draw_has_settled_prediction_record",
+      "passed": true,
+      "detail": {
+        "target_period": 115000159,
+        "status": "settled",
+        "actual_period": 115000159,
+        "actual_date": "2026-07-01",
+        "top5_hits": 0,
+        "top10_hits": 1,
+        "top15_hits": 1
+      }
+    },
+    {
+      "name": "analysis_matches_database",
+      "passed": true,
+      "detail": {
+        "analysis": 115000159,
+        "database": 115000159
+      }
+    },
+    {
+      "name": "health_sync_passed",
+      "passed": true,
+      "detail": {
+        "database_latest_period": 115000159,
+        "analysis_latest_period": 115000159,
+        "prediction_based_on_period": 115000159,
+        "status": "synced"
+      }
+    },
+    {
+      "name": "history_has_latest_pending_or_settled",
+      "passed": true,
+      "detail": {
+        "expected_target": 115000160
+      }
+    },
+    {
+      "name": "battle_report_mentions_latest",
+      "passed": true,
+      "detail": {
+        "period": 115000159,
+        "draw_date": "2026-07-01"
+      }
+    },
+    {
+      "name": "battle_report_has_settlement_rows",
+      "passed": true,
+      "detail": "settled and pending labels"
+    },
+    {
+      "name": "battle_report_is_compact_precision_report",
+      "passed": true,
+      "detail": "compact precision report labels"
+    },
+    {
+      "name": "battle_report_has_explicit_dates",
+      "passed": true,
+      "detail": "date labels"
+    },
+    {
+      "name": "battle_report_has_low_probability_link",
+      "passed": true,
+      "detail": "low probability page link"
+    },
+    {
+      "name": "battle_report_has_super_single_section",
+      "passed": true,
+      "detail": "super single section"
+    },
+    {
+      "name": "battle_report_has_no_mojibake_question_marks",
+      "passed": true,
+      "detail": "battle report must not contain mojibake question marks"
+    },
+    {
+      "name": "low_probability_page_exists",
+      "passed": true,
+      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260701_第05版_每月總整理報表版\\TW539Core\\reports\\539低機率精準暫避.html"
+    },
+    {
+      "name": "low_probability_page_has_no_mojibake_question_marks",
+      "passed": true,
+      "detail": "low probability page must not contain mojibake question marks"
+    },
+    {
+      "name": "low_probability_page_has_required_sections",
+      "passed": true,
+      "detail": "low probability section labels"
+    }
+  ],
+  "latest": {
+    "period": 115000159,
+    "draw_date": "2026-07-01",
+    "n1": 1,
+    "n2": 3,
+    "n3": 12,
+    "n4": 14,
+    "n5": 34
+  },
+  "expected_date": "2026-07-01"
+}
