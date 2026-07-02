@@ -72,9 +72,11 @@ TEXT_REPLACEMENTS = [
     ("hit_in_top15", "前15名內命中"),
     ("outside_top15", "前15名外"),
     ("current_precision_stability_v44_micro_confidence_short_packs", "目前精準穩定第44版：短包信心精算"),
+    ("current_precision_stability_v45_formula_lab_recalibration", "目前精準穩定第45版：公式模型實驗室重排"),
     ("industrial_v19_short_pack_multi_model_arbitration", "工業級第19版：短包多模型仲裁"),
     ("industrial_v20_recall_pressure_cold_rebound", "工業級第20版：月度召回壓力與冷號反彈"),
     ("industrial_v21_bagging_tail_zone_pressure", "工業級第21版：多視窗尾數轉移與區間配額"),
+    ("industrial_v22_formula_lab_recalibration", "工業級第22版：公式模型實驗室重排"),
     ("industrial_v18_front9_precision_recall_lock", "工業級第18版：前9精準召回鎖定"),
     ("industrial_v17_micro_confidence_short_packs", "工業級第17版：短包信心精算"),
     ("daily_and_monthly_miss_review_rolls_into_next_prediction_with_recall_mode", "每日與月度失誤回灌到下期召回模式"),
@@ -3228,6 +3230,7 @@ def compact_candidate_rows(candidates, limit=9, based_date="-", target_date="-")
     rows = []
     for item in candidates[:limit]:
         cv = item.get("cross_validation") or {}
+        formula = item.get("formula_lab") or {}
         rows.append(
             "<tr>"
             f"<td class='num'>{int(item.get('number')):02d}</td>"
@@ -3239,10 +3242,11 @@ def compact_candidate_rows(candidates, limit=9, based_date="-", target_date="-")
             f"<td>{fmt_decimal(item.get('model_probability_percent'), 2)}%</td>"
             f"<td>{item.get('omission', '-')}</td>"
             f"<td>{cv.get('passed_count', '-')}</td>"
+            f"<td>{fmt_percent(formula.get('score'))} / {formula.get('support_count', '-')}</td>"
             f"<td>{escape_html(compact_source_text(item, 4))}</td>"
             "</tr>"
         )
-    return "".join(rows) or "<tr><td colspan='10'>\u672c\u671f\u7121\u5019\u9078\u8cc7\u6599</td></tr>"
+    return "".join(rows) or "<tr><td colspan='11'>\u672c\u671f\u7121\u5019\u9078\u8cc7\u6599</td></tr>"
 
 
 def compact_model_rows(analysis, health):
@@ -3267,6 +3271,105 @@ def compact_model_rows(analysis, health):
             "</tr>"
         )
     return "".join(rows) or "<tr><td colspan='6'>\u6c92\u6709\u53ef\u7528\u56de\u6e2c\u8cc7\u6599</td></tr>"
+
+
+def formula_model_label(key):
+    labels = {
+        "dirichlet_multinomial": "貝氏狄利克雷全歷史",
+        "beta_inclusion": "貝氏命中率後驗",
+        "omission_wave": "遺漏波段回補",
+        "transition_lag": "拖牌轉移",
+        "shape_similarity": "牌型相似",
+        "tail_bucket_pressure": "尾數分區壓力",
+        "calendar_cycle": "日期週期",
+        "pair_echo": "雙生組合迴響",
+        "review_recall": "失準回補",
+    }
+    return labels.get(str(key), localize_text(str(key)))
+
+
+def formula_action_label(action):
+    labels = {
+        "active": "納入主權重",
+        "low_weight": "降權觀察",
+        "withheld_backtest_not_positive": "回測未達標不發布",
+        "released": "通過發布",
+    }
+    return labels.get(str(action), status_zh(action))
+
+
+def compact_formula_lab_html(analysis):
+    industrial = analysis.get("industrial_engine") or {}
+    lab = industrial.get("advanced_formula_lab") or {}
+    calibration = industrial.get("formula_lab_calibration") or {}
+    if lab.get("status") != "ready":
+        return f"""
+        <div class="band warn">
+          <h2>公式模型實驗室</h2>
+          <p>本期公式模型實驗室未完成：{escape_html(status_zh(lab.get('status', 'missing')))}</p>
+        </div>
+        """
+    weights = lab.get("model_weights") or {}
+    model_rows = []
+    for item in lab.get("model_summary", [])[:12]:
+        key = item.get("model")
+        model_rows.append(
+            "<tr>"
+            f"<td>{escape_html(formula_model_label(key))}</td>"
+            f"<td>{item.get('rounds', '-')}</td>"
+            f"<td>{fmt_decimal(item.get('top5_avg_hits'))}</td>"
+            f"<td>{fmt_decimal(item.get('top9_avg_hits'))}</td>"
+            f"<td>{fmt_decimal(item.get('top15_avg_hits'))}</td>"
+            f"<td>{fmt_decimal(item.get('top9_edge_vs_random'), 4)}</td>"
+            f"<td>{fmt_decimal(item.get('avoid10_edge_vs_random'), 4)}</td>"
+            f"<td>{fmt_percent(weights.get(key))}</td>"
+            f"<td>{escape_html(formula_action_label(item.get('action')))}</td>"
+            "</tr>"
+        )
+    pack_labels = {
+        "strong_single": "獨隻1中1",
+        "two_hit_one": "2中1",
+        "three_hit_one": "3中1",
+        "five_hit_two": "5中2",
+        "nine_hit_three": "9中3",
+    }
+    pack_rows = []
+    for key, label in pack_labels.items():
+        pack = (lab.get("pack_plan") or {}).get(key) or {}
+        pack_rows.append(
+            "<tr>"
+            f"<td>{label}</td>"
+            f"<td>{fmt_numbers(pack.get('numbers', [])) or '-'}</td>"
+            f"<td>{pack.get('size', '-')}</td>"
+            "</tr>"
+        )
+    changed_rows = []
+    for item in calibration.get("changed_numbers", [])[:12]:
+        changed_rows.append(
+            "<tr>"
+            f"<td class='num'>{int(item.get('number')):02d}</td>"
+            f"<td>{fmt_percent(item.get('before'))}</td>"
+            f"<td>{fmt_percent(item.get('after'))}</td>"
+            f"<td>{fmt_percent(item.get('formula_score'))}</td>"
+            f"<td>{item.get('support_count', '-')}</td>"
+            "</tr>"
+        )
+    return f"""
+    <div class="band">
+      <h2>公式模型實驗室</h2>
+      <p>本區只列已實際參與重排的公式模型；每個公式先做近期逐期回測，再用權重進入主排名。</p>
+      <table><thead><tr><th>公式</th><th>回測期</th><th>前5平均</th><th>前9平均</th><th>前15平均</th><th>前9優勢</th><th>暫避優勢</th><th>本期權重</th><th>動作</th></tr></thead><tbody>{''.join(model_rows) or '<tr><td colspan="9">沒有公式回測資料</td></tr>'}</tbody></table>
+    </div>
+    <div class="band">
+      <h2>公式模型建議包</h2>
+      <p>下表是公式模型實驗室原始建議，主系統仍會再經過連莊、上期相似度與強牌守門後才輸出正式強牌。</p>
+      <table><thead><tr><th>類型</th><th>號碼</th><th>顆數</th></tr></thead><tbody>{''.join(pack_rows)}</tbody></table>
+    </div>
+    <div class="band">
+      <h2>公式重排變動</h2>
+      <table><thead><tr><th>號碼</th><th>原分數</th><th>新分數</th><th>公式分數</th><th>支撐模型數</th></tr></thead><tbody>{''.join(changed_rows) or '<tr><td colspan="5">本期沒有明顯重排變動</td></tr>'}</tbody></table>
+    </div>
+    """
 
 
 def compact_lifecycle_rows(analysis):
@@ -4079,6 +4182,7 @@ def build_compact_html_report():
     stability_governor_html = compact_stability_governor_html(analysis)
     monthly_breakthrough_html = compact_monthly_breakthrough_html(analysis)
     monthly_summary_html = compact_monthly_prediction_summary_html(history)
+    formula_lab_html = compact_formula_lab_html(analysis)
     reality_gate = industrial.get("monthly_reality_gate") or {}
     candidate_base = "\u4e0b\u671f\u9ad8\u4fe1\u5fc3\u524d9\u540d" if reality_gate.get("high_confidence_allowed") else "\u4e0b\u671f\u7814\u7a76\u5019\u9078\u524d9\u540d"
     candidate_heading = f"{candidate_base}\uff08\u8cc7\u6599\u4f9d\u64da\u65e5 {latest_date} / \u9810\u6e2c\u76ee\u6a19\u65e5 {target_date}\uff09"
@@ -4200,7 +4304,7 @@ def build_compact_html_report():
     {super_single_html}
     <div class="band">
       <h2>{candidate_heading}</h2>
-      <table><thead><tr><th>\u865f\u78bc</th><th>\u8cc7\u6599\u4f9d\u64da\u65e5</th><th>\u9810\u6e2c\u76ee\u6a19\u65e5</th><th>\u6392\u540d</th><th>\u5206\u6578</th><th>\u4fe1\u5fc3</th><th>\u6a5f\u7387</th><th>\u907a\u6f0f</th><th>\u9a57\u7b97\u6578</th><th>\u4f86\u6e90\u6a21\u578b</th></tr></thead><tbody>{compact_candidate_rows(candidates, 9, latest_date, target_date)}</tbody></table>
+      <table><thead><tr><th>\u865f\u78bc</th><th>\u8cc7\u6599\u4f9d\u64da\u65e5</th><th>\u9810\u6e2c\u76ee\u6a19\u65e5</th><th>\u6392\u540d</th><th>\u5206\u6578</th><th>\u4fe1\u5fc3</th><th>\u6a5f\u7387</th><th>\u907a\u6f0f</th><th>\u9a57\u7b97\u6578</th><th>\u516c\u5f0f\u5206\u6578/\u652f\u6490</th><th>\u4f86\u6e90\u6a21\u578b</th></tr></thead><tbody>{compact_candidate_rows(candidates, 9, latest_date, target_date)}</tbody></table>
     </div>
     <div class="band">
       <h2>\u751f\u6210\u865f\u78bc\u9010\u865f\u9a57\u7b97\uff08\u8cc7\u6599\u4f9d\u64da\u65e5 {latest_date} / \u9810\u6e2c\u76ee\u6a19\u65e5 {target_date}\uff09</h2>
@@ -4234,6 +4338,7 @@ def build_compact_html_report():
     </div>
   </section>
   <section id="models" class="panel">
+    {formula_lab_html}
     {dual_track_html}
     <div class="band">
       <h2>{model_heading}</h2>

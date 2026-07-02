@@ -3,6 +3,11 @@ from collections import Counter, defaultdict
 from datetime import datetime, timedelta
 from itertools import combinations
 
+try:
+    from advanced_formula_lab import run_formula_lab
+except Exception:
+    run_formula_lab = None
+
 
 NUMBER_MIN = 1
 NUMBER_MAX = 39
@@ -5525,6 +5530,95 @@ def apply_reality_gate_candidate_policy(candidates, reality_gate):
     return adjusted
 
 
+def apply_formula_lab_candidate_calibration(candidates, formula_lab, review=None):
+    if not formula_lab or formula_lab.get("status") != "ready":
+        return refresh_candidate_metadata(candidates), {
+            "status": "not_applied",
+            "reason": (formula_lab or {}).get("status", "missing_formula_lab"),
+        }
+
+    ensemble = {
+        int(item.get("number")): item
+        for item in formula_lab.get("ensemble", [])
+        if item.get("number")
+    }
+    formula_top9 = {int(number) for number in formula_lab.get("top9", []) if number}
+    rows = []
+    changed = []
+    for item in candidates:
+        row = dict(item)
+        number = int(row["number"])
+        lab_row = ensemble.get(number, {})
+        lab_score = float(lab_row.get("score", 0.0) or 0.0)
+        support_count = int(lab_row.get("support_count", 0) or 0)
+        source_models = list(lab_row.get("source_models") or [])
+        base_score = float(row.get("score", 0.0) or 0.0)
+        blended = base_score * 0.58 + lab_score * 0.42
+        if number in formula_top9:
+            blended += 0.018
+        if support_count >= 4:
+            blended += 0.025
+        elif support_count <= 1:
+            blended -= 0.020
+        if previous_guard_blocks_item(row):
+            blended *= 0.72
+        if row.get("repeat_guard") and not row["repeat_guard"].get("passed"):
+            blended = min(blended, 0.050)
+        if hard_iron_blocked(row):
+            blended = min(blended, 0.045)
+        row["pre_formula_lab_score"] = round(base_score, 4)
+        row["score"] = round(max(0.0, min(1.0, blended)), 4)
+        row["formula_lab"] = {
+            "score": round(lab_score, 4),
+            "rank": lab_row.get("rank"),
+            "support_count": support_count,
+            "source_models": source_models,
+        }
+        if lab_score >= 0.58 or support_count >= 3:
+            sources = list(row.get("model_sources") or [])
+            sources.append({
+                "model": "advanced_formula_lab",
+                "label": "公式模型實驗室",
+                "score": round(lab_score, 4),
+                "support_count": support_count,
+                "source_models": source_models[:5],
+            })
+            row["model_sources"] = sources[:8]
+            row["source_model_count"] = len(row["model_sources"])
+            row["reasons"] = (["公式模型交叉驗證"] + [r for r in row.get("reasons", []) if r != "公式模型交叉驗證"])[:4]
+        if abs(row["score"] - base_score) >= 0.030:
+            changed.append({
+                "number": number,
+                "before": round(base_score, 4),
+                "after": row["score"],
+                "formula_score": round(lab_score, 4),
+                "support_count": support_count,
+            })
+        rows.append(row)
+
+    rows.sort(
+        key=lambda row: (
+            not hard_iron_blocked(row),
+            not previous_guard_blocks_item(row),
+            float(row.get("score", 0.0) or 0.0),
+            int((row.get("formula_lab") or {}).get("support_count") or 0),
+            candidate_evidence_score(row, review),
+            candidate_objective_edge(row),
+            candidate_hit_edge(row),
+            -int(row["number"]),
+        ),
+        reverse=True,
+    )
+    rows = refresh_candidate_metadata(rows)
+    return rows, {
+        "status": "applied",
+        "version": formula_lab.get("version"),
+        "active_models": formula_lab.get("maps_available", []),
+        "top9_before_guard": formula_lab.get("top9", []),
+        "changed_numbers": sorted(changed, key=lambda item: abs(item["after"] - item["before"]), reverse=True)[:15],
+    }
+
+
 def compute_industrial_analysis(draws, review=None):
     weights, weight_calibration = adaptive_feature_weights(draws, review)
     lifecycle = model_lifecycle_policy(weight_calibration)
@@ -5543,6 +5637,17 @@ def compute_industrial_analysis(draws, review=None):
     candidates, failed_strong_quarantine = apply_failed_strong_quarantine(candidates, review)
     candidates, score_saturation_breaker = apply_score_saturation_breaker(candidates, review)
     candidates, hard_iron_rules = apply_hard_iron_rules(draws, candidates, review)
+    formula_lab = run_formula_lab(draws, candidates, review) if run_formula_lab else {
+        "status": "not_available",
+        "version": "formula_lab_v1",
+    }
+    candidates, formula_lab_calibration = apply_formula_lab_candidate_calibration(candidates, formula_lab, review)
+    candidates, formula_lab_similarity_guard = apply_previous_similarity_guard(candidates, review)
+    candidates, formula_lab_hard_iron_rules = apply_hard_iron_rules(draws, candidates, review)
+    previous_similarity_guard["after_formula_lab"] = formula_lab_similarity_guard
+    hard_iron_rules["after_formula_lab"] = formula_lab_hard_iron_rules
+    if formula_lab_hard_iron_rules.get("status") in {"failed", "triggered"}:
+        hard_iron_rules["status"] = formula_lab_hard_iron_rules.get("status")
     pack_governance = pack_recent_governance(draws)
     audit = industrial_backtest(draws)
     reality_gate = monthly_reality_gate(review, audit, pack_governance)
@@ -5592,7 +5697,7 @@ def compute_industrial_analysis(draws, review=None):
     }
     decisive_decision = decisive_battle_decision(candidates, packs, release_gate, slump_recall_coverage, unlikely)
     return {
-        "engine_version": "industrial_v21_bagging_tail_zone_pressure",
+        "engine_version": "industrial_v22_formula_lab_recalibration",
         "leakage_guard": True,
         "repeat_guard": repeat_guard(draws),
         "previous_prediction_guard": {
@@ -5617,6 +5722,8 @@ def compute_industrial_analysis(draws, review=None):
         "failed_strong_quarantine": failed_strong_quarantine,
         "score_saturation_breaker": score_saturation_breaker,
         "hard_iron_rules": hard_iron_rules,
+        "advanced_formula_lab": formula_lab,
+        "formula_lab_calibration": formula_lab_calibration,
         "top10_promotion_audit": promotion_audit,
         "dependency_analysis": {
             "method": "three_fold_conditional_lift_with_fdr",

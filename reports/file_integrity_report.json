@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-02T07:35:34",
+  "generated_at": "2026-07-02T11:35:59",
   "status": "ok",
-  "checked_files": 191,
+  "checked_files": 179,
   "failed_count": 0,
   "warning_count": 0,
   "files": [
@@ -10,6 +10,12 @@
       "status": "ok",
       "warnings": [],
       "size": 153
+    },
+    {
+      "path": "advanced_formula_lab.py",
+      "status": "ok",
+      "warnings": [],
+      "size": 22962
     },
     {
       "path": "aerospace_engine.py",
@@ -21,19 +27,13 @@
       "path": "analyze_539.py",
       "status": "ok",
       "warnings": [],
-      "size": 74706
-    },
-    {
-      "path": "auto_update_monitor.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 1597
+      "size": 74703
     },
     {
       "path": "battle_report.py",
       "status": "ok",
       "warnings": [],
-      "size": 262688
+      "size": 267525
     },
     {
       "path": "build_tw539_release.ps1",
@@ -46,12 +46,6 @@
       "status": "ok",
       "warnings": [],
       "size": 3523
-    },
-    {
-      "path": "cleanup_old_startup_tasks_admin.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 2830
     },
     {
       "path": "cloud_entry.py",
@@ -93,19 +87,7 @@
       "path": "industrial_engine.py",
       "status": "ok",
       "warnings": [],
-      "size": 251695
-    },
-    {
-      "path": "install_all_auto_tasks.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 541
-    },
-    {
-      "path": "install_app.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 6226
+      "size": 256337
     },
     {
       "path": "install_daily_task.ps1",
@@ -115,18 +97,6 @@
     },
     {
       "path": "install_mobile_control.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 379
-    },
-    {
-      "path": "install_startup_folder.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 1052
-    },
-    {
-      "path": "install_startup_task.ps1",
       "status": "ok",
       "warnings": [],
       "size": 379
@@ -142,12 +112,6 @@
       "status": "ok",
       "warnings": [],
       "size": 130
-    },
-    {
-      "path": "main_one_click.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 8218
     },
     {
       "path": "mobile_server.py",
@@ -174,12 +138,6 @@
       "size": 15968
     },
     {
-      "path": "post_draw_mobile_sync.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 9788
-    },
-    {
       "path": "publish_free_github.ps1",
       "status": "ok",
       "warnings": [],
@@ -192,18 +150,6 @@
       "size": 909
     },
     {
-      "path": "repair_current_tasks.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 13564
-    },
-    {
-      "path": "repair_mobile_display.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 3524
-    },
-    {
       "path": "repair_network_permission.ps1",
       "status": "ok",
       "warnings": [],
@@ -214,12 +160,6 @@
       "status": "ok",
       "warnings": [],
       "size": 3121
-    },
-    {
-      "path": "run_539_once.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 7848
     },
     {
       "path": "setup_line_push.ps1",
@@ -246,18 +186,6 @@
       "size": 1685
     },
     {
-      "path": "uninstall_startup_folder.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 361
-    },
-    {
-      "path": "uninstall_startup_task.ps1",
-      "status": "ok",
-      "warnings": [],
-      "size": 336
-    },
-    {
       "path": "update_539.py",
       "status": "ok",
       "warnings": [],
@@ -268,6 +196,12 @@
       "status": "ok",
       "warnings": [],
       "size": 4917
+    },
+    {
+      "path": "使用說明.txt",
+      "status": "ok",
+      "warnings": [],
+      "size": 323
     },
     {
       "path": "修復手機版顯示.bat",
@@ -285,7 +219,7 @@
       "path": "手機戰報更新狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 542
+      "size": 742
     },
     {
       "path": "手機控制台網址.txt",
@@ -316,12 +250,6 @@
       "status": "ok",
       "warnings": [],
       "size": 907
-    },
-    {
-      "path": "清理舊開機自動啟動_管理員.bat",
-      "status": "ok",
-      "warnings": [],
-      "size": 176
     },
     {
       "path": "網路權限診斷.ps1",
@@ -357,13 +285,13 @@
       "path": "reports\\539低機率精準暫避.html",
       "status": "ok",
       "warnings": [],
-      "size": 8433
+      "size": 8438
     },
     {
       "path": "reports\\539最新強化戰報.html",
       "status": "ok",
       "warnings": [],
-      "size": 64699
+      "size": 68338
     },
     {
       "path": "reports\\539每月預測總整理.html",
@@ -393,13 +321,13 @@
       "path": "reports\\daily_integrity_audit.json",
       "status": "ok",
       "warnings": [],
-      "size": 5231
+      "size": 5228
     },
     {
       "path": "reports\\daily_integrity_audit.md",
       "status": "ok",
       "warnings": [],
-      "size": 2853
+      "size": 2850
     },
     {
       "path": "reports\\dashboard.html",
@@ -411,13 +339,13 @@
       "path": "reports\\file_integrity_report.json",
       "status": "ok",
       "warnings": [],
-      "size": 26707
+      "size": 25744
     },
     {
       "path": "reports\\file_integrity_report.md",
       "status": "ok",
       "warnings": [],
-      "size": 286
+      "size": 397
     },
     {
       "path": "reports\\full_system_scan.json",
@@ -429,7 +357,7 @@
       "path": "reports\\health_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 5979
+      "size": 5976
     },
     {
       "path": "reports\\health_status.md",
@@ -441,31 +369,31 @@
       "path": "reports\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 1944040
+      "size": 2021648
     },
     {
       "path": "reports\\latest_analysis.md",
       "status": "ok",
       "warnings": [],
-      "size": 6715
+      "size": 6757
     },
     {
       "path": "reports\\latest_battle_report.html",
       "status": "ok",
       "warnings": [],
-      "size": 64699
+      "size": 68338
     },
     {
       "path": "reports\\latest_battle_report.md",
       "status": "ok",
       "warnings": [],
-      "size": 23365
+      "size": 23402
     },
     {
       "path": "reports\\latest_battle_report.txt",
       "status": "ok",
       "warnings": [],
-      "size": 23365
+      "size": 23402
     },
     {
       "path": "reports\\line_push_status.json",
@@ -477,7 +405,7 @@
       "path": "reports\\mobile_sync_verification.json",
       "status": "ok",
       "warnings": [],
-      "size": 1106
+      "size": 1069
     },
     {
       "path": "reports\\mobile_update_status.json",
@@ -525,7 +453,7 @@
       "path": "reports\\prediction_history.json",
       "status": "ok",
       "warnings": [],
-      "size": 221467
+      "size": 221463
     },
     {
       "path": "reports\\previous_complete_month_review.json",
@@ -555,7 +483,7 @@
       "path": "site\\539低機率精準暫避.html",
       "status": "ok",
       "warnings": [],
-      "size": 8433
+      "size": 8438
     },
     {
       "path": "site\\539每月預測總整理.html",
@@ -579,13 +507,13 @@
       "path": "site\\health_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 5979
+      "size": 5976
     },
     {
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 68219
+      "size": 71858
     },
     {
       "path": "site\\latest.html",
@@ -597,13 +525,13 @@
       "path": "site\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 1944040
+      "size": 2021648
     },
     {
       "path": "site\\low-probability.html",
       "status": "ok",
       "warnings": [],
-      "size": 8433
+      "size": 8438
     },
     {
       "path": "site\\model_competition.json",
@@ -627,7 +555,7 @@
       "path": "site\\prediction_history.json",
       "status": "ok",
       "warnings": [],
-      "size": 221467
+      "size": 221463
     },
     {
       "path": "site\\version.json",
@@ -1149,7 +1077,7 @@
       "path": "reports\\history\\period_115000160.json",
       "status": "ok",
       "warnings": [],
-      "size": 4018
+      "size": 4014
     }
   ],
   "data_consistency": {
