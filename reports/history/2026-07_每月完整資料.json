@@ -1,16 +1,210 @@
 {
   "month": "2026-07",
-  "generated_at": "2026-07-02T15:20:56",
+  "generated_at": "2026-07-03T02:23:36",
   "stats": {
-    "total_records": 2,
-    "settled_records": 1,
+    "total_records": 3,
+    "settled_records": 2,
     "pending_records": 1,
-    "top5_avg_hits": 0.0,
+    "top5_avg_hits": 0.5,
     "top10_avg_hits": 1.0,
-    "top15_avg_hits": 1.0,
-    "low_probability_avg_accidental_hits": 0.6667
+    "top15_avg_hits": 1.5,
+    "low_probability_avg_accidental_hits": 0.3333
   },
   "records": [
+    {
+      "based_on_period": 115000160,
+      "based_on_date": "2026-07-02",
+      "target_period": 115000161,
+      "target_expected_date": "2026-07-03",
+      "top5": [
+        8,
+        5,
+        14,
+        34,
+        37
+      ],
+      "top10": [
+        8,
+        5,
+        14,
+        34,
+        37,
+        9,
+        38,
+        10,
+        3,
+        24
+      ],
+      "top15": [
+        8,
+        5,
+        14,
+        34,
+        37,
+        9,
+        38,
+        10,
+        3,
+        24,
+        29,
+        22,
+        28,
+        19,
+        26
+      ],
+      "unlikely_packs": {
+        "five_miss": {
+          "name": "5不中",
+          "numbers": [
+            33,
+            15,
+            2,
+            39,
+            4
+          ],
+          "status": "回測通過發布",
+          "avg_avoid_score": 0.9702,
+          "min_avoid_score": 0.903,
+          "confidence_index": 87.7,
+          "confidence_label": "回測通過",
+          "formula_lab_edge": 0.0776,
+          "formula_lab_status": "released",
+          "selection_model": "formula_lab_inverse_consensus",
+          "selection_note": "正式候選足額",
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.1244,
+            "required_edge_at_most": -0.08,
+            "formula_avoid_edge": 0.0776,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.575,
+            "required_zero_hit_rate": 0.52,
+            "rounds": 120
+          }
+        },
+        "ten_miss": {
+          "name": "10不中",
+          "numbers": [
+            33,
+            2,
+            15,
+            39,
+            4,
+            12,
+            35,
+            11,
+            27,
+            25
+          ],
+          "status": "回測通過發布",
+          "avg_avoid_score": 0.7348,
+          "min_avoid_score": 0.42,
+          "confidence_index": 73.5,
+          "confidence_label": "回測通過",
+          "formula_lab_edge": 0.0776,
+          "formula_lab_status": "released",
+          "selection_model": "formula_lab_inverse_consensus",
+          "selection_note": "正式候選不足時以低風險備選補齊",
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "formula_lab_inverse_consensus",
+            "edge_vs_random": -0.0487,
+            "required_edge_at_most": -0.12,
+            "formula_avoid_edge": 0.0776,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.25,
+            "required_zero_hit_rate": 0.22,
+            "rounds": 120
+          }
+        },
+        "fifteen_miss": {
+          "name": "15不中",
+          "numbers": [],
+          "status": "回測不合格未發布",
+          "confidence_label": "未發布",
+          "rejected_candidates": [
+            33,
+            15,
+            2,
+            39,
+            4,
+            12,
+            35,
+            11,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
+          "backtest_gate": {
+            "status": "failed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.0814,
+            "required_edge_at_most": -0.18,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.083,
+            "required_zero_hit_rate": 0.1,
+            "rounds": 120
+          },
+          "diagnostic_candidates": [
+            33,
+            15,
+            2,
+            39,
+            4,
+            12,
+            35,
+            11,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "withheld_numbers": [
+            33,
+            15,
+            2,
+            39,
+            4,
+            12,
+            35,
+            11,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "confidence_index": 0.0
+        }
+      },
+      "actual_period": null,
+      "actual_date": null,
+      "actual_numbers": [],
+      "top5_hits": null,
+      "top10_hits": null,
+      "top15_hits": null,
+      "top10_hit_numbers": [],
+      "strong_pack_hits": {},
+      "unlikely_pack_hits": {},
+      "status": "pending",
+      "created_at": "2026-07-02T18:23:35",
+      "settled_at": null,
+      "snapshot_count": 1
+    },
     {
       "based_on_period": 115000159,
       "based_on_date": "2026-07-01",
@@ -191,18 +385,161 @@
           "confidence_index": 0.0
         }
       },
-      "actual_period": null,
-      "actual_date": null,
-      "actual_numbers": [],
-      "top5_hits": null,
-      "top10_hits": null,
-      "top15_hits": null,
-      "top10_hit_numbers": [],
-      "strong_pack_hits": {},
-      "unlikely_pack_hits": {},
-      "status": "pending",
+      "actual_period": 115000160,
+      "actual_date": "2026-07-02",
+      "actual_numbers": [
+        1,
+        6,
+        8,
+        13,
+        30
+      ],
+      "top5_hits": 1,
+      "top10_hits": 1,
+      "top15_hits": 2,
+      "top10_hit_numbers": [
+        6
+      ],
+      "strong_pack_hits": {
+        "strong_single": {
+          "name": "最強單支",
+          "hit_goal": 1,
+          "numbers": [
+            7
+          ],
+          "hits": 0,
+          "passed": false
+        },
+        "two_hit_one": {
+          "name": "最強2中1",
+          "hit_goal": 1,
+          "numbers": [
+            21,
+            7
+          ],
+          "hits": 0,
+          "passed": false
+        },
+        "three_hit_one": {
+          "name": "最強3中1",
+          "hit_goal": 1,
+          "numbers": [
+            7,
+            21,
+            31
+          ],
+          "hits": 0,
+          "passed": false
+        },
+        "five_hit_two": {
+          "name": "最強5中2",
+          "hit_goal": 2,
+          "numbers": [
+            4,
+            17,
+            21,
+            32,
+            36
+          ],
+          "hits": 0,
+          "passed": false
+        },
+        "nine_hit_three": {
+          "name": "最強9中3",
+          "hit_goal": 3,
+          "numbers": [
+            4,
+            6,
+            7,
+            17,
+            21,
+            25,
+            31,
+            32,
+            36
+          ],
+          "hits": 1,
+          "passed": false
+        }
+      },
+      "unlikely_pack_hits": {
+        "five_miss": {
+          "name": "5不中",
+          "numbers": [
+            33,
+            39,
+            37,
+            35,
+            38
+          ],
+          "target": "不中",
+          "hit_goal": 0,
+          "accidental_hits": 0,
+          "hit_numbers": [],
+          "avoided_numbers": [
+            33,
+            35,
+            37,
+            38,
+            39
+          ],
+          "passed": true,
+          "confidence_index": 86.1,
+          "avg_avoid_score": 0.7279,
+          "min_avoid_score": 0.42
+        },
+        "ten_miss": {
+          "name": "10不中",
+          "numbers": [
+            33,
+            39,
+            37,
+            35,
+            38,
+            22,
+            19,
+            15,
+            11,
+            9
+          ],
+          "target": "不中",
+          "hit_goal": 0,
+          "accidental_hits": 0,
+          "hit_numbers": [],
+          "avoided_numbers": [
+            9,
+            11,
+            15,
+            19,
+            22,
+            33,
+            35,
+            37,
+            38,
+            39
+          ],
+          "passed": true,
+          "confidence_index": 75.6,
+          "avg_avoid_score": 0.5739,
+          "min_avoid_score": 0.4196
+        },
+        "fifteen_miss": {
+          "name": "15不中",
+          "numbers": [],
+          "target": "不中",
+          "hit_goal": 0,
+          "accidental_hits": 0,
+          "hit_numbers": [],
+          "avoided_numbers": [],
+          "passed": true,
+          "confidence_index": 0.0,
+          "avg_avoid_score": null,
+          "min_avoid_score": null
+        }
+      },
+      "status": "settled",
       "created_at": "2026-07-02T13:13:21",
-      "settled_at": null,
+      "settled_at": "2026-07-02T18:21:09",
       "snapshot_count": 11
     },
     {
