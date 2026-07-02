@@ -278,20 +278,27 @@ def apply_unlikely_gate(analysis):
         edge = float(stat.get("edge_vs_random", 0.0) or 0.0)
         zero_rate = float(stat.get("zero_hit_rate", 0.0) or 0.0)
         threshold = _avoid_threshold(size)
-        passed = bool(stat.get("rounds", 0) >= 90 and edge <= threshold["max_edge"] and zero_rate >= threshold["min_zero_rate"])
+        legacy_passed = bool(stat.get("rounds", 0) >= 90 and edge <= threshold["max_edge"] and zero_rate >= threshold["min_zero_rate"])
+        formula_edge = float(pack.get("formula_lab_edge", 0.0) or 0.0)
+        formula_status = str(pack.get("formula_lab_status") or "")
         original_numbers = _as_int_list(pack.get("numbers", []))
+        formula_passed = bool(original_numbers and formula_status == "released" and formula_edge >= 0.02)
+        passed = bool(original_numbers and (legacy_passed or formula_passed))
         diagnostic_numbers = original_numbers or _as_int_list(pack.get("rejected_candidates", []))
         pack["backtest_gate"] = {
             "status": "passed" if passed else "failed",
+            "gate_model": "formula_lab_inverse_consensus" if formula_passed and not legacy_passed else "legacy_inverse_signal",
             "edge_vs_random": round(edge, 4),
             "required_edge_at_most": threshold["max_edge"],
+            "formula_avoid_edge": round(formula_edge, 4),
+            "required_formula_avoid_edge_at_least": 0.02,
             "zero_hit_rate": round(zero_rate, 3),
             "required_zero_hit_rate": threshold["min_zero_rate"],
             "rounds": stat.get("rounds", 0),
         }
         if passed:
             released_any = True
-            confidence = max(55.0, min(88.0, 55.0 + abs(edge) * 160 + zero_rate * 18))
+            confidence = max(55.0, min(90.0, 55.0 + max(abs(edge), formula_edge) * 180 + zero_rate * 18))
             pack["confidence_index"] = round(confidence, 1)
             pack["confidence_label"] = "\u56de\u6e2c\u901a\u904e"
             pack["status"] = "\u56de\u6e2c\u901a\u904e\u767c\u5e03"

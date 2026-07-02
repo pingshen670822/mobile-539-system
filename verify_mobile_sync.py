@@ -3,6 +3,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
 
@@ -32,6 +33,18 @@ def latest_draw_signature(draw):
         "draw_date": draw.get("draw_date"),
         "numbers": [int(n) for n in draw.get("numbers", [])],
     }
+
+
+def mobile_base_url(cloud_url):
+    if not cloud_url:
+        return "https://pingshen670822.github.io/mobile-539-system"
+    parsed = urlsplit(cloud_url)
+    path = parsed.path or "/mobile-539-system/"
+    marker = "/clear-cache.html"
+    if marker in path:
+        path = path.split(marker)[0]
+    path = path.rstrip("/")
+    return urlunsplit((parsed.scheme, parsed.netloc, path, "", ""))
 
 
 def write_mobile_report_status(sync_status):
@@ -73,7 +86,8 @@ def main():
     failures = []
     if cloud_status.get("status") != "published":
         failures.append("\u624b\u6a5f\u96f2\u7aef\u5c1a\u672a\u767c\u5e03\u6210\u529f")
-    remote_base = "https://pingshen670924-dotcom.github.io/mobile-539-system"
+    remote_base = mobile_base_url(status.get("cloud_url"))
+    status["remote_base"] = remote_base
     cache_token = str(int(time.time()))
     try:
         remote_version = fetch_json(f"{remote_base}/version.json?t={cache_token}")

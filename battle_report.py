@@ -77,6 +77,10 @@ TEXT_REPLACEMENTS = [
     ("industrial_v20_recall_pressure_cold_rebound", "工業級第20版：月度召回壓力與冷號反彈"),
     ("industrial_v21_bagging_tail_zone_pressure", "工業級第21版：多視窗尾數轉移與區間配額"),
     ("industrial_v22_formula_lab_recalibration", "工業級第22版：公式模型實驗室重排"),
+    ("formula_lab_inverse_consensus", "公式反向共識"),
+    ("legacy_inverse_signal", "舊反向訊號"),
+    ("formula_lab_inverse_consensus_with_risk_separation_filter", "公式反向共識加風險分離"),
+    ("inverse_signal_with_risk_separation_filter", "反向訊號加風險分離"),
     ("industrial_v18_front9_precision_recall_lock", "工業級第18版：前9精準召回鎖定"),
     ("industrial_v17_micro_confidence_short_packs", "工業級第17版：短包信心精算"),
     ("daily_and_monthly_miss_review_rolls_into_next_prediction_with_recall_mode", "每日與月度失誤回灌到下期召回模式"),
@@ -4421,9 +4425,11 @@ def build_low_probability_html_report():
             f"<td>{fmt_decimal(pack.get('confidence_index'), 1)}</td>"
             f"<td>{fmt_percent(pack.get('avg_avoid_score'))}</td>"
             f"<td>{fmt_percent(pack.get('min_avoid_score'))}</td>"
+            f"<td>{fmt_decimal(pack.get('formula_lab_edge'), 4)}</td>"
             f"<td>{stat.get('rounds', '-')}</td>"
             f"<td>{fmt_decimal(stat.get('avg_accidental_hits'))}</td>"
             f"<td>{fmt_percent(stat.get('zero_hit_rate'))}</td>"
+            f"<td>{escape_html((pack.get('backtest_gate') or {}).get('gate_model', '-'))}</td>"
             f"<td>{escape_html(pack.get('status', '-'))}</td>"
             "</tr>"
         )
@@ -4437,8 +4443,9 @@ def build_low_probability_html_report():
             f"<td>{fmt_percent(item.get('avoid_score'))}</td>"
             f"<td>{fmt_percent(item.get('appearance_score'))}</td>"
             f"<td>{item.get('candidate_rank', '-')}</td>"
-            f"<td>{item.get('stability_count', '-')}</td>"
-            f"<td>{item.get('weak_signal_count', '-')}</td>"
+            f"<td>{item.get('formula_rank', '-')}</td>"
+            f"<td>{fmt_percent(item.get('formula_avoid_score'))}</td>"
+            f"<td>{item.get('formula_support_count', '-')}</td>"
             f"<td>{fmt_percent(item.get('risk_block_score'))}</td>"
             f"<td>{'正式候選' if item.get('eligible_for_avoid') else '診斷不發布'}</td>"
             f"<td>{escape_html(reasons)}</td>"
@@ -4483,11 +4490,11 @@ def build_low_probability_html_report():
   </section>
   <section class="band">
     <h2>5\u4e0d\u4e2d / 10\u4e0d\u4e2d / 15\u4e0d\u4e2d \u66ab\u907f\u5305</h2>
-    <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u6700\u4f4e\u66ab\u907f\u5206</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u72c0\u614b</th></tr></thead><tbody>{''.join(pack_rows)}</tbody></table>
+    <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u6700\u4f4e\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u53cd\u5411\u512a\u52e2</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u767c\u5e03\u6a21\u578b</th><th>\u72c0\u614b</th></tr></thead><tbody>{''.join(pack_rows)}</tbody></table>
   </section>
   <section class="band">
     <h2>\u9010\u865f\u66ab\u907f\u7d30\u9805</h2>
-    <table><thead><tr><th>\u865f\u78bc</th><th>\u66ab\u907f\u5206</th><th>\u51fa\u73fe\u8a55\u5206</th><th>\u5019\u9078\u6392\u540d</th><th>\u7a69\u5b9a\u6578</th><th>\u5f31\u8a0a\u865f</th><th>風險阻擋分</th><th>發布判定</th><th>\u66ab\u907f\u539f\u56e0</th><th>\u98a8\u63a7</th></tr></thead><tbody>{''.join(number_rows) or '<tr><td colspan="10">\u672c\u671f\u7121\u66ab\u907f\u7d30\u9805</td></tr>'}</tbody></table>
+    <table><thead><tr><th>\u865f\u78bc</th><th>\u66ab\u907f\u5206</th><th>\u51fa\u73fe\u8a55\u5206</th><th>\u5019\u9078\u6392\u540d</th><th>\u516c\u5f0f\u6392\u540d</th><th>\u516c\u5f0f\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u652f\u6490\u6578</th><th>風險阻擋分</th><th>發布判定</th><th>\u66ab\u907f\u539f\u56e0</th><th>\u98a8\u63a7</th></tr></thead><tbody>{''.join(number_rows) or '<tr><td colspan="11">\u672c\u671f\u7121\u66ab\u907f\u7d30\u9805</td></tr>'}</tbody></table>
   </section>
 </main>
 </body>

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:35:59",
+  "generated_at": "2026-07-02T13:13:39",
   "status": "ok",
   "checked_files": 179,
   "failed_count": 0,
@@ -33,7 +33,7 @@
       "path": "battle_report.py",
       "status": "ok",
       "warnings": [],
-      "size": 267525
+      "size": 268197
     },
     {
       "path": "build_tw539_release.ps1",
@@ -87,7 +87,7 @@
       "path": "industrial_engine.py",
       "status": "ok",
       "warnings": [],
-      "size": 256337
+      "size": 259878
     },
     {
       "path": "install_daily_task.ps1",
@@ -171,7 +171,7 @@
       "path": "stability_governor.py",
       "status": "ok",
       "warnings": [],
-      "size": 15679
+      "size": 16252
     },
     {
       "path": "system_file_check.py",
@@ -195,7 +195,7 @@
       "path": "verify_mobile_sync.py",
       "status": "ok",
       "warnings": [],
-      "size": 4917
+      "size": 5374
     },
     {
       "path": "使用說明.txt",
@@ -285,13 +285,13 @@
       "path": "reports\\539低機率精準暫避.html",
       "status": "ok",
       "warnings": [],
-      "size": 8438
+      "size": 8931
     },
     {
       "path": "reports\\539最新強化戰報.html",
       "status": "ok",
       "warnings": [],
-      "size": 68338
+      "size": 68037
     },
     {
       "path": "reports\\539每月預測總整理.html",
@@ -303,7 +303,7 @@
       "path": "reports\\539每期預測對比.html",
       "status": "ok",
       "warnings": [],
-      "size": 22350
+      "size": 22351
     },
     {
       "path": "reports\\cleanup_obsolete_runtime.json",
@@ -339,7 +339,7 @@
       "path": "reports\\file_integrity_report.json",
       "status": "ok",
       "warnings": [],
-      "size": 25744
+      "size": 25144
     },
     {
       "path": "reports\\file_integrity_report.md",
@@ -369,7 +369,7 @@
       "path": "reports\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2021648
+      "size": 2023145
     },
     {
       "path": "reports\\latest_analysis.md",
@@ -381,19 +381,19 @@
       "path": "reports\\latest_battle_report.html",
       "status": "ok",
       "warnings": [],
-      "size": 68338
+      "size": 68037
     },
     {
       "path": "reports\\latest_battle_report.md",
       "status": "ok",
       "warnings": [],
-      "size": 23402
+      "size": 25432
     },
     {
       "path": "reports\\latest_battle_report.txt",
       "status": "ok",
       "warnings": [],
-      "size": 23402
+      "size": 25432
     },
     {
       "path": "reports\\line_push_status.json",
@@ -405,7 +405,7 @@
       "path": "reports\\mobile_sync_verification.json",
       "status": "ok",
       "warnings": [],
-      "size": 1069
+      "size": 1141
     },
     {
       "path": "reports\\mobile_update_status.json",
@@ -453,7 +453,7 @@
       "path": "reports\\prediction_history.json",
       "status": "ok",
       "warnings": [],
-      "size": 221463
+      "size": 221667
     },
     {
       "path": "reports\\previous_complete_month_review.json",
@@ -483,7 +483,7 @@
       "path": "site\\539低機率精準暫避.html",
       "status": "ok",
       "warnings": [],
-      "size": 8438
+      "size": 8931
     },
     {
       "path": "site\\539每月預測總整理.html",
@@ -513,7 +513,7 @@
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 71858
+      "size": 71557
     },
     {
       "path": "site\\latest.html",
@@ -525,13 +525,13 @@
       "path": "site\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2021648
+      "size": 2023145
     },
     {
       "path": "site\\low-probability.html",
       "status": "ok",
       "warnings": [],
-      "size": 8438
+      "size": 8931
     },
     {
       "path": "site\\model_competition.json",
@@ -549,13 +549,13 @@
       "path": "site\\prediction-history.html",
       "status": "ok",
       "warnings": [],
-      "size": 22350
+      "size": 22351
     },
     {
       "path": "site\\prediction_history.json",
       "status": "ok",
       "warnings": [],
-      "size": 221463
+      "size": 221667
     },
     {
       "path": "site\\version.json",
@@ -1077,7 +1077,7 @@
       "path": "reports\\history\\period_115000160.json",
       "status": "ok",
       "warnings": [],
-      "size": 4014
+      "size": 4294
     }
   ],
   "data_consistency": {

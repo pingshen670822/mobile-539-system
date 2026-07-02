@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:34:54",
+  "generated_at": "2026-07-02T13:12:50",
   "prediction_mode": "current_precision_stability_v45_formula_lab_recalibration",
   "latest_draw": {
     "period": 115000159,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-01",
     "expected_latest_date": "2026-07-01",
     "lag_days": 0,
-    "checked_at": "2026-07-02T11:31:52"
+    "checked_at": "2026-07-02T13:10:03"
   },
   "windows": [
     {
@@ -2634,22 +2634,16 @@
       ],
       "source_performance": [
         {
-          "reason": "月度漏抓壓力加權",
-          "hit": 1,
-          "miss": 0,
-          "hit_rate": 1.0
-        },
-        {
           "reason": "近100期偏熱(14次)",
           "hit": 1,
           "miss": 0,
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "月度漏抓壓力加權",
           "hit": 1,
-          "miss": 1,
-          "hit_rate": 0.5
+          "miss": 0,
+          "hit_rate": 1.0
         },
         {
           "reason": "上期失敗號碼僅微降權",
@@ -2658,13 +2652,19 @@
           "hit_rate": 0.5
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "與上期號碼近100期共現6次",
+          "hit": 1,
+          "miss": 1,
+          "hit_rate": 0.5
+        },
+        {
+          "reason": "相似牌",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "相似牌",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -3193,13 +3193,13 @@
           "hit_rate": 0.5
         },
         {
-          "reason": "分布平衡風控",
+          "reason": "快慢趨勢一致",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "快慢趨勢一致",
+          "reason": "分布平衡風控",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -3211,25 +3211,19 @@
           "hit_rate": 0.143
         },
         {
+          "reason": "昨日預測號軟守門觀察",
+          "hit": 0,
+          "miss": 1,
+          "hit_rate": 0.0
+        },
+        {
           "reason": "排名錯位修正",
           "hit": 0,
           "miss": 1,
           "hit_rate": 0.0
         },
         {
-          "reason": "上月失準突破回拉",
-          "hit": 0,
-          "miss": 1,
-          "hit_rate": 0.0
-        },
-        {
           "reason": "失敗號回補驗算",
-          "hit": 0,
-          "miss": 1,
-          "hit_rate": 0.0
-        },
-        {
-          "reason": "昨日預測號軟守門觀察",
           "hit": 0,
           "miss": 1,
           "hit_rate": 0.0
@@ -3242,6 +3236,12 @@
         },
         {
           "reason": "開獎型態切換",
+          "hit": 0,
+          "miss": 1,
+          "hit_rate": 0.0
+        },
+        {
+          "reason": "上月失準突破回拉",
           "hit": 0,
           "miss": 1,
           "hit_rate": 0.0
@@ -4397,22 +4397,16 @@
       ],
       "source_performance": [
         {
-          "reason": "月度漏抓壓力加權",
-          "hit": 1,
-          "miss": 0,
-          "hit_rate": 1.0
-        },
-        {
           "reason": "近100期偏熱(14次)",
           "hit": 1,
           "miss": 0,
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "月度漏抓壓力加權",
           "hit": 1,
-          "miss": 1,
-          "hit_rate": 0.5
+          "miss": 0,
+          "hit_rate": 1.0
         },
         {
           "reason": "上期失敗號碼僅微降權",
@@ -4421,13 +4415,19 @@
           "hit_rate": 0.5
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "與上期號碼近100期共現6次",
+          "hit": 1,
+          "miss": 1,
+          "hit_rate": 0.5
+        },
+        {
+          "reason": "相似牌",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "相似牌",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -5861,22 +5861,16 @@
         ],
         "source_performance": [
           {
-            "reason": "月度漏抓壓力加權",
-            "hit": 1,
-            "miss": 0,
-            "hit_rate": 1.0
-          },
-          {
             "reason": "近100期偏熱(14次)",
             "hit": 1,
             "miss": 0,
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "月度漏抓壓力加權",
             "hit": 1,
-            "miss": 1,
-            "hit_rate": 0.5
+            "miss": 0,
+            "hit_rate": 1.0
           },
           {
             "reason": "上期失敗號碼僅微降權",
@@ -5885,13 +5879,19 @@
             "hit_rate": 0.5
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "與上期號碼近100期共現6次",
+            "hit": 1,
+            "miss": 1,
+            "hit_rate": 0.5
+          },
+          {
+            "reason": "相似牌",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "相似牌",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -6420,13 +6420,13 @@
             "hit_rate": 0.5
           },
           {
-            "reason": "分布平衡風控",
+            "reason": "快慢趨勢一致",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "快慢趨勢一致",
+            "reason": "分布平衡風控",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -6438,25 +6438,19 @@
             "hit_rate": 0.143
           },
           {
+            "reason": "昨日預測號軟守門觀察",
+            "hit": 0,
+            "miss": 1,
+            "hit_rate": 0.0
+          },
+          {
             "reason": "排名錯位修正",
             "hit": 0,
             "miss": 1,
             "hit_rate": 0.0
           },
           {
-            "reason": "上月失準突破回拉",
-            "hit": 0,
-            "miss": 1,
-            "hit_rate": 0.0
-          },
-          {
             "reason": "失敗號回補驗算",
-            "hit": 0,
-            "miss": 1,
-            "hit_rate": 0.0
-          },
-          {
-            "reason": "昨日預測號軟守門觀察",
             "hit": 0,
             "miss": 1,
             "hit_rate": 0.0
@@ -6469,6 +6463,12 @@
           },
           {
             "reason": "開獎型態切換",
+            "hit": 0,
+            "miss": 1,
+            "hit_rate": 0.0
+          },
+          {
+            "reason": "上月失準突破回拉",
             "hit": 0,
             "miss": 1,
             "hit_rate": 0.0
@@ -7624,22 +7624,16 @@
         ],
         "source_performance": [
           {
-            "reason": "月度漏抓壓力加權",
-            "hit": 1,
-            "miss": 0,
-            "hit_rate": 1.0
-          },
-          {
             "reason": "近100期偏熱(14次)",
             "hit": 1,
             "miss": 0,
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "月度漏抓壓力加權",
             "hit": 1,
-            "miss": 1,
-            "hit_rate": 0.5
+            "miss": 0,
+            "hit_rate": 1.0
           },
           {
             "reason": "上期失敗號碼僅微降權",
@@ -7648,13 +7642,19 @@
             "hit_rate": 0.5
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "與上期號碼近100期共現6次",
+            "hit": 1,
+            "miss": 1,
+            "hit_rate": 0.5
+          },
+          {
+            "reason": "相似牌",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "相似牌",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -12330,11 +12330,11 @@
         37,
         35,
         38,
+        30,
+        28,
+        24,
         22,
-        19,
-        15,
-        11,
-        9
+        19
       ],
       "high_confidence_numbers": [],
       "slump_recall_triggered": true,
@@ -13248,210 +13248,64 @@
       }
     },
     "unlikely_number_analysis": {
-      "method": "inverse_signal_with_risk_separation_filter",
-      "warning": "低機率模型近期未通過回測閘門，本期不發布正式暫避號碼，診斷候選仍完整保留",
-      "numbers": [],
-      "avoid_packs": {
-        "five_miss": {
-          "name": "5不中",
-          "numbers": [],
-          "status": "回測不合格未發布",
-          "confidence_label": "未發布",
-          "rejected_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38
-          ],
-          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
-          "backtest_gate": {
-            "status": "failed",
-            "edge_vs_random": -0.0577,
-            "required_edge_at_most": -0.08,
-            "zero_hit_rate": 0.55,
-            "required_zero_hit_rate": 0.52,
-            "rounds": 120
-          },
-          "diagnostic_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38
-          ],
-          "withheld_numbers": [
-            39,
-            33,
-            37,
-            35,
-            38
-          ],
-          "confidence_index": 0.0
-        },
-        "ten_miss": {
-          "name": "10不中",
-          "numbers": [],
-          "status": "回測不合格未發布",
-          "confidence_label": "未發布",
-          "rejected_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9
-          ],
-          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
-          "backtest_gate": {
-            "status": "failed",
-            "edge_vs_random": -0.0654,
-            "required_edge_at_most": -0.12,
-            "zero_hit_rate": 0.267,
-            "required_zero_hit_rate": 0.22,
-            "rounds": 120
-          },
-          "diagnostic_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9
-          ],
-          "withheld_numbers": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9
-          ],
-          "confidence_index": 0.0
-        },
-        "fifteen_miss": {
-          "name": "15不中",
-          "numbers": [],
-          "status": "回測不合格未發布",
-          "confidence_label": "未發布",
-          "rejected_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9,
-            12,
-            24,
-            27,
-            34,
-            14
-          ],
-          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
-          "backtest_gate": {
-            "status": "failed",
-            "edge_vs_random": -0.0397,
-            "required_edge_at_most": -0.18,
-            "zero_hit_rate": 0.067,
-            "required_zero_hit_rate": 0.1,
-            "rounds": 120
-          },
-          "diagnostic_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9,
-            12,
-            24,
-            27,
-            34,
-            14
-          ],
-          "withheld_numbers": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9,
-            12,
-            24,
-            27,
-            34,
-            14
-          ],
-          "confidence_index": 0.0
-        }
-      },
-      "diagnostic_numbers": [
+      "method": "formula_lab_inverse_consensus_with_risk_separation_filter",
+      "warning": "此區為風控避開觀察，不是絕對不開保證",
+      "numbers": [
         {
           "number": 39,
-          "avoid_score": 0.7346,
+          "avoid_score": 1.0,
           "appearance_score": 0.318,
           "candidate_rank": 23,
           "stability_count": 0,
           "weak_signal_count": 6,
-          "evidence_score": 0.38,
+          "evidence_score": 0.7,
           "risk_block_score": 0.0,
+          "formula_avoid_score": 0.6103,
+          "formula_rank": 27,
+          "formula_support_count": 2,
           "eligible_for_avoid": true,
           "reasons": [
             "擾動模型無穩定共識",
-            "短中長期與關聯指標偏弱"
+            "短中長期與關聯指標偏弱",
+            "公式模型後段",
+            "公式反向共識"
           ],
           "warning": "低機率不代表不會開出"
         },
         {
           "number": 33,
-          "avoid_score": 0.7123,
+          "avoid_score": 1.0,
           "appearance_score": 0.361,
           "candidate_rank": 22,
           "stability_count": 0,
           "weak_signal_count": 6,
-          "evidence_score": 0.38,
+          "evidence_score": 0.7,
           "risk_block_score": 0.0,
+          "formula_avoid_score": 0.5995,
+          "formula_rank": 26,
+          "formula_support_count": 2,
           "eligible_for_avoid": true,
           "reasons": [
             "擾動模型無穩定共識",
-            "短中長期與關聯指標偏弱"
+            "短中長期與關聯指標偏弱",
+            "公式模型後段",
+            "公式反向共識"
           ],
           "warning": "低機率不代表不會開出"
         },
         {
           "number": 37,
-          "avoid_score": 0.6005,
+          "avoid_score": 0.6656,
           "appearance_score": 0.576,
           "candidate_rank": 16,
           "stability_count": 0,
           "weak_signal_count": 5,
           "evidence_score": 0.38,
           "risk_block_score": 0.0,
-          "eligible_for_avoid": true,
+          "formula_avoid_score": 0.4148,
+          "formula_rank": 7,
+          "formula_support_count": 5,
+          "eligible_for_avoid": false,
           "reasons": [
             "擾動模型無穩定共識",
             "短中長期與關聯指標偏弱"
@@ -13460,13 +13314,16 @@
         },
         {
           "number": 35,
-          "avoid_score": 0.4732,
+          "avoid_score": 0.5539,
           "appearance_score": 0.513,
           "candidate_rank": 18,
           "stability_count": 2,
           "weak_signal_count": 5,
           "evidence_score": 0.22,
           "risk_block_score": 0.0,
+          "formula_avoid_score": 0.4961,
+          "formula_rank": 16,
+          "formula_support_count": 3,
           "eligible_for_avoid": false,
           "reasons": [
             "短中長期與關聯指標偏弱"
@@ -13480,12 +13337,78 @@
           "candidate_rank": 39,
           "stability_count": 0,
           "weak_signal_count": 6,
-          "evidence_score": 0.56,
+          "evidence_score": 0.88,
           "risk_block_score": 0.44,
+          "formula_avoid_score": 0.5656,
+          "formula_rank": 35,
+          "formula_support_count": 5,
           "eligible_for_avoid": false,
           "reasons": [
             "近期高機率失準號隔離校正，不直接列低機率",
             "上期失準號需回測校正，不能反向充當低機率",
+            "擾動模型無穩定共識",
+            "短中長期與關聯指標偏弱"
+          ],
+          "warning": "低機率不代表不會開出"
+        },
+        {
+          "number": 30,
+          "avoid_score": 0.42,
+          "appearance_score": 0.4435,
+          "candidate_rank": 19,
+          "stability_count": 0,
+          "weak_signal_count": 7,
+          "evidence_score": 0.7,
+          "risk_block_score": 0.52,
+          "formula_avoid_score": 0.6507,
+          "formula_rank": 29,
+          "formula_support_count": 2,
+          "eligible_for_avoid": false,
+          "reasons": [
+            "上期失準號需回測校正，不能反向充當低機率",
+            "滾動檢討指向漏抓回補，不列低機率",
+            "擾動模型無穩定共識",
+            "短中長期與關聯指標偏弱"
+          ],
+          "warning": "低機率不代表不會開出"
+        },
+        {
+          "number": 28,
+          "avoid_score": 0.42,
+          "appearance_score": 0.1507,
+          "candidate_rank": 29,
+          "stability_count": 0,
+          "weak_signal_count": 1,
+          "evidence_score": 0.66,
+          "risk_block_score": 0.66,
+          "formula_avoid_score": 0.6412,
+          "formula_rank": 28,
+          "formula_support_count": 2,
+          "eligible_for_avoid": false,
+          "reasons": [
+            "上期失準號需回測校正，不能反向充當低機率",
+            "滾動檢討指向漏抓回補，不列低機率",
+            "擾動模型無穩定共識",
+            "Top24外"
+          ],
+          "warning": "低機率不代表不會開出"
+        },
+        {
+          "number": 24,
+          "avoid_score": 0.42,
+          "appearance_score": 0.1238,
+          "candidate_rank": 30,
+          "stability_count": 0,
+          "weak_signal_count": 5,
+          "evidence_score": 0.98,
+          "risk_block_score": 0.66,
+          "formula_avoid_score": 0.6576,
+          "formula_rank": 30,
+          "formula_support_count": 1,
+          "eligible_for_avoid": false,
+          "reasons": [
+            "上期失準號需回測校正，不能反向充當低機率",
+            "滾動檢討指向漏抓回補，不列低機率",
             "擾動模型無穩定共識",
             "短中長期與關聯指標偏弱"
           ],
@@ -13498,8 +13421,11 @@
           "candidate_rank": 32,
           "stability_count": 0,
           "weak_signal_count": 5,
-          "evidence_score": 0.56,
+          "evidence_score": 0.98,
           "risk_block_score": 0.38,
+          "formula_avoid_score": 0.7092,
+          "formula_rank": 32,
+          "formula_support_count": 1,
           "eligible_for_avoid": false,
           "reasons": [
             "上期失準號需回測校正，不能反向充當低機率",
@@ -13516,8 +13442,11 @@
           "candidate_rank": 38,
           "stability_count": 0,
           "weak_signal_count": 7,
-          "evidence_score": 0.56,
+          "evidence_score": 0.74,
           "risk_block_score": 0.44,
+          "formula_avoid_score": 0.5318,
+          "formula_rank": 33,
+          "formula_support_count": 5,
           "eligible_for_avoid": false,
           "reasons": [
             "近期高機率失準號隔離校正，不直接列低機率",
@@ -13529,13 +13458,16 @@
         },
         {
           "number": 15,
-          "avoid_score": 0.4158,
+          "avoid_score": 0.42,
           "appearance_score": 0.1235,
           "candidate_rank": 31,
           "stability_count": 0,
           "weak_signal_count": 1,
-          "evidence_score": 0.34,
+          "evidence_score": 0.76,
           "risk_block_score": 0.38,
+          "formula_avoid_score": 0.6583,
+          "formula_rank": 31,
+          "formula_support_count": 1,
           "eligible_for_avoid": false,
           "reasons": [
             "上期失準號需回測校正，不能反向充當低機率",
@@ -13547,13 +13479,16 @@
         },
         {
           "number": 11,
-          "avoid_score": 0.3727,
+          "avoid_score": 0.42,
           "appearance_score": 0.2064,
           "candidate_rank": 27,
           "stability_count": 0,
           "weak_signal_count": 1,
-          "evidence_score": 0.34,
+          "evidence_score": 0.48,
           "risk_block_score": 0.38,
+          "formula_avoid_score": 0.5681,
+          "formula_rank": 24,
+          "formula_support_count": 4,
           "eligible_for_avoid": false,
           "reasons": [
             "上期失準號需回測校正，不能反向充當低機率",
@@ -13564,104 +13499,59 @@
           "warning": "低機率不代表不會開出"
         },
         {
-          "number": 9,
-          "avoid_score": 0.3668,
-          "appearance_score": 0.2177,
-          "candidate_rank": 25,
-          "stability_count": 0,
-          "weak_signal_count": 4,
-          "evidence_score": 0.34,
-          "risk_block_score": 0.38,
-          "eligible_for_avoid": false,
-          "reasons": [
-            "上期失準號需回測校正，不能反向充當低機率",
-            "擾動模型無穩定共識",
-            "Top24外",
-            "重複失準號屬模型校正對象，不做低機率包裝"
-          ],
-          "warning": "低機率不代表不會開出"
-        },
-        {
-          "number": 12,
-          "avoid_score": 0.36,
-          "appearance_score": 0.045,
-          "candidate_rank": 37,
+          "number": 5,
+          "avoid_score": 0.42,
+          "appearance_score": 0.2029,
+          "candidate_rank": 28,
           "stability_count": 0,
           "weak_signal_count": 3,
-          "evidence_score": 0.34,
-          "risk_block_score": 0.44,
-          "eligible_for_avoid": false,
-          "reasons": [
-            "最新開獎號連莊未通過，不列低機率",
-            "擾動模型無穩定共識",
-            "Top24外",
-            "重複失準號屬模型校正對象，不做低機率包裝"
-          ],
-          "warning": "低機率不代表不會開出"
-        },
-        {
-          "number": 24,
-          "avoid_score": 0.3556,
-          "appearance_score": 0.1238,
-          "candidate_rank": 30,
-          "stability_count": 0,
-          "weak_signal_count": 5,
-          "evidence_score": 0.56,
+          "evidence_score": 0.66,
           "risk_block_score": 0.66,
+          "formula_avoid_score": 0.5765,
+          "formula_rank": 25,
+          "formula_support_count": 6,
           "eligible_for_avoid": false,
           "reasons": [
             "上期失準號需回測校正，不能反向充當低機率",
             "滾動檢討指向漏抓回補，不列低機率",
-            "擾動模型無穩定共識",
-            "短中長期與關聯指標偏弱"
-          ],
-          "warning": "低機率不代表不會開出"
-        },
-        {
-          "number": 27,
-          "avoid_score": 0.2746,
-          "appearance_score": 0.395,
-          "candidate_rank": 21,
-          "stability_count": 0,
-          "weak_signal_count": 5,
-          "evidence_score": 0.38,
-          "risk_block_score": 0.42,
-          "eligible_for_avoid": false,
-          "reasons": [
-            "滾動檢討指向漏抓回補，不列低機率",
-            "擾動模型無穩定共識",
-            "短中長期與關聯指標偏弱",
-            "重複失準號屬模型校正對象，不做低機率包裝"
-          ],
-          "warning": "低機率不代表不會開出"
-        },
-        {
-          "number": 34,
-          "avoid_score": 0.2566,
-          "appearance_score": 0.045,
-          "candidate_rank": 34,
-          "stability_count": 0,
-          "weak_signal_count": 2,
-          "evidence_score": 0.34,
-          "risk_block_score": 0.58,
-          "eligible_for_avoid": false,
-          "reasons": [
-            "滾動檢討指向漏抓回補，不列低機率",
-            "最新開獎號連莊未通過，不列低機率",
             "擾動模型無穩定共識",
             "Top24外"
           ],
           "warning": "低機率不代表不會開出"
         },
         {
-          "number": 14,
-          "avoid_score": 0.2566,
-          "appearance_score": 0.045,
-          "candidate_rank": 33,
+          "number": 9,
+          "avoid_score": 0.4196,
+          "appearance_score": 0.2177,
+          "candidate_rank": 25,
           "stability_count": 0,
-          "weak_signal_count": 1,
+          "weak_signal_count": 4,
           "evidence_score": 0.34,
+          "risk_block_score": 0.38,
+          "formula_avoid_score": 0.5411,
+          "formula_rank": 22,
+          "formula_support_count": 4,
+          "eligible_for_avoid": false,
+          "reasons": [
+            "上期失準號需回測校正，不能反向充當低機率",
+            "擾動模型無穩定共識",
+            "Top24外",
+            "重複失準號屬模型校正對象，不做低機率包裝"
+          ],
+          "warning": "低機率不代表不會開出"
+        },
+        {
+          "number": 34,
+          "avoid_score": 0.36,
+          "appearance_score": 0.045,
+          "candidate_rank": 34,
+          "stability_count": 0,
+          "weak_signal_count": 2,
+          "evidence_score": 0.66,
           "risk_block_score": 0.58,
+          "formula_avoid_score": 0.6183,
+          "formula_rank": 38,
+          "formula_support_count": 5,
           "eligible_for_avoid": false,
           "reasons": [
             "滾動檢討指向漏抓回補，不列低機率",
@@ -13672,39 +13562,178 @@
           "warning": "低機率不代表不會開出"
         }
       ],
-      "release_status": "withheld_by_backtest_gate"
+      "avoid_packs": {
+        "five_miss": {
+          "name": "5不中",
+          "numbers": [
+            33,
+            39,
+            37,
+            35,
+            38
+          ],
+          "status": "回測通過發布",
+          "avg_avoid_score": 0.7279,
+          "min_avoid_score": 0.42,
+          "confidence_index": 86.1,
+          "confidence_label": "回測通過",
+          "formula_lab_edge": 0.0893,
+          "formula_lab_status": "released",
+          "selection_model": "formula_lab_inverse_consensus",
+          "selection_note": "正式候選不足時以低風險備選補齊",
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.116,
+            "required_edge_at_most": -0.08,
+            "formula_avoid_edge": 0.0893,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.567,
+            "required_zero_hit_rate": 0.52,
+            "rounds": 120
+          }
+        },
+        "ten_miss": {
+          "name": "10不中",
+          "numbers": [
+            33,
+            39,
+            37,
+            35,
+            38,
+            22,
+            19,
+            15,
+            11,
+            9
+          ],
+          "status": "回測通過發布",
+          "avg_avoid_score": 0.5739,
+          "min_avoid_score": 0.4196,
+          "confidence_index": 75.6,
+          "confidence_label": "回測通過",
+          "formula_lab_edge": 0.0893,
+          "formula_lab_status": "released",
+          "selection_model": "formula_lab_inverse_consensus",
+          "selection_note": "正式候選不足時以低風險備選補齊",
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "formula_lab_inverse_consensus",
+            "edge_vs_random": -0.0487,
+            "required_edge_at_most": -0.12,
+            "formula_avoid_edge": 0.0893,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.25,
+            "required_zero_hit_rate": 0.22,
+            "rounds": 120
+          }
+        },
+        "fifteen_miss": {
+          "name": "15不中",
+          "numbers": [],
+          "status": "回測不合格未發布",
+          "confidence_label": "未發布",
+          "rejected_candidates": [
+            39,
+            33,
+            37,
+            35,
+            38,
+            30,
+            28,
+            24,
+            22,
+            19,
+            15,
+            11,
+            5,
+            9,
+            34
+          ],
+          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
+          "backtest_gate": {
+            "status": "failed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.0897,
+            "required_edge_at_most": -0.18,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.083,
+            "required_zero_hit_rate": 0.1,
+            "rounds": 120
+          },
+          "diagnostic_candidates": [
+            39,
+            33,
+            37,
+            35,
+            38,
+            30,
+            28,
+            24,
+            22,
+            19,
+            15,
+            11,
+            5,
+            9,
+            34
+          ],
+          "withheld_numbers": [
+            39,
+            33,
+            37,
+            35,
+            38,
+            30,
+            28,
+            24,
+            22,
+            19,
+            15,
+            11,
+            5,
+            9,
+            34
+          ],
+          "confidence_index": 0.0
+        }
+      },
+      "release_status": "released"
     },
     "unlikely_backtest": {
       "rounds": 120,
       "avoid_size": 10,
-      "avg_accidental_hits": 1.217,
+      "avg_accidental_hits": 1.233,
       "random_expectation": 1.282,
-      "edge_vs_random": -0.0654,
-      "zero_hit_rate": 0.267,
+      "edge_vs_random": -0.0487,
+      "zero_hit_rate": 0.25,
       "packs": {
         "five_miss": {
           "rounds": 120,
           "avoid_size": 5,
-          "avg_accidental_hits": 0.583,
+          "avg_accidental_hits": 0.525,
           "random_expectation": 0.641,
-          "edge_vs_random": -0.0577,
-          "zero_hit_rate": 0.55
+          "edge_vs_random": -0.116,
+          "zero_hit_rate": 0.567
         },
         "ten_miss": {
           "rounds": 120,
           "avoid_size": 10,
-          "avg_accidental_hits": 1.217,
+          "avg_accidental_hits": 1.233,
           "random_expectation": 1.282,
-          "edge_vs_random": -0.0654,
-          "zero_hit_rate": 0.267
+          "edge_vs_random": -0.0487,
+          "zero_hit_rate": 0.25
         },
         "fifteen_miss": {
           "rounds": 120,
           "avoid_size": 15,
-          "avg_accidental_hits": 1.883,
+          "avg_accidental_hits": 1.833,
           "random_expectation": 1.923,
-          "edge_vs_random": -0.0397,
-          "zero_hit_rate": 0.067
+          "edge_vs_random": -0.0897,
+          "zero_hit_rate": 0.083
         }
       }
     },
@@ -33134,7 +33163,7 @@
     },
     "stability_governor": {
       "status": "corrected",
-      "checked_at": "2026-07-02T11:35:10",
+      "checked_at": "2026-07-02T13:13:05",
       "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
       "single_lock_audit": {
         "recent_single_rows": [
@@ -33361,37 +33390,6 @@
         },
         {
           "type": "unlikely_gate",
-          "pack": "five_miss",
-          "withheld_numbers": [
-            39,
-            33,
-            37,
-            35,
-            38
-          ],
-          "edge_vs_random": -0.0577,
-          "zero_hit_rate": 0.55
-        },
-        {
-          "type": "unlikely_gate",
-          "pack": "ten_miss",
-          "withheld_numbers": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9
-          ],
-          "edge_vs_random": -0.0654,
-          "zero_hit_rate": 0.267
-        },
-        {
-          "type": "unlikely_gate",
           "pack": "fifteen_miss",
           "withheld_numbers": [
             39,
@@ -33399,19 +33397,19 @@
             37,
             35,
             38,
+            30,
+            28,
+            24,
             22,
             19,
             15,
             11,
+            5,
             9,
-            12,
-            24,
-            27,
-            34,
-            14
+            34
           ],
-          "edge_vs_random": -0.0397,
-          "zero_hit_rate": 0.067
+          "edge_vs_random": -0.0897,
+          "zero_hit_rate": 0.083
         }
       ]
     }
@@ -35463,8 +35461,25 @@
         "低機率回測"
       ],
       "outputs": {
-        "five_miss": [],
-        "ten_miss": [],
+        "five_miss": [
+          33,
+          39,
+          37,
+          35,
+          38
+        ],
+        "ten_miss": [
+          33,
+          39,
+          37,
+          35,
+          38,
+          22,
+          19,
+          15,
+          11,
+          9
+        ],
         "fifteen_miss": []
       },
       "rule": "低機率只做暫避研究，不參與高機率推薦排序。"

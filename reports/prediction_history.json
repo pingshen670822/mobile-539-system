@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:35:29",
+  "generated_at": "2026-07-02T13:13:23",
   "total_periods": 81,
   "settled_periods": 27,
   "pending_periods": 1,
@@ -48,49 +48,40 @@
       "unlikely_packs": {
         "five_miss": {
           "name": "5不中",
-          "numbers": [],
-          "status": "回測不合格未發布",
-          "confidence_label": "未發布",
-          "rejected_candidates": [
-            39,
+          "numbers": [
             33,
+            39,
             37,
             35,
             38
           ],
-          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
+          "status": "回測通過發布",
+          "avg_avoid_score": 0.7279,
+          "min_avoid_score": 0.42,
+          "confidence_index": 86.1,
+          "confidence_label": "回測通過",
+          "formula_lab_edge": 0.0893,
+          "formula_lab_status": "released",
+          "selection_model": "formula_lab_inverse_consensus",
+          "selection_note": "正式候選不足時以低風險備選補齊",
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
           "backtest_gate": {
-            "status": "failed",
-            "edge_vs_random": -0.0577,
+            "status": "passed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.116,
             "required_edge_at_most": -0.08,
-            "zero_hit_rate": 0.55,
+            "formula_avoid_edge": 0.0893,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.567,
             "required_zero_hit_rate": 0.52,
             "rounds": 120
-          },
-          "diagnostic_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38
-          ],
-          "withheld_numbers": [
-            39,
-            33,
-            37,
-            35,
-            38
-          ],
-          "confidence_index": 0.0
+          }
         },
         "ten_miss": {
           "name": "10不中",
-          "numbers": [],
-          "status": "回測不合格未發布",
-          "confidence_label": "未發布",
-          "rejected_candidates": [
-            39,
+          "numbers": [
             33,
+            39,
             37,
             35,
             38,
@@ -100,40 +91,27 @@
             11,
             9
           ],
-          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
+          "status": "回測通過發布",
+          "avg_avoid_score": 0.5739,
+          "min_avoid_score": 0.4196,
+          "confidence_index": 75.6,
+          "confidence_label": "回測通過",
+          "formula_lab_edge": 0.0893,
+          "formula_lab_status": "released",
+          "selection_model": "formula_lab_inverse_consensus",
+          "selection_note": "正式候選不足時以低風險備選補齊",
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
           "backtest_gate": {
-            "status": "failed",
-            "edge_vs_random": -0.0654,
+            "status": "passed",
+            "gate_model": "formula_lab_inverse_consensus",
+            "edge_vs_random": -0.0487,
             "required_edge_at_most": -0.12,
-            "zero_hit_rate": 0.267,
+            "formula_avoid_edge": 0.0893,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.25,
             "required_zero_hit_rate": 0.22,
             "rounds": 120
-          },
-          "diagnostic_candidates": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9
-          ],
-          "withheld_numbers": [
-            39,
-            33,
-            37,
-            35,
-            38,
-            22,
-            19,
-            15,
-            11,
-            9
-          ],
-          "confidence_index": 0.0
+          }
         },
         "fifteen_miss": {
           "name": "15不中",
@@ -146,23 +124,26 @@
             37,
             35,
             38,
+            30,
+            28,
+            24,
             22,
             19,
             15,
             11,
+            5,
             9,
-            12,
-            24,
-            27,
-            34,
-            14
+            34
           ],
           "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
           "backtest_gate": {
             "status": "failed",
-            "edge_vs_random": -0.0397,
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.0897,
             "required_edge_at_most": -0.18,
-            "zero_hit_rate": 0.067,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.083,
             "required_zero_hit_rate": 0.1,
             "rounds": 120
           },
@@ -172,16 +153,16 @@
             37,
             35,
             38,
+            30,
+            28,
+            24,
             22,
             19,
             15,
             11,
+            5,
             9,
-            12,
-            24,
-            27,
-            34,
-            14
+            34
           ],
           "withheld_numbers": [
             39,
@@ -189,16 +170,16 @@
             37,
             35,
             38,
+            30,
+            28,
+            24,
             22,
             19,
             15,
             11,
+            5,
             9,
-            12,
-            24,
-            27,
-            34,
-            14
+            34
           ],
           "confidence_index": 0.0
         }
@@ -213,9 +194,9 @@
       "strong_pack_hits": {},
       "unlikely_pack_hits": {},
       "status": "pending",
-      "created_at": "2026-07-02T11:35:27",
+      "created_at": "2026-07-02T13:13:21",
       "settled_at": null,
-      "snapshot_count": 7
+      "snapshot_count": 11
     },
     {
       "based_on_period": 115000158,

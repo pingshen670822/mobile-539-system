@@ -5255,15 +5255,47 @@ def avoid_confidence_label(score):
     return "低"
 
 
-def build_unlikely_avoid_packs(rows):
+def build_unlikely_avoid_packs(rows, formula_avoid_plan=None):
+    formula_avoid_plan = formula_avoid_plan or {}
     packs = {}
     for key, name, size in [
         ("five_miss", "5不中", 5),
         ("ten_miss", "10不中", 10),
         ("fifteen_miss", "15不中", 15),
     ]:
-        eligible_rows = [item for item in rows if item.get("eligible_for_avoid", True)]
+        formula_pack = formula_avoid_plan.get(key) or {}
+        formula_numbers = [int(number) for number in formula_pack.get("numbers", []) if number]
+        formula_set = set(formula_numbers[:size])
+        eligible_rows = [
+            item for item in rows
+            if item.get("eligible_for_avoid", True)
+            or (
+                int(item.get("number", 0) or 0) in formula_set
+                and float(item.get("risk_block_score", 0.0) or 0.0) < 0.25
+                and int(item.get("candidate_rank", 99) or 99) > 15
+            )
+        ]
+        if formula_set:
+            eligible_rows.sort(
+                key=lambda item: (
+                    int(item.get("number", 0) or 0) in formula_set,
+                    float(item.get("avoid_score", 0.0) or 0.0),
+                    -int(item.get("candidate_rank", 99) or 99),
+                    int(item.get("number", 0) or 0),
+                ),
+                reverse=True,
+            )
         pack_rows = eligible_rows[:size]
+        if len(pack_rows) < size:
+            selected_numbers = {int(item.get("number", 0) or 0) for item in pack_rows}
+            fallback_rows = [
+                item for item in rows
+                if int(item.get("number", 0) or 0) not in selected_numbers
+                and int(item.get("candidate_rank", 99) or 99) > 15
+                and float(item.get("risk_block_score", 0.0) or 0.0) < 0.50
+                and float(item.get("avoid_score", 0.0) or 0.0) >= 0.36
+            ]
+            pack_rows.extend(fallback_rows[: max(0, size - len(pack_rows))])
         if len(pack_rows) < size:
             packs[key] = {
                 "name": name,
@@ -5284,15 +5316,31 @@ def build_unlikely_avoid_packs(rows):
             "min_avoid_score": round(min_score, 4),
             "confidence_index": round(avg_score * 100, 1),
             "confidence_label": avoid_confidence_label(avg_score),
+            "formula_lab_edge": formula_pack.get("avg_avoid_edge"),
+            "formula_lab_status": formula_pack.get("status"),
+            "selection_model": "formula_lab_inverse_consensus" if formula_set else "inverse_signal_with_risk_separation_filter",
+            "selection_note": "正式候選不足時以低風險備選補齊" if len(eligible_rows[:size]) < size else "正式候選足額",
             "warning": "低機率研究不是絕對不開保證，只作避險與組合污染控管",
         }
     return packs
 
 
-def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15):
+def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15, formula_lab=None):
     features = build_feature_matrix(draws, review, include_dependency=False)
     score_map = {item["number"]: item["score"] for item in candidates}
     rank_map = {item["number"]: index + 1 for index, item in enumerate(candidates)}
+    formula_rows = {
+        int(item.get("number")): item
+        for item in (formula_lab or {}).get("ensemble", [])
+        if item.get("number")
+    }
+    formula_avoid_plan = (formula_lab or {}).get("avoid_plan") or {}
+    formula_avoid_numbers = {
+        int(number)
+        for pack in formula_avoid_plan.values()
+        for number in pack.get("numbers", [])
+        if number
+    }
     stability_counts = {int(number): count for number, count in stability.get("consensus_counts", {}).items()}
     latest_set = set(draws[-1]["numbers"])
     previous_blocked = {
@@ -5356,14 +5404,42 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
             risk_block_score += 0.14
             reasons.append("\u91cd\u8907\u5931\u6e96\u865f\u5c6c\u6a21\u578b\u6821\u6b63\u5c0d\u8c61\uff0c\u4e0d\u505a\u4f4e\u6a5f\u7387\u5305\u88dd")
         appearance_risk = max(0.0, min(1.0, score_map.get(number, 0.0)))
-        avoid_score = max(0.0, min(1.0, (1 - appearance_risk) * 0.52 + evidence_score - risk_block_score))
+        formula_item = formula_rows.get(number) or {}
+        formula_score = float(formula_item.get("score", 0.0) or 0.0)
+        formula_rank = int(formula_item.get("rank", 99) or 99)
+        formula_support = int(formula_item.get("support_count", 0) or 0)
+        inverse_formula_score = max(0.0, min(1.0, 1.0 - formula_score))
+        if formula_rank >= 25:
+            evidence_score += 0.18
+            reasons.append("公式模型後段")
+        if formula_support <= 1:
+            evidence_score += 0.10
+            reasons.append("公式模型支撐偏弱")
+        if number in formula_avoid_numbers:
+            evidence_score += 0.14
+            reasons.append("公式反向共識")
+        avoid_score = max(
+            0.0,
+            min(
+                1.0,
+                (1 - appearance_risk) * 0.38
+                + inverse_formula_score * 0.30
+                + evidence_score
+                - risk_block_score,
+            ),
+        )
         if risk_block_score >= 0.25:
             avoid_score = min(avoid_score, 0.42)
         if rank <= 15:
             avoid_score = min(avoid_score, 0.38)
         if number in latest_set:
             avoid_score = min(avoid_score, 0.36)
-        eligible_for_avoid = bool(risk_block_score < 0.25 and rank > 15 and avoid_score >= 0.55)
+        eligible_for_avoid = bool(
+            risk_block_score < 0.25
+            and rank > 15
+            and avoid_score >= 0.55
+            and (formula_rank >= 18 or number in formula_avoid_numbers)
+        )
         if not reasons:
             reasons.append("\u7d9c\u5408\u8a55\u5206\u504f\u5f31")
         rows.append(
@@ -5376,6 +5452,9 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
                 "weak_signal_count": weak_signal_count,
                 "evidence_score": round(evidence_score, 4),
                 "risk_block_score": round(risk_block_score, 4),
+                "formula_avoid_score": round(inverse_formula_score, 4),
+                "formula_rank": formula_rank,
+                "formula_support_count": formula_support,
                 "eligible_for_avoid": eligible_for_avoid,
                 "reasons": reasons[:4],
                 "warning": "\u4f4e\u6a5f\u7387\u4e0d\u4ee3\u8868\u4e0d\u6703\u958b\u51fa",
@@ -5383,10 +5462,10 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
         )
     rows.sort(key=lambda item: (item.get("eligible_for_avoid", False), item["avoid_score"], item["number"]), reverse=True)
     return {
-        "method": "inverse_signal_with_risk_separation_filter",
+        "method": "formula_lab_inverse_consensus_with_risk_separation_filter",
         "warning": "\u6b64\u5340\u70ba\u98a8\u63a7\u907f\u958b\u89c0\u5bdf\uff0c\u4e0d\u662f\u7d55\u5c0d\u4e0d\u958b\u4fdd\u8b49",
         "numbers": rows[:limit],
-        "avoid_packs": build_unlikely_avoid_packs(rows),
+        "avoid_packs": build_unlikely_avoid_packs(rows, formula_avoid_plan),
     }
 
 
@@ -5677,7 +5756,7 @@ def compute_industrial_analysis(draws, review=None):
         item["number"] for item in candidates
         if item.get("previous_prediction_guard") and item["previous_prediction_guard"].get("passed")
     )
-    unlikely = unlikely_number_analysis(draws, candidates, stability, review, limit=15)
+    unlikely = unlikely_number_analysis(draws, candidates, stability, review, limit=15, formula_lab=formula_lab)
     unlikely_backtest_result = unlikely_backtest(draws)
     unlikely_backtest_result["packs"] = unlikely_backtest_by_size(draws)
     promotion_audit = top10_promotion_audit(candidates, review)
