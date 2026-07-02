@@ -15,6 +15,7 @@ REPORT = REPORTS / "539\u6700\u65b0\u5f37\u5316\u6230\u5831.html"
 HISTORY_REPORT = REPORTS / "539\u6bcf\u671f\u9810\u6e2c\u5c0d\u6bd4.html"
 LOW_PROBABILITY_REPORT = REPORTS / "539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f.html"
 MONTHLY_SUMMARY_REPORT = REPORTS / "539\u6bcf\u6708\u9810\u6e2c\u7e3d\u6574\u7406.html"
+HISTORY_DIR = REPORTS / "history"
 REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "pingshen670924-dotcom/mobile-539-system")
 TAIPEI = ZoneInfo("Asia/Taipei")
 
@@ -159,6 +160,8 @@ def build():
       <p>\u6700\u65b0\u8cc7\u6599\uff1a{latest_draw.get('period', '-')}\u671f / {latest_draw.get('draw_date', '-')} / \u7248\u672c {version}</p>
       <p><a class="mobile-action refresh" href="clear-cache.html?v={version}">\u6e05\u9664\u820a\u7248\u5feb\u53d6\u4e26\u6253\u958b\u6700\u65b0\u624b\u6a5f\u7248</a></p>
       <p><a class="mobile-action history" href="prediction-history.html?v={version}">\u67e5\u770b\u6bcf\u671f\u9810\u6e2c\u5c0d\u6bd4</a></p>
+      <p><a class="mobile-action secondary" href="monthly-summary.html?v={version}">\u67e5\u770b\u6bcf\u6708\u7e3d\u6574</a></p>
+      <p><a class="mobile-action secondary" href="history/\u6bcf\u6708\u8cc7\u6599\u4fdd\u5b58\u7d22\u5f15.html?v={version}">\u67e5\u770b\u6bcf\u6708\u4fdd\u5b58\u8cc7\u6599</a></p>
       <p><a class="mobile-action" href="{repository_url('actions/workflows/daily-update.yml')}">\u767b\u5165\u96f2\u7aef\u5e73\u53f0\u5f8c\u7acb\u5373\u66f4\u65b0</a></p>
       <p><button class="mobile-action refresh" type="button" onclick="forceRefresh()">\u5f37\u5236\u91cd\u65b0\u8f09\u5165\u6700\u65b0\u624b\u6a5f\u6210\u679c</button></p>
       <p>\u624b\u6a5f\u7248\u958b\u734e\u5f8c\u5373\u6642\u540c\u6b65\uff1a\u53f0\u5317\u6642\u9593 20:35 \u8d77\u9032\u5165\u5bc6\u96c6\u8ffd\u8e64\uff0c\u6bcf45\u79d2\u8ffd\u53f0\u5f69\u6700\u65b0\u8cc7\u6599\uff0c\u6293\u5230\u5f8c\u7acb\u523b\u91cd\u7b97\u3001\u91cd\u5efa\u96fb\u8166\u6230\u5831\u8207\u624b\u6a5f\u7248\u3002</p>
@@ -237,6 +240,11 @@ def build():
     if MONTHLY_SUMMARY_REPORT.exists():
         shutil.copy2(MONTHLY_SUMMARY_REPORT, SITE / "539\u6bcf\u6708\u9810\u6e2c\u7e3d\u6574\u7406.html")
         shutil.copy2(MONTHLY_SUMMARY_REPORT, SITE / "monthly-summary.html")
+    if HISTORY_DIR.exists():
+        site_history = SITE / "history"
+        if site_history.exists():
+            shutil.rmtree(site_history)
+        shutil.copytree(HISTORY_DIR, site_history)
     manifest = {
         "name": "539 \u624b\u6a5f\u7368\u7acb\u7cfb\u7d71",
         "short_name": "539\u7cfb\u7d71",

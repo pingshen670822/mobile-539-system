@@ -565,7 +565,125 @@ def save_prediction_history(history):
             continue
         path = HISTORY_DIR / f"period_{target}.json"
         atomic_write_text(path, json.dumps(item, ensure_ascii=False, indent=2))
+    save_monthly_archives(history)
     return payload
+
+
+def history_item_month(item):
+    for key in ["actual_date", "target_expected_date", "based_on_date", "created_at"]:
+        value = str(item.get(key) or "")
+        if len(value) >= 7:
+            return value[:7]
+    return "未分月份"
+
+
+def monthly_archive_stats(records):
+    settled = [item for item in records if item.get("status") == "settled"]
+    pending = [item for item in records if item.get("status") == "pending"]
+
+    def average(key):
+        values = [float(item.get(key) or 0.0) for item in settled if item.get(key) is not None]
+        return round(sum(values) / len(values), 4) if values else 0.0
+
+    low_hits = []
+    for item in settled:
+        for pack in (item.get("unlikely_pack_hits") or {}).values():
+            if pack.get("accidental_hits") is not None:
+                low_hits.append(float(pack.get("accidental_hits") or 0.0))
+
+    return {
+        "total_records": len(records),
+        "settled_records": len(settled),
+        "pending_records": len(pending),
+        "top5_avg_hits": average("top5_hits"),
+        "top10_avg_hits": average("top10_hits"),
+        "top15_avg_hits": average("top15_hits"),
+        "low_probability_avg_accidental_hits": round(sum(low_hits) / len(low_hits), 4) if low_hits else 0.0,
+    }
+
+
+def build_monthly_archive_index_html(index_rows):
+    rows = []
+    for item in index_rows:
+        rows.append(
+            "<tr>"
+            f"<td>{escape_html(item.get('month'))}</td>"
+            f"<td>{item.get('total_records')}</td>"
+            f"<td>{item.get('settled_records')}</td>"
+            f"<td>{item.get('pending_records')}</td>"
+            f"<td>{fmt_decimal(item.get('top10_avg_hits'))}</td>"
+            f"<td><a href='{escape_html(item.get('json_file'))}'>完整資料</a></td>"
+            f"<td><a href='{escape_html(item.get('html_file'))}'>月報頁</a></td>"
+            "</tr>"
+        )
+    generated_at = taipei_now().isoformat(timespec="seconds").replace("T", " ")
+    return f"""<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>539每月資料保存索引</title>
+  <style>
+    body{{margin:0;background:#f5f7fb;color:#172033;font-family:"Microsoft JhengHei",Arial,sans-serif;}}
+    header{{background:#111827;color:white;padding:22px 24px;}}
+    main{{max-width:1100px;margin:0 auto;padding:18px;}}
+    .band{{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:14px;overflow:auto;}}
+    table{{width:100%;border-collapse:collapse;min-width:780px;}}
+    th,td{{border-bottom:1px solid #e5e7eb;padding:9px;text-align:left;}}
+    th{{background:#f1f5f9;}}
+    a{{color:#0f766e;font-weight:800;}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>539每月資料保存索引</h1>
+  <p>產生時間 {generated_at}</p>
+</header>
+<main>
+  <section class="band">
+    <h2>保存鐵律</h2>
+    <p>每月資料皆須保存；每次重建戰報都會產生每月完整資料檔、每月戰報頁與本索引。</p>
+  </section>
+  <section class="band">
+    <table><thead><tr><th>月份</th><th>總筆數</th><th>已結算</th><th>待結算</th><th>前十平均命中</th><th>完整資料</th><th>月報頁</th></tr></thead><tbody>{''.join(rows) or '<tr><td colspan="7">尚無月份資料</td></tr>'}</tbody></table>
+  </section>
+</main>
+</body>
+</html>"""
+
+
+def save_monthly_archives(history):
+    by_month = defaultdict(list)
+    for item in history:
+        by_month[history_item_month(item)].append(item)
+    index_rows = []
+    for month in sorted(by_month.keys(), reverse=True):
+        records = sorted(by_month[month], key=lambda item: (item.get("target_period") or 0, item.get("created_at") or ""), reverse=True)
+        stats = monthly_archive_stats(records)
+        json_name = f"{month}_每月完整資料.json"
+        html_name = f"{month}_每月預測總整理.html"
+        payload = {
+            "month": month,
+            "generated_at": taipei_now().isoformat(timespec="seconds"),
+            "stats": stats,
+            "records": records,
+        }
+        atomic_write_text(HISTORY_DIR / json_name, json.dumps(payload, ensure_ascii=False, indent=2))
+        row = {
+            "month": month,
+            "json_file": json_name,
+            "html_file": html_name,
+            **stats,
+        }
+        index_rows.append(row)
+    index_payload = {
+        "generated_at": taipei_now().isoformat(timespec="seconds"),
+        "month_count": len(index_rows),
+        "months": index_rows,
+    }
+    atomic_write_text(HISTORY_DIR / "每月資料保存索引.json", json.dumps(index_payload, ensure_ascii=False, indent=2))
+    atomic_write_text(HISTORY_DIR / "每月資料保存索引.html", build_monthly_archive_index_html(index_rows))
+    return index_payload
 
 
 def resolved_official_status(analysis, pending_prediction):
@@ -4549,7 +4667,7 @@ def build_monthly_summary_html_report(month=None):
 <main>
   <section class="band">
     <h2>報表入口</h2>
-    <p><a href="latest_battle_report.html">回到主戰報</a></p>
+    <p><a href="latest_battle_report.html">回到主戰報</a>　<a href="history/每月資料保存索引.html">每月資料保存索引</a></p>
   </section>
   {summary_html}
 </main>

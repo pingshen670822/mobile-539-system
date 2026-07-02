@@ -70,10 +70,12 @@
 <main>
     <section class="band">
       <h2>手機獨立操作</h2>
-      <p><strong>手機版最後建立：2026-07-02 13:13:24</strong></p>
-      <p>最新資料：115000159期 / 2026-07-01 / 版本 20260702131324</p>
-      <p><a class="mobile-action refresh" href="clear-cache.html?v=20260702131324">清除舊版快取並打開最新手機版</a></p>
-      <p><a class="mobile-action history" href="prediction-history.html?v=20260702131324">查看每期預測對比</a></p>
+      <p><strong>手機版最後建立：2026-07-02 15:22:08</strong></p>
+      <p>最新資料：115000159期 / 2026-07-01 / 版本 20260702152208</p>
+      <p><a class="mobile-action refresh" href="clear-cache.html?v=20260702152208">清除舊版快取並打開最新手機版</a></p>
+      <p><a class="mobile-action history" href="prediction-history.html?v=20260702152208">查看每期預測對比</a></p>
+      <p><a class="mobile-action secondary" href="monthly-summary.html?v=20260702152208">查看每月總整</a></p>
+      <p><a class="mobile-action secondary" href="history/每月資料保存索引.html?v=20260702152208">查看每月保存資料</a></p>
       <p><a class="mobile-action" href="https://github.com/pingshen670924-dotcom/mobile-539-system/actions/workflows/daily-update.yml">登入雲端平台後立即更新</a></p>
       <p><button class="mobile-action refresh" type="button" onclick="forceRefresh()">強制重新載入最新手機成果</button></p>
       <p>手機版開獎後即時同步：台北時間 20:35 起進入密集追蹤，每45秒追台彩最新資料，抓到後立刻重算、重建電腦戰報與手機版。</p>
@@ -366,7 +368,7 @@
 </script>
 
     <script>
-      window.MOBILE_BUILD_VERSION="20260702131324";
+      window.MOBILE_BUILD_VERSION="20260702152208";
       async function forceRefresh(){
         try{
           if("serviceWorker" in navigator){
@@ -389,7 +391,7 @@
           }
         }catch(e){}
       }
-      if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js?v=20260702131324");
+      if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js?v=20260702152208");
       setInterval(checkMobileVersion, 15000);
       window.addEventListener("focus", checkMobileVersion);
       document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkMobileVersion();});

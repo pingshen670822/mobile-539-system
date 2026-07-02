@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-02T13:13:39",
+  "generated_at": "2026-07-02T15:22:38",
   "status": "ok",
-  "checked_files": 179,
+  "checked_files": 279,
   "failed_count": 0,
   "warning_count": 0,
   "files": [
@@ -33,7 +33,7 @@
       "path": "battle_report.py",
       "status": "ok",
       "warnings": [],
-      "size": 268197
+      "size": 273098
     },
     {
       "path": "build_tw539_release.ps1",
@@ -135,7 +135,7 @@
       "path": "pages_build.py",
       "status": "ok",
       "warnings": [],
-      "size": 15968
+      "size": 16504
     },
     {
       "path": "publish_free_github.ps1",
@@ -297,7 +297,7 @@
       "path": "reports\\539每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 9532
+      "size": 9611
     },
     {
       "path": "reports\\539每期預測對比.html",
@@ -321,13 +321,13 @@
       "path": "reports\\daily_integrity_audit.json",
       "status": "ok",
       "warnings": [],
-      "size": 5228
+      "size": 5225
     },
     {
       "path": "reports\\daily_integrity_audit.md",
       "status": "ok",
       "warnings": [],
-      "size": 2850
+      "size": 2847
     },
     {
       "path": "reports\\dashboard.html",
@@ -489,7 +489,7 @@
       "path": "site\\539每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 9532
+      "size": 9611
     },
     {
       "path": "site\\clear-cache.html",
@@ -513,7 +513,7 @@
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 71557
+      "size": 71814
     },
     {
       "path": "site\\latest.html",
@@ -543,7 +543,7 @@
       "path": "site\\monthly-summary.html",
       "status": "ok",
       "warnings": [],
-      "size": 9532
+      "size": 9611
     },
     {
       "path": "site\\prediction-history.html",
@@ -564,16 +564,46 @@
       "size": 241
     },
     {
+      "path": "reports\\history\\2026-03_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1102
+    },
+    {
+      "path": "reports\\history\\2026-04_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 20663
+    },
+    {
+      "path": "reports\\history\\2026-05_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 20666
+    },
+    {
+      "path": "reports\\history\\2026-06_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 168973
+    },
+    {
       "path": "reports\\history\\2026-06_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 33985
+      "size": 34064
+    },
+    {
+      "path": "reports\\history\\2026-07_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 11733
     },
     {
       "path": "reports\\history\\2026-07_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 9532
+      "size": 9611
     },
     {
       "path": "reports\\history\\period_115000077.json",
@@ -1078,6 +1108,576 @@
       "status": "ok",
       "warnings": [],
       "size": 4294
+    },
+    {
+      "path": "reports\\history\\每月資料保存索引.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 2362
+    },
+    {
+      "path": "reports\\history\\每月資料保存索引.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1997
+    },
+    {
+      "path": "site\\history\\2026-03_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1102
+    },
+    {
+      "path": "site\\history\\2026-04_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 20663
+    },
+    {
+      "path": "site\\history\\2026-05_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 20666
+    },
+    {
+      "path": "site\\history\\2026-06_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 168973
+    },
+    {
+      "path": "site\\history\\2026-06_每月預測總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 34064
+    },
+    {
+      "path": "site\\history\\2026-07_每月完整資料.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 11733
+    },
+    {
+      "path": "site\\history\\2026-07_每月預測總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 9611
+    },
+    {
+      "path": "site\\history\\period_115000077.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 606
+    },
+    {
+      "path": "site\\history\\period_115000078.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000079.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000080.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000081.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000082.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000083.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "site\\history\\period_115000084.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000085.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000086.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000087.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 657
+    },
+    {
+      "path": "site\\history\\period_115000088.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000089.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000090.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000091.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "site\\history\\period_115000092.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000093.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000094.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000095.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "site\\history\\period_115000096.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000097.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "site\\history\\period_115000098.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000099.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000100.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000101.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "site\\history\\period_115000102.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000103.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000104.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000105.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000106.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000107.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000108.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000109.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000110.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000111.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000112.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000113.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "site\\history\\period_115000114.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "site\\history\\period_115000115.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000116.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000117.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 657
+    },
+    {
+      "path": "site\\history\\period_115000118.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000119.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000120.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000121.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000122.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000123.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000124.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000125.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000126.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 660
+    },
+    {
+      "path": "site\\history\\period_115000127.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000128.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000129.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000130.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 659
+    },
+    {
+      "path": "site\\history\\period_115000131.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 661
+    },
+    {
+      "path": "site\\history\\period_115000132.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 658
+    },
+    {
+      "path": "site\\history\\period_115000133.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5375
+    },
+    {
+      "path": "site\\history\\period_115000134.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5379
+    },
+    {
+      "path": "site\\history\\period_115000135.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5393
+    },
+    {
+      "path": "site\\history\\period_115000136.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5374
+    },
+    {
+      "path": "site\\history\\period_115000137.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5414
+    },
+    {
+      "path": "site\\history\\period_115000138.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5370
+    },
+    {
+      "path": "site\\history\\period_115000139.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5165
+    },
+    {
+      "path": "site\\history\\period_115000140.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 4723
+    },
+    {
+      "path": "site\\history\\period_115000141.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 4485
+    },
+    {
+      "path": "site\\history\\period_115000142.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5384
+    },
+    {
+      "path": "site\\history\\period_115000143.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5379
+    },
+    {
+      "path": "site\\history\\period_115000144.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5381
+    },
+    {
+      "path": "site\\history\\period_115000145.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5392
+    },
+    {
+      "path": "site\\history\\period_115000146.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5393
+    },
+    {
+      "path": "site\\history\\period_115000147.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5356
+    },
+    {
+      "path": "site\\history\\period_115000148.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5377
+    },
+    {
+      "path": "site\\history\\period_115000149.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5359
+    },
+    {
+      "path": "site\\history\\period_115000150.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5406
+    },
+    {
+      "path": "site\\history\\period_115000151.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5354
+    },
+    {
+      "path": "site\\history\\period_115000152.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5383
+    },
+    {
+      "path": "site\\history\\period_115000153.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5375
+    },
+    {
+      "path": "site\\history\\period_115000154.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5351
+    },
+    {
+      "path": "site\\history\\period_115000155.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5370
+    },
+    {
+      "path": "site\\history\\period_115000156.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5397
+    },
+    {
+      "path": "site\\history\\period_115000157.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5373
+    },
+    {
+      "path": "site\\history\\period_115000158.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5185
+    },
+    {
+      "path": "site\\history\\period_115000159.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 5151
+    },
+    {
+      "path": "site\\history\\period_115000160.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 4294
+    },
+    {
+      "path": "site\\history\\每月資料保存索引.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 2362
+    },
+    {
+      "path": "site\\history\\每月資料保存索引.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 1997
     }
   ],
   "data_consistency": {
