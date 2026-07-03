@@ -73,10 +73,13 @@ TEXT_REPLACEMENTS = [
     ("outside_top15", "前15名外"),
     ("current_precision_stability_v44_micro_confidence_short_packs", "目前精準穩定第44版：短包信心精算"),
     ("current_precision_stability_v45_formula_lab_recalibration", "目前精準穩定第45版：公式模型實驗室重排"),
+    ("current_precision_stability_v46_actual_failure_feedback_rebuild", "目前精準穩定第46版：實戰失準回灌重排"),
     ("industrial_v19_short_pack_multi_model_arbitration", "工業級第19版：短包多模型仲裁"),
     ("industrial_v20_recall_pressure_cold_rebound", "工業級第20版：月度召回壓力與冷號反彈"),
     ("industrial_v21_bagging_tail_zone_pressure", "工業級第21版：多視窗尾數轉移與區間配額"),
     ("industrial_v22_formula_lab_recalibration", "工業級第22版：公式模型實驗室重排"),
+    ("industrial_v23_actual_failure_feedback_rebuild", "工業級第23版：實戰失準回灌重排"),
+    ("actual_failure_feedback_rebuild", "實戰失準回灌重排"),
     ("formula_lab_inverse_consensus", "公式反向共識"),
     ("legacy_inverse_signal", "舊反向訊號"),
     ("formula_lab_inverse_consensus_with_risk_separation_filter", "公式反向共識加風險分離"),
@@ -2910,7 +2913,7 @@ def build_html_report(markdown_text):
         if (element.classList.contains("grid")) return "prediction";
         if (/低機率|暫避|避險/.test(title)) return "avoid";
         if (/上期|檢討|成效指標|校準|滾動|歷史對比|本月/.test(title)) return "review";
-        if (/模型|回測|航太|版路|穩定共識|8區|連動|輪組|治理器|樣本外/.test(title)) return "models";
+        if (/模型|回測|航太|版路|穩定共識|8區|連動|輪組|治理器|樣本外|實戰失準|重排/.test(title)) return "models";
         if (/下期|候選|發布|日期基準|本期|重要日期/.test(title)) return "prediction";
         return "prediction";
       }};
@@ -3490,6 +3493,71 @@ def compact_formula_lab_html(analysis):
     <div class="band">
       <h2>公式重排變動</h2>
       <table><thead><tr><th>號碼</th><th>原分數</th><th>新分數</th><th>公式分數</th><th>支撐模型數</th></tr></thead><tbody>{''.join(changed_rows) or '<tr><td colspan="5">本期沒有明顯重排變動</td></tr>'}</tbody></table>
+    </div>
+    """
+
+
+def compact_prediction_rebuild_html(analysis):
+    industrial = analysis.get("industrial_engine") or {}
+    rebuild = industrial.get("prediction_mode_rebuild") or {}
+    if not rebuild:
+        return ""
+    promoted_rows = []
+    for item in rebuild.get("promotions", [])[:10]:
+        promoted_rows.append(
+            "<tr>"
+            f"<td class='num'>{int(item.get('number')):02d}</td>"
+            f"<td>{item.get('from_rank', '-')}</td>"
+            f"<td>{fmt_percent(item.get('before'))}</td>"
+            f"<td>{fmt_percent(item.get('after'))}</td>"
+            f"<td>{fmt_decimal(item.get('recall_signal'), 4)}</td>"
+            f"<td>{fmt_decimal(item.get('support_signal'), 4)}</td>"
+            f"<td>{fmt_decimal(item.get('adjustment'), 4)}</td>"
+            "</tr>"
+        )
+    demoted_rows = []
+    for item in rebuild.get("demotions", [])[:10]:
+        demoted_rows.append(
+            "<tr>"
+            f"<td class='num'>{int(item.get('number')):02d}</td>"
+            f"<td>{item.get('from_rank', '-')}</td>"
+            f"<td>{fmt_percent(item.get('before'))}</td>"
+            f"<td>{fmt_percent(item.get('after'))}</td>"
+            f"<td>{fmt_decimal(item.get('recall_signal'), 4)}</td>"
+            f"<td>{fmt_decimal(item.get('support_signal'), 4)}</td>"
+            f"<td>{fmt_decimal(item.get('repeated_failed_signal'), 4)}</td>"
+            "</tr>"
+        )
+    swap_rows = []
+    for item in rebuild.get("coverage_swaps", [])[:8]:
+        swap_rows.append(
+            "<tr>"
+            f"<td>{escape_html(item.get('zone', '-'))}</td>"
+            f"<td class='num'>{int(item.get('promoted_number')):02d}</td>"
+            f"<td class='num'>{int(item.get('demoted_number')):02d}</td>"
+            f"<td>{fmt_decimal(item.get('promoted_recall_signal'), 4)}</td>"
+            f"<td>{fmt_decimal(item.get('demoted_recall_signal'), 4)}</td>"
+            "</tr>"
+        )
+    tail_rows = []
+    for item in rebuild.get("tail_swaps", [])[:6]:
+        tail_rows.append(
+            "<tr>"
+            f"<td>{escape_html(item.get('demoted_tail', '-'))}</td>"
+            f"<td class='num'>{int(item.get('promoted_number')):02d}</td>"
+            f"<td class='num'>{int(item.get('demoted_number')):02d}</td>"
+            "</tr>"
+        )
+    return f"""
+    <div class="band">
+      <h2>實戰失準回灌重排</h2>
+      <p>狀態：{escape_html(status_zh(rebuild.get('status', '-')))}；近5期前5平均：{fmt_decimal(rebuild.get('recent_top5_avg'))}；近5期前10平均：{fmt_decimal(rebuild.get('recent_top10_avg'))}。</p>
+      <p>重排前十：{fmt_numbers(rebuild.get('before_top10', []))}；重排後前十：{fmt_numbers(rebuild.get('after_top10', []))}；重排後前九：{fmt_numbers(rebuild.get('after_top9', []))}</p>
+      <p>{escape_html(rebuild.get('policy', '用近期實戰檢討重新排序。'))}</p>
+      <table><thead><tr><th>升權號</th><th>原排名</th><th>原分</th><th>新分</th><th>召回分</th><th>支撐分</th><th>調整</th></tr></thead><tbody>{''.join(promoted_rows) or '<tr><td colspan="7">本期沒有升權號</td></tr>'}</tbody></table>
+      <table><thead><tr><th>降權號</th><th>原排名</th><th>原分</th><th>新分</th><th>召回分</th><th>支撐分</th><th>連續失準</th></tr></thead><tbody>{''.join(demoted_rows) or '<tr><td colspan="7">本期沒有降權號</td></tr>'}</tbody></table>
+      <table><thead><tr><th>補位區間</th><th>補上號</th><th>換下號</th><th>補上召回</th><th>換下召回</th></tr></thead><tbody>{''.join(swap_rows) or '<tr><td colspan="5">本期沒有分區補位</td></tr>'}</tbody></table>
+      <table><thead><tr><th>集中尾數</th><th>補上號</th><th>換下號</th></tr></thead><tbody>{''.join(tail_rows) or '<tr><td colspan="3">本期沒有尾數集中修正</td></tr>'}</tbody></table>
     </div>
     """
 
@@ -4305,6 +4373,7 @@ def build_compact_html_report():
     monthly_breakthrough_html = compact_monthly_breakthrough_html(analysis)
     monthly_summary_html = compact_monthly_prediction_summary_html(history)
     formula_lab_html = compact_formula_lab_html(analysis)
+    prediction_rebuild_html = compact_prediction_rebuild_html(analysis)
     reality_gate = industrial.get("monthly_reality_gate") or {}
     candidate_base = "\u4e0b\u671f\u9ad8\u4fe1\u5fc3\u524d9\u540d" if reality_gate.get("high_confidence_allowed") else "\u4e0b\u671f\u7814\u7a76\u5019\u9078\u524d9\u540d"
     candidate_heading = f"{candidate_base}\uff08\u8cc7\u6599\u4f9d\u64da\u65e5 {latest_date} / \u9810\u6e2c\u76ee\u6a19\u65e5 {target_date}\uff09"
@@ -4461,6 +4530,7 @@ def build_compact_html_report():
   </section>
   <section id="models" class="panel">
     {formula_lab_html}
+    {prediction_rebuild_html}
     {dual_track_html}
     <div class="band">
       <h2>{model_heading}</h2>

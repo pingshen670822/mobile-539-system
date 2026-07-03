@@ -1,6 +1,6 @@
 # 539 Daily Integrity Audit
 
-- generated_at: 2026-07-02T15:22:36
+- generated_at: 2026-07-02T15:25:14
 - status: passed
 - failed_count: 0
 
@@ -23,6 +23,6 @@
 - PASS: battle_report_has_low_probability_link / low probability page link
 - PASS: battle_report_has_super_single_section / super single section
 - PASS: battle_report_has_no_mojibake_question_marks / battle report must not contain mojibake question marks
-- PASS: low_probability_page_exists / C:\Users\MSI\Documents\Codex\2026-06-01\539\outputs\TW539預測系統_20260702_第08版_低機率修正版\TW539Core\reports\539低機率精準暫避.html
+- PASS: low_probability_page_exists / C:\Users\MSI\Documents\Codex\2026-06-01\539\outputs\TW539預測系統_20260702_第09版_每月資料保存版\TW539Core\reports\539低機率精準暫避.html
 - PASS: low_probability_page_has_no_mojibake_question_marks / low probability page must not contain mojibake question marks
 - PASS: low_probability_page_has_required_sections / low probability section labels

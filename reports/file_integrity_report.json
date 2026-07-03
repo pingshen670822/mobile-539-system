@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T15:22:38",
+  "generated_at": "2026-07-02T15:24:56",
   "status": "ok",
   "checked_files": 279,
   "failed_count": 0,
@@ -219,7 +219,7 @@
       "path": "手機戰報更新狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 742
+      "size": 505
     },
     {
       "path": "手機控制台網址.txt",
@@ -231,19 +231,19 @@
       "path": "手機獨立版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 104
+      "size": 102
     },
     {
       "path": "手機雲端版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 104
+      "size": 102
     },
     {
       "path": "手機雲端發布狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 841
+      "size": 352
     },
     {
       "path": "打開最新手機版.html",
@@ -339,7 +339,7 @@
       "path": "reports\\file_integrity_report.json",
       "status": "ok",
       "warnings": [],
-      "size": 25144
+      "size": 38878
     },
     {
       "path": "reports\\file_integrity_report.md",

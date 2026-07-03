@@ -5698,6 +5698,361 @@ def apply_formula_lab_candidate_calibration(candidates, formula_lab, review=None
     }
 
 
+def prediction_mode_rebuild_active(review=None):
+    if not review or not review.get("has_review"):
+        return False
+    rolling = review.get("rolling_adjustment", {}) or {}
+    recent = rolling.get("recent_performance", {}) or {}
+    monthly = rolling.get("monthly_review", {}) or review.get("monthly_review", {}) or {}
+    return bool(
+        recent.get("recent_slump")
+        or recent.get("critical_slump")
+        or float(recent.get("last10_top10_avg") or 9) < 1.75
+        or monthly.get("status") == "critical_recall_gap"
+        or float(monthly.get("late_or_missing_rate") or 0.0) >= 0.48
+        or float(monthly.get("front_hit_rate") or 1.0) <= 0.42
+    )
+
+
+def prediction_rebuild_signal(item, review=None):
+    maps = recall_signal_maps(review)
+    number = int(item["number"])
+    tail = number % 10
+    zone = zone_label(number)
+
+    def ratio(value, maximum):
+        return max(0.0, min(1.0, float(value or 0.0) / max(float(maximum or 1.0), 1.0)))
+
+    number_max = max(
+        [1]
+        + list(maps["late_numbers"].values())
+        + list(maps["missed_numbers"].values())
+        + list(maps["monthly_numbers"].values())
+    )
+    tail_max = max([1] + list(maps["missed_tails"].values()) + list(maps["monthly_tails"].values()))
+    zone_max = max([1] + list(maps["missed_zones"].values()) + list(maps["monthly_zones"].values()))
+    repeated_max = max([1] + list(maps["repeated_failed"].values()))
+
+    late_score = ratio(maps["late_numbers"].get(number, 0), number_max)
+    missed_score = ratio(maps["missed_numbers"].get(number, 0), number_max)
+    monthly_score = ratio(maps["monthly_numbers"].get(number, 0), number_max)
+    tail_score = ratio(maps["missed_tails"].get(tail, 0) + maps["monthly_tails"].get(tail, 0) * 0.72, tail_max)
+    zone_score = ratio(maps["missed_zones"].get(zone, 0) + maps["monthly_zones"].get(zone, 0) * 0.72, zone_max)
+    repeated_score = ratio(maps["repeated_failed"].get(number, 0), repeated_max)
+
+    objective_score = max(0.0, min(1.0, (candidate_objective_edge(item) + 0.050) / 0.150))
+    hit_score = max(0.0, min(1.0, (candidate_hit_edge(item) + 0.030) / 0.120))
+    cross = item.get("cross_validation", {}) or {}
+    cross_score = max(0.0, min(1.0, int(cross.get("passed_count") or 0) / max(int(cross.get("total_count") or 0), 1)))
+    stability_score = max(0.0, min(1.0, int(item.get("stability_count") or 0) / 5.0))
+    formula = item.get("formula_lab") or {}
+    formula_score = max(0.0, min(1.0, float(formula.get("score", 0.0) or 0.0)))
+    formula_support = max(0.0, min(1.0, int(formula.get("support_count") or 0) / 6.0))
+    source_score = max(0.0, min(1.0, int(item.get("source_model_count", 0) or len(item.get("model_sources", []))) / 8.0))
+
+    recall_signal = (
+        late_score * 0.30
+        + missed_score * 0.26
+        + monthly_score * 0.20
+        + tail_score * 0.10
+        + zone_score * 0.14
+    )
+    support_signal = (
+        objective_score * 0.23
+        + hit_score * 0.22
+        + cross_score * 0.18
+        + stability_score * 0.11
+        + formula_score * 0.14
+        + formula_support * 0.07
+        + source_score * 0.05
+    )
+    return {
+        "recall_signal": round(max(0.0, min(1.0, recall_signal)), 4),
+        "support_signal": round(max(0.0, min(1.0, support_signal)), 4),
+        "repeated_failed_signal": round(max(0.0, min(1.0, repeated_score)), 4),
+        "late_score": round(late_score, 4),
+        "missed_score": round(missed_score, 4),
+        "monthly_score": round(monthly_score, 4),
+        "tail_score": round(tail_score, 4),
+        "zone_score": round(zone_score, 4),
+        "objective_score": round(objective_score, 4),
+        "hit_score": round(hit_score, 4),
+        "cross_score": round(cross_score, 4),
+        "stability_score": round(stability_score, 4),
+        "formula_score": round(formula_score, 4),
+        "formula_support": round(formula_support, 4),
+    }
+
+
+def apply_prediction_mode_rebuild(draws, candidates, review=None):
+    before_top10 = [int(item["number"]) for item in candidates[:10]]
+    if not prediction_mode_rebuild_active(review):
+        return refresh_candidate_metadata(candidates), {
+            "status": "not_triggered",
+            "method": "actual_failure_feedback_rebuild",
+            "before_top10": before_top10,
+            "after_top10": before_top10,
+            "reason": "recent performance did not trigger rebuild mode",
+        }
+
+    rolling = (review or {}).get("rolling_adjustment", {}) or {}
+    recent = rolling.get("recent_performance", {}) or {}
+    monthly = rolling.get("monthly_review", {}) or (review or {}).get("monthly_review", {}) or {}
+    maps = recall_signal_maps(review)
+    failed_strong = recent_failed_strong_pack_map(review)
+    latest_set = set(draws[-1]["numbers"])
+    repeat_policy = repeat_guard(draws)
+    adjusted = []
+    promotions = []
+    demotions = []
+    intensity = 1.28 if recent.get("critical_slump") or monthly.get("status") == "critical_recall_gap" else 1.08
+
+    for rank, item in enumerate(candidates, 1):
+        row = dict(item)
+        number = int(row["number"])
+        signal = prediction_rebuild_signal(row, review)
+        recall_signal = signal["recall_signal"]
+        support_signal = signal["support_signal"]
+        repeated_signal = signal["repeated_failed_signal"]
+        base_score = float(row.get("score", 0.0) or 0.0)
+        adjustment = 0.0
+        adjustment += (recall_signal - 0.36) * 0.25 * intensity
+        adjustment += (support_signal - 0.44) * 0.10
+        if number in maps["late_numbers"] or number in maps["missed_numbers"]:
+            adjustment += 0.046 * intensity
+        elif number in maps["monthly_numbers"]:
+            adjustment += 0.030 * intensity
+        if rank > 9 and recall_signal >= 0.45:
+            adjustment += 0.040 * intensity
+        if rank <= 5 and repeated_signal >= 0.38 and recall_signal < 0.42:
+            adjustment -= 0.105 * intensity
+        if repeated_signal >= 0.34:
+            if recall_signal >= 0.50 and support_signal >= 0.42:
+                adjustment -= 0.040 * repeated_signal
+            else:
+                adjustment -= 0.185 * repeated_signal * intensity
+        if number in failed_strong and not failed_strong_quarantine_release(row, review):
+            adjustment -= 0.135 * intensity
+        if previous_guard_blocks_item(row) and recall_signal < 0.50:
+            adjustment -= 0.115 * intensity
+        if row.get("repeat_guard") and not row["repeat_guard"].get("passed"):
+            adjustment -= 0.230
+        if hard_iron_blocked(row):
+            adjustment -= 0.240
+        latest_repeat_reentry = {"latest_draw_number": False}
+        if number in latest_set:
+            repeat_info = repeat_policy.get(number, {}) or {}
+            repeat_edge = float(repeat_info.get("repeat_rate", 0.0) or 0.0) - float(repeat_info.get("baseline", BASE_PROBABILITY) or BASE_PROBABILITY)
+            strict_repeat_reentry = bool(
+                repeat_info.get("passed")
+                and repeat_edge >= 0.070
+                and support_signal >= 0.82
+                and recall_signal >= 0.60
+                and repeated_signal < 0.60
+            )
+            latest_repeat_reentry = {
+                "latest_draw_number": True,
+                "repeat_gate_passed": bool(repeat_info.get("passed")),
+                "repeat_edge": round(repeat_edge, 4),
+                "strict_repeat_reentry": strict_repeat_reentry,
+                "repeated_failed_signal": repeated_signal,
+            }
+            if not strict_repeat_reentry:
+                adjustment -= 0.135 + repeated_signal * 0.085
+            elif repeated_signal >= 0.40:
+                adjustment -= repeated_signal * 0.060
+
+        adjustment = max(-0.28, min(0.26, adjustment))
+        new_score = max(0.0, min(1.0, base_score + adjustment))
+        if latest_repeat_reentry.get("latest_draw_number") and not latest_repeat_reentry.get("strict_repeat_reentry"):
+            new_score = min(new_score, 0.820)
+        elif latest_repeat_reentry.get("latest_draw_number") and repeated_signal >= 0.40:
+            new_score = min(new_score, 0.900)
+        row["pre_prediction_mode_rebuild_score"] = round(base_score, 4)
+        row["score"] = round(new_score, 4)
+        row["prediction_mode_rebuild"] = {
+            "status": "applied",
+            "original_rank": rank,
+            "score_adjustment": round(adjustment, 4),
+            "latest_repeat_reentry": latest_repeat_reentry,
+            **signal,
+        }
+        if adjustment >= 0.040:
+            row["reasons"] = (["實戰失準回灌"] + [text for text in row.get("reasons", []) if text != "實戰失準回灌"])[:4]
+            sources = list(row.get("model_sources") or [])
+            sources.append({
+                "model": "actual_failure_feedback_rebuild",
+                "label": "實戰失準回灌重排",
+                "score": round(recall_signal * 0.58 + support_signal * 0.42, 4),
+                "recall_signal": recall_signal,
+                "support_signal": support_signal,
+            })
+            row["model_sources"] = sources[:8]
+            row["source_model_count"] = len(row["model_sources"])
+            promotions.append({
+                "number": number,
+                "from_rank": rank,
+                "before": round(base_score, 4),
+                "after": row["score"],
+                "adjustment": round(adjustment, 4),
+                "recall_signal": recall_signal,
+                "support_signal": support_signal,
+            })
+        elif adjustment <= -0.040:
+            demotion_reason = "連莊重入降權" if latest_repeat_reentry.get("latest_draw_number") else "連續失準降權"
+            row["reasons"] = ([demotion_reason] + [text for text in row.get("reasons", []) if text != demotion_reason])[:4]
+            demotions.append({
+                "number": number,
+                "from_rank": rank,
+                "before": round(base_score, 4),
+                "after": row["score"],
+                "adjustment": round(adjustment, 4),
+                "recall_signal": recall_signal,
+                "support_signal": support_signal,
+                "repeated_failed_signal": repeated_signal,
+            })
+        adjusted.append(row)
+
+    adjusted.sort(
+        key=lambda row: (
+            not hard_iron_blocked(row),
+            not (row.get("repeat_guard") and not row["repeat_guard"].get("passed")),
+            not previous_guard_blocks_item(row),
+            float(row.get("score", 0.0) or 0.0),
+            (row.get("prediction_mode_rebuild") or {}).get("recall_signal", 0.0),
+            (row.get("prediction_mode_rebuild") or {}).get("support_signal", 0.0),
+            candidate_evidence_score(row, review),
+            -int(row["number"]),
+        ),
+        reverse=True,
+    )
+
+    zone_pressure = {
+        zone: maps["missed_zones"].get(zone, 0) + maps["monthly_zones"].get(zone, 0) * 0.72
+        for zone in {"01-10", "11-20", "21-30", "31-39"}
+    }
+    priority_zones = [
+        zone for zone, value in sorted(zone_pressure.items(), key=lambda pair: pair[1], reverse=True)
+        if value > 0
+    ]
+    zone_targets = {}
+    for index, zone in enumerate(priority_zones[:4]):
+        zone_targets[zone] = 2 if index < 2 else 1
+
+    coverage_swaps = []
+
+    def front_count(zone, limit=9):
+        return sum(1 for row in adjusted[:limit] if zone_label(int(row["number"])) == zone)
+
+    def eligible_rebuild_candidate(row):
+        signal = row.get("prediction_mode_rebuild") or {}
+        return bool(
+            signal.get("recall_signal", 0.0) >= 0.38
+            and not hard_iron_blocked(row)
+            and not previous_guard_blocks_item(row)
+            and not (row.get("repeat_guard") and not row["repeat_guard"].get("passed"))
+        )
+
+    for zone, required in zone_targets.items():
+        while front_count(zone) < required:
+            candidate_index = next(
+                (
+                    index for index, row in enumerate(adjusted[9:30], 9)
+                    if zone_label(int(row["number"])) == zone and eligible_rebuild_candidate(row)
+                ),
+                None,
+            )
+            if candidate_index is None:
+                break
+            replace_index = min(
+                range(4, min(9, len(adjusted))),
+                key=lambda index: (
+                    zone_label(int(adjusted[index]["number"])) in zone_targets
+                    and front_count(zone_label(int(adjusted[index]["number"]))) <= zone_targets.get(zone_label(int(adjusted[index]["number"])), 0),
+                    (adjusted[index].get("prediction_mode_rebuild") or {}).get("recall_signal", 0.0),
+                    float(adjusted[index].get("score", 0.0) or 0.0),
+                ),
+            )
+            candidate = adjusted[candidate_index]
+            replaced = adjusted[replace_index]
+            candidate_signal = (candidate.get("prediction_mode_rebuild") or {}).get("recall_signal", 0.0)
+            replaced_signal = (replaced.get("prediction_mode_rebuild") or {}).get("recall_signal", 0.0)
+            if (
+                float(candidate.get("score", 0.0) or 0.0) >= float(replaced.get("score", 0.0) or 0.0) * 0.68
+                or candidate_signal >= replaced_signal + 0.08
+            ):
+                candidate["reasons"] = (["分區漏抓回補"] + [text for text in candidate.get("reasons", []) if text != "分區漏抓回補"])[:4]
+                adjusted[replace_index], adjusted[candidate_index] = adjusted[candidate_index], adjusted[replace_index]
+                coverage_swaps.append({
+                    "zone": zone,
+                    "promoted_number": int(candidate["number"]),
+                    "demoted_number": int(replaced["number"]),
+                    "promoted_recall_signal": round(candidate_signal, 4),
+                    "demoted_recall_signal": round(replaced_signal, 4),
+                })
+            else:
+                break
+
+    tail_swaps = []
+    while len(adjusted) >= 10:
+        top9_tails = Counter(int(row["number"]) % 10 for row in adjusted[:9])
+        overloaded = [tail for tail, count in top9_tails.items() if count > 2]
+        if not overloaded:
+            break
+        tail = overloaded[0]
+        replacement_index = next(
+            (
+                index for index, row in enumerate(adjusted[9:32], 9)
+                if int(row["number"]) % 10 != tail
+                and top9_tails.get(int(row["number"]) % 10, 0) < 2
+                and eligible_rebuild_candidate(row)
+            ),
+            None,
+        )
+        if replacement_index is None:
+            break
+        replace_index = min(
+            (index for index in range(0, 9) if int(adjusted[index]["number"]) % 10 == tail),
+            key=lambda index: (
+                (adjusted[index].get("prediction_mode_rebuild") or {}).get("support_signal", 0.0),
+                float(adjusted[index].get("score", 0.0) or 0.0),
+            ),
+        )
+        candidate = adjusted[replacement_index]
+        replaced = adjusted[replace_index]
+        if float(candidate.get("score", 0.0) or 0.0) < float(replaced.get("score", 0.0) or 0.0) * 0.62:
+            break
+        candidate["reasons"] = (["尾數集中修正"] + [text for text in candidate.get("reasons", []) if text != "尾數集中修正"])[:4]
+        adjusted[replace_index], adjusted[replacement_index] = adjusted[replacement_index], adjusted[replace_index]
+        tail_swaps.append({
+            "promoted_number": int(candidate["number"]),
+            "demoted_number": int(replaced["number"]),
+            "demoted_tail": tail,
+        })
+        if len(tail_swaps) >= 3:
+            break
+
+    adjusted = refresh_candidate_metadata(adjusted)
+    return adjusted, {
+        "status": "triggered",
+        "method": "actual_failure_feedback_rebuild",
+        "policy": "用最近逐期命中檢討重排；連續失準號降權，漏抓號、漏抓尾數、漏抓區間回補，短包只從重排後前段產生。",
+        "recent_top5_avg": recent.get("last5_top5_avg"),
+        "recent_top10_avg": recent.get("last5_top10_avg"),
+        "monthly_status": monthly.get("status"),
+        "before_top10": before_top10,
+        "after_top10": [int(item["number"]) for item in adjusted[:10]],
+        "after_top9": [int(item["number"]) for item in adjusted[:9]],
+        "zone_targets": zone_targets,
+        "coverage_swaps": coverage_swaps,
+        "tail_swaps": tail_swaps,
+        "promotion_count": len(promotions),
+        "demotion_count": len(demotions),
+        "promotions": sorted(promotions, key=lambda item: item["adjustment"], reverse=True)[:15],
+        "demotions": sorted(demotions, key=lambda item: item["adjustment"])[:15],
+    }
+
+
 def compute_industrial_analysis(draws, review=None):
     weights, weight_calibration = adaptive_feature_weights(draws, review)
     lifecycle = model_lifecycle_policy(weight_calibration)
@@ -5721,6 +6076,7 @@ def compute_industrial_analysis(draws, review=None):
         "version": "formula_lab_v1",
     }
     candidates, formula_lab_calibration = apply_formula_lab_candidate_calibration(candidates, formula_lab, review)
+    candidates, prediction_mode_rebuild = apply_prediction_mode_rebuild(draws, candidates, review)
     candidates, formula_lab_similarity_guard = apply_previous_similarity_guard(candidates, review)
     candidates, formula_lab_hard_iron_rules = apply_hard_iron_rules(draws, candidates, review)
     previous_similarity_guard["after_formula_lab"] = formula_lab_similarity_guard
@@ -5776,7 +6132,7 @@ def compute_industrial_analysis(draws, review=None):
     }
     decisive_decision = decisive_battle_decision(candidates, packs, release_gate, slump_recall_coverage, unlikely)
     return {
-        "engine_version": "industrial_v22_formula_lab_recalibration",
+        "engine_version": "industrial_v23_actual_failure_feedback_rebuild",
         "leakage_guard": True,
         "repeat_guard": repeat_guard(draws),
         "previous_prediction_guard": {
@@ -5803,6 +6159,7 @@ def compute_industrial_analysis(draws, review=None):
         "hard_iron_rules": hard_iron_rules,
         "advanced_formula_lab": formula_lab,
         "formula_lab_calibration": formula_lab_calibration,
+        "prediction_mode_rebuild": prediction_mode_rebuild,
         "top10_promotion_audit": promotion_audit,
         "dependency_analysis": {
             "method": "three_fold_conditional_lift_with_fdr",
