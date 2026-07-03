@@ -1051,13 +1051,13 @@
       "hit_rate": 0.5
     },
     {
-      "reason": "尾數轉移加權",
+      "reason": "相似牌",
       "hit": 1,
       "miss": 2,
       "hit_rate": 0.333
     },
     {
-      "reason": "相似牌",
+      "reason": "尾數轉移加權",
       "hit": 1,
       "miss": 2,
       "hit_rate": 0.333
@@ -1460,7 +1460,7 @@
   ],
   "active_source": "previous_complete_month",
   "active_reason": "本月樣本不足，沿用上一完整月份檢討作為7月初校正基準，避免換月後失去6月失敗教訓。",
-  "current_month_sample_size": 2,
+  "current_month_sample_size": 3,
   "previous_complete_month": "2026-06",
   "previous_complete_month_sample_size": 26
 }
