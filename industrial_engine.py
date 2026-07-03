@@ -4682,6 +4682,11 @@ def strict_candidate_pool(candidates, min_score=0.64, min_confidence=81.0, min_s
     ]
 
 
+def latest_repeat_reentry_blocked(item):
+    reentry = ((item or {}).get("prediction_mode_rebuild") or {}).get("latest_repeat_reentry") or {}
+    return bool(reentry.get("latest_draw_number") and not reentry.get("strict_repeat_reentry"))
+
+
 def strong_packs(candidates, review=None, governance=None):
     score_map = {item["number"]: item["score"] for item in candidates}
     candidate_map = {item["number"]: item for item in candidates}
@@ -4742,6 +4747,9 @@ def strong_packs(candidates, review=None, governance=None):
             if hard_iron_blocked(item):
                 removed.append(number)
                 continue
+            if latest_repeat_reentry_blocked(item):
+                removed.append(number)
+                continue
             if failed_strong_pack_blocked(item, review):
                 removed.append(number)
                 continue
@@ -4767,6 +4775,7 @@ def strong_packs(candidates, review=None, governance=None):
         allowed_pool = [
             item for item in candidates[:30]
             if not hard_iron_blocked(item)
+            and not latest_repeat_reentry_blocked(item)
             and (
                 item["number"] in qualified_numbers or (
                     item.get("score", 0) >= min_avg_score and item.get("stability_count", 0) >= min_stability
@@ -4797,6 +4806,7 @@ def strong_packs(candidates, review=None, governance=None):
             clean_pool = [
                 item for item in selection_pool
                 if not hard_iron_blocked(item)
+                and not latest_repeat_reentry_blocked(item)
                 and not failed_strong_pack_blocked(item, review)
                 and not previous_guard_blocks_item(item)
             ]

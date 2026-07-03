@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T15:25:14",
+  "generated_at": "2026-07-03T14:55:02",
   "status": "passed",
   "failed_count": 0,
   "checks": [
@@ -7,19 +7,19 @@
       "name": "draw_count_minimum",
       "passed": true,
       "detail": {
-        "count": 5903,
+        "count": 5904,
         "min_period": 96000001,
-        "max_period": 115000159,
+        "max_period": 115000160,
         "min_date": "2007-01-01",
-        "max_date": "2026-07-01"
+        "max_date": "2026-07-02"
       }
     },
     {
       "name": "latest_date_fresh",
       "passed": true,
       "detail": {
-        "latest": "2026-07-01",
-        "expected": "2026-07-01"
+        "latest": "2026-07-02",
+        "expected": "2026-07-02"
       }
     },
     {
@@ -46,14 +46,6 @@
       "name": "recent_predictions_settled",
       "passed": true,
       "detail": [
-        {
-          "target_period": 115000154,
-          "status": "settled",
-          "actual_period": 115000154,
-          "top5_hits": 1,
-          "top10_hits": 1,
-          "top15_hits": 1
-        },
         {
           "target_period": 115000155,
           "status": "settled",
@@ -93,6 +85,14 @@
           "top5_hits": 0,
           "top10_hits": 1,
           "top15_hits": 1
+        },
+        {
+          "target_period": 115000160,
+          "status": "settled",
+          "actual_period": 115000160,
+          "top5_hits": 1,
+          "top10_hits": 1,
+          "top15_hits": 2
         }
       ]
     },
@@ -105,30 +105,30 @@
       "name": "latest_draw_has_settled_prediction_record",
       "passed": true,
       "detail": {
-        "target_period": 115000159,
+        "target_period": 115000160,
         "status": "settled",
-        "actual_period": 115000159,
-        "actual_date": "2026-07-01",
-        "top5_hits": 0,
+        "actual_period": 115000160,
+        "actual_date": "2026-07-02",
+        "top5_hits": 1,
         "top10_hits": 1,
-        "top15_hits": 1
+        "top15_hits": 2
       }
     },
     {
       "name": "analysis_matches_database",
       "passed": true,
       "detail": {
-        "analysis": 115000159,
-        "database": 115000159
+        "analysis": 115000160,
+        "database": 115000160
       }
     },
     {
       "name": "health_sync_passed",
       "passed": true,
       "detail": {
-        "database_latest_period": 115000159,
-        "analysis_latest_period": 115000159,
-        "prediction_based_on_period": 115000159,
+        "database_latest_period": 115000160,
+        "analysis_latest_period": 115000160,
+        "prediction_based_on_period": 115000160,
         "status": "synced"
       }
     },
@@ -136,15 +136,15 @@
       "name": "history_has_latest_pending_or_settled",
       "passed": true,
       "detail": {
-        "expected_target": 115000160
+        "expected_target": 115000161
       }
     },
     {
       "name": "battle_report_mentions_latest",
       "passed": true,
       "detail": {
-        "period": 115000159,
-        "draw_date": "2026-07-01"
+        "period": 115000160,
+        "draw_date": "2026-07-02"
       }
     },
     {
@@ -180,7 +180,7 @@
     {
       "name": "low_probability_page_exists",
       "passed": true,
-      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260702_第09版_每月資料保存版\\TW539Core\\reports\\539低機率精準暫避.html"
+      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260703_第10版_預測模式重整版\\TW539Core\\reports\\539低機率精準暫避.html"
     },
     {
       "name": "low_probability_page_has_no_mojibake_question_marks",
@@ -194,13 +194,13 @@
     }
   ],
   "latest": {
-    "period": 115000159,
-    "draw_date": "2026-07-01",
+    "period": 115000160,
+    "draw_date": "2026-07-02",
     "n1": 1,
-    "n2": 3,
-    "n3": 12,
-    "n4": 14,
-    "n5": 34
+    "n2": 6,
+    "n3": 8,
+    "n4": 13,
+    "n5": 30
   },
-  "expected_date": "2026-07-01"
+  "expected_date": "2026-07-02"
 }

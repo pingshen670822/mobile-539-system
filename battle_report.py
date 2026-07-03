@@ -51,6 +51,8 @@ TEXT_REPLACEMENTS = [
     ("strict walk-forward governance with daily variant tournament; lower confidence packs are still output as research predictions", "嚴格滾動回測治理與每日模型競賽；信心較低的包仍列為研究預測"),
     ("recent_slump_recall_coverage_switch", "近期低迷召回覆蓋切換"),
     ("recent_fast_walk_forward_feature_weight_calibration", "近期快速滾動回測特徵權重校準"),
+    ("recent_12_single_repeat_miss", "近十二期獨隻重複失準"),
+    ("ensemble", "綜合模型"),
     ("recent_低迷召回_coverage_switch", "近期低迷召回覆蓋切換"),
     ("recent_fast_滾動回測_feature_weight_calibration", "近期快速滾動回測特徵權重校準"),
     ("Top11-15 has captured real hits; ranking calibration should promote stable consensus and mid-rank validated signals into Top10.", "第11到15名曾捕捉實際命中號，排序校準要把穩定共識與中段驗證訊號提前到前十名。"),
@@ -4150,7 +4152,7 @@ def compact_stability_governor_html(analysis):
             f"<td>{item.get('recent8_misses', 0)}</td>"
             f"<td>{item.get('hits', 0)} / {item.get('misses', 0)}</td>"
             f"<td>{fmt_percent(item.get('hit_rate'))}</td>"
-            f"<td>{escape_html('、'.join(item.get('reasons') or []))}</td>"
+            f"<td>{escape_html(localize_text('、'.join(item.get('reasons') or [])))}</td>"
             "</tr>"
         )
     if not locked_rows:
@@ -4165,7 +4167,7 @@ def compact_stability_governor_html(analysis):
             f"<td>{item.get('recent8_misses', 0)}</td>"
             f"<td>{item.get('hits', 0)} / {item.get('misses', 0)}</td>"
             f"<td>{fmt_percent(item.get('hit_rate'))}</td>"
-            f"<td>{escape_html('、'.join(item.get('reasons') or []))}</td>"
+            f"<td>{escape_html(localize_text('、'.join(item.get('reasons') or [])))}</td>"
             "</tr>"
         )
     if not soft_rows:

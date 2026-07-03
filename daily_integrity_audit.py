@@ -15,6 +15,11 @@ BATTLE_HTML = REPORT_DIR / "539\u6700\u65b0\u5f37\u5316\u6230\u5831.html"
 LOW_PROBABILITY_HTML = REPORT_DIR / "539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f.html"
 AUDIT_JSON = REPORT_DIR / "daily_integrity_audit.json"
 AUDIT_MD = REPORT_DIR / "daily_integrity_audit.md"
+SITE_DIR = BASE_DIR / "site"
+SITE_ANALYSIS_JSON = SITE_DIR / "latest_analysis.json"
+SITE_VERSION_JSON = SITE_DIR / "version.json"
+MOBILE_SYNC_JSON = REPORT_DIR / "mobile_sync_verification.json"
+CLOUD_STATUS_JSON = BASE_DIR / "\u624b\u6a5f\u96f2\u7aef\u767c\u5e03\u72c0\u614b.json"
 
 
 def expected_latest_draw_date(now=None):
@@ -37,6 +42,37 @@ def add_check(checks, name, passed, detail):
     checks.append({"name": name, "passed": bool(passed), "detail": detail})
 
 
+def latest_draw_signature(draw):
+    return {
+        "period": draw.get("period"),
+        "draw_date": draw.get("draw_date"),
+        "numbers": [int(n) for n in draw.get("numbers", [])],
+    }
+
+
+def prediction_signature(analysis):
+    packs = ((analysis.get("industrial_engine") or {}).get("strong_prediction_packs") or
+             analysis.get("strong_prediction_packs") or {})
+    pack_keys = [
+        "strong_single",
+        "two_hit_one",
+        "three_hit_one",
+        "five_hit_two",
+        "nine_hit_three",
+    ]
+    return {
+        "top10": [
+            int(item.get("number"))
+            for item in (analysis.get("candidates") or [])[:10]
+            if item.get("number") is not None
+        ],
+        "packs": {
+            key: [int(number) for number in ((packs.get(key) or {}).get("numbers") or [])]
+            for key in pack_keys
+        },
+    }
+
+
 def build_audit():
     checks = []
     if not DB_PATH.exists():
@@ -47,6 +83,10 @@ def build_audit():
     restored_mode = analysis.get("prediction_mode") == "restored_20260604_hit4_v31"
     health = load_json(HEALTH_JSON)
     history = load_json(HISTORY_JSON)
+    site_analysis = load_json(SITE_ANALYSIS_JSON)
+    site_version = load_json(SITE_VERSION_JSON)
+    mobile_sync = load_json(MOBILE_SYNC_JSON)
+    cloud_status = load_json(CLOUD_STATUS_JSON)
     battle_text = BATTLE_HTML.read_text(encoding="utf-8") if BATTLE_HTML.exists() else ""
     low_probability_text = LOW_PROBABILITY_HTML.read_text(encoding="utf-8") if LOW_PROBABILITY_HTML.exists() else ""
 
@@ -126,6 +166,10 @@ def build_audit():
     })
 
     analysis_period = analysis.get("latest_draw", {}).get("period")
+    analysis_draw = latest_draw_signature(analysis.get("latest_draw", {}))
+    site_draw = latest_draw_signature(site_analysis.get("latest_draw", {}))
+    analysis_prediction = prediction_signature(analysis)
+    site_prediction = prediction_signature(site_analysis)
     add_check(checks, "analysis_matches_database", str(analysis_period) == str(latest["period"]), {"analysis": analysis_period, "database": latest["period"]})
     add_check(checks, "health_sync_passed", health.get("analysis_sync", {}).get("status") == "synced", health.get("analysis_sync", {}))
     add_check(checks, "history_has_latest_pending_or_settled", any(
@@ -148,6 +192,12 @@ def build_audit():
     add_check(checks, "low_probability_page_exists", LOW_PROBABILITY_HTML.exists(), str(LOW_PROBABILITY_HTML))
     add_check(checks, "low_probability_page_has_no_mojibake_question_marks", "???" not in low_probability_text, "low probability page must not contain mojibake question marks")
     add_check(checks, "low_probability_page_has_required_sections", "\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f" in low_probability_text and "5\u4e0d\u4e2d" in low_probability_text and "15\u4e0d\u4e2d" in low_probability_text, "low probability section labels")
+    add_check(checks, "local_mobile_site_exists", (SITE_DIR / "index.html").exists() and SITE_ANALYSIS_JSON.exists() and SITE_VERSION_JSON.exists(), str(SITE_DIR))
+    add_check(checks, "local_mobile_draw_matches_computer", site_draw == analysis_draw, {"computer": analysis_draw, "mobile": site_draw})
+    add_check(checks, "local_mobile_prediction_matches_computer", site_prediction == analysis_prediction, {"computer": analysis_prediction, "mobile": site_prediction})
+    add_check(checks, "local_mobile_version_mentions_latest_period", str(site_version.get("latest_period")) == str(latest["period"]), site_version)
+    add_check(checks, "mobile_cloud_publish_status_published", cloud_status.get("status") == "published", cloud_status)
+    add_check(checks, "mobile_cloud_sync_verified", mobile_sync.get("status") == "ok", mobile_sync)
     return finalize(checks, latest=dict(latest), expected_date=expected_date)
 
 

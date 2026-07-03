@@ -14,6 +14,7 @@ from industrial_engine import (
     compute_industrial_analysis,
     score_numbers as industrial_score_numbers,
 )
+from stability_governor import apply_stability_governor
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -1707,6 +1708,7 @@ def analyze(db_path=DB_PATH):
         two_stage_model["final_count"] = 0
         two_stage_model["status"] = "withheld_backtest_not_passed"
     analysis["two_stage_group_model"] = two_stage_model
+    analysis = apply_stability_governor(db_path, analysis)
     return analysis
 
 

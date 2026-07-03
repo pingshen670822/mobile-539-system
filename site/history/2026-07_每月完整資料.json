@@ -1,6 +1,6 @@
 {
   "month": "2026-07",
-  "generated_at": "2026-07-03T08:50:14",
+  "generated_at": "2026-07-03T14:54:59",
   "stats": {
     "total_records": 3,
     "settled_records": 2,
@@ -62,16 +62,27 @@
             39,
             2
           ],
-          "status": "已產出",
+          "status": "回測通過發布",
           "avg_avoid_score": 0.9694,
           "min_avoid_score": 0.899,
-          "confidence_index": 96.9,
-          "confidence_label": "高",
+          "confidence_index": 87.7,
+          "confidence_label": "回測通過",
           "formula_lab_edge": 0.0776,
           "formula_lab_status": "released",
           "selection_model": "formula_lab_inverse_consensus",
           "selection_note": "正式候選足額",
-          "warning": "低機率研究不是絕對不開保證，只作避險與組合污染控管"
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.1244,
+            "required_edge_at_most": -0.08,
+            "formula_avoid_edge": 0.0776,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.575,
+            "required_zero_hit_rate": 0.52,
+            "rounds": 120
+          }
         },
         "ten_miss": {
           "name": "10不中",
@@ -87,22 +98,33 @@
             27,
             25
           ],
-          "status": "已產出",
+          "status": "回測通過發布",
           "avg_avoid_score": 0.7713,
           "min_avoid_score": 0.42,
-          "confidence_index": 77.1,
-          "confidence_label": "中高",
+          "confidence_index": 73.5,
+          "confidence_label": "回測通過",
           "formula_lab_edge": 0.0776,
           "formula_lab_status": "released",
           "selection_model": "formula_lab_inverse_consensus",
           "selection_note": "正式候選不足時以低風險備選補齊",
-          "warning": "低機率研究不是絕對不開保證，只作避險與組合污染控管"
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "formula_lab_inverse_consensus",
+            "edge_vs_random": -0.0487,
+            "required_edge_at_most": -0.12,
+            "formula_avoid_edge": 0.0776,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.25,
+            "required_zero_hit_rate": 0.22,
+            "rounds": 120
+          }
         },
         "fifteen_miss": {
           "name": "15不中",
           "numbers": [],
-          "status": "資料不足不產出",
-          "confidence_label": "低",
+          "status": "回測不合格未發布",
+          "confidence_label": "未發布",
           "rejected_candidates": [
             33,
             15,
@@ -120,7 +142,53 @@
             17,
             16
           ],
-          "warning": "低機率研究不是絕對不開保證"
+          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
+          "backtest_gate": {
+            "status": "failed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.0814,
+            "required_edge_at_most": -0.18,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.083,
+            "required_zero_hit_rate": 0.1,
+            "rounds": 120
+          },
+          "diagnostic_candidates": [
+            33,
+            15,
+            4,
+            39,
+            2,
+            12,
+            11,
+            35,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "withheld_numbers": [
+            33,
+            15,
+            4,
+            39,
+            2,
+            12,
+            11,
+            35,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "confidence_index": 0.0
         }
       },
       "actual_period": null,
@@ -133,9 +201,9 @@
       "strong_pack_hits": {},
       "unlikely_pack_hits": {},
       "status": "pending",
-      "created_at": "2026-07-03T08:50:02",
+      "created_at": "2026-07-03T14:50:19",
       "settled_at": null,
-      "snapshot_count": 3
+      "snapshot_count": 8
     },
     {
       "based_on_period": 115000159,

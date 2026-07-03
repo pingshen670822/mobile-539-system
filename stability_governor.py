@@ -118,6 +118,8 @@ def single_lock_audit(rows):
     recent8 = recent[:8]
     recent_counts = Counter(item["number"] for item in recent8)
     recent_misses = Counter(item["number"] for item in recent8 if not item["passed"])
+    recent12_counts = Counter(item["number"] for item in recent12)
+    recent12_misses = Counter(item["number"] for item in recent12 if not item["passed"])
     locked = {}
     soft_guarded = {}
     for number in set(total_counts) | set(recent_counts):
@@ -126,15 +128,19 @@ def single_lock_audit(rows):
         hits = hit_counts[number]
         recent_repeat = recent_counts[number]
         recent_miss = recent_misses[number]
+        recent12_repeat = recent12_counts[number]
+        recent12_miss = recent12_misses[number]
         hit_rate = hits / total if total else 0.0
         reasons = []
         if recent_repeat >= 3 and recent_miss >= 2:
             reasons.append("\u8fd1\u516b\u671f\u7368\u96bb\u91cd\u8907\u4e14\u672a\u547d\u4e2d")
+        if recent12_repeat >= 2 and recent12_miss >= 2 and hit_rate < 0.35:
+            reasons.append("recent_12_single_repeat_miss")
         if misses >= 4 and hit_rate < 0.25:
             reasons.append("\u7d2f\u8a08\u7368\u96bb\u547d\u4e2d\u7387\u904e\u4f4e")
         if consecutive_miss[number] >= 2:
             reasons.append("\u7368\u96bb\u9023\u7e8c\u672a\u547d\u4e2d")
-        if recent_miss >= 1 and hits == 0:
+        if recent_miss >= 1 and (hits == 0 or recent12_miss >= 2):
             soft_guarded[number] = {
                 "number": number,
                 "total": total,
@@ -143,6 +149,8 @@ def single_lock_audit(rows):
                 "hit_rate": round(hit_rate, 3),
                 "recent8_count": recent_repeat,
                 "recent8_misses": recent_miss,
+                "recent12_count": recent12_repeat,
+                "recent12_misses": recent12_miss,
                 "reasons": ["\u8fd1\u671f\u7368\u96bb\u672a\u547d\u4e2d\uff0c\u672c\u671f\u5148\u964d\u6b0a\u6539\u7531\u5176\u4ed6\u5019\u9078\u7af6\u722d"],
             }
         if reasons:
@@ -154,6 +162,8 @@ def single_lock_audit(rows):
                 "hit_rate": round(hit_rate, 3),
                 "recent8_count": recent_repeat,
                 "recent8_misses": recent_miss,
+                "recent12_count": recent12_repeat,
+                "recent12_misses": recent12_miss,
                 "reasons": reasons,
             }
     return {

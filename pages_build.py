@@ -318,8 +318,7 @@ def build():
         encoding="utf-8",
     )
     entry_name = "\u6253\u958b\u6700\u65b0\u624b\u6a5f\u7248.html"
-    for latest_entry in {ROOT / entry_name, ROOT.parent / entry_name}:
-        write_mobile_entry(latest_entry, version)
+    write_mobile_entry(ROOT / entry_name, version)
     (SITE / "service-worker.js").write_text(
         f'''const CACHE="539-mobile-{version}";
 async function clearAllCaches(){{

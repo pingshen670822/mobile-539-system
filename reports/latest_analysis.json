@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T08:49:03",
+  "generated_at": "2026-07-03T14:49:50",
   "prediction_mode": "current_precision_stability_v46_actual_failure_feedback_rebuild",
   "latest_draw": {
     "period": 115000160,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-02",
     "expected_latest_date": "2026-07-02",
     "lag_days": 0,
-    "checked_at": "2026-07-03T08:49:03"
+    "checked_at": "2026-07-03T14:49:50"
   },
   "windows": [
     {
@@ -2637,13 +2637,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "上期失敗號碼僅微降權",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
         },
         {
-          "reason": "上期失敗號碼僅微降權",
+          "reason": "與上期號碼近100期共現6次",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
@@ -3250,13 +3250,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "昨日預測號軟守門觀察",
+          "reason": "失敗號回補驗算",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
         },
         {
-          "reason": "失敗號回補驗算",
+          "reason": "昨日預測號軟守門觀察",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
@@ -3310,7 +3310,7 @@
           "hit_rate": 0.083
         },
         {
-          "reason": "月度漏抓壓力回拉",
+          "reason": "排名錯位修正",
           "hit": 0,
           "miss": 1,
           "hit_rate": 0.0
@@ -4530,13 +4530,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "上期失敗號碼僅微降權",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
         },
         {
-          "reason": "上期失敗號碼僅微降權",
+          "reason": "與上期號碼近100期共現6次",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
@@ -5994,13 +5994,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "上期失敗號碼僅微降權",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
           },
           {
-            "reason": "上期失敗號碼僅微降權",
+            "reason": "與上期號碼近100期共現6次",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
@@ -6607,13 +6607,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "昨日預測號軟守門觀察",
+            "reason": "失敗號回補驗算",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
           },
           {
-            "reason": "失敗號回補驗算",
+            "reason": "昨日預測號軟守門觀察",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
@@ -6667,7 +6667,7 @@
             "hit_rate": 0.083
           },
           {
-            "reason": "月度漏抓壓力回拉",
+            "reason": "排名錯位修正",
             "hit": 0,
             "miss": 1,
             "hit_rate": 0.0
@@ -7887,13 +7887,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "上期失敗號碼僅微降權",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
           },
           {
-            "reason": "上期失敗號碼僅微降權",
+            "reason": "與上期號碼近100期共現6次",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
@@ -12904,13 +12904,13 @@
         34
       ],
       "three_hit_one": [
-        8,
+        14,
         29,
         34
       ],
       "five_hit_two": [
         5,
-        8,
+        10,
         14,
         29,
         34
@@ -12930,35 +12930,35 @@
         14,
         29,
         34,
-        8,
-        5,
-        10,
-        3,
-        24,
-        26
-      ],
-      "attack_core_top9": [
-        14,
-        29,
-        34,
-        8,
-        5,
-        10,
-        3,
-        24,
-        26
-      ],
-      "attack_core_top10": [
-        14,
-        29,
-        34,
-        8,
         5,
         10,
         3,
         24,
         26,
         37
+      ],
+      "attack_core_top9": [
+        14,
+        29,
+        34,
+        5,
+        10,
+        3,
+        24,
+        26,
+        37
+      ],
+      "attack_core_top10": [
+        14,
+        29,
+        34,
+        5,
+        10,
+        3,
+        24,
+        26,
+        37,
+        9
       ],
       "precision_target_size": 9,
       "backup_top15": [
@@ -13190,72 +13190,6 @@
               "signal": 0.5,
               "weight": 0.04704,
               "contribution": 0.02352
-            }
-          ],
-          "selection_model": "super_single_multi_layer_engine"
-        },
-        {
-          "number": 8,
-          "rank": 11,
-          "score": 0.82,
-          "probability_percent": 13.05,
-          "confidence": 76.0,
-          "sources": [
-            {
-              "model": "monthly_recall_pressure",
-              "label": "月度漏抓壓力回拉",
-              "signal": 0.8209,
-              "weight": 0.06645,
-              "contribution": 0.05455
-            },
-            {
-              "model": "zone_quota_pressure",
-              "label": "區間配額壓力",
-              "signal": 1.0,
-              "weight": 0.05079,
-              "contribution": 0.05079
-            },
-            {
-              "model": "freq_50",
-              "label": "近50期熱度",
-              "signal": 1.0,
-              "weight": 0.04465,
-              "contribution": 0.04465
-            },
-            {
-              "model": "rank_error_correction",
-              "label": "排名錯位修正",
-              "signal": 0.8169,
-              "weight": 0.05286,
-              "contribution": 0.04318
-            },
-            {
-              "model": "freq_100",
-              "label": "近100期熱度",
-              "signal": 1.0,
-              "weight": 0.04167,
-              "contribution": 0.04167
-            },
-            {
-              "model": "tail_transition_bridge",
-              "label": "尾數轉移橋接",
-              "signal": 0.8569,
-              "weight": 0.0482,
-              "contribution": 0.0413
-            },
-            {
-              "model": "cross_consensus",
-              "label": "多模型共識",
-              "signal": 1.0,
-              "weight": 0.04075,
-              "contribution": 0.04075
-            },
-            {
-              "model": "multi_window_bagging",
-              "label": "多窗口袋裝共識",
-              "signal": 1.0,
-              "weight": 0.03855,
-              "contribution": 0.03855
             }
           ],
           "selection_model": "super_single_multi_layer_engine"
@@ -13586,6 +13520,72 @@
               "signal": 0.45,
               "weight": 0.04704,
               "contribution": 0.02117
+            }
+          ],
+          "selection_model": "super_single_multi_layer_engine"
+        },
+        {
+          "number": 37,
+          "rank": 9,
+          "score": 0.8382,
+          "probability_percent": 13.05,
+          "confidence": 76.0,
+          "sources": [
+            {
+              "model": "pair",
+              "label": "共現配對",
+              "signal": 0.95,
+              "weight": 0.04704,
+              "contribution": 0.04469
+            },
+            {
+              "model": "tail_transition_bridge",
+              "label": "尾數轉移橋接",
+              "signal": 0.8571,
+              "weight": 0.0482,
+              "contribution": 0.04131
+            },
+            {
+              "model": "omission",
+              "label": "遺漏週期",
+              "signal": 0.3297,
+              "weight": 0.06841,
+              "contribution": 0.02255
+            },
+            {
+              "model": "freq_50",
+              "label": "近50期熱度",
+              "signal": 0.5,
+              "weight": 0.04465,
+              "contribution": 0.02233
+            },
+            {
+              "model": "shape_follow",
+              "label": "牌型相似跟隨",
+              "signal": 0.6149,
+              "weight": 0.02827,
+              "contribution": 0.01738
+            },
+            {
+              "model": "distribution_balance",
+              "label": "分布平衡",
+              "signal": 0.7909,
+              "weight": 0.01798,
+              "contribution": 0.01422
+            },
+            {
+              "model": "transition",
+              "label": "拖牌轉移",
+              "signal": 1.0,
+              "weight": 0.01291,
+              "contribution": 0.01291
+            },
+            {
+              "model": "bayesian_posterior",
+              "label": "貝氏保守校準",
+              "signal": 0.4595,
+              "weight": 0.02742,
+              "contribution": 0.0126
             }
           ],
           "selection_model": "super_single_multi_layer_engine"
@@ -14225,16 +14225,27 @@
             39,
             2
           ],
-          "status": "已產出",
+          "status": "回測通過發布",
           "avg_avoid_score": 0.9694,
           "min_avoid_score": 0.899,
-          "confidence_index": 96.9,
-          "confidence_label": "高",
+          "confidence_index": 87.7,
+          "confidence_label": "回測通過",
           "formula_lab_edge": 0.0776,
           "formula_lab_status": "released",
           "selection_model": "formula_lab_inverse_consensus",
           "selection_note": "正式候選足額",
-          "warning": "低機率研究不是絕對不開保證，只作避險與組合污染控管"
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.1244,
+            "required_edge_at_most": -0.08,
+            "formula_avoid_edge": 0.0776,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.575,
+            "required_zero_hit_rate": 0.52,
+            "rounds": 120
+          }
         },
         "ten_miss": {
           "name": "10不中",
@@ -14250,22 +14261,33 @@
             27,
             25
           ],
-          "status": "已產出",
+          "status": "回測通過發布",
           "avg_avoid_score": 0.7713,
           "min_avoid_score": 0.42,
-          "confidence_index": 77.1,
-          "confidence_label": "中高",
+          "confidence_index": 73.5,
+          "confidence_label": "回測通過",
           "formula_lab_edge": 0.0776,
           "formula_lab_status": "released",
           "selection_model": "formula_lab_inverse_consensus",
           "selection_note": "正式候選不足時以低風險備選補齊",
-          "warning": "低機率研究不是絕對不開保證，只作避險與組合污染控管"
+          "warning": "低機率僅代表回測暫避優勢，不代表保證不開",
+          "backtest_gate": {
+            "status": "passed",
+            "gate_model": "formula_lab_inverse_consensus",
+            "edge_vs_random": -0.0487,
+            "required_edge_at_most": -0.12,
+            "formula_avoid_edge": 0.0776,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.25,
+            "required_zero_hit_rate": 0.22,
+            "rounds": 120
+          }
         },
         "fifteen_miss": {
           "name": "15不中",
           "numbers": [],
-          "status": "資料不足不產出",
-          "confidence_label": "低",
+          "status": "回測不合格未發布",
+          "confidence_label": "未發布",
           "rejected_candidates": [
             33,
             15,
@@ -14283,9 +14305,56 @@
             17,
             16
           ],
-          "warning": "低機率研究不是絕對不開保證"
+          "warning": "近端回測未明顯勝過隨機，候選保留在診斷欄，不列為正式低機率暫避號碼",
+          "backtest_gate": {
+            "status": "failed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.0814,
+            "required_edge_at_most": -0.18,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.083,
+            "required_zero_hit_rate": 0.1,
+            "rounds": 120
+          },
+          "diagnostic_candidates": [
+            33,
+            15,
+            4,
+            39,
+            2,
+            12,
+            11,
+            35,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "withheld_numbers": [
+            33,
+            15,
+            4,
+            39,
+            2,
+            12,
+            11,
+            35,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "confidence_index": 0.0
         }
-      }
+      },
+      "release_status": "released"
     },
     "unlikely_backtest": {
       "rounds": 120,
@@ -31048,13 +31117,13 @@
         "name": "最強2中1",
         "hit_goal": 1,
         "numbers": [
-          29,
-          34
+          34,
+          14
         ],
         "score_sum": 2.0,
         "avg_score": 1.0,
-        "status": "released",
-        "official_release": true,
+        "status": "watch",
+        "official_release": false,
         "theoretical_probability": {
           "hit_goal": 1,
           "pool_size": 2,
@@ -31062,12 +31131,11 @@
           "odds_1_in": 4.12
         },
         "zones": {
-          "21-30": 1,
-          "31-39": 1
+          "31-39": 1,
+          "11-20": 1
         },
         "tails": {
-          "9": 1,
-          "4": 1
+          "4": 2
         },
         "governance": {
           "rounds": 120,
@@ -31112,7 +31180,7 @@
             }
           }
         },
-        "release_note": "short pack is always calculated every fresh draw by multi-model arbitration",
+        "release_note": "穩定治理已校正近期鎖號與連續失敗獨隻，改由其他候選競爭",
         "failed_strong_quarantine_removed": [],
         "hard_iron_rule_removed": [],
         "selection_variant": "short_pack_precision",
@@ -31564,20 +31632,31 @@
           }
         ],
         "daily_output_required": true,
-        "selection_rule": "short_pack_multi_model_arbitration_v1"
+        "selection_rule": "short_pack_multi_model_arbitration_v1",
+        "stability_governor_removed": [
+          29
+        ],
+        "stability_governor_hard_removed": [],
+        "stability_governor_soft_removed": [
+          29
+        ],
+        "stability_governor_replacement": [
+          34,
+          14
+        ]
       },
       "three_hit_one": {
         "name": "最強3中1",
         "hit_goal": 1,
         "numbers": [
-          8,
-          29,
-          34
+          14,
+          34,
+          5
         ],
-        "score_sum": 2.82,
-        "avg_score": 0.94,
-        "status": "released",
-        "official_release": true,
+        "score_sum": 3.0,
+        "avg_score": 1.0,
+        "status": "watch",
+        "official_release": false,
         "theoretical_probability": {
           "hit_goal": 1,
           "pool_size": 3,
@@ -31585,14 +31664,13 @@
           "odds_1_in": 2.9
         },
         "zones": {
-          "01-10": 1,
-          "21-30": 1,
-          "31-39": 1
+          "11-20": 1,
+          "31-39": 1,
+          "01-10": 1
         },
         "tails": {
-          "8": 1,
-          "9": 1,
-          "4": 1
+          "4": 2,
+          "5": 1
         },
         "governance": {
           "rounds": 120,
@@ -31637,8 +31715,10 @@
             }
           }
         },
-        "release_note": "short pack is always calculated every fresh draw by multi-model arbitration",
-        "failed_strong_quarantine_removed": [],
+        "release_note": "穩定治理已校正近期鎖號與連續失敗獨隻，改由其他候選競爭",
+        "failed_strong_quarantine_removed": [
+          8
+        ],
         "hard_iron_rule_removed": [],
         "selection_variant": "short_pack_precision",
         "selection_model": "short_pack_multi_model_arbitration",
@@ -32066,6 +32146,28 @@
             "model": "short_pack_multi_model_arbitration_v1"
           },
           {
+            "number": 14,
+            "rank": 3,
+            "short_pack_precision_score": 1.45,
+            "micro_confidence_score": 0.829,
+            "score": 1.0,
+            "probability_percent": 13.05,
+            "posterior_hit_rate": 0.1359,
+            "objective_edge": 0.0685,
+            "cross_validation_passed": 7,
+            "stability_count": 3,
+            "recall_priority": 0.8921,
+            "monthly_recall_pressure": 0.8011,
+            "cold_rebound_champion": 0.1397,
+            "multi_window_bagging": 0.605,
+            "tail_transition_bridge": 0.7352,
+            "zone_quota_pressure": 0.8994,
+            "source_model_count": 8,
+            "condition_count": 12,
+            "selection_penalty": 0.0,
+            "model": "short_pack_multi_model_arbitration_v1"
+          },
+          {
             "number": 34,
             "rank": 2,
             "short_pack_precision_score": 1.45,
@@ -32086,45 +32188,35 @@
             "condition_count": 10,
             "selection_penalty": 0.0,
             "model": "short_pack_multi_model_arbitration_v1"
-          },
-          {
-            "number": 8,
-            "rank": 11,
-            "short_pack_precision_score": 1.4375,
-            "micro_confidence_score": 0.6966,
-            "score": 0.82,
-            "probability_percent": 13.05,
-            "posterior_hit_rate": 0.214,
-            "objective_edge": 0.054,
-            "cross_validation_passed": 10,
-            "stability_count": 5,
-            "recall_priority": 0.9212,
-            "monthly_recall_pressure": 0.8209,
-            "cold_rebound_champion": 0.18,
-            "multi_window_bagging": 1.0,
-            "tail_transition_bridge": 0.8569,
-            "zone_quota_pressure": 1.0,
-            "source_model_count": 8,
-            "condition_count": 11,
-            "selection_penalty": 0.0,
-            "model": "short_pack_multi_model_arbitration_v1"
           }
         ],
         "daily_output_required": true,
-        "selection_rule": "short_pack_multi_model_arbitration_v1"
+        "selection_rule": "short_pack_multi_model_arbitration_v1",
+        "stability_governor_removed": [
+          29
+        ],
+        "stability_governor_hard_removed": [],
+        "stability_governor_soft_removed": [
+          29
+        ],
+        "stability_governor_replacement": [
+          14,
+          34,
+          5
+        ]
       },
       "five_hit_two": {
         "name": "最強5中2",
         "hit_goal": 2,
         "numbers": [
           5,
-          8,
+          10,
           14,
           29,
           34
         ],
-        "score_sum": 4.82,
-        "avg_score": 0.964,
+        "score_sum": 4.941,
+        "avg_score": 0.9882,
         "status": "research_prediction",
         "official_release": false,
         "withheld_reason": "recent walk-forward pack performance did not pass official gate; output as daily research prediction",
@@ -32143,7 +32235,7 @@
         },
         "tails": {
           "5": 1,
-          "8": 1,
+          "0": 1,
           "4": 2,
           "9": 1
         },
@@ -34425,6 +34517,275 @@
           ]
         }
       ]
+    },
+    "stability_governor": {
+      "status": "corrected",
+      "checked_at": "2026-07-03T14:50:09",
+      "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
+      "single_lock_audit": {
+        "recent_single_rows": [
+          {
+            "date": "2026-07-02",
+            "number": 7,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-07-01",
+            "number": 8,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-30",
+            "number": 36,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-29",
+            "number": 29,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-27",
+            "number": 25,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-26",
+            "number": 8,
+            "hits": 1,
+            "passed": true
+          },
+          {
+            "date": "2026-06-25",
+            "number": 8,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-24",
+            "number": 8,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-23",
+            "number": 8,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-22",
+            "number": 20,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-20",
+            "number": 14,
+            "hits": 0,
+            "passed": false
+          },
+          {
+            "date": "2026-06-19",
+            "number": 8,
+            "hits": 0,
+            "passed": false
+          }
+        ],
+        "locked_numbers": [
+          {
+            "number": 8,
+            "total": 10,
+            "hits": 2,
+            "misses": 8,
+            "hit_rate": 0.2,
+            "recent8_count": 4,
+            "recent8_misses": 3,
+            "recent12_count": 6,
+            "recent12_misses": 5,
+            "reasons": [
+              "近八期獨隻重複且未命中",
+              "recent_12_single_repeat_miss",
+              "累計獨隻命中率過低"
+            ]
+          },
+          {
+            "number": 2,
+            "total": 3,
+            "hits": 0,
+            "misses": 3,
+            "hit_rate": 0.0,
+            "recent8_count": 0,
+            "recent8_misses": 0,
+            "recent12_count": 0,
+            "recent12_misses": 0,
+            "reasons": [
+              "獨隻連續未命中"
+            ]
+          },
+          {
+            "number": 20,
+            "total": 2,
+            "hits": 0,
+            "misses": 2,
+            "hit_rate": 0.0,
+            "recent8_count": 0,
+            "recent8_misses": 0,
+            "recent12_count": 1,
+            "recent12_misses": 1,
+            "reasons": [
+              "獨隻連續未命中"
+            ]
+          },
+          {
+            "number": 11,
+            "total": 2,
+            "hits": 0,
+            "misses": 2,
+            "hit_rate": 0.0,
+            "recent8_count": 0,
+            "recent8_misses": 0,
+            "recent12_count": 0,
+            "recent12_misses": 0,
+            "reasons": [
+              "獨隻連續未命中"
+            ]
+          },
+          {
+            "number": 6,
+            "total": 2,
+            "hits": 0,
+            "misses": 2,
+            "hit_rate": 0.0,
+            "recent8_count": 0,
+            "recent8_misses": 0,
+            "recent12_count": 0,
+            "recent12_misses": 0,
+            "reasons": [
+              "獨隻連續未命中"
+            ]
+          }
+        ],
+        "soft_guard_numbers": [
+          {
+            "number": 8,
+            "total": 10,
+            "hits": 2,
+            "misses": 8,
+            "hit_rate": 0.2,
+            "recent8_count": 4,
+            "recent8_misses": 3,
+            "recent12_count": 6,
+            "recent12_misses": 5,
+            "reasons": [
+              "近期獨隻未命中，本期先降權改由其他候選競爭"
+            ]
+          },
+          {
+            "number": 36,
+            "total": 1,
+            "hits": 0,
+            "misses": 1,
+            "hit_rate": 0.0,
+            "recent8_count": 1,
+            "recent8_misses": 1,
+            "recent12_count": 1,
+            "recent12_misses": 1,
+            "reasons": [
+              "近期獨隻未命中，本期先降權改由其他候選競爭"
+            ]
+          },
+          {
+            "number": 29,
+            "total": 1,
+            "hits": 0,
+            "misses": 1,
+            "hit_rate": 0.0,
+            "recent8_count": 1,
+            "recent8_misses": 1,
+            "recent12_count": 1,
+            "recent12_misses": 1,
+            "reasons": [
+              "近期獨隻未命中，本期先降權改由其他候選競爭"
+            ]
+          },
+          {
+            "number": 25,
+            "total": 1,
+            "hits": 0,
+            "misses": 1,
+            "hit_rate": 0.0,
+            "recent8_count": 1,
+            "recent8_misses": 1,
+            "recent12_count": 1,
+            "recent12_misses": 1,
+            "reasons": [
+              "近期獨隻未命中，本期先降權改由其他候選競爭"
+            ]
+          }
+        ]
+      },
+      "actions": [
+        {
+          "type": "single_lock_guard",
+          "pack": "two_hit_one",
+          "removed": [
+            29
+          ],
+          "hard_removed": [],
+          "soft_removed": [
+            29
+          ],
+          "replacement": [
+            34,
+            14
+          ]
+        },
+        {
+          "type": "single_lock_guard",
+          "pack": "three_hit_one",
+          "removed": [
+            29
+          ],
+          "hard_removed": [],
+          "soft_removed": [
+            29
+          ],
+          "replacement": [
+            14,
+            34,
+            5
+          ]
+        },
+        {
+          "type": "unlikely_gate",
+          "pack": "fifteen_miss",
+          "withheld_numbers": [
+            33,
+            15,
+            4,
+            39,
+            2,
+            12,
+            11,
+            35,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
+          "edge_vs_random": -0.0814,
+          "zero_hit_rate": 0.083
+        }
+      ]
     }
   },
   "dual_track_model_comparison": {
@@ -36500,12 +36861,12 @@
           14,
           29,
           34,
-          8,
           5,
           10,
           3,
           24,
-          26
+          26,
+          37
         ],
         "strong_pack_keys": [
           "strong_single",
@@ -36555,7 +36916,7 @@
     "engine_version": "aerospace_assurance_v1",
     "principle": "fail_closed_redundant_verified_deterministic",
     "input_fingerprint_sha256": "f1825dbdd3a332c5f80edaa6eb3ea6d03ed7bc97128b3460b1b659c7f85eed20",
-    "output_fingerprint_sha256": "bdbc48fcda8df7d861be4bbf133d3a55c3423d7ad27925be51c9caaa527a8f0d",
+    "output_fingerprint_sha256": "959e648eb5dcac9e9793ed675c665597629be8b89512ca7bca5e3045766c29ad",
     "input_invariants": {
       "passed": true,
       "checked_draws": 5904,
@@ -68592,13 +68953,13 @@
       "name": "最強2中1",
       "hit_goal": 1,
       "numbers": [
-        29,
-        34
+        34,
+        14
       ],
       "score_sum": 2.0,
       "avg_score": 1.0,
-      "status": "released",
-      "official_release": true,
+      "status": "watch",
+      "official_release": false,
       "theoretical_probability": {
         "hit_goal": 1,
         "pool_size": 2,
@@ -68606,12 +68967,11 @@
         "odds_1_in": 4.12
       },
       "zones": {
-        "21-30": 1,
-        "31-39": 1
+        "31-39": 1,
+        "11-20": 1
       },
       "tails": {
-        "9": 1,
-        "4": 1
+        "4": 2
       },
       "governance": {
         "rounds": 120,
@@ -68656,7 +69016,7 @@
           }
         }
       },
-      "release_note": "short pack is always calculated every fresh draw by multi-model arbitration",
+      "release_note": "穩定治理已校正近期鎖號與連續失敗獨隻，改由其他候選競爭",
       "failed_strong_quarantine_removed": [],
       "hard_iron_rule_removed": [],
       "selection_variant": "short_pack_precision",
@@ -69108,20 +69468,31 @@
         }
       ],
       "daily_output_required": true,
-      "selection_rule": "short_pack_multi_model_arbitration_v1"
+      "selection_rule": "short_pack_multi_model_arbitration_v1",
+      "stability_governor_removed": [
+        29
+      ],
+      "stability_governor_hard_removed": [],
+      "stability_governor_soft_removed": [
+        29
+      ],
+      "stability_governor_replacement": [
+        34,
+        14
+      ]
     },
     "three_hit_one": {
       "name": "最強3中1",
       "hit_goal": 1,
       "numbers": [
-        8,
-        29,
-        34
+        14,
+        34,
+        5
       ],
-      "score_sum": 2.82,
-      "avg_score": 0.94,
-      "status": "released",
-      "official_release": true,
+      "score_sum": 3.0,
+      "avg_score": 1.0,
+      "status": "watch",
+      "official_release": false,
       "theoretical_probability": {
         "hit_goal": 1,
         "pool_size": 3,
@@ -69129,14 +69500,13 @@
         "odds_1_in": 2.9
       },
       "zones": {
-        "01-10": 1,
-        "21-30": 1,
-        "31-39": 1
+        "11-20": 1,
+        "31-39": 1,
+        "01-10": 1
       },
       "tails": {
-        "8": 1,
-        "9": 1,
-        "4": 1
+        "4": 2,
+        "5": 1
       },
       "governance": {
         "rounds": 120,
@@ -69181,8 +69551,10 @@
           }
         }
       },
-      "release_note": "short pack is always calculated every fresh draw by multi-model arbitration",
-      "failed_strong_quarantine_removed": [],
+      "release_note": "穩定治理已校正近期鎖號與連續失敗獨隻，改由其他候選競爭",
+      "failed_strong_quarantine_removed": [
+        8
+      ],
       "hard_iron_rule_removed": [],
       "selection_variant": "short_pack_precision",
       "selection_model": "short_pack_multi_model_arbitration",
@@ -69610,6 +69982,28 @@
           "model": "short_pack_multi_model_arbitration_v1"
         },
         {
+          "number": 14,
+          "rank": 3,
+          "short_pack_precision_score": 1.45,
+          "micro_confidence_score": 0.829,
+          "score": 1.0,
+          "probability_percent": 13.05,
+          "posterior_hit_rate": 0.1359,
+          "objective_edge": 0.0685,
+          "cross_validation_passed": 7,
+          "stability_count": 3,
+          "recall_priority": 0.8921,
+          "monthly_recall_pressure": 0.8011,
+          "cold_rebound_champion": 0.1397,
+          "multi_window_bagging": 0.605,
+          "tail_transition_bridge": 0.7352,
+          "zone_quota_pressure": 0.8994,
+          "source_model_count": 8,
+          "condition_count": 12,
+          "selection_penalty": 0.0,
+          "model": "short_pack_multi_model_arbitration_v1"
+        },
+        {
           "number": 34,
           "rank": 2,
           "short_pack_precision_score": 1.45,
@@ -69630,45 +70024,35 @@
           "condition_count": 10,
           "selection_penalty": 0.0,
           "model": "short_pack_multi_model_arbitration_v1"
-        },
-        {
-          "number": 8,
-          "rank": 11,
-          "short_pack_precision_score": 1.4375,
-          "micro_confidence_score": 0.6966,
-          "score": 0.82,
-          "probability_percent": 13.05,
-          "posterior_hit_rate": 0.214,
-          "objective_edge": 0.054,
-          "cross_validation_passed": 10,
-          "stability_count": 5,
-          "recall_priority": 0.9212,
-          "monthly_recall_pressure": 0.8209,
-          "cold_rebound_champion": 0.18,
-          "multi_window_bagging": 1.0,
-          "tail_transition_bridge": 0.8569,
-          "zone_quota_pressure": 1.0,
-          "source_model_count": 8,
-          "condition_count": 11,
-          "selection_penalty": 0.0,
-          "model": "short_pack_multi_model_arbitration_v1"
         }
       ],
       "daily_output_required": true,
-      "selection_rule": "short_pack_multi_model_arbitration_v1"
+      "selection_rule": "short_pack_multi_model_arbitration_v1",
+      "stability_governor_removed": [
+        29
+      ],
+      "stability_governor_hard_removed": [],
+      "stability_governor_soft_removed": [
+        29
+      ],
+      "stability_governor_replacement": [
+        14,
+        34,
+        5
+      ]
     },
     "five_hit_two": {
       "name": "最強5中2",
       "hit_goal": 2,
       "numbers": [
         5,
-        8,
+        10,
         14,
         29,
         34
       ],
-      "score_sum": 4.82,
-      "avg_score": 0.964,
+      "score_sum": 4.941,
+      "avg_score": 0.9882,
       "status": "research_prediction",
       "official_release": false,
       "withheld_reason": "recent walk-forward pack performance did not pass official gate; output as daily research prediction",
@@ -69687,7 +70071,7 @@
       },
       "tails": {
         "5": 1,
-        "8": 1,
+        "0": 1,
         "4": 2,
         "9": 1
       },

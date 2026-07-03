@@ -35,9 +35,33 @@ def latest_draw_signature(draw):
     }
 
 
+def prediction_signature(analysis):
+    packs = ((analysis.get("industrial_engine") or {}).get("strong_prediction_packs") or
+             analysis.get("strong_prediction_packs") or {})
+    pack_keys = [
+        "strong_single",
+        "two_hit_one",
+        "three_hit_one",
+        "five_hit_two",
+        "nine_hit_three",
+    ]
+    return {
+        "generated_at": analysis.get("generated_at"),
+        "top10": [
+            int(item.get("number"))
+            for item in (analysis.get("candidates") or [])[:10]
+            if item.get("number") is not None
+        ],
+        "packs": {
+            key: [int(number) for number in ((packs.get(key) or {}).get("numbers") or [])]
+            for key in pack_keys
+        },
+    }
+
+
 def mobile_base_url(cloud_url):
     if not cloud_url:
-        return "https://pingshen670822.github.io/mobile-539-system"
+        return "https://pingshen670924-dotcom.github.io/mobile-539-system"
     parsed = urlsplit(cloud_url)
     path = parsed.path or "/mobile-539-system/"
     marker = "/clear-cache.html"
@@ -71,6 +95,7 @@ def main():
     local_version = read_json(ROOT / "site" / "version.json")
     cloud_status = read_json(CLOUD_STATUS_PATH)
     local_draw = latest_draw_signature(local_analysis.get("latest_draw", {}))
+    local_prediction = prediction_signature(local_analysis)
     status = {
         "status": "checking",
         "checked_at": now,
@@ -79,9 +104,11 @@ def main():
         "cloud_version": cloud_status.get("version"),
         "cloud_url": cloud_status.get("url") or cloud_status.get("prepared_cloud_url"),
         "local_latest_draw": local_draw,
+        "local_prediction": local_prediction,
         "remote_latest_draw": {},
+        "remote_prediction": {},
         "remote_version": {},
-        "rule": "\u96fb\u8166\u7248\u8207\u624b\u6a5f\u96f2\u7aef\u5fc5\u9808\u540c\u4e00\u671f\u6578\u3001\u540c\u65e5\u671f\u3001\u540c\u865f\u78bc\uff1b\u96f2\u7aef\u72c0\u614b\u5fc5\u9808\u70ba published\u3002",
+        "rule": "\u96fb\u8166\u7248\u8207\u624b\u6a5f\u96f2\u7aef\u5fc5\u9808\u540c\u7248\u672c\u3001\u540c\u958b\u734e\u8cc7\u6599\u3001\u540c\u524d\u5341\u9810\u6e2c\u3001\u540c\u5f37\u724c\u5305\uff1b\u96f2\u7aef\u72c0\u614b\u5fc5\u9808\u70ba published\u3002",
     }
     failures = []
     if cloud_status.get("status") != "published":
@@ -93,12 +120,20 @@ def main():
         remote_version = fetch_json(f"{remote_base}/version.json?t={cache_token}")
         remote_analysis = fetch_json(f"{remote_base}/latest_analysis.json?t={cache_token}")
         remote_draw = latest_draw_signature(remote_analysis.get("latest_draw", {}))
+        remote_prediction = prediction_signature(remote_analysis)
         status["remote_version"] = remote_version
         status["remote_latest_draw"] = remote_draw
+        status["remote_prediction"] = remote_prediction
         if remote_draw != local_draw:
             failures.append("\u624b\u6a5f\u96f2\u7aef\u6700\u65b0\u958b\u734e\u8cc7\u6599\u8207\u96fb\u8166\u7248\u4e0d\u4e00\u81f4")
         if str(remote_version.get("latest_period")) != str(local_draw.get("period")):
             failures.append("\u624b\u6a5f\u96f2\u7aef\u7248\u672c\u6a94\u6700\u65b0\u671f\u6578\u8207\u96fb\u8166\u7248\u4e0d\u4e00\u81f4")
+        if str(remote_version.get("version")) != str(local_version.get("version")):
+            failures.append("\u624b\u6a5f\u96f2\u7aef\u7248\u672c\u865f\u8207\u96fb\u8166\u7248\u4e0d\u4e00\u81f4")
+        if remote_prediction.get("top10") != local_prediction.get("top10"):
+            failures.append("\u624b\u6a5f\u96f2\u7aef\u524d\u5341\u9810\u6e2c\u8207\u96fb\u8166\u7248\u4e0d\u4e00\u81f4")
+        if remote_prediction.get("packs") != local_prediction.get("packs"):
+            failures.append("\u624b\u6a5f\u96f2\u7aef\u5f37\u724c\u5305\u8207\u96fb\u8166\u7248\u4e0d\u4e00\u81f4")
     except Exception as exc:
         failures.append(f"\u624b\u6a5f\u96f2\u7aef\u8b80\u53d6\u5931\u6557: {exc}")
     if failures:
