@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T00:35:12",
+  "generated_at": "2026-07-05T00:38:55",
   "prediction_mode": "current_precision_stability_v46_actual_failure_feedback_rebuild",
   "latest_draw": {
     "period": 115000162,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-04",
     "expected_latest_date": "2026-07-04",
     "lag_days": 0,
-    "checked_at": "2026-07-05T00:33:14"
+    "checked_at": "2026-07-05T00:36:55"
   },
   "windows": [
     {
@@ -2656,13 +2656,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "上期失敗號碼僅微降權",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
         },
         {
-          "reason": "上期失敗號碼僅微降權",
+          "reason": "與上期號碼近100期共現6次",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
@@ -3418,13 +3418,13 @@
           "hit_rate": 0.4
         },
         {
-          "reason": "昨日預測號軟守門觀察",
+          "reason": "牌型相似跟隨",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "牌型相似跟隨",
+          "reason": "昨日預測號軟守門觀察",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -3460,13 +3460,13 @@
           "hit_rate": 0.143
         },
         {
-          "reason": "尾數轉移橋接",
+          "reason": "共現關聯",
           "hit": 2,
           "miss": 13,
           "hit_rate": 0.133
         },
         {
-          "reason": "共現關聯",
+          "reason": "尾數轉移橋接",
           "hit": 2,
           "miss": 13,
           "hit_rate": 0.133
@@ -4826,13 +4826,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "上期失敗號碼僅微降權",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
         },
         {
-          "reason": "上期失敗號碼僅微降權",
+          "reason": "與上期號碼近100期共現6次",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
@@ -6290,13 +6290,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "上期失敗號碼僅微降權",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
           },
           {
-            "reason": "上期失敗號碼僅微降權",
+            "reason": "與上期號碼近100期共現6次",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
@@ -7052,13 +7052,13 @@
             "hit_rate": 0.4
           },
           {
-            "reason": "昨日預測號軟守門觀察",
+            "reason": "牌型相似跟隨",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "牌型相似跟隨",
+            "reason": "昨日預測號軟守門觀察",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -7094,13 +7094,13 @@
             "hit_rate": 0.143
           },
           {
-            "reason": "尾數轉移橋接",
+            "reason": "共現關聯",
             "hit": 2,
             "miss": 13,
             "hit_rate": 0.133
           },
           {
-            "reason": "共現關聯",
+            "reason": "尾數轉移橋接",
             "hit": 2,
             "miss": 13,
             "hit_rate": 0.133
@@ -8460,13 +8460,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "上期失敗號碼僅微降權",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
           },
           {
-            "reason": "上期失敗號碼僅微降權",
+            "reason": "與上期號碼近100期共現6次",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
@@ -35132,7 +35132,7 @@
     },
     "stability_governor": {
       "status": "corrected",
-      "checked_at": "2026-07-04T16:35:22",
+      "checked_at": "2026-07-04T16:39:05",
       "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
       "single_lock_audit": {
         "recent_single_rows": [
@@ -71493,5 +71493,5 @@
       }
     }
   },
-  "official_prediction_status": "observation_only_inserted"
+  "official_prediction_status": "observation_only_recalculated_same_as_official_refreshed"
 }
