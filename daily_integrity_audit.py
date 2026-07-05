@@ -1,5 +1,6 @@
 ﻿import json
 import sqlite3
+import subprocess
 from datetime import datetime, time as clock_time, timedelta
 from pathlib import Path
 
@@ -20,6 +21,7 @@ SITE_ANALYSIS_JSON = SITE_DIR / "latest_analysis.json"
 SITE_VERSION_JSON = SITE_DIR / "version.json"
 MOBILE_SYNC_JSON = REPORT_DIR / "mobile_sync_verification.json"
 CLOUD_STATUS_JSON = BASE_DIR / "\u624b\u6a5f\u96f2\u7aef\u767c\u5e03\u72c0\u614b.json"
+SCHEDULE_STATUS_JSON = REPORT_DIR / "daily_auto_task_status.json"
 
 
 def expected_latest_draw_date(now=None):
@@ -35,7 +37,7 @@ def expected_latest_draw_date(now=None):
 def load_json(path):
     if not path.exists():
         return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
 def add_check(checks, name, passed, detail):
@@ -73,6 +75,19 @@ def prediction_signature(analysis):
     }
 
 
+def scheduled_task_exists(task_name):
+    try:
+        result = subprocess.run(
+            ["schtasks.exe", "/Query", "/TN", task_name],
+            capture_output=True,
+            text=True,
+            timeout=15,
+        )
+        return result.returncode == 0, (result.stdout + result.stderr).strip()
+    except Exception as exc:
+        return False, str(exc)
+
+
 def build_audit():
     checks = []
     if not DB_PATH.exists():
@@ -87,6 +102,7 @@ def build_audit():
     site_version = load_json(SITE_VERSION_JSON)
     mobile_sync = load_json(MOBILE_SYNC_JSON)
     cloud_status = load_json(CLOUD_STATUS_JSON)
+    schedule_status = load_json(SCHEDULE_STATUS_JSON)
     battle_text = BATTLE_HTML.read_text(encoding="utf-8") if BATTLE_HTML.exists() else ""
     low_probability_text = LOW_PROBABILITY_HTML.read_text(encoding="utf-8") if LOW_PROBABILITY_HTML.exists() else ""
 
@@ -198,6 +214,14 @@ def build_audit():
     add_check(checks, "local_mobile_version_mentions_latest_period", str(site_version.get("latest_period")) == str(latest["period"]), site_version)
     add_check(checks, "mobile_cloud_publish_status_published", cloud_status.get("status") == "published", cloud_status)
     add_check(checks, "mobile_cloud_sync_verified", mobile_sync.get("status") == "ok", mobile_sync)
+    daily_task_names = ["TW539 每日開獎後全自動更新", "TW539 每日凌晨完整檢測"]
+    task_probe = {}
+    for task_name in daily_task_names:
+        exists, output = scheduled_task_exists(task_name)
+        task_probe[task_name] = {"exists": exists, "detail": output[:500]}
+    add_check(checks, "daily_auto_schedule_status_passed", schedule_status.get("status") == "passed", schedule_status)
+    add_check(checks, "daily_auto_schedule_has_two_tasks", all(task_probe[name]["exists"] for name in daily_task_names), task_probe)
+    add_check(checks, "startup_auto_tasks_removed", not schedule_status.get("startup_tasks_failed"), schedule_status.get("startup_tasks_failed", []))
     return finalize(checks, latest=dict(latest), expected_date=expected_date)
 
 

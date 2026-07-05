@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-03T14:55:02",
+  "generated_at": "2026-07-03T16:12:21",
   "status": "ok",
-  "checked_files": 281,
+  "checked_files": 282,
   "failed_count": 0,
   "warning_count": 0,
   "files": [
@@ -63,7 +63,7 @@
       "path": "daily_integrity_audit.py",
       "status": "ok",
       "warnings": [],
-      "size": 9623
+      "size": 12069
     },
     {
       "path": "daily_midnight_recompute.ps1",
@@ -114,6 +114,12 @@
       "size": 130
     },
     {
+      "path": "main_one_click.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 3249
+    },
+    {
       "path": "mobile_server.py",
       "status": "ok",
       "warnings": [],
@@ -135,7 +141,7 @@
       "path": "pages_build.py",
       "status": "ok",
       "warnings": [],
-      "size": 16504
+      "size": 16431
     },
     {
       "path": "publish_free_github.ps1",
@@ -195,7 +201,7 @@
       "path": "verify_mobile_sync.py",
       "status": "ok",
       "warnings": [],
-      "size": 5374
+      "size": 6989
     },
     {
       "path": "使用說明.txt",
@@ -219,7 +225,7 @@
       "path": "手機戰報更新狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 742
+      "size": 505
     },
     {
       "path": "手機控制台網址.txt",
@@ -231,19 +237,19 @@
       "path": "手機獨立版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 104
+      "size": 102
     },
     {
       "path": "手機雲端版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 104
+      "size": 102
     },
     {
       "path": "手機雲端發布狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 841
+      "size": 352
     },
     {
       "path": "打開最新手機版.html",
@@ -339,7 +345,7 @@
       "path": "reports\\file_integrity_report.json",
       "status": "ok",
       "warnings": [],
-      "size": 39154
+      "size": 39273
     },
     {
       "path": "reports\\file_integrity_report.md",
@@ -405,7 +411,7 @@
       "path": "reports\\mobile_sync_verification.json",
       "status": "ok",
       "warnings": [],
-      "size": 1183
+      "size": 2476
     },
     {
       "path": "reports\\mobile_update_status.json",

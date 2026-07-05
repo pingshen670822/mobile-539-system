@@ -332,7 +332,7 @@
     }
   },
   "status": "settled",
-  "created_at": "2026-07-03T14:50:19",
-  "settled_at": "2026-07-03T18:01:47",
-  "snapshot_count": 8
+  "created_at": "2026-07-03T16:15:27",
+  "settled_at": "2026-07-06T07:13:46",
+  "snapshot_count": 9
 }

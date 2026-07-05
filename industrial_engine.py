@@ -5799,7 +5799,7 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
     if not prediction_mode_rebuild_active(review):
         return refresh_candidate_metadata(candidates), {
             "status": "not_triggered",
-            "method": "actual_failure_feedback_rebuild",
+            "method": "daily_auto_rolling_precision_rebuild",
             "before_top10": before_top10,
             "after_top10": before_top10,
             "reason": "recent performance did not trigger rebuild mode",
@@ -5816,6 +5816,11 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
     promotions = []
     demotions = []
     intensity = 1.28 if recent.get("critical_slump") or monthly.get("status") == "critical_recall_gap" else 1.08
+    short_pack_slump = bool(
+        float(recent.get("last5_top5_avg", 9) or 0) < 0.85
+        or float(recent.get("last5_top10_avg", 9) or 0) < 1.40
+        or float(recent.get("last10_top10_avg", 9) or 0) < 1.55
+    )
 
     for rank, item in enumerate(candidates, 1):
         row = dict(item)
@@ -5824,6 +5829,21 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
         recall_signal = signal["recall_signal"]
         support_signal = signal["support_signal"]
         repeated_signal = signal["repeated_failed_signal"]
+        cross_passed = int((row.get("cross_validation") or {}).get("passed_count") or 0)
+        stability_count = int(row.get("stability_count") or 0)
+        objective_edge = candidate_objective_edge(row)
+        hit_edge = candidate_hit_edge(row)
+        repeated_count = maps["repeated_failed"].get(number, 0)
+        rescue_signal = bool(
+            recall_signal >= 0.56
+            and support_signal >= 0.52
+            and (
+                objective_edge >= 0.040
+                or hit_edge >= 0.020
+                or cross_passed >= 8
+                or stability_count >= 4
+            )
+        )
         base_score = float(row.get("score", 0.0) or 0.0)
         adjustment = 0.0
         adjustment += (recall_signal - 0.36) * 0.25 * intensity
@@ -5841,6 +5861,18 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
                 adjustment -= 0.040 * repeated_signal
             else:
                 adjustment -= 0.185 * repeated_signal * intensity
+        if short_pack_slump and rank <= 10 and (number in failed_strong or repeated_count >= 2) and not rescue_signal:
+            adjustment -= 0.120 * intensity
+        if short_pack_slump and rank <= 5 and number not in maps["missed_numbers"] and number not in maps["late_numbers"] and support_signal < 0.50:
+            adjustment -= 0.055 * intensity
+        if (
+            short_pack_slump
+            and rank > 9
+            and (number in maps["missed_numbers"] or number in maps["late_numbers"])
+            and recall_signal >= 0.40
+            and not failed_strong_pack_blocked(row, review)
+        ):
+            adjustment += 0.070 * intensity
         if number in failed_strong and not failed_strong_quarantine_release(row, review):
             adjustment -= 0.135 * intensity
         if previous_guard_blocks_item(row) and recall_signal < 0.50:
@@ -5909,7 +5941,10 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
                 "support_signal": support_signal,
             })
         elif adjustment <= -0.040:
-            demotion_reason = "連莊重入降權" if latest_repeat_reentry.get("latest_draw_number") else "連續失準降權"
+            if short_pack_slump and (number in failed_strong or repeated_count >= 2) and not rescue_signal:
+                demotion_reason = "近月失準強制降權"
+            else:
+                demotion_reason = "連莊重入降權" if latest_repeat_reentry.get("latest_draw_number") else "連續失準降權"
             row["reasons"] = ([demotion_reason] + [text for text in row.get("reasons", []) if text != demotion_reason])[:4]
             demotions.append({
                 "number": number,
@@ -5920,6 +5955,7 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
                 "recall_signal": recall_signal,
                 "support_signal": support_signal,
                 "repeated_failed_signal": repeated_signal,
+                "rescue_signal": rescue_signal,
             })
         adjusted.append(row)
 
@@ -5962,6 +5998,61 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
             and not previous_guard_blocks_item(row)
             and not (row.get("repeat_guard") and not row["repeat_guard"].get("passed"))
         )
+
+    rescue_swaps = []
+
+    def recall_rescue_candidate(row):
+        number = int(row["number"])
+        signal = row.get("prediction_mode_rebuild") or {}
+        cross_passed = int((row.get("cross_validation") or {}).get("passed_count") or 0)
+        return bool(
+            (number in maps["missed_numbers"] or number in maps["late_numbers"])
+            and signal.get("recall_signal", 0.0) >= 0.40
+            and signal.get("support_signal", 0.0) >= 0.38
+            and cross_passed >= 5
+            and eligible_rebuild_candidate(row)
+            and not failed_strong_pack_blocked(row, review)
+        )
+
+    def front_rescue_count(limit=9):
+        return sum(1 for row in adjusted[:limit] if recall_rescue_candidate(row))
+
+    while short_pack_slump and front_rescue_count() < 2 and len(adjusted) >= 10:
+        candidate_index = next(
+            (
+                index for index, row in enumerate(adjusted[9:30], 9)
+                if recall_rescue_candidate(row)
+            ),
+            None,
+        )
+        if candidate_index is None:
+            break
+        replace_index = min(
+            range(2, min(9, len(adjusted))),
+            key=lambda index: (
+                recall_rescue_candidate(adjusted[index]),
+                (adjusted[index].get("prediction_mode_rebuild") or {}).get("recall_signal", 0.0),
+                float(adjusted[index].get("score", 0.0) or 0.0),
+            ),
+        )
+        candidate = adjusted[candidate_index]
+        replaced = adjusted[replace_index]
+        candidate_signal = (candidate.get("prediction_mode_rebuild") or {}).get("recall_signal", 0.0)
+        replaced_signal = (replaced.get("prediction_mode_rebuild") or {}).get("recall_signal", 0.0)
+        if (
+            float(candidate.get("score", 0.0) or 0.0) >= float(replaced.get("score", 0.0) or 0.0) * 0.60
+            or candidate_signal >= replaced_signal + 0.12
+        ):
+            candidate["reasons"] = (["漏抓回補召回"] + [text for text in candidate.get("reasons", []) if text != "漏抓回補召回"])[:4]
+            adjusted[replace_index], adjusted[candidate_index] = adjusted[candidate_index], adjusted[replace_index]
+            rescue_swaps.append({
+                "promoted_number": int(candidate["number"]),
+                "demoted_number": int(replaced["number"]),
+                "promoted_recall_signal": round(candidate_signal, 4),
+                "demoted_recall_signal": round(replaced_signal, 4),
+            })
+        else:
+            break
 
     for zone, required in zone_targets.items():
         while front_count(zone) < required:
@@ -6045,8 +6136,8 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
     adjusted = refresh_candidate_metadata(adjusted)
     return adjusted, {
         "status": "triggered",
-        "method": "actual_failure_feedback_rebuild",
-        "policy": "用最近逐期命中檢討重排；連續失準號降權，漏抓號、漏抓尾數、漏抓區間回補，短包只從重排後前段產生。",
+        "method": "daily_auto_rolling_precision_rebuild",
+        "policy": "每日開獎後重新運算；近月失準短包強制降權，漏抓號、漏抓尾數、漏抓區間回補，符合交叉驗證才允許回到前9。",
         "recent_top5_avg": recent.get("last5_top5_avg"),
         "recent_top10_avg": recent.get("last5_top10_avg"),
         "monthly_status": monthly.get("status"),
@@ -6054,6 +6145,7 @@ def apply_prediction_mode_rebuild(draws, candidates, review=None):
         "after_top10": [int(item["number"]) for item in adjusted[:10]],
         "after_top9": [int(item["number"]) for item in adjusted[:9]],
         "zone_targets": zone_targets,
+        "rescue_swaps": rescue_swaps,
         "coverage_swaps": coverage_swaps,
         "tail_swaps": tail_swaps,
         "promotion_count": len(promotions),
@@ -6142,7 +6234,7 @@ def compute_industrial_analysis(draws, review=None):
     }
     decisive_decision = decisive_battle_decision(candidates, packs, release_gate, slump_recall_coverage, unlikely)
     return {
-        "engine_version": "industrial_v23_actual_failure_feedback_rebuild",
+        "engine_version": "industrial_v24_daily_auto_rolling_precision_rebuild",
         "leakage_guard": True,
         "repeat_guard": repeat_guard(draws),
         "previous_prediction_guard": {

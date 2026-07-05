@@ -1,6 +1,6 @@
 # 539 Daily Integrity Audit
 
-- generated_at: 2026-07-03T14:55:02
+- generated_at: 2026-07-03T16:12:21
 - status: passed
 - failed_count: 0
 
@@ -26,3 +26,9 @@
 - PASS: low_probability_page_exists / C:\Users\MSI\Documents\Codex\2026-06-01\539\outputs\TW539預測系統_20260703_第10版_預測模式重整版\TW539Core\reports\539低機率精準暫避.html
 - PASS: low_probability_page_has_no_mojibake_question_marks / low probability page must not contain mojibake question marks
 - PASS: low_probability_page_has_required_sections / low probability section labels
+- PASS: local_mobile_site_exists / C:\Users\MSI\Documents\Codex\2026-06-01\539\outputs\TW539預測系統_20260703_第10版_預測模式重整版\TW539Core\site
+- PASS: local_mobile_draw_matches_computer / {'computer': {'period': 115000160, 'draw_date': '2026-07-02', 'numbers': [1, 6, 8, 13, 30]}, 'mobile': {'period': 115000160, 'draw_date': '2026-07-02', 'numbers': [1, 6, 8, 13, 30]}}
+- PASS: local_mobile_prediction_matches_computer / {'computer': {'top10': [29, 34, 14, 5, 10, 3, 24, 26, 37, 9], 'packs': {'strong_single': [14], 'two_hit_one': [34, 14], 'three_hit_one': [14, 34, 5], 'five_hit_two': [5, 10, 14, 29, 34], 'nine_hit_three': [3, 5, 10, 14, 24, 26, 29, 34, 37]}}, 'mobile': {'top10': [29, 34, 14, 5, 10, 3, 24, 26, 37, 9], 'packs': {'strong_single': [14], 'two_hit_one': [34, 14], 'three_hit_one': [14, 34, 5], 'five_hit_two': [5, 10, 14, 29, 34], 'nine_hit_three': [3, 5, 10, 14, 24, 26, 29, 34, 37]}}}
+- PASS: local_mobile_version_mentions_latest_period / {'version': '20260703161045', 'generated_at': '2026-07-03T14:49:50', 'mobile_built_at': '2026-07-03T16:10:45+08:00', 'latest_period': 115000160, 'latest_draw_date': '2026-07-02', 'cache_policy': 'network_first_no_store'}
+- PASS: mobile_cloud_publish_status_published / {'version': '20260703161045', 'message': 'Mobile cloud site published successfully.', 'repository': 'pingshen670822/mobile-539-system', 'written_at': '2026-07-03T16:11:39', 'status': 'published', 'url': 'https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260703161045&t=1783066299'}
+- PASS: mobile_cloud_sync_verified / {'status': 'ok', 'checked_at': '2026-07-03T16:11:50', 'local_version': '20260703161045', 'cloud_status': 'published', 'cloud_version': '20260703161045', 'cloud_url': 'https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260703161045&t=1783066299', 'local_latest_draw': {'period': 115000160, 'draw_date': '2026-07-02', 'numbers': [1, 6, 8, 13, 30]}, 'local_prediction': {'generated_at': '2026-07-03T14:49:50', 'top10': [29, 34, 14, 5, 10, 3, 24, 26, 37, 9], 'packs': {'strong_single': [14], 'two_hit_one': [34, 14], 'three_hit_one': [14, 34, 5], 'five_hit_two': [5, 10, 14, 29, 34], 'nine_hit_three': [3, 5, 10, 14, 24, 26, 29, 34, 37]}}, 'remote_latest_draw': {'period': 115000160, 'draw_date': '2026-07-02', 'numbers': [1, 6, 8, 13, 30]}, 'remote_prediction': {'generated_at': '2026-07-03T14:49:50', 'top10': [29, 34, 14, 5, 10, 3, 24, 26, 37, 9], 'packs': {'strong_single': [14], 'two_hit_one': [34, 14], 'three_hit_one': [14, 34, 5], 'five_hit_two': [5, 10, 14, 29, 34], 'nine_hit_three': [3, 5, 10, 14, 24, 26, 29, 34, 37]}}, 'remote_version': {'version': '20260703161045', 'generated_at': '2026-07-03T14:49:50', 'mobile_built_at': '2026-07-03T16:10:45+08:00', 'latest_period': 115000160, 'latest_draw_date': '2026-07-02', 'cache_policy': 'network_first_no_store'}, 'rule': '電腦版與手機雲端必須同版本、同開獎資料、同前十預測、同強牌包；雲端狀態必須為 published。', 'remote_base': 'https://pingshen670822.github.io/mobile-539-system', 'message': '手機雲端已與電腦版同步'}

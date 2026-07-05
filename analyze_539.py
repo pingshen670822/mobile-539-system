@@ -1682,7 +1682,7 @@ def analyze(db_path=DB_PATH):
         industrial.setdefault("release_gate", {})["aerospace_status"] = "watch_only"
     analysis = {
         "generated_at": taipei_now().isoformat(timespec="seconds"),
-        "prediction_mode": "current_precision_stability_v46_actual_failure_feedback_rebuild",
+        "prediction_mode": "current_precision_stability_v47_daily_auto_rolling_precision_rebuild",
         "latest_draw": draws[-1],
         "data_freshness": build_data_freshness(draws[-1]["draw_date"]),
         "windows": [window_summary(draws, size) for size in WINDOWS],

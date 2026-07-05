@@ -188,6 +188,89 @@ def _choose_replacement(candidates, blocked_numbers, required_size, current_numb
     return selected[:required_size]
 
 
+def apply_candidate_guard(analysis, audit):
+    locked_numbers = {int(item["number"]) for item in audit.get("locked_numbers", [])}
+    soft_guard_numbers = {int(item["number"]) for item in audit.get("soft_guard_numbers", [])}
+    guarded_numbers = locked_numbers | soft_guard_numbers
+    if not guarded_numbers:
+        return []
+
+    actions = []
+
+    def adjust_rows(rows):
+        adjusted = []
+        changed = []
+        for row in rows or []:
+            item = dict(row)
+            try:
+                number = int(item.get("number"))
+            except (TypeError, ValueError):
+                adjusted.append(item)
+                continue
+            if number in locked_numbers:
+                penalty = 0.42
+                reason = "\u7a69\u5b9a\u6cbb\u7406\u9396\u865f\u964d\u6b0a"
+            elif number in soft_guard_numbers:
+                penalty = 0.26
+                reason = "\u7a69\u5b9a\u6cbb\u7406\u8edf\u6027\u964d\u6b0a"
+            else:
+                adjusted.append(item)
+                continue
+            before = float(item.get("score", 0.0) or 0.0)
+            item["pre_stability_governor_score"] = round(before, 4)
+            item["score"] = round(max(0.0, before - penalty), 4)
+            reasons = [text for text in item.get("reasons", []) if text != reason]
+            item["reasons"] = ([reason] + reasons)[:4]
+            item["stability_governor_candidate_guard"] = {
+                "status": "penalized",
+                "penalty": penalty,
+                "guard_type": "hard" if number in locked_numbers else "soft",
+            }
+            changed.append({
+                "number": number,
+                "before": round(before, 4),
+                "after": item["score"],
+                "guard_type": "hard" if number in locked_numbers else "soft",
+            })
+            adjusted.append(item)
+        adjusted.sort(
+            key=lambda item: (
+                float(item.get("score", 0.0) or 0.0),
+                int((item.get("cross_validation") or {}).get("passed_count") or 0),
+                -int(item.get("number", 0) or 0),
+            ),
+            reverse=True,
+        )
+        for index, item in enumerate(adjusted, 1):
+            item["rank"] = index
+        return adjusted, changed
+
+    for key in ["candidates", "official_candidates"]:
+        rows = analysis.get(key)
+        if rows:
+            adjusted, changed = adjust_rows(rows)
+            analysis[key] = adjusted
+            if changed:
+                actions.append({
+                    "type": "candidate_guard",
+                    "target": key,
+                    "changed": changed[:12],
+                })
+
+    industrial = analysis.setdefault("industrial_engine", {})
+    rows = industrial.get("candidates")
+    if rows:
+        adjusted, changed = adjust_rows(rows)
+        industrial["candidates"] = adjusted
+        if changed:
+            actions.append({
+                "type": "candidate_guard",
+                "target": "industrial_candidates",
+                "changed": changed[:12],
+            })
+    return actions
+
+
 def apply_single_lock_guard(analysis, audit):
     locked_numbers = {int(item["number"]) for item in audit.get("locked_numbers", [])}
     soft_guard_numbers = {int(item["number"]) for item in audit.get("soft_guard_numbers", [])}
@@ -202,6 +285,8 @@ def apply_single_lock_guard(analysis, audit):
         "strong_single": 1,
         "two_hit_one": 2,
         "three_hit_one": 3,
+        "five_hit_two": 5,
+        "nine_hit_three": 9,
     }
     for key, size in pack_specs.items():
         pack = packs.get(key) or {}
@@ -342,6 +427,7 @@ def apply_stability_governor(db_path, analysis):
     rows = _recent_settled_rows(db_path)
     single_audit = single_lock_audit(rows)
     actions = []
+    actions.extend(apply_candidate_guard(analysis, single_audit))
     actions.extend(apply_single_lock_guard(analysis, single_audit))
     actions.extend(apply_unlikely_gate(analysis))
     industrial = analysis.setdefault("industrial_engine", {})

@@ -1,3 +1,7 @@
+param(
+  [switch]$NoOpen
+)
+
 $ErrorActionPreference = "Stop"
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -58,12 +62,22 @@ function Invoke-LoggedCommand {
   Write-RunLog ("START " + $Step)
   Write-OneClickStatus "running" $Step "Step is running."
   try {
-    & $Command 2>&1 | Tee-Object -FilePath $RunLog -Append
-    if ($LASTEXITCODE -ne $null -and $LASTEXITCODE -ne 0) {
-      throw ("Step exited with code " + $LASTEXITCODE)
+    $previousPreference = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $global:LASTEXITCODE = 0
+    & $Command 2>&1 | ForEach-Object {
+      $text = $_.ToString()
+      Write-Host $text
+      Add-Content -LiteralPath $RunLog -Value $text -Encoding UTF8
+    }
+    $exitCode = $LASTEXITCODE
+    $ErrorActionPreference = $previousPreference
+    if ($exitCode -ne $null -and $exitCode -ne 0) {
+      throw ("Step exited with code " + $exitCode)
     }
     Write-RunLog ("PASS " + $Step)
   } catch {
+    $ErrorActionPreference = "Stop"
     Write-RunLog ("FAIL " + $Step + " : " + $_.Exception.Message)
     Write-OneClickStatus "failed" $Step $_.Exception.Message
     throw
@@ -77,6 +91,10 @@ Write-RunLog ("Python=" + $Python)
 
 Invoke-LoggedCommand "compile check" {
   & $Python -m py_compile ".\update_539.py" ".\analyze_539.py" ".\industrial_engine.py" ".\battle_report.py" ".\pages_build.py" ".\verify_mobile_sync.py" ".\daily_integrity_audit.py" ".\system_file_check.py"
+}
+
+Invoke-LoggedCommand "daily automatic schedule repair" {
+  & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File ".\每日自動更新排程修復.ps1"
 }
 
 Invoke-LoggedCommand "latest draw update and full rebuild" {
@@ -103,6 +121,6 @@ Write-OneClickStatus "passed" "complete" "All one-click steps passed."
 Write-RunLog "TW539 one click full run finished."
 
 $ReportPath = Join-Path $ReportDir "latest_battle_report.html"
-if (Test-Path -LiteralPath $ReportPath) {
+if ((-not $NoOpen) -and (Test-Path -LiteralPath $ReportPath)) {
   Start-Process $ReportPath
 }
