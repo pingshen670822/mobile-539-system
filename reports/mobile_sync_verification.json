@@ -1,132 +1,132 @@
 {
   "status": "ok",
-  "checked_at": "2026-07-03T16:11:50",
-  "local_version": "20260703161045",
+  "checked_at": "2026-07-06T07:47:07",
+  "local_version": "20260706074533",
   "cloud_status": "published",
-  "cloud_version": "20260703161045",
-  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260703161045&t=1783066299",
+  "cloud_version": "20260706074533",
+  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260706074533&t=1783295220",
   "local_latest_draw": {
-    "period": 115000160,
-    "draw_date": "2026-07-02",
+    "period": 115000162,
+    "draw_date": "2026-07-04",
     "numbers": [
-      1,
-      6,
-      8,
-      13,
-      30
+      2,
+      10,
+      15,
+      31,
+      37
     ]
   },
   "local_prediction": {
-    "generated_at": "2026-07-03T14:49:50",
+    "generated_at": "2026-07-06T07:44:23",
     "top10": [
-      29,
+      30,
       34,
-      14,
-      5,
-      10,
-      3,
-      24,
       26,
-      37,
-      9
+      3,
+      13,
+      5,
+      24,
+      17,
+      7,
+      32
     ],
     "packs": {
       "strong_single": [
-        14
+        30
       ],
       "two_hit_one": [
-        34,
-        14
+        13,
+        30
       ],
       "three_hit_one": [
-        14,
-        34,
-        5
+        13,
+        30,
+        34
       ],
       "five_hit_two": [
-        5,
-        10,
-        14,
-        29,
-        34
+        3,
+        13,
+        26,
+        30,
+        32
       ],
       "nine_hit_three": [
         3,
         5,
-        10,
-        14,
+        13,
+        17,
         24,
         26,
-        29,
+        30,
         34,
-        37
+        7
       ]
     }
   },
   "remote_latest_draw": {
-    "period": 115000160,
-    "draw_date": "2026-07-02",
+    "period": 115000162,
+    "draw_date": "2026-07-04",
     "numbers": [
-      1,
-      6,
-      8,
-      13,
-      30
+      2,
+      10,
+      15,
+      31,
+      37
     ]
   },
   "remote_prediction": {
-    "generated_at": "2026-07-03T14:49:50",
+    "generated_at": "2026-07-06T07:44:23",
     "top10": [
-      29,
+      30,
       34,
-      14,
-      5,
-      10,
-      3,
-      24,
       26,
-      37,
-      9
+      3,
+      13,
+      5,
+      24,
+      17,
+      7,
+      32
     ],
     "packs": {
       "strong_single": [
-        14
+        30
       ],
       "two_hit_one": [
-        34,
-        14
+        13,
+        30
       ],
       "three_hit_one": [
-        14,
-        34,
-        5
+        13,
+        30,
+        34
       ],
       "five_hit_two": [
-        5,
-        10,
-        14,
-        29,
-        34
+        3,
+        13,
+        26,
+        30,
+        32
       ],
       "nine_hit_three": [
         3,
         5,
-        10,
-        14,
+        13,
+        17,
         24,
         26,
-        29,
+        30,
         34,
-        37
+        7
       ]
     }
   },
   "remote_version": {
-    "version": "20260703161045",
-    "generated_at": "2026-07-03T14:49:50",
-    "mobile_built_at": "2026-07-03T16:10:45+08:00",
-    "latest_period": 115000160,
-    "latest_draw_date": "2026-07-02",
+    "version": "20260706074533",
+    "generated_at": "2026-07-06T07:44:23",
+    "mobile_built_at": "2026-07-06T07:45:33+08:00",
+    "latest_period": 115000162,
+    "latest_draw_date": "2026-07-04",
     "cache_policy": "network_first_no_store"
   },
   "rule": "電腦版與手機雲端必須同版本、同開獎資料、同前十預測、同強牌包；雲端狀態必須為 published。",

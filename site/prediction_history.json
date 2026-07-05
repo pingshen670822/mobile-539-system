@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T07:45:26",
+  "generated_at": "2026-07-06T07:51:58",
   "total_periods": 81,
   "settled_periods": 30,
   "pending_periods": 1,
@@ -40,10 +40,10 @@
         7,
         32,
         9,
-        36,
         18,
         22,
-        23
+        23,
+        38
       ],
       "unlikely_packs": {
         "five_miss": {
@@ -194,9 +194,9 @@
       "strong_pack_hits": {},
       "unlikely_pack_hits": {},
       "status": "pending",
-      "created_at": "2026-07-06T07:44:54",
+      "created_at": "2026-07-06T07:51:56",
       "settled_at": null,
-      "snapshot_count": 3
+      "snapshot_count": 5
     },
     {
       "based_on_period": 115000161,

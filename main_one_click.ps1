@@ -9,6 +9,8 @@ $LogDir = Join-Path $ScriptDir "logs"
 $ReportDir = Join-Path $ScriptDir "reports"
 $StatusPath = Join-Path $ReportDir "one_click_status.json"
 $RunLog = Join-Path $LogDir ("one_click_run_" + (Get-Date -Format "yyyyMMdd_HHmmss") + ".log")
+$ScheduleRepairName = (-join ([char[]](0x6BCF,0x65E5,0x81EA,0x52D5,0x66F4,0x65B0,0x6392,0x7A0B,0x4FEE,0x5FA9))) + ".ps1"
+$ScheduleRepairPath = Join-Path $ScriptDir $ScheduleRepairName
 
 New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
 New-Item -ItemType Directory -Path $ReportDir -Force | Out-Null
@@ -90,11 +92,11 @@ Write-RunLog "TW539 one click full run started."
 Write-RunLog ("Python=" + $Python)
 
 Invoke-LoggedCommand "compile check" {
-  & $Python -m py_compile ".\update_539.py" ".\analyze_539.py" ".\industrial_engine.py" ".\battle_report.py" ".\pages_build.py" ".\verify_mobile_sync.py" ".\daily_integrity_audit.py" ".\system_file_check.py"
+  & $Python -m py_compile ".\update_539.py" ".\analyze_539.py" ".\industrial_engine.py" ".\stability_governor.py" ".\battle_report.py" ".\pages_build.py" ".\verify_mobile_sync.py" ".\daily_integrity_audit.py" ".\system_file_check.py"
 }
 
 Invoke-LoggedCommand "daily automatic schedule repair" {
-  & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File ".\每日自動更新排程修復.ps1"
+  & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File $ScheduleRepairPath
 }
 
 Invoke-LoggedCommand "latest draw update and full rebuild" {
