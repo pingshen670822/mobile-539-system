@@ -235,21 +235,36 @@ Write-PublishStatus "pushed" "Mobile files were pushed to GitHub. Workflow is st
 
 Write-Host ""
 Write-Host "Starting the cloud calculation and website deployment..."
-gh workflow run daily-update.yml --repo $Repository -f deploy_only=true
-if ($LASTEXITCODE -ne 0) {
-  Write-PublishStatus "workflow_failed" "The cloud update workflow could not be started." $Owner | Out-Null
-  throw "The cloud update workflow could not be started."
-}
-
-Start-Sleep -Seconds 5
-$RunId = gh run list --repo $Repository --workflow daily-update.yml --limit 1 --json databaseId --jq ".[0].databaseId"
-if ($RunId) {
-  gh run watch $RunId --repo $Repository --exit-status
+$DeployPassed = $false
+$LastDeployError = ""
+for ($attempt = 1; $attempt -le 3; $attempt++) {
+  Write-Host ("Deployment attempt " + $attempt + " of 3")
+  gh workflow run daily-update.yml --repo $Repository -f deploy_only=true
   if ($LASTEXITCODE -ne 0) {
-    Start-Process "https://github.com/$Repository/actions"
-    Write-PublishStatus "deploy_failed" "GitHub Pages deployment failed." $Owner | Out-Null
-    throw "GitHub Pages deployment failed."
+    $LastDeployError = "The cloud update workflow could not be started."
+    Write-PublishStatus "workflow_retrying" $LastDeployError $Owner | Out-Null
+    Start-Sleep -Seconds (15 * $attempt)
+    continue
   }
+
+  Start-Sleep -Seconds 5
+  $RunId = gh run list --repo $Repository --workflow daily-update.yml --limit 1 --json databaseId --jq ".[0].databaseId"
+  if ($RunId) {
+    gh run watch $RunId --repo $Repository --exit-status
+    if ($LASTEXITCODE -eq 0) {
+      $DeployPassed = $true
+      break
+    }
+    $LastDeployError = "GitHub Pages deployment failed."
+  } else {
+    $LastDeployError = "GitHub workflow run id was not found."
+  }
+  Write-PublishStatus "deploy_retrying" ($LastDeployError + " Retrying automatically.") $Owner | Out-Null
+  Start-Sleep -Seconds (20 * $attempt)
+}
+if (-not $DeployPassed) {
+  Write-PublishStatus "deploy_failed" $LastDeployError $Owner | Out-Null
+  throw $LastDeployError
 }
 $PublishedVersion = Get-RemoteMobileVersion $PageUrl $MobileVersion
 $FreshPageUrl = $PageUrl + "clear-cache.html?v=$PublishedVersion&t=$([DateTimeOffset]::Now.ToUnixTimeSeconds())"
@@ -258,4 +273,3 @@ Write-PublishStatus "published" "Mobile cloud site published successfully." $Own
 Write-Host ""
 Write-Host "The free independent mobile website is online:"
 Write-Host $FreshPageUrl
-Start-Process $FreshPageUrl

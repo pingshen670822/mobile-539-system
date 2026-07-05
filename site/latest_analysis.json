@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T07:51:20",
+  "generated_at": "2026-07-06T07:57:40",
   "prediction_mode": "current_precision_stability_v47_daily_auto_rolling_precision_rebuild",
   "latest_draw": {
     "period": 115000162,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-04",
     "expected_latest_date": "2026-07-04",
     "lag_days": 0,
-    "checked_at": "2026-07-06T07:48:12"
+    "checked_at": "2026-07-06T07:53:48"
   },
   "windows": [
     {
@@ -2644,22 +2644,16 @@
       ],
       "source_performance": [
         {
-          "reason": "近100期偏熱(14次)",
-          "hit": 1,
-          "miss": 0,
-          "hit_rate": 1.0
-        },
-        {
           "reason": "月度漏抓壓力加權",
           "hit": 1,
           "miss": 0,
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "近100期偏熱(14次)",
           "hit": 1,
-          "miss": 1,
-          "hit_rate": 0.5
+          "miss": 0,
+          "hit_rate": 1.0
         },
         {
           "reason": "上期失敗號碼僅微降權",
@@ -2668,13 +2662,19 @@
           "hit_rate": 0.5
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "與上期號碼近100期共現6次",
+          "hit": 1,
+          "miss": 1,
+          "hit_rate": 0.5
+        },
+        {
+          "reason": "相似牌",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "相似牌",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -3407,6 +3407,12 @@
           "hit_rate": 0.5
         },
         {
+          "reason": "失敗號回補驗算",
+          "hit": 1,
+          "miss": 2,
+          "hit_rate": 0.333
+        },
+        {
           "reason": "牌型相似跟隨",
           "hit": 1,
           "miss": 2,
@@ -3414,12 +3420,6 @@
         },
         {
           "reason": "昨日預測號軟守門觀察",
-          "hit": 1,
-          "miss": 2,
-          "hit_rate": 0.333
-        },
-        {
-          "reason": "失敗號回補驗算",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -4807,22 +4807,16 @@
       ],
       "source_performance": [
         {
-          "reason": "近100期偏熱(14次)",
-          "hit": 1,
-          "miss": 0,
-          "hit_rate": 1.0
-        },
-        {
           "reason": "月度漏抓壓力加權",
           "hit": 1,
           "miss": 0,
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "近100期偏熱(14次)",
           "hit": 1,
-          "miss": 1,
-          "hit_rate": 0.5
+          "miss": 0,
+          "hit_rate": 1.0
         },
         {
           "reason": "上期失敗號碼僅微降權",
@@ -4831,13 +4825,19 @@
           "hit_rate": 0.5
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "與上期號碼近100期共現6次",
+          "hit": 1,
+          "miss": 1,
+          "hit_rate": 0.5
+        },
+        {
+          "reason": "相似牌",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "相似牌",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -6271,22 +6271,16 @@
         ],
         "source_performance": [
           {
-            "reason": "近100期偏熱(14次)",
-            "hit": 1,
-            "miss": 0,
-            "hit_rate": 1.0
-          },
-          {
             "reason": "月度漏抓壓力加權",
             "hit": 1,
             "miss": 0,
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "近100期偏熱(14次)",
             "hit": 1,
-            "miss": 1,
-            "hit_rate": 0.5
+            "miss": 0,
+            "hit_rate": 1.0
           },
           {
             "reason": "上期失敗號碼僅微降權",
@@ -6295,13 +6289,19 @@
             "hit_rate": 0.5
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "與上期號碼近100期共現6次",
+            "hit": 1,
+            "miss": 1,
+            "hit_rate": 0.5
+          },
+          {
+            "reason": "相似牌",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "相似牌",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -7034,6 +7034,12 @@
             "hit_rate": 0.5
           },
           {
+            "reason": "失敗號回補驗算",
+            "hit": 1,
+            "miss": 2,
+            "hit_rate": 0.333
+          },
+          {
             "reason": "牌型相似跟隨",
             "hit": 1,
             "miss": 2,
@@ -7041,12 +7047,6 @@
           },
           {
             "reason": "昨日預測號軟守門觀察",
-            "hit": 1,
-            "miss": 2,
-            "hit_rate": 0.333
-          },
-          {
-            "reason": "失敗號回補驗算",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -8434,22 +8434,16 @@
         ],
         "source_performance": [
           {
-            "reason": "近100期偏熱(14次)",
-            "hit": 1,
-            "miss": 0,
-            "hit_rate": 1.0
-          },
-          {
             "reason": "月度漏抓壓力加權",
             "hit": 1,
             "miss": 0,
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "近100期偏熱(14次)",
             "hit": 1,
-            "miss": 1,
-            "hit_rate": 0.5
+            "miss": 0,
+            "hit_rate": 1.0
           },
           {
             "reason": "上期失敗號碼僅微降權",
@@ -8458,13 +8452,19 @@
             "hit_rate": 0.5
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "與上期號碼近100期共現6次",
+            "hit": 1,
+            "miss": 1,
+            "hit_rate": 0.5
+          },
+          {
+            "reason": "相似牌",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "相似牌",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -35130,7 +35130,7 @@
     },
     "stability_governor": {
       "status": "corrected",
-      "checked_at": "2026-07-06T07:51:37",
+      "checked_at": "2026-07-06T07:58:00",
       "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
       "single_lock_audit": {
         "recent_single_rows": [
@@ -71738,5 +71738,5 @@
       }
     }
   },
-  "official_prediction_status": "observation_only_updated_pending"
+  "official_prediction_status": "observation_only_recalculated_same_as_official_refreshed"
 }
