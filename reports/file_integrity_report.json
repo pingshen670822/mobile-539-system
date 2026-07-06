@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T08:01:12",
+  "generated_at": "2026-07-06T08:06:59",
   "status": "ok",
   "checked_files": 289,
   "failed_count": 0,
@@ -63,7 +63,7 @@
       "path": "daily_integrity_audit.py",
       "status": "ok",
       "warnings": [],
-      "size": 13774
+      "size": 14030
     },
     {
       "path": "daily_midnight_recompute.ps1",
@@ -339,13 +339,13 @@
       "path": "reports\\daily_integrity_audit.json",
       "status": "ok",
       "warnings": [],
-      "size": 14095
+      "size": 14400
     },
     {
       "path": "reports\\daily_integrity_audit.md",
       "status": "ok",
       "warnings": [],
-      "size": 7286
+      "size": 7460
     },
     {
       "path": "reports\\dashboard.html",
@@ -465,7 +465,7 @@
       "path": "reports\\one_click_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 345
+      "size": 339
     },
     {
       "path": "reports\\post_draw_mobile_sync_status.json",

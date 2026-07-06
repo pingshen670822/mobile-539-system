@@ -70,12 +70,12 @@
 <main>
     <section class="band">
       <h2>手機獨立操作</h2>
-      <p><strong>手機版最後建立：2026-07-06 08:06:17</strong></p>
-      <p>最新資料：115000162期 / 2026-07-04 / 版本 20260706080617</p>
-      <p><a class="mobile-action refresh" href="clear-cache.html?v=20260706080617">清除舊版快取並打開最新手機版</a></p>
-      <p><a class="mobile-action history" href="prediction-history.html?v=20260706080617">查看每期預測對比</a></p>
-      <p><a class="mobile-action secondary" href="monthly-summary.html?v=20260706080617">查看每月總整</a></p>
-      <p><a class="mobile-action secondary" href="history/每月資料保存索引.html?v=20260706080617">查看每月保存資料</a></p>
+      <p><strong>手機版最後建立：2026-07-06 10:02:49</strong></p>
+      <p>最新資料：115000162期 / 2026-07-04 / 版本 20260706100249</p>
+      <p><a class="mobile-action refresh" href="clear-cache.html?v=20260706100249">清除舊版快取並打開最新手機版</a></p>
+      <p><a class="mobile-action history" href="prediction-history.html?v=20260706100249">查看每期預測對比</a></p>
+      <p><a class="mobile-action secondary" href="monthly-summary.html?v=20260706100249">查看每月總整</a></p>
+      <p><a class="mobile-action secondary" href="history/每月資料保存索引.html?v=20260706100249">查看每月保存資料</a></p>
       <p><a class="mobile-action" href="https://github.com/pingshen670924-dotcom/mobile-539-system/actions/workflows/daily-update.yml">登入雲端平台後立即更新</a></p>
       <p><button class="mobile-action refresh" type="button" onclick="forceRefresh()">強制重新載入最新手機成果</button></p>
       <p>手機版開獎後即時同步：台北時間 20:35 起進入密集追蹤，每45秒追台彩最新資料，抓到後立刻重算、重建電腦戰報與手機版。</p>
@@ -107,8 +107,8 @@
         <div class="card"><div class="label">資料狀態</div><div class="value">資料新鮮</div></div>
         <div class="card"><div class="label">檢查</div><div class="value">通過</div></div>
         <div class="card"><div class="label">待結算目標期</div><div class="value">115000163</div></div>
-        <div class="card hot-card"><div class="label">獨隻</div><div class="value">36</div></div>
-        <div class="card"><div class="label">9碼核心</div><div class="value">36 13 30 34 03 26 32 05 24</div></div>
+        <div class="card hot-card"><div class="label">獨隻</div><div class="value">30</div></div>
+        <div class="card"><div class="label">9碼核心</div><div class="value">03 05 13 17 24 26 30 34 07</div></div>
       </div>
       <p>運算原則：只顯示完成運算後的精準資訊；依全歷史資料庫、多模型交叉驗算與滾動回測輸出。</p>
     </div>
@@ -380,7 +380,7 @@
 </script>
 
     <script>
-      window.MOBILE_BUILD_VERSION="20260706080617";
+      window.MOBILE_BUILD_VERSION="20260706100249";
       async function forceRefresh(){
         try{
           if("serviceWorker" in navigator){
@@ -403,7 +403,7 @@
           }
         }catch(e){}
       }
-      if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js?v=20260706080617");
+      if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js?v=20260706100249");
       setInterval(checkMobileVersion, 15000);
       window.addEventListener("focus", checkMobileVersion);
       document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkMobileVersion();});

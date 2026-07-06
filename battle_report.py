@@ -4358,6 +4358,24 @@ def build_compact_html_report():
     industrial = analysis.get("industrial_engine") or {}
     decision = industrial.get("decisive_battle_decision") or {}
     packs = analysis.get("strong_prediction_packs") or {}
+    pack_single = (packs.get("strong_single") or {}).get("numbers", [])
+    pack_two = (packs.get("two_hit_one") or {}).get("numbers", [])
+    pack_three = (packs.get("three_hit_one") or {}).get("numbers", [])
+    pack_five = (packs.get("five_hit_two") or {}).get("numbers", [])
+    pack_nine = (packs.get("nine_hit_three") or {}).get("numbers", [])
+    if pack_single:
+        decision["primary_single"] = pack_single
+    if pack_two:
+        decision["primary_two"] = pack_two
+    if pack_three:
+        decision["primary_three"] = pack_three
+    if pack_five:
+        decision["primary_five"] = pack_five
+        decision["five_hit_two"] = pack_five
+    if pack_nine:
+        decision["primary_nine"] = pack_nine
+        decision["nine_hit_three"] = pack_nine
+        decision["attack_core_top9"] = pack_nine
     freshness = analysis.get("data_freshness") or health.get("data_freshness") or {}
     performance = health.get("prediction_performance") or {}
     strong_stats = performance.get("strong_pack_stats") or {}

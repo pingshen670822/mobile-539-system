@@ -423,12 +423,40 @@ def apply_unlikely_gate(analysis):
     return actions
 
 
+def sync_decisive_decision_from_packs(analysis):
+    industrial = analysis.setdefault("industrial_engine", {})
+    packs = analysis.get("strong_prediction_packs") or industrial.get("strong_prediction_packs") or {}
+    decision = industrial.get("decisive_battle_decision") or {}
+    mapping = {
+        "strong_single": ["primary_single"],
+        "two_hit_one": ["primary_two"],
+        "three_hit_one": ["primary_three"],
+        "five_hit_two": ["primary_five", "five_hit_two"],
+        "nine_hit_three": ["primary_nine", "nine_hit_three", "attack_core_top9"],
+    }
+    changed = []
+    for pack_key, decision_keys in mapping.items():
+        numbers = _as_int_list((packs.get(pack_key) or {}).get("numbers", []))
+        if not numbers:
+            continue
+        for decision_key in decision_keys:
+            if decision.get(decision_key) != numbers:
+                decision[decision_key] = numbers
+                changed.append(decision_key)
+    industrial["decisive_battle_decision"] = decision
+    return [{
+        "type": "decision_cache_sync",
+        "changed_fields": sorted(set(changed)),
+    }] if changed else []
+
+
 def apply_stability_governor(db_path, analysis):
     rows = _recent_settled_rows(db_path)
     single_audit = single_lock_audit(rows)
     actions = []
     actions.extend(apply_candidate_guard(analysis, single_audit))
     actions.extend(apply_single_lock_guard(analysis, single_audit))
+    actions.extend(sync_decisive_decision_from_packs(analysis))
     actions.extend(apply_unlikely_gate(analysis))
     industrial = analysis.setdefault("industrial_engine", {})
     industrial["stability_governor"] = {

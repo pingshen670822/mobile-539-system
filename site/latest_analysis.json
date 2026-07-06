@@ -13175,7 +13175,7 @@
       "grade": "C",
       "policy": "always_output_model_decision_when_data_is_fresh",
       "primary_single": [
-        36
+        30
       ],
       "two_hit_one": [
         13,
@@ -13194,15 +13194,15 @@
         32
       ],
       "nine_hit_three": [
-        30,
-        26,
-        36,
-        34,
         3,
-        13,
         5,
+        13,
+        17,
         24,
-        17
+        26,
+        30,
+        34,
+        7
       ],
       "front9_precision_core": [
         36,
@@ -13216,15 +13216,15 @@
         24
       ],
       "attack_core_top9": [
-        36,
+        3,
+        5,
         13,
+        17,
+        24,
+        26,
         30,
         34,
-        3,
-        26,
-        32,
-        5,
-        24
+        7
       ],
       "attack_core_top10": [
         36,
@@ -13868,6 +13868,33 @@
           ],
           "selection_model": "super_single_multi_layer_engine"
         }
+      ],
+      "primary_two": [
+        13,
+        30
+      ],
+      "primary_three": [
+        13,
+        30,
+        34
+      ],
+      "primary_five": [
+        3,
+        13,
+        26,
+        30,
+        32
+      ],
+      "primary_nine": [
+        3,
+        5,
+        13,
+        17,
+        24,
+        26,
+        30,
+        34,
+        7
       ]
     },
     "weights": {
