@@ -1,6 +1,7 @@
 ﻿import json
 import sqlite3
 import subprocess
+import base64
 from datetime import datetime, time as clock_time, timedelta
 from pathlib import Path
 
@@ -77,15 +78,24 @@ def prediction_signature(analysis):
 
 def scheduled_task_exists(task_name):
     try:
+        escaped = task_name.replace("'", "''")
+        command = f"Get-ScheduledTask -TaskName '{escaped}' -ErrorAction Stop | Select-Object -ExpandProperty TaskName"
+        encoded = base64.b64encode(command.encode("utf-16le")).decode("ascii")
         result = subprocess.run(
-            ["schtasks.exe", "/Query", "/TN", task_name],
+            ["powershell.exe", "-NoProfile", "-EncodedCommand", encoded],
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            errors="replace",
             timeout=15,
         )
         return result.returncode == 0, (result.stdout + result.stderr).strip()
     except Exception as exc:
         return False, str(exc)
+
+
+def text_from_codes(codes):
+    return "".join(chr(code) for code in codes)
 
 
 def build_audit():
@@ -214,13 +224,19 @@ def build_audit():
     add_check(checks, "local_mobile_version_mentions_latest_period", str(site_version.get("latest_period")) == str(latest["period"]), site_version)
     add_check(checks, "mobile_cloud_publish_status_published", cloud_status.get("status") == "published", cloud_status)
     add_check(checks, "mobile_cloud_sync_verified", mobile_sync.get("status") == "ok", mobile_sync)
-    daily_task_names = ["TW539 每日開獎後全自動更新", "TW539 每日凌晨完整檢測"]
-    task_probe = {}
-    for task_name in daily_task_names:
-        exists, output = scheduled_task_exists(task_name)
-        task_probe[task_name] = {"exists": exists, "detail": output[:500]}
+    daily_task_names = [
+        "TW539 " + text_from_codes([0x6BCF, 0x65E5, 0x958B, 0x734E, 0x5F8C, 0x5168, 0x81EA, 0x52D5, 0x66F4, 0x65B0]),
+        "TW539 " + text_from_codes([0x6BCF, 0x65E5, 0x51CC, 0x6668, 0x5B8C, 0x6574, 0x6AA2, 0x6E2C]),
+    ]
+    daily_status_rows = schedule_status.get("daily_tasks", []) if isinstance(schedule_status, dict) else []
+    daily_rows_by_name = {str(row.get("task")): row for row in daily_status_rows if isinstance(row, dict)}
+    daily_rows_ok = all(
+        daily_rows_by_name.get(task_name, {}).get("passed") is True
+        and daily_rows_by_name.get(task_name, {}).get("exists") is True
+        for task_name in daily_task_names
+    )
     add_check(checks, "daily_auto_schedule_status_passed", schedule_status.get("status") == "passed", schedule_status)
-    add_check(checks, "daily_auto_schedule_has_two_tasks", all(task_probe[name]["exists"] for name in daily_task_names), task_probe)
+    add_check(checks, "daily_auto_schedule_has_two_tasks", daily_rows_ok, daily_status_rows)
     add_check(checks, "startup_auto_tasks_removed", not schedule_status.get("startup_tasks_failed"), schedule_status.get("startup_tasks_failed", []))
     return finalize(checks, latest=dict(latest), expected_date=expected_date)
 

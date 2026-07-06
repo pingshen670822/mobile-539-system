@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-06T07:58:25",
+  "generated_at": "2026-07-06T08:06:13",
   "database_exists": true,
   "backup_count": 10,
-  "latest_backup": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260703_第10版_預測模式重整版\\TW539Core\\backups\\539_20260706_075347.sqlite",
+  "latest_backup": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260703_第10版_預測模式重整版\\TW539Core\\backups\\539_20260706_080243.sqlite",
   "log_exists": true,
   "latest_analysis_exists": true,
   "status": "ok",
@@ -28,7 +28,7 @@
       37
     ],
     "source": "taiwanlottery_latest_result",
-    "fetched_at": "2026-07-06T07:53:48"
+    "fetched_at": "2026-07-06T08:02:44"
   },
   "data_freshness": {
     "status": "fresh",
@@ -37,14 +37,14 @@
   },
   "last_run": {
     "run_type": "latest",
-    "started_at": "2026-07-06T07:53:47",
-    "finished_at": "2026-07-06T07:53:48",
+    "started_at": "2026-07-06T08:02:43",
+    "finished_at": "2026-07-06T08:02:44",
     "status": "success",
     "message": "{\"rows\": 5906, \"invalid_periods\": [], \"duplicate_periods\": [], \"latest_period\": 115000162, \"latest_date\": \"2026-07-04\"}"
   },
   "pending_predictions": 1,
   "settled_predictions": 30,
-  "prediction_snapshots": 228,
+  "prediction_snapshots": 229,
   "prediction_performance": {
     "settled": 30,
     "top5_avg_hits": 0.667,
@@ -201,8 +201,8 @@
   },
   "mobile": {
     "status": "built",
-    "version": "20260706075200",
-    "mobile_built_at": "2026-07-06T07:52:00+08:00",
+    "version": "20260706075830",
+    "mobile_built_at": "2026-07-06T07:58:30+08:00",
     "latest_period": 115000162,
     "latest_draw_date": "2026-07-04"
   }

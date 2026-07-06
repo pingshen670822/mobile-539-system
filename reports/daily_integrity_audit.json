@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T16:12:21",
+  "generated_at": "2026-07-06T08:02:22",
   "status": "passed",
   "failed_count": 0,
   "checks": [
@@ -7,19 +7,19 @@
       "name": "draw_count_minimum",
       "passed": true,
       "detail": {
-        "count": 5904,
+        "count": 5906,
         "min_period": 96000001,
-        "max_period": 115000160,
+        "max_period": 115000162,
         "min_date": "2007-01-01",
-        "max_date": "2026-07-02"
+        "max_date": "2026-07-04"
       }
     },
     {
       "name": "latest_date_fresh",
       "passed": true,
       "detail": {
-        "latest": "2026-07-02",
-        "expected": "2026-07-02"
+        "latest": "2026-07-04",
+        "expected": "2026-07-04"
       }
     },
     {
@@ -46,22 +46,6 @@
       "name": "recent_predictions_settled",
       "passed": true,
       "detail": [
-        {
-          "target_period": 115000155,
-          "status": "settled",
-          "actual_period": 115000155,
-          "top5_hits": 1,
-          "top10_hits": 1,
-          "top15_hits": 2
-        },
-        {
-          "target_period": 115000156,
-          "status": "settled",
-          "actual_period": 115000156,
-          "top5_hits": 0,
-          "top10_hits": 1,
-          "top15_hits": 2
-        },
         {
           "target_period": 115000157,
           "status": "settled",
@@ -93,6 +77,22 @@
           "top5_hits": 1,
           "top10_hits": 1,
           "top15_hits": 2
+        },
+        {
+          "target_period": 115000161,
+          "status": "settled",
+          "actual_period": 115000161,
+          "top5_hits": 0,
+          "top10_hits": 1,
+          "top15_hits": 1
+        },
+        {
+          "target_period": 115000162,
+          "status": "settled",
+          "actual_period": 115000162,
+          "top5_hits": 1,
+          "top10_hits": 1,
+          "top15_hits": 1
         }
       ]
     },
@@ -105,30 +105,30 @@
       "name": "latest_draw_has_settled_prediction_record",
       "passed": true,
       "detail": {
-        "target_period": 115000160,
+        "target_period": 115000162,
         "status": "settled",
-        "actual_period": 115000160,
-        "actual_date": "2026-07-02",
+        "actual_period": 115000162,
+        "actual_date": "2026-07-04",
         "top5_hits": 1,
         "top10_hits": 1,
-        "top15_hits": 2
+        "top15_hits": 1
       }
     },
     {
       "name": "analysis_matches_database",
       "passed": true,
       "detail": {
-        "analysis": 115000160,
-        "database": 115000160
+        "analysis": 115000162,
+        "database": 115000162
       }
     },
     {
       "name": "health_sync_passed",
       "passed": true,
       "detail": {
-        "database_latest_period": 115000160,
-        "analysis_latest_period": 115000160,
-        "prediction_based_on_period": 115000160,
+        "database_latest_period": 115000162,
+        "analysis_latest_period": 115000162,
+        "prediction_based_on_period": 115000162,
         "status": "synced"
       }
     },
@@ -136,15 +136,15 @@
       "name": "history_has_latest_pending_or_settled",
       "passed": true,
       "detail": {
-        "expected_target": 115000161
+        "expected_target": 115000163
       }
     },
     {
       "name": "battle_report_mentions_latest",
       "passed": true,
       "detail": {
-        "period": 115000160,
-        "draw_date": "2026-07-02"
+        "period": 115000162,
+        "draw_date": "2026-07-04"
       }
     },
     {
@@ -202,25 +202,25 @@
       "passed": true,
       "detail": {
         "computer": {
-          "period": 115000160,
-          "draw_date": "2026-07-02",
+          "period": 115000162,
+          "draw_date": "2026-07-04",
           "numbers": [
-            1,
-            6,
-            8,
-            13,
-            30
+            2,
+            10,
+            15,
+            31,
+            37
           ]
         },
         "mobile": {
-          "period": 115000160,
-          "draw_date": "2026-07-02",
+          "period": 115000162,
+          "draw_date": "2026-07-04",
           "numbers": [
-            1,
-            6,
-            8,
-            13,
-            30
+            2,
+            10,
+            15,
+            31,
+            37
           ]
         }
       }
@@ -231,93 +231,93 @@
       "detail": {
         "computer": {
           "top10": [
-            29,
+            30,
             34,
-            14,
-            5,
-            10,
-            3,
-            24,
             26,
-            37,
-            9
+            3,
+            13,
+            5,
+            24,
+            17,
+            7,
+            32
           ],
           "packs": {
             "strong_single": [
-              14
+              30
             ],
             "two_hit_one": [
-              34,
-              14
+              13,
+              30
             ],
             "three_hit_one": [
-              14,
-              34,
-              5
+              13,
+              30,
+              34
             ],
             "five_hit_two": [
-              5,
-              10,
-              14,
-              29,
-              34
+              3,
+              13,
+              26,
+              30,
+              32
             ],
             "nine_hit_three": [
               3,
               5,
-              10,
-              14,
+              13,
+              17,
               24,
               26,
-              29,
+              30,
               34,
-              37
+              7
             ]
           }
         },
         "mobile": {
           "top10": [
-            29,
+            30,
             34,
-            14,
-            5,
-            10,
-            3,
-            24,
             26,
-            37,
-            9
+            3,
+            13,
+            5,
+            24,
+            17,
+            7,
+            32
           ],
           "packs": {
             "strong_single": [
-              14
+              30
             ],
             "two_hit_one": [
-              34,
-              14
+              13,
+              30
             ],
             "three_hit_one": [
-              14,
-              34,
-              5
+              13,
+              30,
+              34
             ],
             "five_hit_two": [
-              5,
-              10,
-              14,
-              29,
-              34
+              3,
+              13,
+              26,
+              30,
+              32
             ],
             "nine_hit_three": [
               3,
               5,
-              10,
-              14,
+              13,
+              17,
               24,
               26,
-              29,
+              30,
               34,
-              37
+              7
             ]
           }
         }
@@ -327,11 +327,11 @@
       "name": "local_mobile_version_mentions_latest_period",
       "passed": true,
       "detail": {
-        "version": "20260703161045",
-        "generated_at": "2026-07-03T14:49:50",
-        "mobile_built_at": "2026-07-03T16:10:45+08:00",
-        "latest_period": 115000160,
-        "latest_draw_date": "2026-07-02",
+        "version": "20260706075830",
+        "generated_at": "2026-07-06T07:57:40",
+        "mobile_built_at": "2026-07-06T07:58:30+08:00",
+        "latest_period": 115000162,
+        "latest_draw_date": "2026-07-04",
         "cache_policy": "network_first_no_store"
       }
     },
@@ -339,12 +339,12 @@
       "name": "mobile_cloud_publish_status_published",
       "passed": true,
       "detail": {
-        "version": "20260703161045",
+        "version": "20260706075830",
         "message": "Mobile cloud site published successfully.",
         "repository": "pingshen670822/mobile-539-system",
-        "written_at": "2026-07-03T16:11:39",
+        "written_at": "2026-07-06T07:59:10",
         "status": "published",
-        "url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260703161045&t=1783066299"
+        "url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260706075830&t=1783295950"
       }
     },
     {
@@ -352,149 +352,215 @@
       "passed": true,
       "detail": {
         "status": "ok",
-        "checked_at": "2026-07-03T16:11:50",
-        "local_version": "20260703161045",
+        "checked_at": "2026-07-06T07:59:10",
+        "local_version": "20260706075830",
         "cloud_status": "published",
-        "cloud_version": "20260703161045",
-        "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260703161045&t=1783066299",
+        "cloud_version": "20260706075830",
+        "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260706075830&t=1783295950",
         "local_latest_draw": {
-          "period": 115000160,
-          "draw_date": "2026-07-02",
+          "period": 115000162,
+          "draw_date": "2026-07-04",
           "numbers": [
-            1,
-            6,
-            8,
-            13,
-            30
+            2,
+            10,
+            15,
+            31,
+            37
           ]
         },
         "local_prediction": {
-          "generated_at": "2026-07-03T14:49:50",
+          "generated_at": "2026-07-06T07:57:40",
           "top10": [
-            29,
+            30,
             34,
-            14,
-            5,
-            10,
-            3,
-            24,
             26,
-            37,
-            9
+            3,
+            13,
+            5,
+            24,
+            17,
+            7,
+            32
           ],
           "packs": {
             "strong_single": [
-              14
+              30
             ],
             "two_hit_one": [
-              34,
-              14
+              13,
+              30
             ],
             "three_hit_one": [
-              14,
-              34,
-              5
+              13,
+              30,
+              34
             ],
             "five_hit_two": [
-              5,
-              10,
-              14,
-              29,
-              34
+              3,
+              13,
+              26,
+              30,
+              32
             ],
             "nine_hit_three": [
               3,
               5,
-              10,
-              14,
+              13,
+              17,
               24,
               26,
-              29,
+              30,
               34,
-              37
+              7
             ]
           }
         },
         "remote_latest_draw": {
-          "period": 115000160,
-          "draw_date": "2026-07-02",
+          "period": 115000162,
+          "draw_date": "2026-07-04",
           "numbers": [
-            1,
-            6,
-            8,
-            13,
-            30
+            2,
+            10,
+            15,
+            31,
+            37
           ]
         },
         "remote_prediction": {
-          "generated_at": "2026-07-03T14:49:50",
+          "generated_at": "2026-07-06T07:57:40",
           "top10": [
-            29,
+            30,
             34,
-            14,
-            5,
-            10,
-            3,
-            24,
             26,
-            37,
-            9
+            3,
+            13,
+            5,
+            24,
+            17,
+            7,
+            32
           ],
           "packs": {
             "strong_single": [
-              14
+              30
             ],
             "two_hit_one": [
-              34,
-              14
+              13,
+              30
             ],
             "three_hit_one": [
-              14,
-              34,
-              5
+              13,
+              30,
+              34
             ],
             "five_hit_two": [
-              5,
-              10,
-              14,
-              29,
-              34
+              3,
+              13,
+              26,
+              30,
+              32
             ],
             "nine_hit_three": [
               3,
               5,
-              10,
-              14,
+              13,
+              17,
               24,
               26,
-              29,
+              30,
               34,
-              37
+              7
             ]
           }
         },
         "remote_version": {
-          "version": "20260703161045",
-          "generated_at": "2026-07-03T14:49:50",
-          "mobile_built_at": "2026-07-03T16:10:45+08:00",
-          "latest_period": 115000160,
-          "latest_draw_date": "2026-07-02",
+          "version": "20260706075830",
+          "generated_at": "2026-07-06T07:57:40",
+          "mobile_built_at": "2026-07-06T07:58:30+08:00",
+          "latest_period": 115000162,
+          "latest_draw_date": "2026-07-04",
           "cache_policy": "network_first_no_store"
         },
         "rule": "電腦版與手機雲端必須同版本、同開獎資料、同前十預測、同強牌包；雲端狀態必須為 published。",
         "remote_base": "https://pingshen670822.github.io/mobile-539-system",
         "message": "手機雲端已與電腦版同步"
       }
+    },
+    {
+      "name": "daily_auto_schedule_status_passed",
+      "passed": true,
+      "detail": {
+        "status": "passed",
+        "written_at": "2026-07-06T07:53:46",
+        "runner": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260703_第10版_預測模式重整版\\TW539Core\\main_one_click.ps1",
+        "startup_tasks_removed": [],
+        "startup_tasks_failed": [],
+        "daily_tasks": [
+          {
+            "time": "20:45",
+            "passed": true,
+            "task": "TW539 每日開獎後全自動更新",
+            "exists": true,
+            "create_exit_code": 0,
+            "native_error": "",
+            "trigger": "MSFT_TaskDailyTrigger",
+            "create_method": "powershell"
+          },
+          {
+            "time": "00:05",
+            "passed": true,
+            "task": "TW539 每日凌晨完整檢測",
+            "exists": true,
+            "create_exit_code": 0,
+            "native_error": "",
+            "trigger": "MSFT_TaskDailyTrigger",
+            "create_method": "powershell"
+          }
+        ],
+        "rule": "20:45 after-draw update and 00:05 full integrity recompute must exist; boot and logon startup runs must be removed.",
+        "message": "Daily automatic update tasks are installed and startup tasks are removed."
+      }
+    },
+    {
+      "name": "daily_auto_schedule_has_two_tasks",
+      "passed": true,
+      "detail": [
+        {
+          "time": "20:45",
+          "passed": true,
+          "task": "TW539 每日開獎後全自動更新",
+          "exists": true,
+          "create_exit_code": 0,
+          "native_error": "",
+          "trigger": "MSFT_TaskDailyTrigger",
+          "create_method": "powershell"
+        },
+        {
+          "time": "00:05",
+          "passed": true,
+          "task": "TW539 每日凌晨完整檢測",
+          "exists": true,
+          "create_exit_code": 0,
+          "native_error": "",
+          "trigger": "MSFT_TaskDailyTrigger",
+          "create_method": "powershell"
+        }
+      ]
+    },
+    {
+      "name": "startup_auto_tasks_removed",
+      "passed": true,
+      "detail": []
     }
   ],
   "latest": {
-    "period": 115000160,
-    "draw_date": "2026-07-02",
-    "n1": 1,
-    "n2": 6,
-    "n3": 8,
-    "n4": 13,
-    "n5": 30
+    "period": 115000162,
+    "draw_date": "2026-07-04",
+    "n1": 2,
+    "n2": 10,
+    "n3": 15,
+    "n4": 31,
+    "n5": 37
   },
-  "expected_date": "2026-07-02"
+  "expected_date": "2026-07-04"
 }
