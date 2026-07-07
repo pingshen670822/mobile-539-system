@@ -4692,14 +4692,26 @@ def compact_stability_governor_html(analysis):
             )
         elif kind == "unlikely_gate":
             action_name = "低機率回測未達標"
+            withheld_count = len(item.get("withheld_numbers", []) or [])
             detail = (
-                f"診斷候選 {fmt_numbers(item.get('withheld_numbers', [])) or '-'}，"
+                f"扣留 {withheld_count} 碼，完整名單移至低機率專頁，"
                 f"相對隨機差 {fmt_decimal(item.get('edge_vs_random'))}，"
                 f"零命中率 {fmt_percent(item.get('zero_hit_rate'))}"
             )
+        elif kind == "candidate_guard":
+            action_name = "候選號風控校正"
+            changed_count = len(item.get("changed", []) or [])
+            target_label = {
+                "candidates": "候選清單",
+                "official_candidates": "正式候選",
+                "industrial_candidates": "工業候選",
+            }.get(item.get("target"), item.get("target") or "-")
+            hard_count = sum(1 for row in (item.get("changed", []) or []) if row.get("guard_type") == "hard")
+            soft_count = sum(1 for row in (item.get("changed", []) or []) if row.get("guard_type") == "soft")
+            detail = f"{escape_html(target_label)}完成校正，共 {changed_count} 碼；硬降權 {hard_count} 碼，觀察降權 {soft_count} 碼。"
         else:
             action_name = escape_html(kind or "治理動作")
-            detail = escape_html(item)
+            detail = "已完成檢查；詳細原始資料不放主戰報。"
         action_rows.append(f"<tr><td>{action_name}</td><td>{detail}</td></tr>")
     if not action_rows:
         action_rows.append("<tr><td>檢查完成</td><td>本次未觸發改選，但仍已完成公式與回測檢查。</td></tr>")

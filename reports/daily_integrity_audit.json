@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T09:28:45",
+  "generated_at": "2026-07-07T09:32:43",
   "status": "failed",
   "failed_count": 1,
   "checks": [
@@ -460,9 +460,9 @@
       "name": "local_mobile_version_mentions_latest_period",
       "passed": true,
       "detail": {
-        "version": "20260707092829",
+        "version": "20260707093215",
         "generated_at": "2026-07-07T08:56:15",
-        "mobile_built_at": "2026-07-07T09:28:29+08:00",
+        "mobile_built_at": "2026-07-07T09:32:15+08:00",
         "latest_period": 115000163,
         "latest_draw_date": "2026-07-06",
         "cache_policy": "network_first_no_store"
@@ -513,15 +513,15 @@
       "detail": {
         "status": "local_ready_not_published",
         "message": "本機手機版已重建，等待雲端發布成功；未成功前手機雲端可能仍顯示上一版。",
-        "version": "20260707092829",
-        "built_at": "2026-07-07T09:28:29+08:00",
+        "version": "20260707093215",
+        "built_at": "2026-07-07T09:32:15+08:00",
         "latest_period": 115000163,
         "latest_draw_date": "2026-07-06",
-        "prepared_cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707092829&t=1783387709",
+        "prepared_cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707093215&t=1783387935",
         "last_published_version": "",
         "last_published_url": "",
-        "report_url": "http://172.16.1.24:5390/report?token=oL18nVAg_JbaDg&v=20260707092829&t=1783387709",
-        "control_url": "http://172.16.1.24:5390/?token=oL18nVAg_JbaDg&v=20260707092829&t=1783387709",
+        "report_url": "http://172.16.1.24:5390/report?token=oL18nVAg_JbaDg&v=20260707093215&t=1783387935",
+        "control_url": "http://172.16.1.24:5390/?token=oL18nVAg_JbaDg&v=20260707093215&t=1783387935",
         "sync_policy": "禁止把本機重建誤判為雲端已同步；只有 publish_free_github.ps1 成功後才會改為 published。"
       }
     },
@@ -530,11 +530,11 @@
       "passed": true,
       "detail": {
         "status": "ok",
-        "checked_at": "2026-07-07T09:24:00",
-        "local_version": "20260707092038",
+        "checked_at": "2026-07-07T09:29:53",
+        "local_version": "20260707092829",
         "cloud_status": "published",
-        "cloud_version": "20260707092038",
-        "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707092038&t=1783387332",
+        "cloud_version": "20260707092829",
+        "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707092829&t=1783387777",
         "local_latest_draw": {
           "period": 115000163,
           "draw_date": "2026-07-06",
@@ -652,9 +652,9 @@
           }
         },
         "remote_version": {
-          "version": "20260707092038",
+          "version": "20260707092829",
           "generated_at": "2026-07-07T08:56:15",
-          "mobile_built_at": "2026-07-07T09:20:38+08:00",
+          "mobile_built_at": "2026-07-07T09:28:29+08:00",
           "latest_period": 115000163,
           "latest_draw_date": "2026-07-06",
           "cache_policy": "network_first_no_store"

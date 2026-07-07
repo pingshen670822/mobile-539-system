@@ -1,11 +1,11 @@
 {
   "status": "sync_failed",
-  "version": "20260707092829",
-  "built_at": "2026-07-07T09:20:38+08:00",
-  "verified_at": "2026-07-07T09:28:44",
+  "version": "20260707093215",
+  "built_at": "2026-07-07T09:28:29+08:00",
+  "verified_at": "2026-07-07T09:32:43",
   "latest_period": 115000163,
   "latest_draw_date": "2026-07-06",
-  "site_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707092829&t=1783387709",
-  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707092829&t=1783387709",
+  "site_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707093215&t=1783387935",
+  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707093215&t=1783387935",
   "sync_policy": "手機雲端未達同步，請重新執行手機發布。"
 }
