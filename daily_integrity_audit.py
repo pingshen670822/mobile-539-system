@@ -324,6 +324,16 @@ def build_audit():
     add_check(checks, "low_probability_page_exists", LOW_PROBABILITY_HTML.exists(), str(LOW_PROBABILITY_HTML))
     add_check(checks, "low_probability_page_has_no_mojibake_question_marks", "???" not in low_probability_text, "low probability page must not contain mojibake question marks")
     add_check(checks, "low_probability_page_has_required_sections", "\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f" in low_probability_text and "5\u4e0d\u4e2d" in low_probability_text and "15\u4e0d\u4e2d" in low_probability_text, "low probability section labels")
+    add_check(checks, "low_probability_unreleased_display_is_clean", (
+        "\u672a\u767c\u5e03\u8a3a\u65b7\uff1a" not in battle_text
+        and "\u672a\u767c\u5e03\u8a3a\u65b7\uff1a" not in low_probability_text
+        and "\u767c\u5e03\u72c0\u614b" in battle_text
+        and "\u6b63\u5f0f\u66ab\u907f\u865f" in battle_text
+        and "\u8a3a\u65b7\u5019\u9078" in battle_text
+        and "\u767c\u5e03\u72c0\u614b" in low_probability_text
+        and "\u6b63\u5f0f\u66ab\u907f\u865f" in low_probability_text
+        and "\u8a3a\u65b7\u5019\u9078" in low_probability_text
+    ), "\u4f4e\u6a5f\u7387\u672a\u767c\u5e03\u6642\uff0c\u4e0d\u5f97\u628a\u8a3a\u65b7\u865f\u653e\u9032\u6b63\u5f0f\u865f\u78bc\u6b04\uff0c\u4e5f\u4e0d\u5f97\u986f\u793a\u6210\u5df2\u767c\u5e03\u6578\u503c\u3002")
     add_check(checks, "low_probability_daily_record_exists", LOW_PROBABILITY_DAILY_JSON.exists() and LOW_PROBABILITY_DAILY_HTML.exists(), {
         "json": str(LOW_PROBABILITY_DAILY_JSON),
         "html": str(LOW_PROBABILITY_DAILY_HTML),

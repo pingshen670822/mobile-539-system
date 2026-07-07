@@ -4989,23 +4989,35 @@ def build_compact_html_report():
         released_numbers = pack.get("numbers", [])
         diagnostic_numbers = pack.get("diagnostic_numbers") or pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []
         removed_numbers = pack.get("reverse_hit_removed_diagnostics") or []
-        if released_numbers:
+        released = bool(released_numbers)
+        if released:
+            status_text = "已發布"
             numbers_text = fmt_numbers(released_numbers)
-        elif diagnostic_numbers:
-            numbers_text = "未發布診斷：" + fmt_numbers(diagnostic_numbers)
+            diagnostic_text = fmt_numbers(diagnostic_numbers) or "-"
+            confidence_text = fmt_decimal(pack.get('confidence_index'), 1)
+            avg_score_text = fmt_percent(pack.get('avg_avoid_score'))
+            detail_text = escape_html(pack.get('status', '已發布'))
         else:
+            status_text = "未發布不結算"
             numbers_text = "-"
+            diagnostic_text = fmt_numbers(diagnostic_numbers) or "-"
+            confidence_text = "-"
+            avg_score_text = "-"
+            reason = pack.get("status") or "未達低機率發布門檻"
+            detail_text = escape_html(f"{reason}；診斷候選只供檢查，不列入達標檢討")
         low_summary_rows.append(
             "<tr>"
             f"<td>{escape_html(pack.get('name', key))}</td>"
+            f"<td>{status_text}</td>"
             f"<td>{numbers_text}</td>"
-            f"<td>{fmt_decimal(pack.get('confidence_index'), 1)}</td>"
-            f"<td>{fmt_percent(pack.get('avg_avoid_score'))}</td>"
+            f"<td>{diagnostic_text}</td>"
+            f"<td>{confidence_text}</td>"
+            f"<td>{avg_score_text}</td>"
             f"<td>{stat.get('rounds') or gate.get('rounds') or '-'}</td>"
             f"<td>{fmt_decimal(stat.get('avg_accidental_hits', reverse_guard.get('average_accidental_hits')))}</td>"
             f"<td>{fmt_percent(stat.get('zero_hit_rate', gate.get('zero_hit_rate')))}</td>"
             f"<td>{fmt_numbers(removed_numbers) or '-'}</td>"
-            f"<td>{escape_html(pack.get('status', '-'))} / <a href='{low_url}'>\u958b\u555f\u4f4e\u6a5f\u7387\u9801</a></td>"
+            f"<td>{detail_text} / <a href='{low_url}'>\u958b\u555f\u4f4e\u6a5f\u7387\u9801</a></td>"
             "</tr>"
         )
     super_single_html = compact_super_single_html(packs, candidates)
@@ -5124,7 +5136,7 @@ def build_compact_html_report():
         <a href="{low_daily_url}">\u958b\u555f\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304</a>　
         <a href="{low_monthly_url}">\u958b\u555f\u4f4e\u6a5f\u7387\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406</a>
       </p>
-      <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u5254\u9664</th><th>\u660e\u7d30</th></tr></thead><tbody>{''.join(low_summary_rows)}</tbody></table>
+      <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u767c\u5e03\u72c0\u614b</th><th>\u6b63\u5f0f\u66ab\u907f\u865f</th><th>\u8a3a\u65b7\u5019\u9078</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u5254\u9664</th><th>\u8655\u7406\u7d50\u8ad6</th></tr></thead><tbody>{''.join(low_summary_rows)}</tbody></table>
     </div>
   </section>
   <section id="models" class="panel">
@@ -5209,20 +5221,36 @@ def build_low_probability_html_report():
         released_numbers = pack.get("numbers", [])
         diagnostic_numbers = pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []
         removed_numbers = pack.get("reverse_hit_removed_diagnostics") or []
-        if released_numbers:
+        released = bool(released_numbers)
+        if released:
+            status_text = "已發布"
             numbers_text = fmt_numbers(released_numbers)
-        elif diagnostic_numbers:
-            numbers_text = "未發布診斷：" + fmt_numbers(diagnostic_numbers)
+            diagnostic_text = fmt_numbers(diagnostic_numbers) or "-"
+            confidence_text = fmt_decimal(pack.get('confidence_index'), 1)
+            avg_score_text = fmt_percent(pack.get('avg_avoid_score'))
+            min_score_text = fmt_percent(pack.get('min_avoid_score'))
+            formula_edge_text = fmt_decimal(pack.get('formula_lab_edge'), 4)
+            detail_status = escape_html(pack.get('status', '已發布'))
         else:
+            status_text = "未發布不結算"
             numbers_text = "-"
+            diagnostic_text = fmt_numbers(diagnostic_numbers) or "-"
+            confidence_text = "-"
+            avg_score_text = "-"
+            min_score_text = "-"
+            formula_edge_text = "-"
+            reason = pack.get("status") or "未達低機率發布門檻"
+            detail_status = escape_html(f"{reason}；診斷候選只供檢查，不列入達標檢討")
         pack_rows.append(
             "<tr>"
             f"<td>{escape_html(pack.get('name', key))}</td>"
+            f"<td>{status_text}</td>"
             f"<td>{numbers_text}</td>"
-            f"<td>{fmt_decimal(pack.get('confidence_index'), 1)}</td>"
-            f"<td>{fmt_percent(pack.get('avg_avoid_score'))}</td>"
-            f"<td>{fmt_percent(pack.get('min_avoid_score'))}</td>"
-            f"<td>{fmt_decimal(pack.get('formula_lab_edge'), 4)}</td>"
+            f"<td>{diagnostic_text}</td>"
+            f"<td>{confidence_text}</td>"
+            f"<td>{avg_score_text}</td>"
+            f"<td>{min_score_text}</td>"
+            f"<td>{formula_edge_text}</td>"
             f"<td>{stat.get('rounds') or gate.get('rounds') or '-'}</td>"
             f"<td>{fmt_decimal(stat.get('avg_accidental_hits', reverse_guard.get('average_accidental_hits')))}</td>"
             f"<td>{fmt_percent(stat.get('zero_hit_rate', gate.get('zero_hit_rate')))}</td>"
@@ -5230,7 +5258,7 @@ def build_low_probability_html_report():
             f"<td>{fmt_decimal(reverse_guard.get('random_expectation'))}</td>"
             f"<td>{fmt_numbers(removed_numbers) or '-'}</td>"
             f"<td>{escape_html((pack.get('backtest_gate') or {}).get('gate_model', '-'))}</td>"
-            f"<td>{escape_html(pack.get('status', '-'))}</td>"
+            f"<td>{detail_status}</td>"
             "</tr>"
         )
     number_rows = []
@@ -5343,7 +5371,7 @@ def build_low_probability_html_report():
   </section>
   <section class="band">
     <h2>5\u4e0d\u4e2d / 10\u4e0d\u4e2d / 15\u4e0d\u4e2d \u66ab\u907f\u5305</h2>
-    <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u6700\u4f4e\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u53cd\u5411\u512a\u52e2</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u8fd130\u5e73\u5747</th><th>\u53cd\u5411\u96a8\u6a5f\u57fa\u6e96</th><th>\u53cd\u5411\u5254\u9664</th><th>\u767c\u5e03\u6a21\u578b</th><th>\u72c0\u614b</th></tr></thead><tbody>{''.join(pack_rows)}</tbody></table>
+    <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u767c\u5e03\u72c0\u614b</th><th>\u6b63\u5f0f\u66ab\u907f\u865f</th><th>\u8a3a\u65b7\u5019\u9078</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u6700\u4f4e\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u53cd\u5411\u512a\u52e2</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u8fd130\u5e73\u5747</th><th>\u53cd\u5411\u96a8\u6a5f\u57fa\u6e96</th><th>\u53cd\u5411\u5254\u9664</th><th>\u767c\u5e03\u6a21\u578b</th><th>\u72c0\u614b</th></tr></thead><tbody>{''.join(pack_rows)}</tbody></table>
   </section>
   <section class="band">
     <h2>\u9010\u865f\u66ab\u907f\u7d30\u9805</h2>
