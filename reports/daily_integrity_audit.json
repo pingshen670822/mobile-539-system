@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-07T08:00:27",
+  "generated_at": "2026-07-07T08:58:37",
   "status": "failed",
-  "failed_count": 2,
+  "failed_count": 1,
   "checks": [
     {
       "name": "draw_count_minimum",
@@ -180,7 +180,7 @@
     {
       "name": "low_probability_page_exists",
       "passed": true,
-      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\reports\\539低機率精準暫避.html"
+      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\reports\\539低機率精準暫避.html"
     },
     {
       "name": "low_probability_page_has_no_mojibake_question_marks",
@@ -196,8 +196,8 @@
       "name": "low_probability_daily_record_exists",
       "passed": true,
       "detail": {
-        "json": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\reports\\低機率每日紀錄.json",
-        "html": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\reports\\539低機率每日紀錄.html"
+        "json": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\reports\\低機率每日紀錄.json",
+        "html": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\reports\\539低機率每日紀錄.html"
       }
     },
     {
@@ -211,14 +211,14 @@
       "name": "low_probability_monthly_record_exists",
       "passed": true,
       "detail": {
-        "json": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\reports\\低機率每月總紀錄分析.json",
-        "html": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\reports\\539低機率每月總紀錄分析.html"
+        "json": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\reports\\低機率每月總紀錄分析.json",
+        "html": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\reports\\539低機率每月總紀錄分析.html"
       }
     },
     {
       "name": "low_probability_monthly_daily_summary_exists",
       "passed": true,
-      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\reports\\539低機率每月每日總整理.html"
+      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\reports\\539低機率每月每日總整理.html"
     },
     {
       "name": "low_probability_monthly_record_has_analysis",
@@ -288,6 +288,14 @@
       }
     },
     {
+      "name": "low_probability_empty_pack_never_passed",
+      "passed": true,
+      "detail": {
+        "problems": [],
+        "rule": "低機率正式號碼為空時，必須標示未發布不結算，不得算達標。"
+      }
+    },
+    {
       "name": "monthly_review_has_daily_actual_hits_and_low_hits",
       "passed": true,
       "detail": "monthly review must show daily actual draw, hits, and low probability hits"
@@ -310,12 +318,12 @@
     {
       "name": "local_mobile_low_probability_pages_exist",
       "passed": true,
-      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\site"
+      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\site"
     },
     {
       "name": "local_mobile_site_exists",
       "passed": true,
-      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260706_第01版_全自動同步修正版\\TW539Core\\site"
+      "detail": "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第02版_低機率數據修正版\\TW539Core\\site"
     },
     {
       "name": "local_mobile_draw_matches_computer",
@@ -447,9 +455,9 @@
       "name": "local_mobile_version_mentions_latest_period",
       "passed": true,
       "detail": {
-        "version": "20260707075850",
-        "generated_at": "2026-07-07T07:58:13",
-        "mobile_built_at": "2026-07-07T07:58:50+08:00",
+        "version": "20260707085819",
+        "generated_at": "2026-07-07T08:56:15",
+        "mobile_built_at": "2026-07-07T08:58:19+08:00",
         "latest_period": 115000163,
         "latest_draw_date": "2026-07-06",
         "cache_policy": "network_first_no_store"
@@ -500,28 +508,28 @@
       "detail": {
         "status": "local_ready_not_published",
         "message": "本機手機版已重建，等待雲端發布成功；未成功前手機雲端可能仍顯示上一版。",
-        "version": "20260707075850",
-        "built_at": "2026-07-07T07:58:50+08:00",
+        "version": "20260707085819",
+        "built_at": "2026-07-07T08:58:19+08:00",
         "latest_period": 115000163,
         "latest_draw_date": "2026-07-06",
-        "prepared_cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707075850&t=1783382330",
+        "prepared_cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707085819&t=1783385899",
         "last_published_version": "",
         "last_published_url": "",
-        "report_url": "http://172.16.1.24:5390/report?token=oL18nVAg_JbaDg&v=20260707075850&t=1783382330",
-        "control_url": "http://172.16.1.24:5390/?token=oL18nVAg_JbaDg&v=20260707075850&t=1783382330",
+        "report_url": "http://172.16.1.24:5390/report?token=oL18nVAg_JbaDg&v=20260707085819&t=1783385899",
+        "control_url": "http://172.16.1.24:5390/?token=oL18nVAg_JbaDg&v=20260707085819&t=1783385899",
         "sync_policy": "禁止把本機重建誤判為雲端已同步；只有 publish_free_github.ps1 成功後才會改為 published。"
       }
     },
     {
       "name": "mobile_cloud_sync_verified",
-      "passed": false,
+      "passed": true,
       "detail": {
-        "status": "failed",
-        "checked_at": "2026-07-07T07:59:14",
-        "local_version": "20260707075850",
-        "cloud_status": "local_ready_not_published",
-        "cloud_version": "20260707075850",
-        "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707075850&t=1783382330",
+        "status": "ok",
+        "checked_at": "2026-07-07T08:44:40",
+        "local_version": "20260707084038",
+        "cloud_status": "published",
+        "cloud_version": "20260707084038",
+        "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707084038&t=1783384925",
         "local_latest_draw": {
           "period": 115000163,
           "draw_date": "2026-07-06",
@@ -580,9 +588,72 @@
             ]
           }
         },
-        "remote_latest_draw": {},
-        "remote_prediction": {},
-        "remote_version": {},
+        "remote_latest_draw": {
+          "period": 115000163,
+          "draw_date": "2026-07-06",
+          "numbers": [
+            1,
+            10,
+            12,
+            14,
+            38
+          ]
+        },
+        "remote_prediction": {
+          "generated_at": "2026-07-07T07:58:13",
+          "top10": [
+            21,
+            31,
+            37,
+            15,
+            4,
+            36,
+            23,
+            16,
+            35,
+            29
+          ],
+          "packs": {
+            "strong_single": [
+              21
+            ],
+            "two_hit_one": [
+              21,
+              31
+            ],
+            "three_hit_one": [
+              31,
+              21,
+              37
+            ],
+            "five_hit_two": [
+              21,
+              31,
+              37,
+              15,
+              4
+            ],
+            "nine_hit_three": [
+              21,
+              31,
+              37,
+              15,
+              4,
+              23,
+              16,
+              35,
+              19
+            ]
+          }
+        },
+        "remote_version": {
+          "version": "20260707084038",
+          "generated_at": "2026-07-07T07:58:13",
+          "mobile_built_at": "2026-07-07T08:40:38+08:00",
+          "latest_period": 115000163,
+          "latest_draw_date": "2026-07-06",
+          "cache_policy": "network_first_no_store"
+        },
         "html_sync": {
           "expected": {
             "strong_single": "21",
@@ -590,7 +661,7 @@
           },
           "computer_report_contains_current_prediction": true,
           "local_mobile_contains_current_prediction": true,
-          "remote_mobile_contains_current_prediction": false,
+          "remote_mobile_contains_current_prediction": true,
           "computer_report_has_stale_core": false,
           "local_mobile_has_stale_core": false,
           "remote_mobile_has_stale_core": false
@@ -600,15 +671,12 @@
           "local_month_count": 2,
           "local_site_daily_same": true,
           "local_site_monthly_same": true,
-          "remote_daily_same": false,
-          "remote_monthly_same": false
+          "remote_daily_same": true,
+          "remote_monthly_same": true
         },
         "rule": "電腦版與手機雲端必須同版本、同開獎資料、同前十預測、同強牌包；雲端狀態必須為 published。",
         "remote_base": "https://pingshen670822.github.io/mobile-539-system",
-        "failures": [
-          "手機雲端尚未發布成功",
-          "手機雲端讀取失敗: HTTP Error 404: Not Found"
-        ]
+        "message": "手機雲端已與電腦版同步"
       }
     },
     {

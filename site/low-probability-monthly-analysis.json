@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T08:40:08",
+  "generated_at": "2026-07-07T08:58:11",
   "record_rule": "每一期開獎後都保存低機率5不中、10不中、15不中的原始暫避號、實際誤中、達標狀態與月份統計。",
   "daily_record_count": 32,
   "settled_record_count": 31,
@@ -12,12 +12,12 @@
         {
           "key": "five_miss",
           "name": "5不中",
-          "rounds": 5,
-          "passed": 4,
+          "rounds": 4,
+          "passed": 3,
           "failed": 1,
-          "pass_rate": 0.8,
-          "average_accidental_hits": 0.4,
-          "zero_hit_rate": 0.8,
+          "pass_rate": 0.75,
+          "average_accidental_hits": 0.5,
+          "zero_hit_rate": 0.75,
           "max_accidental_hits": 2,
           "most_accidental_hit_numbers": [
             {
@@ -37,12 +37,12 @@
         {
           "key": "ten_miss",
           "name": "10不中",
-          "rounds": 5,
-          "passed": 3,
+          "rounds": 4,
+          "passed": 2,
           "failed": 2,
-          "pass_rate": 0.6,
-          "average_accidental_hits": 0.8,
-          "zero_hit_rate": 0.6,
+          "pass_rate": 0.5,
+          "average_accidental_hits": 1.0,
+          "zero_hit_rate": 0.5,
           "max_accidental_hits": 3,
           "most_accidental_hit_numbers": [
             {
@@ -71,12 +71,12 @@
         {
           "key": "fifteen_miss",
           "name": "15不中",
-          "rounds": 5,
-          "passed": 3,
+          "rounds": 2,
+          "passed": 0,
           "failed": 2,
-          "pass_rate": 0.6,
-          "average_accidental_hits": 1.0,
-          "zero_hit_rate": 0.6,
+          "pass_rate": 0.0,
+          "average_accidental_hits": 2.5,
+          "zero_hit_rate": 0.0,
           "max_accidental_hits": 3,
           "most_accidental_hit_numbers": [
             {
@@ -104,7 +104,7 @@
             "2026-07-01",
             "2026-07-04"
           ],
-          "judgement": "需觀察"
+          "judgement": "不穩定需降權"
         }
       ],
       "daily_rows": [
@@ -149,7 +149,7 @@
             6,
             13
           ],
-          "summary": "5不中誤中0、10不中誤中0、15不中誤中0"
+          "summary": "5不中誤中0、10不中誤中0、15不中未發布不結算"
         },
         {
           "actual_date": "2026-07-03",
@@ -170,7 +170,7 @@
           "top15_hit_numbers": [
             37
           ],
-          "summary": "5不中誤中0、10不中誤中1、15不中誤中0"
+          "summary": "5不中誤中0、10不中誤中1、15不中未發布不結算"
         },
         {
           "actual_date": "2026-07-04",
@@ -210,7 +210,7 @@
           "top15_hit_numbers": [
             38
           ],
-          "summary": "5不中誤中0、10不中誤中0、15不中誤中0"
+          "summary": "5不中未發布不結算、10不中未發布不結算、15不中未發布不結算"
         }
       ],
       "most_accidental_hit_numbers": [

@@ -628,6 +628,29 @@ def low_probability_pack_name(key, value=None):
     return labels.get(key, str(key))
 
 
+def low_probability_pack_released(value):
+    if not isinstance(value, dict):
+        return False
+    if value.get("settlement_status") == "not_released":
+        return False
+    return bool(value.get("numbers"))
+
+
+def low_probability_result_text(value, item_status="settled"):
+    if item_status != "settled":
+        return "\u5f85\u7d50\u7b97"
+    if not low_probability_pack_released(value):
+        return "\u672a\u767c\u5e03\u4e0d\u7d50\u7b97"
+    return "\u9054\u6a19" if value.get("passed") else "\u672a\u9054\u6a19"
+
+
+def low_probability_accidental_text(value):
+    if not low_probability_pack_released(value):
+        return "\u4e0d\u7d50\u7b97"
+    accidental = value.get("accidental_hits")
+    return str(accidental) if accidental is not None else "-"
+
+
 def low_probability_record_from_history_item(item):
     packs = item.get("unlikely_packs") or {}
     hits = item.get("unlikely_pack_hits") or {}
@@ -654,28 +677,26 @@ def low_probability_record_from_history_item(item):
             avoided_numbers = sorted(set(int(number) for number in numbers) - set(int(number) for number in hit_numbers))
         passed = hit.get("passed")
         accidental_hits = hit.get("accidental_hits")
-        if item.get("status") != "settled":
-            result = "待結算"
-        elif passed:
-            result = "達標"
-        else:
-            result = "未達標"
+        released = bool(numbers) and hit.get("settlement_status") != "not_released"
+        result = low_probability_result_text(hit if hit else {"numbers": numbers}, item.get("status"))
         pack_records.append(
             {
                 "key": key,
                 "name": low_probability_pack_name(key, hit or pack),
                 "numbers": [int(number) for number in numbers],
+                "diagnostic_numbers": [int(number) for number in (hit.get("diagnostic_numbers") or pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []) if number],
                 "target_accidental_hits": 0,
-                "accidental_hits": accidental_hits if accidental_hits is not None else None,
+                "accidental_hits": accidental_hits if released and accidental_hits is not None else None,
                 "hit_numbers": [int(number) for number in hit_numbers],
                 "avoided_numbers": [int(number) for number in avoided_numbers],
-                "passed": bool(passed) if passed is not None else None,
+                "passed": bool(passed) if released and passed is not None else None,
+                "released": released,
                 "result": result,
                 "confidence_index": pack.get("confidence_index"),
                 "avg_avoid_score": pack.get("avg_avoid_score"),
                 "min_avoid_score": pack.get("min_avoid_score"),
                 "selection_model": localize_text(str(pack.get("selection_model") or "")) if pack.get("selection_model") else "",
-                "status": pack.get("status") or result,
+                "status": pack.get("status") or hit.get("reason") or result,
             }
         )
 
@@ -733,6 +754,9 @@ def low_probability_monthly_analysis(daily_records):
         for record in records:
             parts = []
             for pack in record.get("packs", []):
+                if not pack.get("released"):
+                    parts.append(f"{pack.get('name')}\u672a\u767c\u5e03\u4e0d\u7d50\u7b97")
+                    continue
                 key = pack.get("key")
                 stat = pack_stats.setdefault(
                     key,
@@ -4028,16 +4052,23 @@ def compact_low_probability_review_html(history):
     actual = settled.get("actual_numbers") or []
     rows = []
     for key, value in (settled.get("unlikely_pack_hits") or {}).items():
-        passed_text = "\u9054\u6a19" if value.get("passed") else "\u672a\u9054\u6a19"
+        passed_text = low_probability_result_text(value, settled.get("status"))
+        numbers_text = fmt_numbers(value.get("numbers", []))
+        if not numbers_text and value.get("diagnostic_numbers"):
+            numbers_text = "\u672a\u767c\u5e03\uff1b\u8a3a\u65b7 " + fmt_numbers(value.get("diagnostic_numbers", []))
+        if not numbers_text:
+            numbers_text = "\u672a\u767c\u5e03"
+        hit_text = fmt_hit_numbers(value.get("hit_numbers", []), actual) if low_probability_pack_released(value) else "-"
+        avoided_text = fmt_numbers(value.get("avoided_numbers", [])) if low_probability_pack_released(value) else "-"
         rows.append(
             "<tr>"
             f"<td>{escape_html(value.get('name') or key)}</td>"
-            f"<td>{fmt_numbers(value.get('numbers', []))}</td>"
+            f"<td>{numbers_text}</td>"
             f"<td>0</td>"
-            f"<td>{value.get('accidental_hits', 0)}</td>"
+            f"<td>{low_probability_accidental_text(value)}</td>"
             f"<td>{passed_text}</td>"
-            f"<td>{fmt_hit_numbers(value.get('hit_numbers', []), actual)}</td>"
-            f"<td>{fmt_numbers(value.get('avoided_numbers', []))}</td>"
+            f"<td>{hit_text}</td>"
+            f"<td>{avoided_text}</td>"
             "</tr>"
         )
     table = "".join(rows) or "<tr><td colspan='7'>\u672c\u671f\u6c92\u6709\u4f4e\u6a5f\u7387\u9054\u6a19\u6aa2\u8a0e</td></tr>"
@@ -4083,10 +4114,14 @@ def compact_low_probability_daily_review_html(history, limit=20):
         for pack in record.get("packs", []):
             name = pack.get("name") or pack.get("key") or "-"
             if status == "settled":
-                accidental = pack.get("accidental_hits")
-                low_error_parts.append(f"{name}\u8aa4\u4e2d{accidental if accidental is not None else '-'}")
-                hit_numbers = fmt_numbers(pack.get("hit_numbers") or []) or "0"
-                low_error_hit_parts.append(f"{name}\uff1a{hit_numbers}")
+                if not pack.get("released"):
+                    low_error_parts.append(f"{name}\u672a\u767c\u5e03\u4e0d\u7d50\u7b97")
+                    low_error_hit_parts.append(f"{name}\uff1a\u4e0d\u7d50\u7b97")
+                else:
+                    accidental = pack.get("accidental_hits")
+                    low_error_parts.append(f"{name}\u8aa4\u4e2d{accidental if accidental is not None else '-'}")
+                    hit_numbers = fmt_numbers(pack.get("hit_numbers") or []) or "0"
+                    low_error_hit_parts.append(f"{name}\uff1a{hit_numbers}")
                 result_parts.append(f"{name}\uff1a{pack.get('result') or '-'}")
             else:
                 low_error_parts.append(f"{name}\u5f85\u7d50\u7b97")
@@ -4342,6 +4377,9 @@ def compact_monthly_prediction_summary_html(history, month=None):
         low_parts = []
         for key, value in (item.get("unlikely_pack_hits") or {}).items():
             name = value.get("name") or key
+            if not low_probability_pack_released(value):
+                low_parts.append(f"{name}未發布不結算")
+                continue
             accidental = int(value.get("accidental_hits") or 0)
             low_totals[name]["rounds"] += 1
             low_totals[name]["accidental"] += accidental
@@ -5143,16 +5181,23 @@ def build_low_probability_html_report():
     low_review_rows = []
     actual_numbers = settled.get("actual_numbers") or []
     for key, value in (settled.get("unlikely_pack_hits") or {}).items():
-        passed_text = "\u9054\u6a19" if value.get("passed") else "\u672a\u9054\u6a19"
+        passed_text = low_probability_result_text(value, settled.get("status"))
+        numbers_text = fmt_numbers(value.get("numbers", []))
+        if not numbers_text and value.get("diagnostic_numbers"):
+            numbers_text = "\u672a\u767c\u5e03\uff1b\u8a3a\u65b7 " + fmt_numbers(value.get("diagnostic_numbers", []))
+        if not numbers_text:
+            numbers_text = "\u672a\u767c\u5e03"
+        hit_text = fmt_hit_numbers(value.get("hit_numbers", []), actual_numbers) if low_probability_pack_released(value) else "-"
+        avoided_text = fmt_numbers(value.get("avoided_numbers", [])) if low_probability_pack_released(value) else "-"
         low_review_rows.append(
             "<tr>"
             f"<td>{escape_html(value.get('name') or key)}</td>"
-            f"<td>{fmt_numbers(value.get('numbers', []))}</td>"
+            f"<td>{numbers_text}</td>"
             f"<td>0</td>"
-            f"<td>{value.get('accidental_hits', 0)}</td>"
+            f"<td>{low_probability_accidental_text(value)}</td>"
             f"<td>{passed_text}</td>"
-            f"<td>{fmt_hit_numbers(value.get('hit_numbers', []), actual_numbers)}</td>"
-            f"<td>{fmt_numbers(value.get('avoided_numbers', []))}</td>"
+            f"<td>{hit_text}</td>"
+            f"<td>{avoided_text}</td>"
             "</tr>"
         )
     pack_rows = []

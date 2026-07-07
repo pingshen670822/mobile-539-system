@@ -60,6 +60,40 @@ def latest_draw_signature(draw):
     }
 
 
+def empty_low_probability_passed_rows():
+    if not DB_PATH.exists():
+        return []
+    problems = []
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        rows = conn.execute(
+            """
+            SELECT id, based_on_date, target_period, actual_date, unlikely_pack_hits_json
+            FROM predictions_539
+            WHERE status='settled'
+              AND unlikely_pack_hits_json IS NOT NULL
+              AND unlikely_pack_hits_json <> ''
+              AND unlikely_pack_hits_json <> '{}'
+            """
+        ).fetchall()
+    for row in rows:
+        try:
+            hits = json.loads(row["unlikely_pack_hits_json"] or "{}")
+        except json.JSONDecodeError:
+            continue
+        for key, value in hits.items():
+            if value.get("passed") is True and not (value.get("numbers") or []):
+                problems.append({
+                    "id": row["id"],
+                    "based_on_date": row["based_on_date"],
+                    "target_period": row["target_period"],
+                    "actual_date": row["actual_date"],
+                    "pack": key,
+                    "message": "\u4f4e\u6a5f\u7387\u6b63\u5f0f\u865f\u78bc\u70ba\u7a7a\u537b\u88ab\u6a19\u8a18\u9054\u6a19",
+                })
+    return problems
+
+
 def prediction_signature(analysis):
     packs = ((analysis.get("industrial_engine") or {}).get("strong_prediction_packs") or
              analysis.get("strong_prediction_packs") or {})
@@ -267,6 +301,7 @@ def build_audit():
         overlap = sorted(set(int(number) for number in diagnostic_numbers if number is not None) & reverse_hit_numbers)
         if overlap:
             low_diagnostic_overlap[key] = overlap
+    empty_low_probability_passed = empty_low_probability_passed_rows()
     add_check(checks, "analysis_matches_database", str(analysis_period) == str(latest["period"]), {"analysis": analysis_period, "database": latest["period"]})
     add_check(checks, "health_sync_passed", health.get("analysis_sync", {}).get("status") == "synced", health.get("analysis_sync", {}))
     add_check(checks, "history_has_latest_pending_or_settled", any(
@@ -336,6 +371,10 @@ def build_audit():
     add_check(checks, "low_probability_diagnostics_exclude_reverse_hit_numbers", not low_diagnostic_overlap, {
         "reverse_hit_numbers": sorted(reverse_hit_numbers),
         "overlap": low_diagnostic_overlap,
+    })
+    add_check(checks, "low_probability_empty_pack_never_passed", not empty_low_probability_passed, {
+        "problems": empty_low_probability_passed,
+        "rule": "\u4f4e\u6a5f\u7387\u6b63\u5f0f\u865f\u78bc\u70ba\u7a7a\u6642\uff0c\u5fc5\u9808\u6a19\u793a\u672a\u767c\u5e03\u4e0d\u7d50\u7b97\uff0c\u4e0d\u5f97\u7b97\u9054\u6a19\u3002",
     })
     add_check(checks, "monthly_review_has_daily_actual_hits_and_low_hits", (
         "\u6bcf\u4e00\u5929\u5be6\u6230\u6aa2\u8a0e" in monthly_summary_text

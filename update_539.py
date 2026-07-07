@@ -862,6 +862,35 @@ def settle_unlikely_packs(unlikely_packs, actual_numbers):
     results = {}
     for key, pack in (unlikely_packs or {}).items():
         numbers = [int(number) for number in pack.get("numbers", []) if number]
+        if not numbers:
+            diagnostic_numbers = [
+                int(number)
+                for number in (
+                    pack.get("diagnostic_candidates")
+                    or pack.get("withheld_numbers")
+                    or pack.get("rejected_candidates")
+                    or []
+                )
+                if number
+            ]
+            results[key] = {
+                "name": pack.get("name", key),
+                "numbers": [],
+                "diagnostic_numbers": diagnostic_numbers,
+                "target": "未發布不結算",
+                "hit_goal": None,
+                "accidental_hits": None,
+                "hit_numbers": [],
+                "avoided_numbers": [],
+                "passed": None,
+                "settlement_status": "not_released",
+                "result": "未發布不結算",
+                "reason": pack.get("status") or pack.get("warning") or "正式暫避號碼為空，禁止用空包結算達標。",
+                "confidence_index": pack.get("confidence_index"),
+                "avg_avoid_score": pack.get("avg_avoid_score"),
+                "min_avoid_score": pack.get("min_avoid_score"),
+            }
+            continue
         accidental_hits = sorted(set(numbers) & actual_set)
         results[key] = {
             "name": pack.get("name", key),
@@ -875,8 +904,68 @@ def settle_unlikely_packs(unlikely_packs, actual_numbers):
             "confidence_index": pack.get("confidence_index"),
             "avg_avoid_score": pack.get("avg_avoid_score"),
             "min_avoid_score": pack.get("min_avoid_score"),
+            "settlement_status": "settled",
         }
     return results
+
+
+def repair_empty_unlikely_pack_settlements(conn):
+    rows = conn.execute(
+        """
+        SELECT id, unlikely_packs_json, unlikely_pack_hits_json
+        FROM predictions_539
+        WHERE status='settled'
+          AND unlikely_pack_hits_json IS NOT NULL
+          AND unlikely_pack_hits_json <> ''
+          AND unlikely_pack_hits_json <> '{}'
+        """
+    ).fetchall()
+    repaired = 0
+    for row in rows:
+        try:
+            packs = json.loads(row[1] or "{}")
+            hits = json.loads(row[2] or "{}")
+        except json.JSONDecodeError:
+            continue
+        changed = False
+        for key, hit in list(hits.items()):
+            numbers = [int(number) for number in (hit.get("numbers") or []) if number]
+            if numbers:
+                continue
+            pack = packs.get(key) or {}
+            diagnostic_numbers = [
+                int(number)
+                for number in (
+                    pack.get("diagnostic_candidates")
+                    or pack.get("withheld_numbers")
+                    or pack.get("rejected_candidates")
+                    or hit.get("diagnostic_numbers")
+                    or []
+                )
+                if number
+            ]
+            hit.update({
+                "numbers": [],
+                "diagnostic_numbers": diagnostic_numbers,
+                "target": "未發布不結算",
+                "hit_goal": None,
+                "accidental_hits": None,
+                "hit_numbers": [],
+                "avoided_numbers": [],
+                "passed": None,
+                "settlement_status": "not_released",
+                "result": "未發布不結算",
+                "reason": pack.get("status") or pack.get("warning") or "正式暫避號碼為空，禁止用空包結算達標。",
+            })
+            changed = True
+        if changed:
+            conn.execute(
+                "UPDATE predictions_539 SET unlikely_pack_hits_json=? WHERE id=?",
+                (json.dumps(hits, ensure_ascii=False), row[0]),
+            )
+            repaired += 1
+    conn.commit()
+    return {"repaired": repaired, "checked": len(rows)}
 
 
 def unlikely_packs_from_saved_candidates(candidates):
@@ -1591,6 +1680,8 @@ def prediction_performance(conn):
             pack_stats[key]["passed"] += 1 if item.get("passed") else 0
             pack_stats[key]["hits"] += item.get("hits", 0)
         for key, item in unlikely_pack_hits.items():
+            if not item.get("numbers") or item.get("settlement_status") == "not_released":
+                continue
             unlikely_stats[key]["rounds"] += 1
             unlikely_stats[key]["passed"] += 1 if item.get("passed") else 0
             unlikely_stats[key]["accidental_hits"] += int(item.get("accidental_hits") or 0)
@@ -1732,6 +1823,12 @@ def run_main():
                 logging.info(
                     "\u5df2\u81ea\u52d5\u56de\u586b\u4f4e\u6a5f\u7387\u6aa2\u8a0e：%s",
                     json.dumps(repaired_unlikely, ensure_ascii=False),
+                )
+            repaired_empty_unlikely = repair_empty_unlikely_pack_settlements(conn)
+            if repaired_empty_unlikely["repaired"]:
+                logging.warning(
+                    "已自動修正空白低機率包誤判達標：%s",
+                    json.dumps(repaired_empty_unlikely, ensure_ascii=False),
                 )
             integrity = integrity_report(conn)
             if integrity["invalid_periods"] or integrity["duplicate_periods"]:

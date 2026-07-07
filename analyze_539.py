@@ -910,6 +910,8 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
                     late_hit_reasons[reason] += 1
                     late_hit_numbers[number] += 1
         for key, item in unlikely_hits.items():
+            if not item.get("numbers") or item.get("settlement_status") == "not_released":
+                continue
             stat = low_pack_stats[key]
             accidental = int(item.get("accidental_hits") or 0)
             stat["rounds"] += 1

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T08:40:08",
+  "generated_at": "2026-07-07T08:58:11",
   "record_rule": "每一期保存低機率原始暫避號、開獎後誤中號、成功避開號與達標判定。",
   "records": [
     {
@@ -58,11 +58,19 @@
           "key": "five_miss",
           "name": "5不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            39,
+            33,
+            28,
+            19,
+            32
+          ],
           "target_accidental_hits": 0,
           "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
           "passed": null,
+          "released": false,
           "result": "待結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
@@ -74,11 +82,22 @@
           "key": "ten_miss",
           "name": "10不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            39,
+            33,
+            28,
+            19,
+            32,
+            30,
+            24,
+            22
+          ],
           "target_accidental_hits": 0,
           "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
           "passed": null,
+          "released": false,
           "result": "待結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
@@ -90,11 +109,27 @@
           "key": "fifteen_miss",
           "name": "15不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            39,
+            33,
+            28,
+            19,
+            32,
+            30,
+            24,
+            22,
+            18,
+            17,
+            13,
+            9,
+            35
+          ],
           "target_accidental_hits": 0,
           "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
           "passed": null,
+          "released": false,
           "result": "待結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
@@ -103,7 +138,7 @@
           "status": "近期反向命中偏高已扣留"
         }
       ],
-      "created_at": "2026-07-07T07:58:46",
+      "created_at": "2026-07-07T08:56:50",
       "settled_at": null
     },
     {
@@ -170,12 +205,20 @@
           "key": "five_miss",
           "name": "5不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            39,
+            33,
+            19,
+            35,
+            16
+          ],
           "target_accidental_hits": 0,
-          "accidental_hits": 0,
+          "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
-          "passed": true,
-          "result": "達標",
+          "passed": null,
+          "released": false,
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -186,12 +229,25 @@
           "key": "ten_miss",
           "name": "10不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            39,
+            33,
+            19,
+            35,
+            16,
+            25,
+            12,
+            6,
+            4,
+            1
+          ],
           "target_accidental_hits": 0,
-          "accidental_hits": 0,
+          "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
-          "passed": true,
-          "result": "達標",
+          "passed": null,
+          "released": false,
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -202,12 +258,30 @@
           "key": "fifteen_miss",
           "name": "15不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            39,
+            33,
+            19,
+            35,
+            16,
+            25,
+            12,
+            6,
+            4,
+            1,
+            21,
+            15,
+            10,
+            2,
+            23
+          ],
           "target_accidental_hits": 0,
-          "accidental_hits": 0,
+          "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
-          "passed": true,
-          "result": "達標",
+          "passed": null,
+          "released": false,
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -290,6 +364,7 @@
             33,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -302,6 +377,7 @@
             33
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 92.2,
           "avg_avoid_score": 0.8612,
@@ -324,6 +400,7 @@
             37,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -341,6 +418,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 85.6,
           "avg_avoid_score": 0.7268,
@@ -368,6 +446,7 @@
             37,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -390,6 +469,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 82.1,
           "avg_avoid_score": 0.656,
@@ -473,6 +553,7 @@
             39,
             2
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -484,6 +565,7 @@
             39
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 87.7,
           "avg_avoid_score": 0.9694,
@@ -506,6 +588,7 @@
             27,
             25
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -523,6 +606,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 73.5,
           "avg_avoid_score": 0.7713,
@@ -534,12 +618,30 @@
           "key": "fifteen_miss",
           "name": "15不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            33,
+            15,
+            4,
+            39,
+            2,
+            12,
+            11,
+            35,
+            32,
+            31,
+            27,
+            25,
+            18,
+            17,
+            16
+          ],
           "target_accidental_hits": 0,
-          "accidental_hits": 0,
+          "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
-          "passed": true,
-          "result": "達標",
+          "passed": null,
+          "released": false,
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -623,6 +725,7 @@
             35,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -634,6 +737,7 @@
             39
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 86.1,
           "avg_avoid_score": 0.7279,
@@ -656,6 +760,7 @@
             11,
             9
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -672,6 +777,7 @@
             39
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 75.6,
           "avg_avoid_score": 0.5739,
@@ -683,12 +789,30 @@
           "key": "fifteen_miss",
           "name": "15不中",
           "numbers": [],
+          "diagnostic_numbers": [
+            39,
+            33,
+            37,
+            35,
+            38,
+            30,
+            28,
+            24,
+            22,
+            19,
+            15,
+            11,
+            5,
+            9,
+            34
+          ],
           "target_accidental_hits": 0,
-          "accidental_hits": 0,
+          "accidental_hits": null,
           "hit_numbers": [],
           "avoided_numbers": [],
-          "passed": true,
-          "result": "達標",
+          "passed": null,
+          "released": false,
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -771,6 +895,7 @@
             31,
             26
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -782,6 +907,7 @@
             37
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 100.0,
           "avg_avoid_score": 1.0,
@@ -804,6 +930,7 @@
             6,
             4
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -820,6 +947,7 @@
             37
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 100.0,
           "avg_avoid_score": 1.0,
@@ -847,6 +975,7 @@
             21,
             18
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -869,6 +998,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 96.2,
           "avg_avoid_score": 0.9624,
@@ -955,6 +1085,7 @@
             26,
             24
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -967,6 +1098,7 @@
             34
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 100.0,
           "avg_avoid_score": 1.0,
@@ -989,6 +1121,7 @@
             9,
             8
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -1006,6 +1139,7 @@
             34
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 100.0,
           "avg_avoid_score": 1.0,
@@ -1033,6 +1167,7 @@
             11,
             29
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1055,6 +1190,7 @@
             34
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 97.7,
           "avg_avoid_score": 0.9772,
@@ -1141,6 +1277,7 @@
             11,
             15
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1153,6 +1290,7 @@
             7
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 1.0,
@@ -1175,6 +1313,7 @@
             25,
             33
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1192,6 +1331,7 @@
             33
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 95.7,
           "avg_avoid_score": 0.9334,
@@ -1219,6 +1359,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1241,6 +1382,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 90.4,
           "avg_avoid_score": 0.8245,
@@ -1325,6 +1467,7 @@
             30,
             33
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -1337,6 +1480,7 @@
             33
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 92.1,
           "avg_avoid_score": 0.859,
@@ -1359,6 +1503,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1376,6 +1521,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 83.6,
           "avg_avoid_score": 0.6867,
@@ -1403,6 +1549,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1425,6 +1572,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 79.2,
           "avg_avoid_score": 0.5963,
@@ -1509,6 +1657,7 @@
             35,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -1521,6 +1670,7 @@
             35
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 1.0,
@@ -1543,6 +1693,7 @@
             36,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -1560,6 +1711,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 94.9,
           "avg_avoid_score": 0.9162,
@@ -1587,6 +1739,7 @@
             36,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1609,6 +1762,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 92.2,
           "avg_avoid_score": 0.8609,
@@ -1692,6 +1846,7 @@
             18,
             33
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -1703,6 +1858,7 @@
             33
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 1.0,
@@ -1725,6 +1881,7 @@
             18,
             33
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -1742,6 +1899,7 @@
             33
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.3,
           "avg_avoid_score": 0.9858,
@@ -1769,6 +1927,7 @@
             33,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -1791,6 +1950,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 94.4,
           "avg_avoid_score": 0.9054,
@@ -1876,6 +2036,7 @@
             36,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -1887,6 +2048,7 @@
             37
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 1.0,
@@ -1909,6 +2071,7 @@
             37,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -1925,6 +2088,7 @@
             38
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 97.6,
           "avg_avoid_score": 0.9723,
@@ -1952,6 +2116,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -1974,6 +2139,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 92.7,
           "avg_avoid_score": 0.8715,
@@ -2061,6 +2227,7 @@
             22,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -2072,6 +2239,7 @@
             37
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 98.9,
           "avg_avoid_score": 0.9969,
@@ -2094,6 +2262,7 @@
             34,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -2111,6 +2280,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 96.9,
           "avg_avoid_score": 0.9569,
@@ -2138,6 +2308,7 @@
             37,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -2160,6 +2331,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 91.9,
           "avg_avoid_score": 0.8541,
@@ -2248,6 +2420,7 @@
             18,
             19
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -2259,6 +2432,7 @@
             19
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 1.0,
@@ -2281,6 +2455,7 @@
             23,
             35
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -2297,6 +2472,7 @@
             35
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 98.9,
           "avg_avoid_score": 0.998,
@@ -2324,6 +2500,7 @@
             36,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -2345,6 +2522,7 @@
             38
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 98.3,
           "avg_avoid_score": 0.9853,
@@ -2428,6 +2606,7 @@
             31,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -2440,6 +2619,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.8,
           "avg_avoid_score": 0.9955,
@@ -2462,6 +2642,7 @@
             31,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -2479,6 +2660,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 95.8,
           "avg_avoid_score": 0.9337,
@@ -2506,6 +2688,7 @@
             36,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -2528,6 +2711,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 92.5,
           "avg_avoid_score": 0.8663,
@@ -2607,6 +2791,7 @@
             23,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -2619,6 +2804,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 1.0,
@@ -2641,6 +2827,7 @@
             36,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -2658,6 +2845,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.5,
           "avg_avoid_score": 0.9907,
@@ -2685,6 +2873,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -2707,6 +2896,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 96.1,
           "avg_avoid_score": 0.9415,
@@ -2788,6 +2978,7 @@
             22,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -2800,6 +2991,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 1.0,
@@ -2822,6 +3014,7 @@
             31,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -2839,6 +3032,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.8,
           "avg_avoid_score": 0.9959,
@@ -2866,6 +3060,7 @@
             31,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 4,
           "hit_numbers": [
@@ -2888,6 +3083,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 96.7,
           "avg_avoid_score": 0.9525,
@@ -2972,6 +3168,7 @@
             17,
             23
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -2983,6 +3180,7 @@
             23
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 98.9,
           "avg_avoid_score": 0.9979,
@@ -3005,6 +3203,7 @@
             23,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -3021,6 +3220,7 @@
             38
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 98.8,
           "avg_avoid_score": 0.9952,
@@ -3048,6 +3248,7 @@
             35,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -3069,6 +3270,7 @@
             38
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 98.7,
           "avg_avoid_score": 0.9937,
@@ -3155,6 +3357,7 @@
             18,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -3166,6 +3369,7 @@
             37
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 98.6,
           "avg_avoid_score": 0.9921,
@@ -3188,6 +3392,7 @@
             28,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -3205,6 +3410,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.5,
           "avg_avoid_score": 0.9898,
@@ -3232,6 +3438,7 @@
             31,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -3254,6 +3461,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.4,
           "avg_avoid_score": 0.9874,
@@ -3339,6 +3547,7 @@
             16,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -3351,6 +3560,7 @@
             6
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.8,
           "avg_avoid_score": 0.9962,
@@ -3373,6 +3583,7 @@
             23,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -3390,6 +3601,7 @@
             23
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.7,
           "avg_avoid_score": 0.9941,
@@ -3417,6 +3629,7 @@
             36,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -3439,6 +3652,7 @@
             38
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.6,
           "avg_avoid_score": 0.9925,
@@ -3521,6 +3735,7 @@
             29,
             31
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -3533,6 +3748,7 @@
             31
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 95.6,
           "avg_avoid_score": 0.9298,
@@ -3555,6 +3771,7 @@
             34,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -3572,6 +3789,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 85.9,
           "avg_avoid_score": 0.7326,
@@ -3599,6 +3817,7 @@
             35,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -3621,6 +3840,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 79.5,
           "avg_avoid_score": 0.6024,
@@ -3704,6 +3924,7 @@
             20,
             31
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -3716,6 +3937,7 @@
             20
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.8,
           "avg_avoid_score": 0.9951,
@@ -3738,6 +3960,7 @@
             31,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -3755,6 +3978,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.5,
           "avg_avoid_score": 0.9907,
@@ -3782,6 +4006,7 @@
             31,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -3804,6 +4029,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.4,
           "avg_avoid_score": 0.988,
@@ -3890,6 +4116,7 @@
             21,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -3902,6 +4129,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 99.0,
           "avg_avoid_score": 0.9992,
@@ -3924,6 +4152,7 @@
             36,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -3941,6 +4170,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 96.1,
           "avg_avoid_score": 0.9401,
@@ -3968,6 +4198,7 @@
             36,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -3990,6 +4221,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 91.4,
           "avg_avoid_score": 0.8454,
@@ -4054,6 +4286,7 @@
             21,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -4065,6 +4298,7 @@
             36
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 59.8,
           "avg_avoid_score": 0.2002,
@@ -4082,6 +4316,7 @@
             21,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -4093,6 +4328,7 @@
             36
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 59.8,
           "avg_avoid_score": 0.2002,
@@ -4110,6 +4346,7 @@
             21,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -4121,6 +4358,7 @@
             36
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 59.8,
           "avg_avoid_score": 0.2002,
@@ -4195,6 +4433,7 @@
             20,
             25
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -4207,6 +4446,7 @@
             12
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 61.6,
           "avg_avoid_score": 0.2376,
@@ -4226,6 +4466,7 @@
             20,
             25
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -4240,6 +4481,7 @@
             12
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 58.8,
           "avg_avoid_score": 0.1802,
@@ -4259,6 +4501,7 @@
             20,
             25
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -4273,6 +4516,7 @@
             12
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 58.8,
           "avg_avoid_score": 0.1802,
@@ -4352,6 +4596,7 @@
             21,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -4363,6 +4608,7 @@
             36
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 62.5,
           "avg_avoid_score": 0.2541,
@@ -4385,6 +4631,7 @@
             25,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -4402,6 +4649,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 60.5,
           "avg_avoid_score": 0.2136,
@@ -4425,6 +4673,7 @@
             25,
             36
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -4443,6 +4692,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 59.5,
           "avg_avoid_score": 0.1942,
@@ -4522,6 +4772,7 @@
             27,
             31
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -4534,6 +4785,7 @@
             31
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.9,
           "avg_avoid_score": 0.9979,
@@ -4556,6 +4808,7 @@
             37,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -4573,6 +4826,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.7,
           "avg_avoid_score": 0.9929,
@@ -4600,6 +4854,7 @@
             37,
             38
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -4622,6 +4877,7 @@
             36
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.5,
           "avg_avoid_score": 0.99,
@@ -4710,6 +4966,7 @@
             34,
             35
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -4722,6 +4979,7 @@
             35
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.8,
           "avg_avoid_score": 0.9959,
@@ -4744,6 +5002,7 @@
             34,
             35
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -4761,6 +5020,7 @@
             35
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.6,
           "avg_avoid_score": 0.9917,
@@ -4788,6 +5048,7 @@
             34,
             35
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -4810,6 +5071,7 @@
             35
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.5,
           "avg_avoid_score": 0.9898,
@@ -4895,6 +5157,7 @@
             25,
             27
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -4907,6 +5170,7 @@
             27
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.7,
           "avg_avoid_score": 0.9929,
@@ -4929,6 +5193,7 @@
             31,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -4946,6 +5211,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.3,
           "avg_avoid_score": 0.9862,
@@ -4973,6 +5239,7 @@
             36,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -4995,6 +5262,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 98.2,
           "avg_avoid_score": 0.983,
@@ -5082,6 +5350,7 @@
             33,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -5093,6 +5362,7 @@
             39
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 95.2,
           "avg_avoid_score": 0.9216,
@@ -5115,6 +5385,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -5132,6 +5403,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 90.4,
           "avg_avoid_score": 0.8243,
@@ -5159,6 +5431,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -5181,6 +5454,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 87.3,
           "avg_avoid_score": 0.762,
@@ -5266,6 +5540,7 @@
             31,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -5277,6 +5552,7 @@
             37
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 97.9,
           "avg_avoid_score": 0.9766,
@@ -5299,6 +5575,7 @@
             36,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -5316,6 +5593,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 97.1,
           "avg_avoid_score": 0.9604,
@@ -5343,6 +5621,7 @@
             36,
             37
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 2,
           "hit_numbers": [
@@ -5365,6 +5644,7 @@
             37
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 95.3,
           "avg_avoid_score": 0.9239,
@@ -5446,6 +5726,7 @@
             30,
             33
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 0,
           "hit_numbers": [],
@@ -5457,6 +5738,7 @@
             33
           ],
           "passed": true,
+          "released": true,
           "result": "達標",
           "confidence_index": 89.6,
           "avg_avoid_score": 0.8078,
@@ -5479,6 +5761,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 1,
           "hit_numbers": [
@@ -5496,6 +5779,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 88.0,
           "avg_avoid_score": 0.7748,
@@ -5523,6 +5807,7 @@
             38,
             39
           ],
+          "diagnostic_numbers": [],
           "target_accidental_hits": 0,
           "accidental_hits": 3,
           "hit_numbers": [
@@ -5545,6 +5830,7 @@
             39
           ],
           "passed": false,
+          "released": true,
           "result": "未達標",
           "confidence_index": 86.9,
           "avg_avoid_score": 0.7531,

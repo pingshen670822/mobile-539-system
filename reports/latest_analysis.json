@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T07:58:13",
+  "generated_at": "2026-07-07T08:56:15",
   "prediction_mode": "current_precision_stability_v47_daily_auto_rolling_precision_rebuild",
   "latest_draw": {
     "period": 115000163,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-06",
     "expected_latest_date": "2026-07-06",
     "lag_days": 0,
-    "checked_at": "2026-07-07T07:54:45"
+    "checked_at": "2026-07-07T08:53:20"
   },
   "windows": [
     {
@@ -4272,13 +4272,13 @@
           "hit_rate": 0.5
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "相似牌",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "相似牌",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -7347,13 +7347,13 @@
             "hit_rate": 0.5
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "相似牌",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "相似牌",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -8254,15 +8254,14 @@
         "sample_size": 30,
         "packs": {
           "five_miss": {
-            "rounds": 30,
+            "rounds": 29,
             "size": 5,
-            "average_accidental_hits": 0.733,
+            "average_accidental_hits": 0.759,
             "random_expectation": 0.641,
-            "edge_vs_random": 0.0923,
-            "zero_hit_rate": 0.467,
+            "edge_vs_random": 0.1176,
+            "zero_hit_rate": 0.448,
             "max_accidental_hits": 2,
             "recent_accidental_hits": [
-              0,
               2,
               0,
               0,
@@ -8271,6 +8270,7 @@
               2,
               1,
               1,
+              0,
               0
             ],
             "release_allowed": false,
@@ -8327,15 +8327,14 @@
             ]
           },
           "ten_miss": {
-            "rounds": 30,
+            "rounds": 29,
             "size": 10,
-            "average_accidental_hits": 1.3,
+            "average_accidental_hits": 1.345,
             "random_expectation": 1.282,
-            "edge_vs_random": 0.0179,
-            "zero_hit_rate": 0.233,
+            "edge_vs_random": 0.0628,
+            "zero_hit_rate": 0.207,
             "max_accidental_hits": 3,
             "recent_accidental_hits": [
-              0,
               3,
               1,
               0,
@@ -8344,7 +8343,8 @@
               2,
               2,
               1,
-              1
+              1,
+              0
             ],
             "release_allowed": false,
             "status": "blocked_reverse_hit_risk",
@@ -8400,24 +8400,24 @@
             ]
           },
           "fifteen_miss": {
-            "rounds": 30,
+            "rounds": 27,
             "size": 15,
-            "average_accidental_hits": 1.667,
+            "average_accidental_hits": 1.852,
             "random_expectation": 1.923,
-            "edge_vs_random": -0.2564,
-            "zero_hit_rate": 0.2,
+            "edge_vs_random": -0.0712,
+            "zero_hit_rate": 0.111,
             "max_accidental_hits": 4,
             "recent_accidental_hits": [
-              0,
               3,
-              0,
-              0,
               2,
               2,
               2,
               2,
               2,
-              2
+              2,
+              1,
+              1,
+              0
             ],
             "release_allowed": false,
             "status": "blocked_reverse_hit_risk",
@@ -10131,14 +10131,14 @@
         },
         {
           "number": 15,
-          "adjustment": 0.1553,
-          "objective_edge": 0.0587,
+          "adjustment": 0.155,
+          "objective_edge": 0.0586,
           "positive_source_ratio": 0.799
         },
         {
           "number": 31,
           "adjustment": 0.16,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "positive_source_ratio": 1.0
         },
         {
@@ -10154,16 +10154,16 @@
           "positive_source_ratio": 0.846
         },
         {
-          "number": 4,
-          "adjustment": 0.116,
-          "objective_edge": 0.0398,
-          "positive_source_ratio": 0.825
-        },
-        {
           "number": 25,
           "adjustment": 0.1347,
           "objective_edge": 0.0488,
           "positive_source_ratio": 0.899
+        },
+        {
+          "number": 4,
+          "adjustment": 0.116,
+          "objective_edge": 0.0398,
+          "positive_source_ratio": 0.825
         },
         {
           "number": 6,
@@ -10180,16 +10180,16 @@
       ],
       "demotions": [
         {
-          "number": 14,
-          "adjustment": -0.035,
-          "objective_edge": 0.0718,
-          "positive_source_ratio": 0.852
-        },
-        {
           "number": 1,
           "adjustment": -0.035,
           "objective_edge": 0.0683,
           "positive_source_ratio": 0.864
+        },
+        {
+          "number": 14,
+          "adjustment": -0.035,
+          "objective_edge": 0.0718,
+          "positive_source_ratio": 0.852
         },
         {
           "number": 38,
@@ -10441,8 +10441,8 @@
         },
         {
           "number": 14,
-          "priority_score": 0.5846,
-          "adjustment": 0.0657
+          "priority_score": 0.5819,
+          "adjustment": 0.0648
         },
         {
           "number": 1,
@@ -10498,17 +10498,17 @@
         },
         {
           "number": 20,
-          "priority_score": 0.0378,
+          "priority_score": 0.0377,
           "adjustment": -0.17
         },
         {
           "number": 26,
-          "priority_score": 0.0929,
+          "priority_score": 0.093,
           "adjustment": -0.17
         },
         {
           "number": 28,
-          "priority_score": 0.0202,
+          "priority_score": 0.0201,
           "adjustment": -0.17
         }
       ],
@@ -11442,7 +11442,7 @@
             "review_recall"
           ],
           "support_count": 2,
-          "candidate_score": 0.9586,
+          "candidate_score": 0.9587,
           "candidate_rank": 4,
           "allowed": true,
           "rank": 12
@@ -11499,7 +11499,7 @@
             "tail_bucket_pressure"
           ],
           "support_count": 2,
-          "candidate_score": 0.4108,
+          "candidate_score": 0.4107,
           "candidate_rank": 15,
           "allowed": true,
           "rank": 16
@@ -11557,7 +11557,7 @@
             "calendar_cycle"
           ],
           "support_count": 1,
-          "candidate_score": 0.5041,
+          "candidate_score": 0.5039,
           "candidate_rank": 14,
           "allowed": true,
           "rank": 20
@@ -12044,8 +12044,8 @@
         },
         {
           "number": 31,
-          "before": 0.9586,
-          "after": 0.7721,
+          "before": 0.9587,
+          "after": 0.7722,
           "formula_score": 0.5146,
           "support_count": 2
         },
@@ -12179,11 +12179,11 @@
         {
           "number": 31,
           "from_rank": 11,
-          "before": 0.7721,
-          "after": 0.9586,
-          "adjustment": 0.1865,
+          "before": 0.7722,
+          "after": 0.9588,
+          "adjustment": 0.1866,
           "recall_signal": 0.4417,
-          "support_signal": 0.5591
+          "support_signal": 0.5593
         },
         {
           "number": 36,
@@ -12237,7 +12237,7 @@
           "after": 0.8165,
           "adjustment": 0.0589,
           "recall_signal": 0.3256,
-          "support_signal": 0.5503
+          "support_signal": 0.5502
         },
         {
           "number": 23,
@@ -12290,7 +12290,7 @@
           "after": 0.0,
           "adjustment": -0.28,
           "recall_signal": 0.2192,
-          "support_signal": 0.3422,
+          "support_signal": 0.3421,
           "repeated_failed_signal": 1.0,
           "rescue_signal": false
         },
@@ -12411,7 +12411,7 @@
           "after": 0.0,
           "adjustment": -0.2451,
           "recall_signal": 0.2074,
-          "support_signal": 0.4014,
+          "support_signal": 0.4012,
           "repeated_failed_signal": 0.8125,
           "rescue_signal": false
         }
@@ -12479,7 +12479,7 @@
         {
           "number": 35,
           "current_rank": 15,
-          "score": 0.3805,
+          "score": 0.3804,
           "confidence_index": 69.2,
           "stability_count": 1,
           "reasons": [
@@ -12493,7 +12493,7 @@
         {
           "number": 19,
           "current_rank": 16,
-          "score": 0.3552,
+          "score": 0.3551,
           "confidence_index": 65.9,
           "stability_count": 2,
           "reasons": [
@@ -12792,9 +12792,9 @@
             {
               "model": "low_probability_reverse_hit_recovery",
               "label": "低機率反向命中回補",
-              "signal": 0.7139,
+              "signal": 0.716,
               "weight": 0.06564,
-              "contribution": 0.04686
+              "contribution": 0.047
             },
             {
               "model": "rank_error_correction",
@@ -12858,9 +12858,9 @@
             {
               "model": "low_probability_reverse_hit_recovery",
               "label": "低機率反向命中回補",
-              "signal": 0.912,
+              "signal": 0.9141,
               "weight": 0.06564,
-              "contribution": 0.05987
+              "contribution": 0.06001
             },
             {
               "model": "zone_quota_pressure",
@@ -12917,16 +12917,16 @@
         {
           "number": 31,
           "rank": 4,
-          "score": 0.9586,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "confidence": 76.0,
           "sources": [
             {
               "model": "low_probability_reverse_hit_recovery",
               "label": "低機率反向命中回補",
-              "signal": 0.8499,
+              "signal": 0.8524,
               "weight": 0.06564,
-              "contribution": 0.05579
+              "contribution": 0.05596
             },
             {
               "model": "tail_transition_bridge",
@@ -13011,9 +13011,9 @@
             {
               "model": "low_probability_reverse_hit_recovery",
               "label": "低機率反向命中回補",
-              "signal": 0.4682,
+              "signal": 0.4709,
               "weight": 0.06564,
-              "contribution": 0.03074
+              "contribution": 0.03091
             },
             {
               "model": "multi_window_bagging",
@@ -13122,9 +13122,9 @@
             {
               "model": "low_probability_reverse_hit_recovery",
               "label": "低機率反向命中回補",
-              "signal": 0.8158,
+              "signal": 0.8165,
               "weight": 0.06564,
-              "contribution": 0.05355
+              "contribution": 0.0536
             },
             {
               "model": "tail_transition_bridge",
@@ -13289,9 +13289,9 @@
             {
               "model": "low_probability_reverse_hit_recovery",
               "label": "低機率反向命中回補",
-              "signal": 0.431,
+              "signal": 0.4328,
               "weight": 0.06564,
-              "contribution": 0.0283
+              "contribution": 0.02841
             },
             {
               "model": "multi_window_bagging",
@@ -13327,9 +13327,9 @@
             {
               "model": "low_probability_reverse_hit_recovery",
               "label": "低機率反向命中回補",
-              "signal": 0.6708,
+              "signal": 0.6728,
               "weight": 0.06564,
-              "contribution": 0.04403
+              "contribution": 0.04417
             },
             {
               "model": "zone_coverage_recovery",
@@ -13369,7 +13369,7 @@
             {
               "model": "cross_consensus",
               "label": "多模型共識",
-              "signal": 0.7144,
+              "signal": 0.7145,
               "weight": 0.03741,
               "contribution": 0.02673
             }
@@ -13726,13 +13726,12 @@
           "five_miss": {
             "blocked": true,
             "status": "blocked_reverse_hit_risk",
-            "rounds": 30,
-            "average_accidental_hits": 0.733,
+            "rounds": 29,
+            "average_accidental_hits": 0.759,
             "random_expectation": 0.641,
-            "edge_vs_random": 0.0923,
-            "zero_hit_rate": 0.467,
+            "edge_vs_random": 0.1176,
+            "zero_hit_rate": 0.448,
             "recent_accidental_hits": [
-              0,
               2,
               0,
               0,
@@ -13741,6 +13740,7 @@
               2,
               1,
               1,
+              0,
               0
             ],
             "hit_numbers": [
@@ -13797,13 +13797,12 @@
           "ten_miss": {
             "blocked": true,
             "status": "blocked_reverse_hit_risk",
-            "rounds": 30,
-            "average_accidental_hits": 1.3,
+            "rounds": 29,
+            "average_accidental_hits": 1.345,
             "random_expectation": 1.282,
-            "edge_vs_random": 0.0179,
-            "zero_hit_rate": 0.233,
+            "edge_vs_random": 0.0628,
+            "zero_hit_rate": 0.207,
             "recent_accidental_hits": [
-              0,
               3,
               1,
               0,
@@ -13812,7 +13811,8 @@
               2,
               2,
               1,
-              1
+              1,
+              0
             ],
             "hit_numbers": [
               {
@@ -13868,22 +13868,22 @@
           "fifteen_miss": {
             "blocked": true,
             "status": "blocked_reverse_hit_risk",
-            "rounds": 30,
-            "average_accidental_hits": 1.667,
+            "rounds": 27,
+            "average_accidental_hits": 1.852,
             "random_expectation": 1.923,
-            "edge_vs_random": -0.2564,
-            "zero_hit_rate": 0.2,
+            "edge_vs_random": -0.0712,
+            "zero_hit_rate": 0.111,
             "recent_accidental_hits": [
-              0,
               3,
-              0,
-              0,
               2,
               2,
               2,
               2,
               2,
-              2
+              2,
+              1,
+              1,
+              0
             ],
             "hit_numbers": [
               {
@@ -13985,13 +13985,12 @@
             "reverse_hit_guard": {
               "blocked": true,
               "status": "blocked_reverse_hit_risk",
-              "rounds": 30,
-              "average_accidental_hits": 0.733,
+              "rounds": 29,
+              "average_accidental_hits": 0.759,
               "random_expectation": 0.641,
-              "edge_vs_random": 0.0923,
-              "zero_hit_rate": 0.467,
+              "edge_vs_random": 0.1176,
+              "zero_hit_rate": 0.448,
               "recent_accidental_hits": [
-                0,
                 2,
                 0,
                 0,
@@ -14000,6 +13999,7 @@
                 2,
                 1,
                 1,
+                0,
                 0
               ],
               "hit_numbers": [
@@ -14104,13 +14104,12 @@
             "reverse_hit_guard": {
               "blocked": true,
               "status": "blocked_reverse_hit_risk",
-              "rounds": 30,
-              "average_accidental_hits": 1.3,
+              "rounds": 29,
+              "average_accidental_hits": 1.345,
               "random_expectation": 1.282,
-              "edge_vs_random": 0.0179,
-              "zero_hit_rate": 0.233,
+              "edge_vs_random": 0.0628,
+              "zero_hit_rate": 0.207,
               "recent_accidental_hits": [
-                0,
                 3,
                 1,
                 0,
@@ -14119,7 +14118,8 @@
                 2,
                 2,
                 1,
-                1
+                1,
+                0
               ],
               "hit_numbers": [
                 {
@@ -14237,22 +14237,22 @@
             "reverse_hit_guard": {
               "blocked": true,
               "status": "blocked_reverse_hit_risk",
-              "rounds": 30,
-              "average_accidental_hits": 1.667,
+              "rounds": 27,
+              "average_accidental_hits": 1.852,
               "random_expectation": 1.923,
-              "edge_vs_random": -0.2564,
-              "zero_hit_rate": 0.2,
+              "edge_vs_random": -0.0712,
+              "zero_hit_rate": 0.111,
               "recent_accidental_hits": [
-                0,
                 3,
-                0,
-                0,
                 2,
                 2,
                 2,
                 2,
                 2,
-                2
+                2,
+                1,
+                1,
+                0
               ],
               "hit_numbers": [
                 {
@@ -14773,7 +14773,7 @@
           "zone_parity_pressure": 0.8559,
           "missed_hit_recovery": 0.42,
           "rank_error_correction": 0.5528,
-          "low_probability_reverse_hit_recovery": 0.1831,
+          "low_probability_reverse_hit_recovery": 0.1829,
           "monthly_recall_pressure": 0.0637,
           "breakthrough_month_bridge": 0.1064,
           "cold_rebound_champion": 0.3837,
@@ -14867,7 +14867,7 @@
         "stability_count": 5,
         "stability_rate": 1.0,
         "pre_calibration_rank": 7,
-        "pre_calibration_score": 0.6894,
+        "pre_calibration_score": 0.6893,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.4487,
@@ -15065,7 +15065,7 @@
       {
         "number": 31,
         "rank": 2,
-        "score": 0.9586,
+        "score": 0.9588,
         "confidence_index": 76.0,
         "model_probability_percent": 13.05,
         "omission": 1,
@@ -15075,9 +15075,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.8499,
+            "signal": 0.8524,
             "weight": 0.06564,
-            "contribution": 0.05579
+            "contribution": 0.05596
           },
           {
             "model": "tail_transition_bridge",
@@ -15157,7 +15157,7 @@
           "zone_parity_pressure": 0.42,
           "missed_hit_recovery": 0.42,
           "rank_error_correction": 0.6894,
-          "low_probability_reverse_hit_recovery": 0.8499,
+          "low_probability_reverse_hit_recovery": 0.8524,
           "monthly_recall_pressure": 0.5333,
           "breakthrough_month_bridge": 0.6741,
           "cold_rebound_champion": 0.2236,
@@ -15270,9 +15270,9 @@
         },
         "objective_feature_calibration": {
           "status": "evaluated",
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "positive_source_ratio": 1.0,
-          "positive_strength": 5.9337,
+          "positive_strength": 5.9366,
           "negative_strength": 0.0,
           "score_adjustment": 0.16,
           "mode": "critical",
@@ -15284,7 +15284,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.9951
+              "strength": 0.998
             },
             {
               "feature": "rank_error_correction",
@@ -15374,7 +15374,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.9951
+              "strength": 0.998
             }
           ]
         },
@@ -15397,7 +15397,7 @@
         "failure_quarantine": {
           "active": false
         },
-        "evidence_tie_break_score": 0.7282,
+        "evidence_tie_break_score": 0.7284,
         "pre_saturation_score": 1.0,
         "hard_iron_rule": {
           "blocked": false,
@@ -15405,7 +15405,7 @@
           "repeat_reentry": false,
           "previous_prediction_reentry": false
         },
-        "pre_formula_lab_score": 0.9586,
+        "pre_formula_lab_score": 0.9587,
         "formula_lab": {
           "score": 0.5146,
           "rank": 12,
@@ -15415,23 +15415,23 @@
             "review_recall"
           ]
         },
-        "pre_prediction_mode_rebuild_score": 0.7721,
+        "pre_prediction_mode_rebuild_score": 0.7722,
         "prediction_mode_rebuild": {
           "status": "applied",
           "original_rank": 11,
-          "score_adjustment": 0.1865,
+          "score_adjustment": 0.1866,
           "latest_repeat_reentry": {
             "latest_draw_number": false
           },
           "recall_signal": 0.4417,
-          "support_signal": 0.5591,
+          "support_signal": 0.5593,
           "repeated_failed_signal": 0.0,
           "late_score": 0.0,
           "missed_score": 0.625,
           "monthly_score": 0.25,
           "tail_score": 1.0,
           "zone_score": 0.9226,
-          "objective_score": 0.784,
+          "objective_score": 0.7847,
           "hit_score": 0.2575,
           "cross_score": 0.6154,
           "stability_score": 0.6,
@@ -15459,9 +15459,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.8158,
+            "signal": 0.8165,
             "weight": 0.06564,
-            "contribution": 0.05355
+            "contribution": 0.0536
           },
           {
             "model": "tail_transition_bridge",
@@ -15541,7 +15541,7 @@
           "zone_parity_pressure": 0.42,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.4803,
-          "low_probability_reverse_hit_recovery": 0.8158,
+          "low_probability_reverse_hit_recovery": 0.8165,
           "monthly_recall_pressure": 0.2598,
           "breakthrough_month_bridge": 0.354,
           "cold_rebound_champion": 0.1336,
@@ -15635,7 +15635,7 @@
         "stability_count": 2,
         "stability_rate": 0.4,
         "pre_calibration_rank": 10,
-        "pre_calibration_score": 0.4663,
+        "pre_calibration_score": 0.4662,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.3746,
@@ -15656,7 +15656,7 @@
           "status": "evaluated",
           "objective_edge": 0.0682,
           "positive_source_ratio": 1.0,
-          "positive_strength": 5.3016,
+          "positive_strength": 5.3024,
           "negative_strength": 0.0,
           "score_adjustment": 0.16,
           "mode": "critical",
@@ -15668,7 +15668,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.9551
+              "strength": 0.956
             },
             {
               "feature": "rank_error_correction",
@@ -15879,18 +15879,18 @@
             "contribution": 0.02544
           },
           {
-            "model": "low_probability_reverse_hit_recovery",
-            "label": "低機率反向命中回補",
-            "signal": 0.3183,
-            "weight": 0.06564,
-            "contribution": 0.0209
-          },
-          {
             "model": "missed_hit_recovery",
             "label": "漏命中回收",
             "signal": 0.58,
             "weight": 0.0352,
             "contribution": 0.02042
+          },
+          {
+            "model": "low_probability_reverse_hit_recovery",
+            "label": "低機率反向命中回補",
+            "signal": 0.3094,
+            "weight": 0.06564,
+            "contribution": 0.02031
           },
           {
             "model": "monthly_recall_pressure",
@@ -15928,7 +15928,7 @@
           "zone_parity_pressure": 0.8939,
           "missed_hit_recovery": 0.58,
           "rank_error_correction": 0.5286,
-          "low_probability_reverse_hit_recovery": 0.3183,
+          "low_probability_reverse_hit_recovery": 0.3094,
           "monthly_recall_pressure": 0.3018,
           "breakthrough_month_bridge": 0.3327,
           "cold_rebound_champion": 0.179,
@@ -16022,7 +16022,7 @@
         "stability_count": 4,
         "stability_rate": 0.8,
         "pre_calibration_rank": 8,
-        "pre_calibration_score": 0.6539,
+        "pre_calibration_score": 0.6532,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.3902,
@@ -16041,11 +16041,11 @@
         },
         "objective_feature_calibration": {
           "status": "evaluated",
-          "objective_edge": 0.0587,
+          "objective_edge": 0.0586,
           "positive_source_ratio": 0.799,
-          "positive_strength": 3.6697,
+          "positive_strength": 3.6592,
           "negative_strength": 0.9225,
-          "score_adjustment": 0.1553,
+          "score_adjustment": 0.155,
           "mode": "critical",
           "zero_hit_mode": false,
           "top_sources": [
@@ -16071,7 +16071,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.3727
+              "strength": 0.3622
             },
             {
               "feature": "monthly_recall_pressure",
@@ -16168,7 +16168,7 @@
         "failure_quarantine": {
           "active": false
         },
-        "evidence_tie_break_score": 0.7058,
+        "evidence_tie_break_score": 0.7056,
         "pre_saturation_score": 1.0,
         "hard_iron_rule": {
           "blocked": false,
@@ -16195,14 +16195,14 @@
             "latest_draw_number": false
           },
           "recall_signal": 0.3256,
-          "support_signal": 0.5503,
+          "support_signal": 0.5502,
           "repeated_failed_signal": 0.0,
           "late_score": 0.0,
           "missed_score": 0.375,
           "monthly_score": 0.125,
           "tail_score": 0.6306,
           "zone_score": 1.0,
-          "objective_score": 0.7247,
+          "objective_score": 0.724,
           "hit_score": 0.3883,
           "cross_score": 0.3846,
           "stability_score": 0.8,
@@ -16312,7 +16312,7 @@
           "zone_parity_pressure": 0.58,
           "missed_hit_recovery": 0.76,
           "rank_error_correction": 0.3618,
-          "low_probability_reverse_hit_recovery": 0.1843,
+          "low_probability_reverse_hit_recovery": 0.1819,
           "monthly_recall_pressure": 0.0937,
           "breakthrough_month_bridge": 0.1325,
           "cold_rebound_champion": 0.3461,
@@ -16406,7 +16406,7 @@
         "stability_count": 5,
         "stability_rate": 1.0,
         "pre_calibration_rank": 9,
-        "pre_calibration_score": 0.6366,
+        "pre_calibration_score": 0.6364,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.2691,
@@ -16614,9 +16614,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.7139,
+            "signal": 0.716,
             "weight": 0.06564,
-            "contribution": 0.04686
+            "contribution": 0.047
           },
           {
             "model": "rank_error_correction",
@@ -16696,7 +16696,7 @@
           "zone_parity_pressure": 0.0,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.7385,
-          "low_probability_reverse_hit_recovery": 0.7139,
+          "low_probability_reverse_hit_recovery": 0.716,
           "monthly_recall_pressure": 0.2523,
           "breakthrough_month_bridge": 0.294,
           "cold_rebound_champion": 0.1905,
@@ -16811,7 +16811,7 @@
           "status": "evaluated",
           "objective_edge": 0.0608,
           "positive_source_ratio": 1.0,
-          "positive_strength": 5.9438,
+          "positive_strength": 5.9463,
           "negative_strength": 0.0,
           "score_adjustment": 0.1596,
           "mode": "critical",
@@ -16823,7 +16823,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.8358
+              "strength": 0.8383
             },
             {
               "feature": "rank_error_correction",
@@ -17097,7 +17097,7 @@
           "zone_parity_pressure": 0.8559,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.4231,
-          "low_probability_reverse_hit_recovery": 0.1831,
+          "low_probability_reverse_hit_recovery": 0.1829,
           "monthly_recall_pressure": 0.015,
           "breakthrough_month_bridge": 0.0087,
           "cold_rebound_champion": 0.3214,
@@ -17483,7 +17483,7 @@
           "zone_parity_pressure": 0.4739,
           "missed_hit_recovery": 0.58,
           "rank_error_correction": 0.3748,
-          "low_probability_reverse_hit_recovery": 0.0372,
+          "low_probability_reverse_hit_recovery": 0.038,
           "monthly_recall_pressure": 0.077,
           "breakthrough_month_bridge": 0.1074,
           "cold_rebound_champion": 0.5093,
@@ -17774,7 +17774,7 @@
       {
         "number": 35,
         "rank": 9,
-        "score": 0.3805,
+        "score": 0.3804,
         "confidence_index": 69.2,
         "model_probability_percent": 12.82,
         "omission": 22,
@@ -17866,7 +17866,7 @@
           "zone_parity_pressure": 0.42,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.3287,
-          "low_probability_reverse_hit_recovery": 0.2566,
+          "low_probability_reverse_hit_recovery": 0.2534,
           "monthly_recall_pressure": 0.0275,
           "breakthrough_month_bridge": 0.0687,
           "cold_rebound_champion": 0.8448,
@@ -17960,7 +17960,7 @@
         "stability_count": 1,
         "stability_rate": 0.2,
         "pre_calibration_rank": 15,
-        "pre_calibration_score": 0.2662,
+        "pre_calibration_score": 0.266,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.2277,
@@ -18112,7 +18112,7 @@
           "repeat_reentry": false,
           "previous_prediction_reentry": false
         },
-        "pre_formula_lab_score": 0.5041,
+        "pre_formula_lab_score": 0.5039,
         "formula_lab": {
           "score": 0.4076,
           "rank": 20,
@@ -18121,7 +18121,7 @@
             "calendar_cycle"
           ]
         },
-        "pre_prediction_mode_rebuild_score": 0.4436,
+        "pre_prediction_mode_rebuild_score": 0.4435,
         "prediction_mode_rebuild": {
           "status": "applied",
           "original_rank": 14,
@@ -18247,7 +18247,7 @@
           "zone_parity_pressure": 0.8559,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.4112,
-          "low_probability_reverse_hit_recovery": 0.1831,
+          "low_probability_reverse_hit_recovery": 0.1829,
           "monthly_recall_pressure": 0.0,
           "breakthrough_month_bridge": 0.0077,
           "cold_rebound_champion": 0.3679,
@@ -18341,7 +18341,7 @@
         "stability_count": 4,
         "stability_rate": 0.8,
         "pre_calibration_rank": 12,
-        "pre_calibration_score": 0.5238,
+        "pre_calibration_score": 0.5237,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.4558,
@@ -18552,9 +18552,9 @@
       {
         "number": 19,
         "rank": 11,
-        "score": 0.3552,
+        "score": 0.3551,
         "confidence_index": 65.9,
-        "model_probability_percent": 12.45,
+        "model_probability_percent": 12.44,
         "omission": 30,
         "repeat_guard": null,
         "previous_prediction_guard": null,
@@ -18738,7 +18738,7 @@
         "stability_count": 2,
         "stability_rate": 0.4,
         "pre_calibration_rank": 13,
-        "pre_calibration_score": 0.3429,
+        "pre_calibration_score": 0.3428,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.2098,
@@ -18888,7 +18888,7 @@
           "repeat_reentry": false,
           "previous_prediction_reentry": false
         },
-        "pre_formula_lab_score": 0.4108,
+        "pre_formula_lab_score": 0.4107,
         "formula_lab": {
           "score": 0.4496,
           "rank": 16,
@@ -18898,7 +18898,7 @@
             "tail_bucket_pressure"
           ]
         },
-        "pre_prediction_mode_rebuild_score": 0.4271,
+        "pre_prediction_mode_rebuild_score": 0.427,
         "prediction_mode_rebuild": {
           "status": "applied",
           "original_rank": 16,
@@ -19412,7 +19412,7 @@
           "zone_parity_pressure": 0.42,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.3092,
-          "low_probability_reverse_hit_recovery": 0.1502,
+          "low_probability_reverse_hit_recovery": 0.1508,
           "monthly_recall_pressure": 0.02,
           "breakthrough_month_bridge": 0.0377,
           "cold_rebound_champion": 0.8873,
@@ -19745,9 +19745,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.3344,
+            "signal": 0.3327,
             "weight": 0.06564,
-            "contribution": 0.02195
+            "contribution": 0.02184
           },
           {
             "model": "freq_50",
@@ -19799,7 +19799,7 @@
           "zone_parity_pressure": 0.0,
           "missed_hit_recovery": 0.42,
           "rank_error_correction": 0.7269,
-          "low_probability_reverse_hit_recovery": 0.3344,
+          "low_probability_reverse_hit_recovery": 0.3327,
           "monthly_recall_pressure": 0.0537,
           "breakthrough_month_bridge": 0.0803,
           "cold_rebound_champion": 0.1915,
@@ -19914,7 +19914,7 @@
           "status": "evaluated",
           "objective_edge": 0.056,
           "positive_source_ratio": 1.0,
-          "positive_strength": 4.4138,
+          "positive_strength": 4.4118,
           "negative_strength": 0.0,
           "score_adjustment": 0.1496,
           "mode": "critical",
@@ -19934,7 +19934,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.3915
+              "strength": 0.3895
             },
             {
               "feature": "multi_window_bagging",
@@ -20112,9 +20112,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.912,
+            "signal": 0.9141,
             "weight": 0.06564,
-            "contribution": 0.05987
+            "contribution": 0.06001
           },
           {
             "model": "zone_quota_pressure",
@@ -20194,7 +20194,7 @@
           "zone_parity_pressure": 0.58,
           "missed_hit_recovery": 0.58,
           "rank_error_correction": 0.6154,
-          "low_probability_reverse_hit_recovery": 0.912,
+          "low_probability_reverse_hit_recovery": 0.9141,
           "monthly_recall_pressure": 0.3143,
           "breakthrough_month_bridge": 0.413,
           "cold_rebound_champion": 0.4108,
@@ -20309,7 +20309,7 @@
           "status": "evaluated",
           "objective_edge": 0.0495,
           "positive_source_ratio": 0.862,
-          "positive_strength": 6.2771,
+          "positive_strength": 6.2796,
           "negative_strength": 1.0088,
           "score_adjustment": 0.1362,
           "mode": "critical",
@@ -20321,7 +20321,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 1.0678
+              "strength": 1.0703
             },
             {
               "feature": "zone_coverage_recovery",
@@ -20983,7 +20983,7 @@
           "zone_parity_pressure": 0.42,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.3374,
-          "low_probability_reverse_hit_recovery": 0.1502,
+          "low_probability_reverse_hit_recovery": 0.1508,
           "monthly_recall_pressure": 0.035,
           "breakthrough_month_bridge": 0.0774,
           "cold_rebound_champion": 0.3458,
@@ -21371,7 +21371,7 @@
           "zone_parity_pressure": 0.8939,
           "missed_hit_recovery": 0.58,
           "rank_error_correction": 0.7608,
-          "low_probability_reverse_hit_recovery": 0.0372,
+          "low_probability_reverse_hit_recovery": 0.038,
           "monthly_recall_pressure": 0.2177,
           "breakthrough_month_bridge": 0.3046,
           "cold_rebound_champion": 0.215,
@@ -21706,9 +21706,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.4682,
+            "signal": 0.4709,
             "weight": 0.06564,
-            "contribution": 0.03074
+            "contribution": 0.03091
           },
           {
             "model": "multi_window_bagging",
@@ -21767,7 +21767,7 @@
           "zone_parity_pressure": 0.8939,
           "missed_hit_recovery": 1.0,
           "rank_error_correction": 0.5037,
-          "low_probability_reverse_hit_recovery": 0.4682,
+          "low_probability_reverse_hit_recovery": 0.4709,
           "monthly_recall_pressure": 0.3726,
           "breakthrough_month_bridge": 0.4971,
           "cold_rebound_champion": 0.2316,
@@ -21881,7 +21881,7 @@
           "status": "evaluated",
           "objective_edge": 0.0576,
           "positive_source_ratio": 0.846,
-          "positive_strength": 5.0763,
+          "positive_strength": 5.0794,
           "negative_strength": 0.9225,
           "score_adjustment": 0.153,
           "mode": "critical",
@@ -21901,7 +21901,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.5482
+              "strength": 0.5513
             },
             {
               "feature": "rank_error_correction",
@@ -22111,9 +22111,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.431,
+            "signal": 0.4328,
             "weight": 0.06564,
-            "contribution": 0.0283
+            "contribution": 0.02841
           },
           {
             "model": "multi_window_bagging",
@@ -22158,7 +22158,7 @@
           "zone_parity_pressure": 0.58,
           "missed_hit_recovery": 0.34,
           "rank_error_correction": 0.3423,
-          "low_probability_reverse_hit_recovery": 0.431,
+          "low_probability_reverse_hit_recovery": 0.4328,
           "monthly_recall_pressure": 0.0674,
           "breakthrough_month_bridge": 0.1209,
           "cold_rebound_champion": 0.3318,
@@ -22252,7 +22252,7 @@
         "stability_count": 4,
         "stability_rate": 0.8,
         "pre_calibration_rank": 11,
-        "pre_calibration_score": 0.5828,
+        "pre_calibration_score": 0.5827,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.3161,
@@ -22272,7 +22272,7 @@
           "status": "evaluated",
           "objective_edge": 0.0413,
           "positive_source_ratio": 0.823,
-          "positive_strength": 4.6749,
+          "positive_strength": 4.677,
           "negative_strength": 1.0088,
           "score_adjustment": 0.1192,
           "mode": "critical",
@@ -22284,7 +22284,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.5047
+              "strength": 0.5067
             },
             {
               "feature": "zone_coverage_recovery",
@@ -22510,14 +22510,14 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.427,
+            "signal": 0.4298,
             "weight": 0.06564,
-            "contribution": 0.02803
+            "contribution": 0.02821
           },
           {
             "model": "cross_consensus",
             "label": "多模型共識",
-            "signal": 0.654,
+            "signal": 0.6541,
             "weight": 0.03741,
             "contribution": 0.02447
           },
@@ -22549,7 +22549,7 @@
           "tail_zone": 0.52,
           "cycle_timing": 0.3229,
           "trend_alignment": 0.7299,
-          "cross_consensus": 0.654,
+          "cross_consensus": 0.6541,
           "bayesian_posterior": 0.2973,
           "monte_carlo_stability": 0.75,
           "distribution_balance": 0.526,
@@ -22557,7 +22557,7 @@
           "zone_parity_pressure": 0.58,
           "missed_hit_recovery": 1.0,
           "rank_error_correction": 0.8234,
-          "low_probability_reverse_hit_recovery": 0.427,
+          "low_probability_reverse_hit_recovery": 0.4298,
           "monthly_recall_pressure": 0.7673,
           "breakthrough_month_bridge": 0.7302,
           "cold_rebound_champion": 0.0077,
@@ -22672,7 +22672,7 @@
           "status": "evaluated",
           "objective_edge": 0.0841,
           "positive_source_ratio": 0.839,
-          "positive_strength": 5.2564,
+          "positive_strength": 5.2597,
           "negative_strength": 1.0088,
           "score_adjustment": -0.035,
           "mode": "critical",
@@ -22716,7 +22716,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.4999
+              "strength": 0.5032
             },
             {
               "feature": "zone_coverage_recovery",
@@ -22953,7 +22953,7 @@
           "zone_parity_pressure": 1.0,
           "missed_hit_recovery": 0.76,
           "rank_error_correction": 1.0,
-          "low_probability_reverse_hit_recovery": 0.0372,
+          "low_probability_reverse_hit_recovery": 0.038,
           "monthly_recall_pressure": 1.0,
           "breakthrough_month_bridge": 1.0,
           "cold_rebound_champion": 0.0,
@@ -23298,9 +23298,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.5241,
+            "signal": 0.5192,
             "weight": 0.06564,
-            "contribution": 0.03441
+            "contribution": 0.03408
           },
           {
             "model": "tail_transition_bridge",
@@ -23352,7 +23352,7 @@
           "zone_parity_pressure": 0.4739,
           "missed_hit_recovery": 1.0,
           "rank_error_correction": 0.9992,
-          "low_probability_reverse_hit_recovery": 0.5241,
+          "low_probability_reverse_hit_recovery": 0.5192,
           "monthly_recall_pressure": 0.7548,
           "breakthrough_month_bridge": 0.6373,
           "cold_rebound_champion": 0.0051,
@@ -23446,7 +23446,7 @@
         "stability_count": 4,
         "stability_rate": 0.8,
         "pre_calibration_rank": 32,
-        "pre_calibration_score": 0.3367,
+        "pre_calibration_score": 0.3289,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": 0.5059,
@@ -23467,7 +23467,7 @@
           "status": "evaluated",
           "objective_edge": 0.0718,
           "positive_source_ratio": 0.852,
-          "positive_strength": 5.3295,
+          "positive_strength": 5.3237,
           "negative_strength": 0.9225,
           "score_adjustment": -0.035,
           "mode": "critical",
@@ -23503,7 +23503,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.6137
+              "strength": 0.6079
             },
             {
               "feature": "cross_consensus",
@@ -23585,14 +23585,14 @@
         },
         "slump_recall_coverage": {
           "status": "triggered",
-          "priority_score": 0.5846,
-          "score_adjustment": 0.0657,
+          "priority_score": 0.5819,
+          "score_adjustment": 0.0648,
           "mode": "critical"
         },
         "failure_quarantine": {
           "active": false
         },
-        "evidence_tie_break_score": 0.5592,
+        "evidence_tie_break_score": 0.5569,
         "hard_iron_rule": {
           "blocked": true,
           "reasons": [
@@ -23672,9 +23672,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.6708,
+            "signal": 0.6728,
             "weight": 0.06564,
-            "contribution": 0.04403
+            "contribution": 0.04417
           },
           {
             "model": "zone_coverage_recovery",
@@ -23714,7 +23714,7 @@
           {
             "model": "cross_consensus",
             "label": "多模型共識",
-            "signal": 0.7144,
+            "signal": 0.7145,
             "weight": 0.03741,
             "contribution": 0.02673
           }
@@ -23739,7 +23739,7 @@
           "tail_zone": 0.76,
           "cycle_timing": 0.3754,
           "trend_alignment": 0.6393,
-          "cross_consensus": 0.7144,
+          "cross_consensus": 0.7145,
           "bayesian_posterior": 0.5405,
           "monte_carlo_stability": 0.6667,
           "distribution_balance": 0.0956,
@@ -23747,7 +23747,7 @@
           "zone_parity_pressure": 0.58,
           "missed_hit_recovery": 1.0,
           "rank_error_correction": 0.3889,
-          "low_probability_reverse_hit_recovery": 0.6708,
+          "low_probability_reverse_hit_recovery": 0.6728,
           "monthly_recall_pressure": 0.1082,
           "breakthrough_month_bridge": 0.1615,
           "cold_rebound_champion": 0.2991,
@@ -23861,7 +23861,7 @@
           "status": "evaluated",
           "objective_edge": 0.0538,
           "positive_source_ratio": 0.846,
-          "positive_strength": 5.5241,
+          "positive_strength": 5.5266,
           "negative_strength": 1.0088,
           "score_adjustment": 0.1451,
           "mode": "critical",
@@ -23881,7 +23881,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.7853
+              "strength": 0.7878
             },
             {
               "feature": "zone_coverage_recovery",
@@ -23897,7 +23897,7 @@
               "objective_edge": 0.0377,
               "recent_top5_avg_hits": 0.667,
               "recent_top10_avg_hits": 1.322,
-              "strength": 0.6549
+              "strength": 0.655
             },
             {
               "feature": "freq_50",
@@ -23955,7 +23955,7 @@
               "objective_edge": 0.0377,
               "recent_top5_avg_hits": 0.667,
               "recent_top10_avg_hits": 1.322,
-              "strength": 0.6549
+              "strength": 0.655
             },
             {
               "feature": "zone_coverage_recovery",
@@ -24152,7 +24152,7 @@
           "zone_parity_pressure": 1.0,
           "missed_hit_recovery": 0.34,
           "rank_error_correction": 0.1489,
-          "low_probability_reverse_hit_recovery": 0.1973,
+          "low_probability_reverse_hit_recovery": 0.1948,
           "monthly_recall_pressure": 0.2998,
           "breakthrough_month_bridge": 0.4062,
           "cold_rebound_champion": 0.2827,
@@ -24554,7 +24554,7 @@
           "zone_parity_pressure": 0.4739,
           "missed_hit_recovery": 1.0,
           "rank_error_correction": 0.6932,
-          "low_probability_reverse_hit_recovery": 0.2398,
+          "low_probability_reverse_hit_recovery": 0.24,
           "monthly_recall_pressure": 0.7694,
           "breakthrough_month_bridge": 0.618,
           "cold_rebound_champion": 0.1053,
@@ -24871,9 +24871,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.7418,
+            "signal": 0.7363,
             "weight": 0.06564,
-            "contribution": 0.0487
+            "contribution": 0.04833
           },
           {
             "model": "tail_transition_bridge",
@@ -24938,7 +24938,7 @@
           "tail_zone": 0.6079,
           "cycle_timing": 0.5204,
           "trend_alignment": 0.1988,
-          "cross_consensus": 0.4086,
+          "cross_consensus": 0.4085,
           "bayesian_posterior": 0.8378,
           "monte_carlo_stability": 0.5,
           "distribution_balance": 0.4296,
@@ -24946,7 +24946,7 @@
           "zone_parity_pressure": 0.8559,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.0,
-          "low_probability_reverse_hit_recovery": 0.7418,
+          "low_probability_reverse_hit_recovery": 0.7363,
           "monthly_recall_pressure": 0.015,
           "breakthrough_month_bridge": 0.0213,
           "cold_rebound_champion": 0.7005,
@@ -25040,7 +25040,7 @@
         "stability_count": 0,
         "stability_rate": 0.0,
         "pre_calibration_rank": 16,
-        "pre_calibration_score": 0.1373,
+        "pre_calibration_score": 0.1372,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": -0.1273,
@@ -25058,11 +25058,11 @@
         },
         "objective_feature_calibration": {
           "status": "evaluated",
-          "objective_edge": 0.0424,
+          "objective_edge": 0.0423,
           "positive_source_ratio": 0.897,
-          "positive_strength": 5.3519,
+          "positive_strength": 5.3454,
           "negative_strength": 0.6123,
-          "score_adjustment": 0.1215,
+          "score_adjustment": 0.1213,
           "mode": "critical",
           "zero_hit_mode": false,
           "top_sources": [
@@ -25072,7 +25072,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.8685
+              "strength": 0.862
             },
             {
               "feature": "zone_coverage_recovery",
@@ -25178,14 +25178,14 @@
         },
         "slump_recall_coverage": {
           "status": "triggered",
-          "priority_score": 0.0122,
+          "priority_score": 0.0121,
           "score_adjustment": -0.17,
           "mode": "critical"
         },
         "failure_quarantine": {
           "active": false
         },
-        "evidence_tie_break_score": 0.2596,
+        "evidence_tie_break_score": 0.2593,
         "hard_iron_rule": {
           "blocked": false,
           "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -25214,14 +25214,14 @@
             "latest_draw_number": false
           },
           "recall_signal": 0.2074,
-          "support_signal": 0.4014,
+          "support_signal": 0.4012,
           "repeated_failed_signal": 0.8125,
           "late_score": 0.0,
           "missed_score": 0.0,
           "monthly_score": 0.0,
           "tail_score": 0.7318,
           "zone_score": 0.9587,
-          "objective_score": 0.616,
+          "objective_score": 0.6153,
           "hit_score": 0.0367,
           "cross_score": 0.4615,
           "stability_score": 0.0,
@@ -25256,9 +25256,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.7468,
+            "signal": 0.7481,
             "weight": 0.06564,
-            "contribution": 0.04902
+            "contribution": 0.04911
           },
           {
             "model": "tail_transition_bridge",
@@ -25338,7 +25338,7 @@
           "zone_parity_pressure": 0.4359,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.153,
-          "low_probability_reverse_hit_recovery": 0.7468,
+          "low_probability_reverse_hit_recovery": 0.7481,
           "monthly_recall_pressure": 0.0075,
           "breakthrough_month_bridge": 0.0,
           "cold_rebound_champion": 0.2901,
@@ -25453,9 +25453,9 @@
           "status": "evaluated",
           "objective_edge": 0.0492,
           "positive_source_ratio": 0.876,
-          "positive_strength": 4.3222,
+          "positive_strength": 4.3237,
           "negative_strength": 0.6123,
-          "score_adjustment": 0.1354,
+          "score_adjustment": 0.1355,
           "mode": "critical",
           "zero_hit_mode": false,
           "top_sources": [
@@ -25465,7 +25465,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.8743
+              "strength": 0.8759
             },
             {
               "feature": "zone_coverage_recovery",
@@ -25571,7 +25571,7 @@
         },
         "slump_recall_coverage": {
           "status": "triggered",
-          "priority_score": 0.0929,
+          "priority_score": 0.093,
           "score_adjustment": -0.17,
           "mode": "critical"
         },
@@ -25685,9 +25685,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.3306,
+            "signal": 0.331,
             "weight": 0.06564,
-            "contribution": 0.0217
+            "contribution": 0.02173
           },
           {
             "model": "missed_hit_recovery",
@@ -25739,7 +25739,7 @@
           "zone_parity_pressure": 0.4359,
           "missed_hit_recovery": 0.42,
           "rank_error_correction": 0.6734,
-          "low_probability_reverse_hit_recovery": 0.3306,
+          "low_probability_reverse_hit_recovery": 0.331,
           "monthly_recall_pressure": 0.266,
           "breakthrough_month_bridge": 0.2969,
           "cold_rebound_champion": 0.215,
@@ -25854,7 +25854,7 @@
           "status": "evaluated",
           "objective_edge": 0.0451,
           "positive_source_ratio": 0.708,
-          "positive_strength": 2.9298,
+          "positive_strength": 2.9303,
           "negative_strength": 1.2062,
           "score_adjustment": 0.0934,
           "mode": "critical",
@@ -25874,7 +25874,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.387
+              "strength": 0.3875
             },
             {
               "feature": "missed_hit_recovery",
@@ -26149,7 +26149,7 @@
           "zone_parity_pressure": 1.0,
           "missed_hit_recovery": 0.34,
           "rank_error_correction": 0.2935,
-          "low_probability_reverse_hit_recovery": 0.1064,
+          "low_probability_reverse_hit_recovery": 0.1026,
           "monthly_recall_pressure": 0.0674,
           "breakthrough_month_bridge": 0.1209,
           "cold_rebound_champion": 0.5014,
@@ -26551,7 +26551,7 @@
           "zone_parity_pressure": 1.0,
           "missed_hit_recovery": 0.58,
           "rank_error_correction": 0.1275,
-          "low_probability_reverse_hit_recovery": 0.0372,
+          "low_probability_reverse_hit_recovery": 0.038,
           "monthly_recall_pressure": 0.0745,
           "breakthrough_month_bridge": 0.1286,
           "cold_rebound_champion": 0.5594,
@@ -26894,9 +26894,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.3044,
+            "signal": 0.3012,
             "weight": 0.06564,
-            "contribution": 0.01998
+            "contribution": 0.01977
           },
           {
             "model": "pair",
@@ -26934,7 +26934,7 @@
           "zone_parity_pressure": 0.4739,
           "missed_hit_recovery": 0.76,
           "rank_error_correction": 0.1752,
-          "low_probability_reverse_hit_recovery": 0.3044,
+          "low_probability_reverse_hit_recovery": 0.3012,
           "monthly_recall_pressure": 0.0962,
           "breakthrough_month_bridge": 0.1209,
           "cold_rebound_champion": 0.6123,
@@ -27028,7 +27028,7 @@
         "stability_count": 0,
         "stability_rate": 0.0,
         "pre_calibration_rank": 20,
-        "pre_calibration_score": 0.0935,
+        "pre_calibration_score": 0.0934,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": -0.066,
@@ -27047,11 +27047,11 @@
         },
         "objective_feature_calibration": {
           "status": "evaluated",
-          "objective_edge": 0.037,
+          "objective_edge": 0.0369,
           "positive_source_ratio": 0.811,
-          "positive_strength": 3.9609,
+          "positive_strength": 3.9571,
           "negative_strength": 0.9225,
-          "score_adjustment": 0.1102,
+          "score_adjustment": 0.1101,
           "mode": "critical",
           "zero_hit_mode": false,
           "top_sources": [
@@ -27069,7 +27069,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.3564
+              "strength": 0.3526
             },
             {
               "feature": "pair",
@@ -27167,14 +27167,14 @@
         },
         "slump_recall_coverage": {
           "status": "triggered",
-          "priority_score": 0.0378,
+          "priority_score": 0.0377,
           "score_adjustment": -0.17,
           "mode": "critical"
         },
         "failure_quarantine": {
           "active": false
         },
-        "evidence_tie_break_score": 0.2529,
+        "evidence_tie_break_score": 0.2527,
         "hard_iron_rule": {
           "blocked": false,
           "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -27195,19 +27195,19 @@
         "prediction_mode_rebuild": {
           "status": "applied",
           "original_rank": 28,
-          "score_adjustment": -0.2321,
+          "score_adjustment": -0.2322,
           "latest_repeat_reentry": {
             "latest_draw_number": false
           },
           "recall_signal": 0.2174,
-          "support_signal": 0.351,
+          "support_signal": 0.3508,
           "repeated_failed_signal": 0.75,
           "late_score": 0.0,
           "missed_score": 0.0,
           "monthly_score": 0.0,
           "tail_score": 0.7741,
           "zone_score": 1.0,
-          "objective_score": 0.58,
+          "objective_score": 0.5793,
           "hit_score": 0.1875,
           "cross_score": 0.3077,
           "stability_score": 0.0,
@@ -27267,18 +27267,18 @@
             "contribution": 0.02892
           },
           {
-            "model": "low_probability_reverse_hit_recovery",
-            "label": "低機率反向命中回補",
-            "signal": 0.3673,
-            "weight": 0.06564,
-            "contribution": 0.02411
-          },
-          {
             "model": "zone_coverage_recovery",
             "label": "分區覆蓋回補",
             "signal": 0.6588,
             "weight": 0.03658,
             "contribution": 0.0241
+          },
+          {
+            "model": "low_probability_reverse_hit_recovery",
+            "label": "低機率反向命中回補",
+            "signal": 0.3648,
+            "weight": 0.06564,
+            "contribution": 0.02395
           },
           {
             "model": "cold_rebound_champion",
@@ -27330,7 +27330,7 @@
           "zone_parity_pressure": 0.4359,
           "missed_hit_recovery": 0.42,
           "rank_error_correction": 0.1302,
-          "low_probability_reverse_hit_recovery": 0.3673,
+          "low_probability_reverse_hit_recovery": 0.3648,
           "monthly_recall_pressure": 0.0337,
           "breakthrough_month_bridge": 0.0213,
           "cold_rebound_champion": 0.5034,
@@ -27445,9 +27445,9 @@
           "status": "evaluated",
           "objective_edge": 0.0339,
           "positive_source_ratio": 0.874,
-          "positive_strength": 4.2609,
+          "positive_strength": 4.258,
           "negative_strength": 0.6123,
-          "score_adjustment": 0.1039,
+          "score_adjustment": 0.1038,
           "mode": "critical",
           "zero_hit_mode": false,
           "top_sources": [
@@ -27457,7 +27457,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.43
+              "strength": 0.4271
             },
             {
               "feature": "zone_coverage_recovery",
@@ -27682,9 +27682,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.345,
+            "signal": 0.3435,
             "weight": 0.06564,
-            "contribution": 0.02265
+            "contribution": 0.02255
           },
           {
             "model": "cold_rebound_champion",
@@ -27722,7 +27722,7 @@
           "zone_parity_pressure": 0.4359,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.1302,
-          "low_probability_reverse_hit_recovery": 0.345,
+          "low_probability_reverse_hit_recovery": 0.3435,
           "monthly_recall_pressure": 0.015,
           "breakthrough_month_bridge": 0.0184,
           "cold_rebound_champion": 0.5216,
@@ -27816,7 +27816,7 @@
         "stability_count": 0,
         "stability_rate": 0.0,
         "pre_calibration_rank": 18,
-        "pre_calibration_score": 0.1014,
+        "pre_calibration_score": 0.1013,
         "precision_calibration": {
           "mode": "critical",
           "adjustment": -0.0997,
@@ -27835,11 +27835,11 @@
         },
         "objective_feature_calibration": {
           "status": "evaluated",
-          "objective_edge": 0.0404,
+          "objective_edge": 0.0403,
           "positive_source_ratio": 0.889,
-          "positive_strength": 4.8856,
+          "positive_strength": 4.8838,
           "negative_strength": 0.6123,
-          "score_adjustment": 0.1173,
+          "score_adjustment": 0.1172,
           "mode": "critical",
           "zero_hit_mode": false,
           "top_sources": [
@@ -27849,7 +27849,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.4039
+              "strength": 0.4022
             },
             {
               "feature": "zone_coverage_recovery",
@@ -27955,14 +27955,14 @@
         },
         "slump_recall_coverage": {
           "status": "triggered",
-          "priority_score": 0.0202,
+          "priority_score": 0.0201,
           "score_adjustment": -0.17,
           "mode": "critical"
         },
         "failure_quarantine": {
           "active": false
         },
-        "evidence_tie_break_score": 0.2441,
+        "evidence_tie_break_score": 0.2439,
         "hard_iron_rule": {
           "blocked": false,
           "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -27988,14 +27988,14 @@
             "latest_draw_number": false
           },
           "recall_signal": 0.2192,
-          "support_signal": 0.3422,
+          "support_signal": 0.3421,
           "repeated_failed_signal": 1.0,
           "late_score": 0.0,
           "missed_score": 0.0,
           "monthly_score": 0.0,
           "tail_score": 0.8494,
           "zone_score": 0.9587,
-          "objective_score": 0.6027,
+          "objective_score": 0.602,
           "hit_score": 0.115,
           "cross_score": 0.3077,
           "stability_score": 0.0,
@@ -28045,9 +28045,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.6152,
+            "signal": 0.6138,
             "weight": 0.06564,
-            "contribution": 0.04038
+            "contribution": 0.04029
           },
           {
             "model": "tail_transition_bridge",
@@ -28120,7 +28120,7 @@
           "zone_parity_pressure": 0.0,
           "missed_hit_recovery": 0.0,
           "rank_error_correction": 0.8384,
-          "low_probability_reverse_hit_recovery": 0.6152,
+          "low_probability_reverse_hit_recovery": 0.6138,
           "monthly_recall_pressure": 0.2868,
           "breakthrough_month_bridge": 0.2369,
           "cold_rebound_champion": 0.1279,
@@ -28235,7 +28235,7 @@
           "status": "evaluated",
           "objective_edge": 0.0608,
           "positive_source_ratio": 0.889,
-          "positive_strength": 4.2533,
+          "positive_strength": 4.2517,
           "negative_strength": 0.5331,
           "score_adjustment": -0.035,
           "mode": "critical",
@@ -28255,7 +28255,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.7202
+              "strength": 0.7186
             },
             {
               "feature": "monthly_recall_pressure",
@@ -28517,7 +28517,7 @@
           "zone_parity_pressure": 0.8939,
           "missed_hit_recovery": 0.34,
           "rank_error_correction": 0.0743,
-          "low_probability_reverse_hit_recovery": 0.1973,
+          "low_probability_reverse_hit_recovery": 0.1948,
           "monthly_recall_pressure": 0.0699,
           "breakthrough_month_bridge": 0.1093,
           "cold_rebound_champion": 0.3808,
@@ -28865,7 +28865,7 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.4228,
+            "signal": 0.4229,
             "weight": 0.06564,
             "contribution": 0.02776
           },
@@ -28919,7 +28919,7 @@
           "zone_parity_pressure": 0.4359,
           "missed_hit_recovery": 0.42,
           "rank_error_correction": 0.0488,
-          "low_probability_reverse_hit_recovery": 0.4228,
+          "low_probability_reverse_hit_recovery": 0.4229,
           "monthly_recall_pressure": 0.0337,
           "breakthrough_month_bridge": 0.0213,
           "cold_rebound_champion": 1.0,
@@ -29034,7 +29034,7 @@
           "status": "evaluated",
           "objective_edge": 0.042,
           "positive_source_ratio": 0.889,
-          "positive_strength": 4.8996,
+          "positive_strength": 4.8997,
           "negative_strength": 0.6123,
           "score_adjustment": 0.1207,
           "mode": "critical",
@@ -29240,9 +29240,9 @@
           {
             "model": "low_probability_reverse_hit_recovery",
             "label": "低機率反向命中回補",
-            "signal": 0.3899,
+            "signal": 0.3908,
             "weight": 0.06564,
-            "contribution": 0.0256
+            "contribution": 0.02565
           },
           {
             "model": "cycle_timing",
@@ -29308,7 +29308,7 @@
           "zone_parity_pressure": 0.0,
           "missed_hit_recovery": 0.42,
           "rank_error_correction": 0.3428,
-          "low_probability_reverse_hit_recovery": 0.3899,
+          "low_probability_reverse_hit_recovery": 0.3908,
           "monthly_recall_pressure": 0.0537,
           "breakthrough_month_bridge": 0.0996,
           "cold_rebound_champion": 0.327,
@@ -29423,7 +29423,7 @@
           "status": "evaluated",
           "objective_edge": 0.0234,
           "positive_source_ratio": 0.796,
-          "positive_strength": 3.3305,
+          "positive_strength": 3.3315,
           "negative_strength": 0.8531,
           "score_adjustment": -0.045,
           "mode": "critical",
@@ -29435,7 +29435,7 @@
               "objective_edge": 0.1159,
               "recent_top5_avg_hits": 0.678,
               "recent_top10_avg_hits": 1.489,
-              "strength": 0.4565
+              "strength": 0.4575
             },
             {
               "feature": "missed_hit_recovery",
@@ -29707,7 +29707,7 @@
           "zone_parity_pressure": 0.4739,
           "missed_hit_recovery": 0.34,
           "rank_error_correction": 0.1286,
-          "low_probability_reverse_hit_recovery": 0.1619,
+          "low_probability_reverse_hit_recovery": 0.1606,
           "monthly_recall_pressure": 0.0699,
           "breakthrough_month_bridge": 0.087,
           "cold_rebound_champion": 0.8441,
@@ -30280,7 +30280,7 @@
               "zone_parity_pressure": 0.8559,
               "missed_hit_recovery": 0.42,
               "rank_error_correction": 0.5528,
-              "low_probability_reverse_hit_recovery": 0.1831,
+              "low_probability_reverse_hit_recovery": 0.1829,
               "monthly_recall_pressure": 0.0637,
               "breakthrough_month_bridge": 0.1064,
               "cold_rebound_champion": 0.3837,
@@ -30374,7 +30374,7 @@
             "stability_count": 5,
             "stability_rate": 1.0,
             "pre_calibration_rank": 7,
-            "pre_calibration_score": 0.6894,
+            "pre_calibration_score": 0.6893,
             "precision_calibration": {
               "mode": "critical",
               "adjustment": 0.4487,
@@ -30693,15 +30693,15 @@
           {
             "number": 31,
             "rank": 4,
-            "short_pack_precision_score": 1.3116,
-            "micro_confidence_score": 0.8021,
-            "score": 0.9586,
+            "short_pack_precision_score": 1.3117,
+            "micro_confidence_score": 0.8022,
+            "score": 0.9588,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1291,
-            "objective_edge": 0.0676,
+            "objective_edge": 0.0677,
             "cross_validation_passed": 8,
             "stability_count": 3,
-            "recall_priority": 0.7661,
+            "recall_priority": 0.7662,
             "monthly_recall_pressure": 0.5333,
             "cold_rebound_champion": 0.2236,
             "multi_window_bagging": 0.9133,
@@ -30803,12 +30803,12 @@
           {
             "number": 15,
             "rank": 10,
-            "short_pack_precision_score": 1.1203,
+            "short_pack_precision_score": 1.1202,
             "micro_confidence_score": 0.5433,
             "score": 0.8165,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1448,
-            "objective_edge": 0.0587,
+            "objective_edge": 0.0586,
             "cross_validation_passed": 5,
             "stability_count": 4,
             "recall_priority": 0.6106,
@@ -30915,15 +30915,15 @@
           {
             "number": 31,
             "rank": 4,
-            "short_pack_precision_score": 1.3116,
-            "micro_confidence_score": 0.8021,
-            "score": 0.9586,
+            "short_pack_precision_score": 1.3117,
+            "micro_confidence_score": 0.8022,
+            "score": 0.9588,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1291,
-            "objective_edge": 0.0676,
+            "objective_edge": 0.0677,
             "cross_validation_passed": 8,
             "stability_count": 3,
-            "recall_priority": 0.7661,
+            "recall_priority": 0.7662,
             "monthly_recall_pressure": 0.5333,
             "cold_rebound_champion": 0.2236,
             "multi_window_bagging": 0.9133,
@@ -31025,12 +31025,12 @@
           {
             "number": 15,
             "rank": 10,
-            "short_pack_precision_score": 1.1203,
+            "short_pack_precision_score": 1.1202,
             "micro_confidence_score": 0.5433,
             "score": 0.8165,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1448,
-            "objective_edge": 0.0587,
+            "objective_edge": 0.0586,
             "cross_validation_passed": 5,
             "stability_count": 4,
             "recall_priority": 0.6106,
@@ -31141,7 +31141,7 @@
               "zone_parity_pressure": 0.8559,
               "missed_hit_recovery": 0.42,
               "rank_error_correction": 0.5528,
-              "low_probability_reverse_hit_recovery": 0.1831,
+              "low_probability_reverse_hit_recovery": 0.1829,
               "monthly_recall_pressure": 0.0637,
               "breakthrough_month_bridge": 0.1064,
               "cold_rebound_champion": 0.3837,
@@ -31235,7 +31235,7 @@
             "stability_count": 5,
             "stability_rate": 1.0,
             "pre_calibration_rank": 7,
-            "pre_calibration_score": 0.6894,
+            "pre_calibration_score": 0.6893,
             "precision_calibration": {
               "mode": "critical",
               "adjustment": 0.4487,
@@ -31450,8 +31450,8 @@
           21,
           31
         ],
-        "score_sum": 1.9249,
-        "avg_score": 0.9625,
+        "score_sum": 1.9251,
+        "avg_score": 0.9626,
         "status": "watch",
         "official_release": false,
         "theoretical_probability": {
@@ -31563,15 +31563,15 @@
           {
             "number": 31,
             "rank": 4,
-            "short_pack_precision_score": 1.3116,
-            "micro_confidence_score": 0.8021,
-            "score": 0.9586,
+            "short_pack_precision_score": 1.3117,
+            "micro_confidence_score": 0.8022,
+            "score": 0.9588,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1291,
-            "objective_edge": 0.0676,
+            "objective_edge": 0.0677,
             "cross_validation_passed": 8,
             "stability_count": 3,
-            "recall_priority": 0.7661,
+            "recall_priority": 0.7662,
             "monthly_recall_pressure": 0.5333,
             "cold_rebound_champion": 0.2236,
             "multi_window_bagging": 0.9133,
@@ -31673,12 +31673,12 @@
           {
             "number": 15,
             "rank": 10,
-            "short_pack_precision_score": 1.1203,
+            "short_pack_precision_score": 1.1202,
             "micro_confidence_score": 0.5433,
             "score": 0.8165,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1448,
-            "objective_edge": 0.0587,
+            "objective_edge": 0.0586,
             "cross_validation_passed": 5,
             "stability_count": 4,
             "recall_priority": 0.6106,
@@ -31785,15 +31785,15 @@
           {
             "number": 31,
             "rank": 4,
-            "short_pack_precision_score": 1.3116,
-            "micro_confidence_score": 0.8021,
-            "score": 0.9586,
+            "short_pack_precision_score": 1.3117,
+            "micro_confidence_score": 0.8022,
+            "score": 0.9588,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1291,
-            "objective_edge": 0.0676,
+            "objective_edge": 0.0677,
             "cross_validation_passed": 8,
             "stability_count": 3,
-            "recall_priority": 0.7661,
+            "recall_priority": 0.7662,
             "monthly_recall_pressure": 0.5333,
             "cold_rebound_champion": 0.2236,
             "multi_window_bagging": 0.9133,
@@ -31895,12 +31895,12 @@
           {
             "number": 15,
             "rank": 10,
-            "short_pack_precision_score": 1.1203,
+            "short_pack_precision_score": 1.1202,
             "micro_confidence_score": 0.5433,
             "score": 0.8165,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1448,
-            "objective_edge": 0.0587,
+            "objective_edge": 0.0586,
             "cross_validation_passed": 5,
             "stability_count": 4,
             "recall_priority": 0.6106,
@@ -31986,7 +31986,7 @@
           21,
           37
         ],
-        "score_sum": 2.8793,
+        "score_sum": 2.8795,
         "avg_score": 0.9598,
         "status": "watch",
         "official_release": false,
@@ -32100,15 +32100,15 @@
           {
             "number": 31,
             "rank": 4,
-            "short_pack_precision_score": 1.3116,
-            "micro_confidence_score": 0.8021,
-            "score": 0.9586,
+            "short_pack_precision_score": 1.3117,
+            "micro_confidence_score": 0.8022,
+            "score": 0.9588,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1291,
-            "objective_edge": 0.0676,
+            "objective_edge": 0.0677,
             "cross_validation_passed": 8,
             "stability_count": 3,
-            "recall_priority": 0.7661,
+            "recall_priority": 0.7662,
             "monthly_recall_pressure": 0.5333,
             "cold_rebound_champion": 0.2236,
             "multi_window_bagging": 0.9133,
@@ -32210,12 +32210,12 @@
           {
             "number": 15,
             "rank": 10,
-            "short_pack_precision_score": 1.1203,
+            "short_pack_precision_score": 1.1202,
             "micro_confidence_score": 0.5433,
             "score": 0.8165,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1448,
-            "objective_edge": 0.0587,
+            "objective_edge": 0.0586,
             "cross_validation_passed": 5,
             "stability_count": 4,
             "recall_priority": 0.6106,
@@ -32322,15 +32322,15 @@
           {
             "number": 31,
             "rank": 4,
-            "short_pack_precision_score": 1.3116,
-            "micro_confidence_score": 0.8021,
-            "score": 0.9586,
+            "short_pack_precision_score": 1.3117,
+            "micro_confidence_score": 0.8022,
+            "score": 0.9588,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1291,
-            "objective_edge": 0.0676,
+            "objective_edge": 0.0677,
             "cross_validation_passed": 8,
             "stability_count": 3,
-            "recall_priority": 0.7661,
+            "recall_priority": 0.7662,
             "monthly_recall_pressure": 0.5333,
             "cold_rebound_champion": 0.2236,
             "multi_window_bagging": 0.9133,
@@ -32432,12 +32432,12 @@
           {
             "number": 15,
             "rank": 10,
-            "short_pack_precision_score": 1.1203,
+            "short_pack_precision_score": 1.1202,
             "micro_confidence_score": 0.5433,
             "score": 0.8165,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1448,
-            "objective_edge": 0.0587,
+            "objective_edge": 0.0586,
             "cross_validation_passed": 5,
             "stability_count": 4,
             "recall_priority": 0.6106,
@@ -32500,15 +32500,15 @@
           {
             "number": 31,
             "rank": 4,
-            "short_pack_precision_score": 1.3116,
-            "micro_confidence_score": 0.8021,
-            "score": 0.9586,
+            "short_pack_precision_score": 1.3117,
+            "micro_confidence_score": 0.8022,
+            "score": 0.9588,
             "probability_percent": 13.05,
             "posterior_hit_rate": 0.1291,
-            "objective_edge": 0.0676,
+            "objective_edge": 0.0677,
             "cross_validation_passed": 8,
             "stability_count": 3,
-            "recall_priority": 0.7661,
+            "recall_priority": 0.7662,
             "monthly_recall_pressure": 0.5333,
             "cold_rebound_champion": 0.2236,
             "multi_window_bagging": 0.9133,
@@ -32548,8 +32548,8 @@
           15,
           4
         ],
-        "score_sum": 4.4477,
-        "avg_score": 0.8895,
+        "score_sum": 4.4479,
+        "avg_score": 0.8896,
         "status": "watch",
         "official_release": false,
         "withheld_reason": "recent walk-forward pack performance did not pass official gate; output as daily research prediction",
@@ -34849,7 +34849,7 @@
     },
     "stability_governor": {
       "status": "corrected",
-      "checked_at": "2026-07-07T07:58:29",
+      "checked_at": "2026-07-07T08:56:32",
       "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
       "single_lock_audit": {
         "recent_single_rows": [
@@ -37423,7 +37423,7 @@
     "engine_version": "aerospace_assurance_v1",
     "principle": "fail_closed_redundant_verified_deterministic",
     "input_fingerprint_sha256": "2ccd29f21f5c62dc96a661d29b44450899026b406847ac52ff312a666566f267",
-    "output_fingerprint_sha256": "3523b3ddc5011bbf88b9ae1711104fcf1c07f1dabdaa6275a73e105d4868bc6a",
+    "output_fingerprint_sha256": "21756df6bc98eba057761082f226f4e7e6d5c01dca7955260213ba591254d85d",
     "input_invariants": {
       "passed": true,
       "checked_draws": 5907,
@@ -37830,7 +37830,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.5528,
-        "low_probability_reverse_hit_recovery": 0.1831,
+        "low_probability_reverse_hit_recovery": 0.1829,
         "monthly_recall_pressure": 0.0637,
         "breakthrough_month_bridge": 0.1064,
         "cold_rebound_champion": 0.3837,
@@ -37924,7 +37924,7 @@
       "stability_count": 5,
       "stability_rate": 1.0,
       "pre_calibration_rank": 7,
-      "pre_calibration_score": 0.6894,
+      "pre_calibration_score": 0.6893,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.4487,
@@ -38122,7 +38122,7 @@
     {
       "number": 31,
       "rank": 2,
-      "score": 0.9586,
+      "score": 0.9588,
       "confidence_index": 76.0,
       "model_probability_percent": 13.05,
       "omission": 1,
@@ -38132,9 +38132,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.8499,
+          "signal": 0.8524,
           "weight": 0.06564,
-          "contribution": 0.05579
+          "contribution": 0.05596
         },
         {
           "model": "tail_transition_bridge",
@@ -38214,7 +38214,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.6894,
-        "low_probability_reverse_hit_recovery": 0.8499,
+        "low_probability_reverse_hit_recovery": 0.8524,
         "monthly_recall_pressure": 0.5333,
         "breakthrough_month_bridge": 0.6741,
         "cold_rebound_champion": 0.2236,
@@ -38327,9 +38327,9 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0676,
+        "objective_edge": 0.0677,
         "positive_source_ratio": 1.0,
-        "positive_strength": 5.9337,
+        "positive_strength": 5.9366,
         "negative_strength": 0.0,
         "score_adjustment": 0.16,
         "mode": "critical",
@@ -38341,7 +38341,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.9951
+            "strength": 0.998
           },
           {
             "feature": "rank_error_correction",
@@ -38431,7 +38431,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.9951
+            "strength": 0.998
           }
         ]
       },
@@ -38454,7 +38454,7 @@
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.7282,
+      "evidence_tie_break_score": 0.7284,
       "pre_saturation_score": 1.0,
       "hard_iron_rule": {
         "blocked": false,
@@ -38462,7 +38462,7 @@
         "repeat_reentry": false,
         "previous_prediction_reentry": false
       },
-      "pre_formula_lab_score": 0.9586,
+      "pre_formula_lab_score": 0.9587,
       "formula_lab": {
         "score": 0.5146,
         "rank": 12,
@@ -38472,23 +38472,23 @@
           "review_recall"
         ]
       },
-      "pre_prediction_mode_rebuild_score": 0.7721,
+      "pre_prediction_mode_rebuild_score": 0.7722,
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 11,
-        "score_adjustment": 0.1865,
+        "score_adjustment": 0.1866,
         "latest_repeat_reentry": {
           "latest_draw_number": false
         },
         "recall_signal": 0.4417,
-        "support_signal": 0.5591,
+        "support_signal": 0.5593,
         "repeated_failed_signal": 0.0,
         "late_score": 0.0,
         "missed_score": 0.625,
         "monthly_score": 0.25,
         "tail_score": 1.0,
         "zone_score": 0.9226,
-        "objective_score": 0.784,
+        "objective_score": 0.7847,
         "hit_score": 0.2575,
         "cross_score": 0.6154,
         "stability_score": 0.6,
@@ -38516,9 +38516,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.8158,
+          "signal": 0.8165,
           "weight": 0.06564,
-          "contribution": 0.05355
+          "contribution": 0.0536
         },
         {
           "model": "tail_transition_bridge",
@@ -38598,7 +38598,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.4803,
-        "low_probability_reverse_hit_recovery": 0.8158,
+        "low_probability_reverse_hit_recovery": 0.8165,
         "monthly_recall_pressure": 0.2598,
         "breakthrough_month_bridge": 0.354,
         "cold_rebound_champion": 0.1336,
@@ -38692,7 +38692,7 @@
       "stability_count": 2,
       "stability_rate": 0.4,
       "pre_calibration_rank": 10,
-      "pre_calibration_score": 0.4663,
+      "pre_calibration_score": 0.4662,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.3746,
@@ -38713,7 +38713,7 @@
         "status": "evaluated",
         "objective_edge": 0.0682,
         "positive_source_ratio": 1.0,
-        "positive_strength": 5.3016,
+        "positive_strength": 5.3024,
         "negative_strength": 0.0,
         "score_adjustment": 0.16,
         "mode": "critical",
@@ -38725,7 +38725,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.9551
+            "strength": 0.956
           },
           {
             "feature": "rank_error_correction",
@@ -38936,18 +38936,18 @@
           "contribution": 0.02544
         },
         {
-          "model": "low_probability_reverse_hit_recovery",
-          "label": "低機率反向命中回補",
-          "signal": 0.3183,
-          "weight": 0.06564,
-          "contribution": 0.0209
-        },
-        {
           "model": "missed_hit_recovery",
           "label": "漏命中回收",
           "signal": 0.58,
           "weight": 0.0352,
           "contribution": 0.02042
+        },
+        {
+          "model": "low_probability_reverse_hit_recovery",
+          "label": "低機率反向命中回補",
+          "signal": 0.3094,
+          "weight": 0.06564,
+          "contribution": 0.02031
         },
         {
           "model": "monthly_recall_pressure",
@@ -38985,7 +38985,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.5286,
-        "low_probability_reverse_hit_recovery": 0.3183,
+        "low_probability_reverse_hit_recovery": 0.3094,
         "monthly_recall_pressure": 0.3018,
         "breakthrough_month_bridge": 0.3327,
         "cold_rebound_champion": 0.179,
@@ -39079,7 +39079,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 8,
-      "pre_calibration_score": 0.6539,
+      "pre_calibration_score": 0.6532,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.3902,
@@ -39098,11 +39098,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0587,
+        "objective_edge": 0.0586,
         "positive_source_ratio": 0.799,
-        "positive_strength": 3.6697,
+        "positive_strength": 3.6592,
         "negative_strength": 0.9225,
-        "score_adjustment": 0.1553,
+        "score_adjustment": 0.155,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -39128,7 +39128,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.3727
+            "strength": 0.3622
           },
           {
             "feature": "monthly_recall_pressure",
@@ -39225,7 +39225,7 @@
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.7058,
+      "evidence_tie_break_score": 0.7056,
       "pre_saturation_score": 1.0,
       "hard_iron_rule": {
         "blocked": false,
@@ -39252,14 +39252,14 @@
           "latest_draw_number": false
         },
         "recall_signal": 0.3256,
-        "support_signal": 0.5503,
+        "support_signal": 0.5502,
         "repeated_failed_signal": 0.0,
         "late_score": 0.0,
         "missed_score": 0.375,
         "monthly_score": 0.125,
         "tail_score": 0.6306,
         "zone_score": 1.0,
-        "objective_score": 0.7247,
+        "objective_score": 0.724,
         "hit_score": 0.3883,
         "cross_score": 0.3846,
         "stability_score": 0.8,
@@ -39369,7 +39369,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 0.76,
         "rank_error_correction": 0.3618,
-        "low_probability_reverse_hit_recovery": 0.1843,
+        "low_probability_reverse_hit_recovery": 0.1819,
         "monthly_recall_pressure": 0.0937,
         "breakthrough_month_bridge": 0.1325,
         "cold_rebound_champion": 0.3461,
@@ -39463,7 +39463,7 @@
       "stability_count": 5,
       "stability_rate": 1.0,
       "pre_calibration_rank": 9,
-      "pre_calibration_score": 0.6366,
+      "pre_calibration_score": 0.6364,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.2691,
@@ -39671,9 +39671,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.7139,
+          "signal": 0.716,
           "weight": 0.06564,
-          "contribution": 0.04686
+          "contribution": 0.047
         },
         {
           "model": "rank_error_correction",
@@ -39753,7 +39753,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.7385,
-        "low_probability_reverse_hit_recovery": 0.7139,
+        "low_probability_reverse_hit_recovery": 0.716,
         "monthly_recall_pressure": 0.2523,
         "breakthrough_month_bridge": 0.294,
         "cold_rebound_champion": 0.1905,
@@ -39868,7 +39868,7 @@
         "status": "evaluated",
         "objective_edge": 0.0608,
         "positive_source_ratio": 1.0,
-        "positive_strength": 5.9438,
+        "positive_strength": 5.9463,
         "negative_strength": 0.0,
         "score_adjustment": 0.1596,
         "mode": "critical",
@@ -39880,7 +39880,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.8358
+            "strength": 0.8383
           },
           {
             "feature": "rank_error_correction",
@@ -40154,7 +40154,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.4231,
-        "low_probability_reverse_hit_recovery": 0.1831,
+        "low_probability_reverse_hit_recovery": 0.1829,
         "monthly_recall_pressure": 0.015,
         "breakthrough_month_bridge": 0.0087,
         "cold_rebound_champion": 0.3214,
@@ -40540,7 +40540,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.3748,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 0.077,
         "breakthrough_month_bridge": 0.1074,
         "cold_rebound_champion": 0.5093,
@@ -40831,7 +40831,7 @@
     {
       "number": 35,
       "rank": 9,
-      "score": 0.3805,
+      "score": 0.3804,
       "confidence_index": 69.2,
       "model_probability_percent": 12.82,
       "omission": 22,
@@ -40923,7 +40923,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.3287,
-        "low_probability_reverse_hit_recovery": 0.2566,
+        "low_probability_reverse_hit_recovery": 0.2534,
         "monthly_recall_pressure": 0.0275,
         "breakthrough_month_bridge": 0.0687,
         "cold_rebound_champion": 0.8448,
@@ -41017,7 +41017,7 @@
       "stability_count": 1,
       "stability_rate": 0.2,
       "pre_calibration_rank": 15,
-      "pre_calibration_score": 0.2662,
+      "pre_calibration_score": 0.266,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.2277,
@@ -41169,7 +41169,7 @@
         "repeat_reentry": false,
         "previous_prediction_reentry": false
       },
-      "pre_formula_lab_score": 0.5041,
+      "pre_formula_lab_score": 0.5039,
       "formula_lab": {
         "score": 0.4076,
         "rank": 20,
@@ -41178,7 +41178,7 @@
           "calendar_cycle"
         ]
       },
-      "pre_prediction_mode_rebuild_score": 0.4436,
+      "pre_prediction_mode_rebuild_score": 0.4435,
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 14,
@@ -41304,7 +41304,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.4112,
-        "low_probability_reverse_hit_recovery": 0.1831,
+        "low_probability_reverse_hit_recovery": 0.1829,
         "monthly_recall_pressure": 0.0,
         "breakthrough_month_bridge": 0.0077,
         "cold_rebound_champion": 0.3679,
@@ -41398,7 +41398,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 12,
-      "pre_calibration_score": 0.5238,
+      "pre_calibration_score": 0.5237,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.4558,
@@ -41609,9 +41609,9 @@
     {
       "number": 19,
       "rank": 11,
-      "score": 0.3552,
+      "score": 0.3551,
       "confidence_index": 65.9,
-      "model_probability_percent": 12.45,
+      "model_probability_percent": 12.44,
       "omission": 30,
       "repeat_guard": null,
       "previous_prediction_guard": null,
@@ -41795,7 +41795,7 @@
       "stability_count": 2,
       "stability_rate": 0.4,
       "pre_calibration_rank": 13,
-      "pre_calibration_score": 0.3429,
+      "pre_calibration_score": 0.3428,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.2098,
@@ -41945,7 +41945,7 @@
         "repeat_reentry": false,
         "previous_prediction_reentry": false
       },
-      "pre_formula_lab_score": 0.4108,
+      "pre_formula_lab_score": 0.4107,
       "formula_lab": {
         "score": 0.4496,
         "rank": 16,
@@ -41955,7 +41955,7 @@
           "tail_bucket_pressure"
         ]
       },
-      "pre_prediction_mode_rebuild_score": 0.4271,
+      "pre_prediction_mode_rebuild_score": 0.427,
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 16,
@@ -42469,7 +42469,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.3092,
-        "low_probability_reverse_hit_recovery": 0.1502,
+        "low_probability_reverse_hit_recovery": 0.1508,
         "monthly_recall_pressure": 0.02,
         "breakthrough_month_bridge": 0.0377,
         "cold_rebound_champion": 0.8873,
@@ -42802,9 +42802,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3344,
+          "signal": 0.3327,
           "weight": 0.06564,
-          "contribution": 0.02195
+          "contribution": 0.02184
         },
         {
           "model": "freq_50",
@@ -42856,7 +42856,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.7269,
-        "low_probability_reverse_hit_recovery": 0.3344,
+        "low_probability_reverse_hit_recovery": 0.3327,
         "monthly_recall_pressure": 0.0537,
         "breakthrough_month_bridge": 0.0803,
         "cold_rebound_champion": 0.1915,
@@ -42971,7 +42971,7 @@
         "status": "evaluated",
         "objective_edge": 0.056,
         "positive_source_ratio": 1.0,
-        "positive_strength": 4.4138,
+        "positive_strength": 4.4118,
         "negative_strength": 0.0,
         "score_adjustment": 0.1496,
         "mode": "critical",
@@ -42991,7 +42991,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.3915
+            "strength": 0.3895
           },
           {
             "feature": "multi_window_bagging",
@@ -43169,9 +43169,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.912,
+          "signal": 0.9141,
           "weight": 0.06564,
-          "contribution": 0.05987
+          "contribution": 0.06001
         },
         {
           "model": "zone_quota_pressure",
@@ -43251,7 +43251,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.6154,
-        "low_probability_reverse_hit_recovery": 0.912,
+        "low_probability_reverse_hit_recovery": 0.9141,
         "monthly_recall_pressure": 0.3143,
         "breakthrough_month_bridge": 0.413,
         "cold_rebound_champion": 0.4108,
@@ -43366,7 +43366,7 @@
         "status": "evaluated",
         "objective_edge": 0.0495,
         "positive_source_ratio": 0.862,
-        "positive_strength": 6.2771,
+        "positive_strength": 6.2796,
         "negative_strength": 1.0088,
         "score_adjustment": 0.1362,
         "mode": "critical",
@@ -43378,7 +43378,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 1.0678
+            "strength": 1.0703
           },
           {
             "feature": "zone_coverage_recovery",
@@ -44040,7 +44040,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.3374,
-        "low_probability_reverse_hit_recovery": 0.1502,
+        "low_probability_reverse_hit_recovery": 0.1508,
         "monthly_recall_pressure": 0.035,
         "breakthrough_month_bridge": 0.0774,
         "cold_rebound_champion": 0.3458,
@@ -44428,7 +44428,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.7608,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 0.2177,
         "breakthrough_month_bridge": 0.3046,
         "cold_rebound_champion": 0.215,
@@ -44763,9 +44763,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.4682,
+          "signal": 0.4709,
           "weight": 0.06564,
-          "contribution": 0.03074
+          "contribution": 0.03091
         },
         {
           "model": "multi_window_bagging",
@@ -44824,7 +44824,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.5037,
-        "low_probability_reverse_hit_recovery": 0.4682,
+        "low_probability_reverse_hit_recovery": 0.4709,
         "monthly_recall_pressure": 0.3726,
         "breakthrough_month_bridge": 0.4971,
         "cold_rebound_champion": 0.2316,
@@ -44938,7 +44938,7 @@
         "status": "evaluated",
         "objective_edge": 0.0576,
         "positive_source_ratio": 0.846,
-        "positive_strength": 5.0763,
+        "positive_strength": 5.0794,
         "negative_strength": 0.9225,
         "score_adjustment": 0.153,
         "mode": "critical",
@@ -44958,7 +44958,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.5482
+            "strength": 0.5513
           },
           {
             "feature": "rank_error_correction",
@@ -45168,9 +45168,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.431,
+          "signal": 0.4328,
           "weight": 0.06564,
-          "contribution": 0.0283
+          "contribution": 0.02841
         },
         {
           "model": "multi_window_bagging",
@@ -45215,7 +45215,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.3423,
-        "low_probability_reverse_hit_recovery": 0.431,
+        "low_probability_reverse_hit_recovery": 0.4328,
         "monthly_recall_pressure": 0.0674,
         "breakthrough_month_bridge": 0.1209,
         "cold_rebound_champion": 0.3318,
@@ -45309,7 +45309,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 11,
-      "pre_calibration_score": 0.5828,
+      "pre_calibration_score": 0.5827,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.3161,
@@ -45329,7 +45329,7 @@
         "status": "evaluated",
         "objective_edge": 0.0413,
         "positive_source_ratio": 0.823,
-        "positive_strength": 4.6749,
+        "positive_strength": 4.677,
         "negative_strength": 1.0088,
         "score_adjustment": 0.1192,
         "mode": "critical",
@@ -45341,7 +45341,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.5047
+            "strength": 0.5067
           },
           {
             "feature": "zone_coverage_recovery",
@@ -45567,14 +45567,14 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.427,
+          "signal": 0.4298,
           "weight": 0.06564,
-          "contribution": 0.02803
+          "contribution": 0.02821
         },
         {
           "model": "cross_consensus",
           "label": "多模型共識",
-          "signal": 0.654,
+          "signal": 0.6541,
           "weight": 0.03741,
           "contribution": 0.02447
         },
@@ -45606,7 +45606,7 @@
         "tail_zone": 0.52,
         "cycle_timing": 0.3229,
         "trend_alignment": 0.7299,
-        "cross_consensus": 0.654,
+        "cross_consensus": 0.6541,
         "bayesian_posterior": 0.2973,
         "monte_carlo_stability": 0.75,
         "distribution_balance": 0.526,
@@ -45614,7 +45614,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.8234,
-        "low_probability_reverse_hit_recovery": 0.427,
+        "low_probability_reverse_hit_recovery": 0.4298,
         "monthly_recall_pressure": 0.7673,
         "breakthrough_month_bridge": 0.7302,
         "cold_rebound_champion": 0.0077,
@@ -45729,7 +45729,7 @@
         "status": "evaluated",
         "objective_edge": 0.0841,
         "positive_source_ratio": 0.839,
-        "positive_strength": 5.2564,
+        "positive_strength": 5.2597,
         "negative_strength": 1.0088,
         "score_adjustment": -0.035,
         "mode": "critical",
@@ -45773,7 +45773,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.4999
+            "strength": 0.5032
           },
           {
             "feature": "zone_coverage_recovery",
@@ -46010,7 +46010,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.76,
         "rank_error_correction": 1.0,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 1.0,
         "breakthrough_month_bridge": 1.0,
         "cold_rebound_champion": 0.0,
@@ -46355,9 +46355,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.5241,
+          "signal": 0.5192,
           "weight": 0.06564,
-          "contribution": 0.03441
+          "contribution": 0.03408
         },
         {
           "model": "tail_transition_bridge",
@@ -46409,7 +46409,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.9992,
-        "low_probability_reverse_hit_recovery": 0.5241,
+        "low_probability_reverse_hit_recovery": 0.5192,
         "monthly_recall_pressure": 0.7548,
         "breakthrough_month_bridge": 0.6373,
         "cold_rebound_champion": 0.0051,
@@ -46503,7 +46503,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 32,
-      "pre_calibration_score": 0.3367,
+      "pre_calibration_score": 0.3289,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.5059,
@@ -46524,7 +46524,7 @@
         "status": "evaluated",
         "objective_edge": 0.0718,
         "positive_source_ratio": 0.852,
-        "positive_strength": 5.3295,
+        "positive_strength": 5.3237,
         "negative_strength": 0.9225,
         "score_adjustment": -0.035,
         "mode": "critical",
@@ -46560,7 +46560,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.6137
+            "strength": 0.6079
           },
           {
             "feature": "cross_consensus",
@@ -46642,14 +46642,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.5846,
-        "score_adjustment": 0.0657,
+        "priority_score": 0.5819,
+        "score_adjustment": 0.0648,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.5592,
+      "evidence_tie_break_score": 0.5569,
       "hard_iron_rule": {
         "blocked": true,
         "reasons": [
@@ -46729,9 +46729,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.6708,
+          "signal": 0.6728,
           "weight": 0.06564,
-          "contribution": 0.04403
+          "contribution": 0.04417
         },
         {
           "model": "zone_coverage_recovery",
@@ -46771,7 +46771,7 @@
         {
           "model": "cross_consensus",
           "label": "多模型共識",
-          "signal": 0.7144,
+          "signal": 0.7145,
           "weight": 0.03741,
           "contribution": 0.02673
         }
@@ -46796,7 +46796,7 @@
         "tail_zone": 0.76,
         "cycle_timing": 0.3754,
         "trend_alignment": 0.6393,
-        "cross_consensus": 0.7144,
+        "cross_consensus": 0.7145,
         "bayesian_posterior": 0.5405,
         "monte_carlo_stability": 0.6667,
         "distribution_balance": 0.0956,
@@ -46804,7 +46804,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.3889,
-        "low_probability_reverse_hit_recovery": 0.6708,
+        "low_probability_reverse_hit_recovery": 0.6728,
         "monthly_recall_pressure": 0.1082,
         "breakthrough_month_bridge": 0.1615,
         "cold_rebound_champion": 0.2991,
@@ -46918,7 +46918,7 @@
         "status": "evaluated",
         "objective_edge": 0.0538,
         "positive_source_ratio": 0.846,
-        "positive_strength": 5.5241,
+        "positive_strength": 5.5266,
         "negative_strength": 1.0088,
         "score_adjustment": 0.1451,
         "mode": "critical",
@@ -46938,7 +46938,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.7853
+            "strength": 0.7878
           },
           {
             "feature": "zone_coverage_recovery",
@@ -46954,7 +46954,7 @@
             "objective_edge": 0.0377,
             "recent_top5_avg_hits": 0.667,
             "recent_top10_avg_hits": 1.322,
-            "strength": 0.6549
+            "strength": 0.655
           },
           {
             "feature": "freq_50",
@@ -47012,7 +47012,7 @@
             "objective_edge": 0.0377,
             "recent_top5_avg_hits": 0.667,
             "recent_top10_avg_hits": 1.322,
-            "strength": 0.6549
+            "strength": 0.655
           },
           {
             "feature": "zone_coverage_recovery",
@@ -47209,7 +47209,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.1489,
-        "low_probability_reverse_hit_recovery": 0.1973,
+        "low_probability_reverse_hit_recovery": 0.1948,
         "monthly_recall_pressure": 0.2998,
         "breakthrough_month_bridge": 0.4062,
         "cold_rebound_champion": 0.2827,
@@ -47611,7 +47611,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.6932,
-        "low_probability_reverse_hit_recovery": 0.2398,
+        "low_probability_reverse_hit_recovery": 0.24,
         "monthly_recall_pressure": 0.7694,
         "breakthrough_month_bridge": 0.618,
         "cold_rebound_champion": 0.1053,
@@ -47928,9 +47928,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.7418,
+          "signal": 0.7363,
           "weight": 0.06564,
-          "contribution": 0.0487
+          "contribution": 0.04833
         },
         {
           "model": "tail_transition_bridge",
@@ -47995,7 +47995,7 @@
         "tail_zone": 0.6079,
         "cycle_timing": 0.5204,
         "trend_alignment": 0.1988,
-        "cross_consensus": 0.4086,
+        "cross_consensus": 0.4085,
         "bayesian_posterior": 0.8378,
         "monte_carlo_stability": 0.5,
         "distribution_balance": 0.4296,
@@ -48003,7 +48003,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.0,
-        "low_probability_reverse_hit_recovery": 0.7418,
+        "low_probability_reverse_hit_recovery": 0.7363,
         "monthly_recall_pressure": 0.015,
         "breakthrough_month_bridge": 0.0213,
         "cold_rebound_champion": 0.7005,
@@ -48097,7 +48097,7 @@
       "stability_count": 0,
       "stability_rate": 0.0,
       "pre_calibration_rank": 16,
-      "pre_calibration_score": 0.1373,
+      "pre_calibration_score": 0.1372,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": -0.1273,
@@ -48115,11 +48115,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0424,
+        "objective_edge": 0.0423,
         "positive_source_ratio": 0.897,
-        "positive_strength": 5.3519,
+        "positive_strength": 5.3454,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1215,
+        "score_adjustment": 0.1213,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -48129,7 +48129,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.8685
+            "strength": 0.862
           },
           {
             "feature": "zone_coverage_recovery",
@@ -48235,14 +48235,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0122,
+        "priority_score": 0.0121,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.2596,
+      "evidence_tie_break_score": 0.2593,
       "hard_iron_rule": {
         "blocked": false,
         "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -48271,14 +48271,14 @@
           "latest_draw_number": false
         },
         "recall_signal": 0.2074,
-        "support_signal": 0.4014,
+        "support_signal": 0.4012,
         "repeated_failed_signal": 0.8125,
         "late_score": 0.0,
         "missed_score": 0.0,
         "monthly_score": 0.0,
         "tail_score": 0.7318,
         "zone_score": 0.9587,
-        "objective_score": 0.616,
+        "objective_score": 0.6153,
         "hit_score": 0.0367,
         "cross_score": 0.4615,
         "stability_score": 0.0,
@@ -48313,9 +48313,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.7468,
+          "signal": 0.7481,
           "weight": 0.06564,
-          "contribution": 0.04902
+          "contribution": 0.04911
         },
         {
           "model": "tail_transition_bridge",
@@ -48395,7 +48395,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.153,
-        "low_probability_reverse_hit_recovery": 0.7468,
+        "low_probability_reverse_hit_recovery": 0.7481,
         "monthly_recall_pressure": 0.0075,
         "breakthrough_month_bridge": 0.0,
         "cold_rebound_champion": 0.2901,
@@ -48510,9 +48510,9 @@
         "status": "evaluated",
         "objective_edge": 0.0492,
         "positive_source_ratio": 0.876,
-        "positive_strength": 4.3222,
+        "positive_strength": 4.3237,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1354,
+        "score_adjustment": 0.1355,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -48522,7 +48522,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.8743
+            "strength": 0.8759
           },
           {
             "feature": "zone_coverage_recovery",
@@ -48628,7 +48628,7 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0929,
+        "priority_score": 0.093,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
@@ -48742,9 +48742,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3306,
+          "signal": 0.331,
           "weight": 0.06564,
-          "contribution": 0.0217
+          "contribution": 0.02173
         },
         {
           "model": "missed_hit_recovery",
@@ -48796,7 +48796,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.6734,
-        "low_probability_reverse_hit_recovery": 0.3306,
+        "low_probability_reverse_hit_recovery": 0.331,
         "monthly_recall_pressure": 0.266,
         "breakthrough_month_bridge": 0.2969,
         "cold_rebound_champion": 0.215,
@@ -48911,7 +48911,7 @@
         "status": "evaluated",
         "objective_edge": 0.0451,
         "positive_source_ratio": 0.708,
-        "positive_strength": 2.9298,
+        "positive_strength": 2.9303,
         "negative_strength": 1.2062,
         "score_adjustment": 0.0934,
         "mode": "critical",
@@ -48931,7 +48931,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.387
+            "strength": 0.3875
           },
           {
             "feature": "missed_hit_recovery",
@@ -49206,7 +49206,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.2935,
-        "low_probability_reverse_hit_recovery": 0.1064,
+        "low_probability_reverse_hit_recovery": 0.1026,
         "monthly_recall_pressure": 0.0674,
         "breakthrough_month_bridge": 0.1209,
         "cold_rebound_champion": 0.5014,
@@ -49608,7 +49608,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.1275,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 0.0745,
         "breakthrough_month_bridge": 0.1286,
         "cold_rebound_champion": 0.5594,
@@ -49951,9 +49951,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3044,
+          "signal": 0.3012,
           "weight": 0.06564,
-          "contribution": 0.01998
+          "contribution": 0.01977
         },
         {
           "model": "pair",
@@ -49991,7 +49991,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 0.76,
         "rank_error_correction": 0.1752,
-        "low_probability_reverse_hit_recovery": 0.3044,
+        "low_probability_reverse_hit_recovery": 0.3012,
         "monthly_recall_pressure": 0.0962,
         "breakthrough_month_bridge": 0.1209,
         "cold_rebound_champion": 0.6123,
@@ -50085,7 +50085,7 @@
       "stability_count": 0,
       "stability_rate": 0.0,
       "pre_calibration_rank": 20,
-      "pre_calibration_score": 0.0935,
+      "pre_calibration_score": 0.0934,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": -0.066,
@@ -50104,11 +50104,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.037,
+        "objective_edge": 0.0369,
         "positive_source_ratio": 0.811,
-        "positive_strength": 3.9609,
+        "positive_strength": 3.9571,
         "negative_strength": 0.9225,
-        "score_adjustment": 0.1102,
+        "score_adjustment": 0.1101,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -50126,7 +50126,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.3564
+            "strength": 0.3526
           },
           {
             "feature": "pair",
@@ -50224,14 +50224,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0378,
+        "priority_score": 0.0377,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.2529,
+      "evidence_tie_break_score": 0.2527,
       "hard_iron_rule": {
         "blocked": false,
         "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -50252,19 +50252,19 @@
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 28,
-        "score_adjustment": -0.2321,
+        "score_adjustment": -0.2322,
         "latest_repeat_reentry": {
           "latest_draw_number": false
         },
         "recall_signal": 0.2174,
-        "support_signal": 0.351,
+        "support_signal": 0.3508,
         "repeated_failed_signal": 0.75,
         "late_score": 0.0,
         "missed_score": 0.0,
         "monthly_score": 0.0,
         "tail_score": 0.7741,
         "zone_score": 1.0,
-        "objective_score": 0.58,
+        "objective_score": 0.5793,
         "hit_score": 0.1875,
         "cross_score": 0.3077,
         "stability_score": 0.0,
@@ -50324,18 +50324,18 @@
           "contribution": 0.02892
         },
         {
-          "model": "low_probability_reverse_hit_recovery",
-          "label": "低機率反向命中回補",
-          "signal": 0.3673,
-          "weight": 0.06564,
-          "contribution": 0.02411
-        },
-        {
           "model": "zone_coverage_recovery",
           "label": "分區覆蓋回補",
           "signal": 0.6588,
           "weight": 0.03658,
           "contribution": 0.0241
+        },
+        {
+          "model": "low_probability_reverse_hit_recovery",
+          "label": "低機率反向命中回補",
+          "signal": 0.3648,
+          "weight": 0.06564,
+          "contribution": 0.02395
         },
         {
           "model": "cold_rebound_champion",
@@ -50387,7 +50387,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.1302,
-        "low_probability_reverse_hit_recovery": 0.3673,
+        "low_probability_reverse_hit_recovery": 0.3648,
         "monthly_recall_pressure": 0.0337,
         "breakthrough_month_bridge": 0.0213,
         "cold_rebound_champion": 0.5034,
@@ -50502,9 +50502,9 @@
         "status": "evaluated",
         "objective_edge": 0.0339,
         "positive_source_ratio": 0.874,
-        "positive_strength": 4.2609,
+        "positive_strength": 4.258,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1039,
+        "score_adjustment": 0.1038,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -50514,7 +50514,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.43
+            "strength": 0.4271
           },
           {
             "feature": "zone_coverage_recovery",
@@ -50739,9 +50739,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.345,
+          "signal": 0.3435,
           "weight": 0.06564,
-          "contribution": 0.02265
+          "contribution": 0.02255
         },
         {
           "model": "cold_rebound_champion",
@@ -50779,7 +50779,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.1302,
-        "low_probability_reverse_hit_recovery": 0.345,
+        "low_probability_reverse_hit_recovery": 0.3435,
         "monthly_recall_pressure": 0.015,
         "breakthrough_month_bridge": 0.0184,
         "cold_rebound_champion": 0.5216,
@@ -50873,7 +50873,7 @@
       "stability_count": 0,
       "stability_rate": 0.0,
       "pre_calibration_rank": 18,
-      "pre_calibration_score": 0.1014,
+      "pre_calibration_score": 0.1013,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": -0.0997,
@@ -50892,11 +50892,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0404,
+        "objective_edge": 0.0403,
         "positive_source_ratio": 0.889,
-        "positive_strength": 4.8856,
+        "positive_strength": 4.8838,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1173,
+        "score_adjustment": 0.1172,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -50906,7 +50906,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.4039
+            "strength": 0.4022
           },
           {
             "feature": "zone_coverage_recovery",
@@ -51012,14 +51012,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0202,
+        "priority_score": 0.0201,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.2441,
+      "evidence_tie_break_score": 0.2439,
       "hard_iron_rule": {
         "blocked": false,
         "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -51045,14 +51045,14 @@
           "latest_draw_number": false
         },
         "recall_signal": 0.2192,
-        "support_signal": 0.3422,
+        "support_signal": 0.3421,
         "repeated_failed_signal": 1.0,
         "late_score": 0.0,
         "missed_score": 0.0,
         "monthly_score": 0.0,
         "tail_score": 0.8494,
         "zone_score": 0.9587,
-        "objective_score": 0.6027,
+        "objective_score": 0.602,
         "hit_score": 0.115,
         "cross_score": 0.3077,
         "stability_score": 0.0,
@@ -51102,9 +51102,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.6152,
+          "signal": 0.6138,
           "weight": 0.06564,
-          "contribution": 0.04038
+          "contribution": 0.04029
         },
         {
           "model": "tail_transition_bridge",
@@ -51177,7 +51177,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.8384,
-        "low_probability_reverse_hit_recovery": 0.6152,
+        "low_probability_reverse_hit_recovery": 0.6138,
         "monthly_recall_pressure": 0.2868,
         "breakthrough_month_bridge": 0.2369,
         "cold_rebound_champion": 0.1279,
@@ -51292,7 +51292,7 @@
         "status": "evaluated",
         "objective_edge": 0.0608,
         "positive_source_ratio": 0.889,
-        "positive_strength": 4.2533,
+        "positive_strength": 4.2517,
         "negative_strength": 0.5331,
         "score_adjustment": -0.035,
         "mode": "critical",
@@ -51312,7 +51312,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.7202
+            "strength": 0.7186
           },
           {
             "feature": "monthly_recall_pressure",
@@ -51574,7 +51574,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.0743,
-        "low_probability_reverse_hit_recovery": 0.1973,
+        "low_probability_reverse_hit_recovery": 0.1948,
         "monthly_recall_pressure": 0.0699,
         "breakthrough_month_bridge": 0.1093,
         "cold_rebound_champion": 0.3808,
@@ -51922,7 +51922,7 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.4228,
+          "signal": 0.4229,
           "weight": 0.06564,
           "contribution": 0.02776
         },
@@ -51976,7 +51976,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.0488,
-        "low_probability_reverse_hit_recovery": 0.4228,
+        "low_probability_reverse_hit_recovery": 0.4229,
         "monthly_recall_pressure": 0.0337,
         "breakthrough_month_bridge": 0.0213,
         "cold_rebound_champion": 1.0,
@@ -52091,7 +52091,7 @@
         "status": "evaluated",
         "objective_edge": 0.042,
         "positive_source_ratio": 0.889,
-        "positive_strength": 4.8996,
+        "positive_strength": 4.8997,
         "negative_strength": 0.6123,
         "score_adjustment": 0.1207,
         "mode": "critical",
@@ -52297,9 +52297,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3899,
+          "signal": 0.3908,
           "weight": 0.06564,
-          "contribution": 0.0256
+          "contribution": 0.02565
         },
         {
           "model": "cycle_timing",
@@ -52365,7 +52365,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.3428,
-        "low_probability_reverse_hit_recovery": 0.3899,
+        "low_probability_reverse_hit_recovery": 0.3908,
         "monthly_recall_pressure": 0.0537,
         "breakthrough_month_bridge": 0.0996,
         "cold_rebound_champion": 0.327,
@@ -52480,7 +52480,7 @@
         "status": "evaluated",
         "objective_edge": 0.0234,
         "positive_source_ratio": 0.796,
-        "positive_strength": 3.3305,
+        "positive_strength": 3.3315,
         "negative_strength": 0.8531,
         "score_adjustment": -0.045,
         "mode": "critical",
@@ -52492,7 +52492,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.4565
+            "strength": 0.4575
           },
           {
             "feature": "missed_hit_recovery",
@@ -52764,7 +52764,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.1286,
-        "low_probability_reverse_hit_recovery": 0.1619,
+        "low_probability_reverse_hit_recovery": 0.1606,
         "monthly_recall_pressure": 0.0699,
         "breakthrough_month_bridge": 0.087,
         "cold_rebound_champion": 0.8441,
@@ -53147,7 +53147,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.5528,
-        "low_probability_reverse_hit_recovery": 0.1831,
+        "low_probability_reverse_hit_recovery": 0.1829,
         "monthly_recall_pressure": 0.0637,
         "breakthrough_month_bridge": 0.1064,
         "cold_rebound_champion": 0.3837,
@@ -53241,7 +53241,7 @@
       "stability_count": 5,
       "stability_rate": 1.0,
       "pre_calibration_rank": 7,
-      "pre_calibration_score": 0.6894,
+      "pre_calibration_score": 0.6893,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.4487,
@@ -53439,7 +53439,7 @@
     {
       "number": 31,
       "rank": 2,
-      "score": 0.9586,
+      "score": 0.9588,
       "confidence_index": 76.0,
       "model_probability_percent": 13.05,
       "omission": 1,
@@ -53449,9 +53449,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.8499,
+          "signal": 0.8524,
           "weight": 0.06564,
-          "contribution": 0.05579
+          "contribution": 0.05596
         },
         {
           "model": "tail_transition_bridge",
@@ -53531,7 +53531,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.6894,
-        "low_probability_reverse_hit_recovery": 0.8499,
+        "low_probability_reverse_hit_recovery": 0.8524,
         "monthly_recall_pressure": 0.5333,
         "breakthrough_month_bridge": 0.6741,
         "cold_rebound_champion": 0.2236,
@@ -53644,9 +53644,9 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0676,
+        "objective_edge": 0.0677,
         "positive_source_ratio": 1.0,
-        "positive_strength": 5.9337,
+        "positive_strength": 5.9366,
         "negative_strength": 0.0,
         "score_adjustment": 0.16,
         "mode": "critical",
@@ -53658,7 +53658,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.9951
+            "strength": 0.998
           },
           {
             "feature": "rank_error_correction",
@@ -53748,7 +53748,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.9951
+            "strength": 0.998
           }
         ]
       },
@@ -53771,7 +53771,7 @@
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.7282,
+      "evidence_tie_break_score": 0.7284,
       "pre_saturation_score": 1.0,
       "hard_iron_rule": {
         "blocked": false,
@@ -53779,7 +53779,7 @@
         "repeat_reentry": false,
         "previous_prediction_reentry": false
       },
-      "pre_formula_lab_score": 0.9586,
+      "pre_formula_lab_score": 0.9587,
       "formula_lab": {
         "score": 0.5146,
         "rank": 12,
@@ -53789,23 +53789,23 @@
           "review_recall"
         ]
       },
-      "pre_prediction_mode_rebuild_score": 0.7721,
+      "pre_prediction_mode_rebuild_score": 0.7722,
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 11,
-        "score_adjustment": 0.1865,
+        "score_adjustment": 0.1866,
         "latest_repeat_reentry": {
           "latest_draw_number": false
         },
         "recall_signal": 0.4417,
-        "support_signal": 0.5591,
+        "support_signal": 0.5593,
         "repeated_failed_signal": 0.0,
         "late_score": 0.0,
         "missed_score": 0.625,
         "monthly_score": 0.25,
         "tail_score": 1.0,
         "zone_score": 0.9226,
-        "objective_score": 0.784,
+        "objective_score": 0.7847,
         "hit_score": 0.2575,
         "cross_score": 0.6154,
         "stability_score": 0.6,
@@ -53833,9 +53833,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.8158,
+          "signal": 0.8165,
           "weight": 0.06564,
-          "contribution": 0.05355
+          "contribution": 0.0536
         },
         {
           "model": "tail_transition_bridge",
@@ -53915,7 +53915,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.4803,
-        "low_probability_reverse_hit_recovery": 0.8158,
+        "low_probability_reverse_hit_recovery": 0.8165,
         "monthly_recall_pressure": 0.2598,
         "breakthrough_month_bridge": 0.354,
         "cold_rebound_champion": 0.1336,
@@ -54009,7 +54009,7 @@
       "stability_count": 2,
       "stability_rate": 0.4,
       "pre_calibration_rank": 10,
-      "pre_calibration_score": 0.4663,
+      "pre_calibration_score": 0.4662,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.3746,
@@ -54030,7 +54030,7 @@
         "status": "evaluated",
         "objective_edge": 0.0682,
         "positive_source_ratio": 1.0,
-        "positive_strength": 5.3016,
+        "positive_strength": 5.3024,
         "negative_strength": 0.0,
         "score_adjustment": 0.16,
         "mode": "critical",
@@ -54042,7 +54042,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.9551
+            "strength": 0.956
           },
           {
             "feature": "rank_error_correction",
@@ -54253,18 +54253,18 @@
           "contribution": 0.02544
         },
         {
-          "model": "low_probability_reverse_hit_recovery",
-          "label": "低機率反向命中回補",
-          "signal": 0.3183,
-          "weight": 0.06564,
-          "contribution": 0.0209
-        },
-        {
           "model": "missed_hit_recovery",
           "label": "漏命中回收",
           "signal": 0.58,
           "weight": 0.0352,
           "contribution": 0.02042
+        },
+        {
+          "model": "low_probability_reverse_hit_recovery",
+          "label": "低機率反向命中回補",
+          "signal": 0.3094,
+          "weight": 0.06564,
+          "contribution": 0.02031
         },
         {
           "model": "monthly_recall_pressure",
@@ -54302,7 +54302,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.5286,
-        "low_probability_reverse_hit_recovery": 0.3183,
+        "low_probability_reverse_hit_recovery": 0.3094,
         "monthly_recall_pressure": 0.3018,
         "breakthrough_month_bridge": 0.3327,
         "cold_rebound_champion": 0.179,
@@ -54396,7 +54396,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 8,
-      "pre_calibration_score": 0.6539,
+      "pre_calibration_score": 0.6532,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.3902,
@@ -54415,11 +54415,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0587,
+        "objective_edge": 0.0586,
         "positive_source_ratio": 0.799,
-        "positive_strength": 3.6697,
+        "positive_strength": 3.6592,
         "negative_strength": 0.9225,
-        "score_adjustment": 0.1553,
+        "score_adjustment": 0.155,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -54445,7 +54445,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.3727
+            "strength": 0.3622
           },
           {
             "feature": "monthly_recall_pressure",
@@ -54542,7 +54542,7 @@
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.7058,
+      "evidence_tie_break_score": 0.7056,
       "pre_saturation_score": 1.0,
       "hard_iron_rule": {
         "blocked": false,
@@ -54569,14 +54569,14 @@
           "latest_draw_number": false
         },
         "recall_signal": 0.3256,
-        "support_signal": 0.5503,
+        "support_signal": 0.5502,
         "repeated_failed_signal": 0.0,
         "late_score": 0.0,
         "missed_score": 0.375,
         "monthly_score": 0.125,
         "tail_score": 0.6306,
         "zone_score": 1.0,
-        "objective_score": 0.7247,
+        "objective_score": 0.724,
         "hit_score": 0.3883,
         "cross_score": 0.3846,
         "stability_score": 0.8,
@@ -54686,7 +54686,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 0.76,
         "rank_error_correction": 0.3618,
-        "low_probability_reverse_hit_recovery": 0.1843,
+        "low_probability_reverse_hit_recovery": 0.1819,
         "monthly_recall_pressure": 0.0937,
         "breakthrough_month_bridge": 0.1325,
         "cold_rebound_champion": 0.3461,
@@ -54780,7 +54780,7 @@
       "stability_count": 5,
       "stability_rate": 1.0,
       "pre_calibration_rank": 9,
-      "pre_calibration_score": 0.6366,
+      "pre_calibration_score": 0.6364,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.2691,
@@ -54988,9 +54988,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.7139,
+          "signal": 0.716,
           "weight": 0.06564,
-          "contribution": 0.04686
+          "contribution": 0.047
         },
         {
           "model": "rank_error_correction",
@@ -55070,7 +55070,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.7385,
-        "low_probability_reverse_hit_recovery": 0.7139,
+        "low_probability_reverse_hit_recovery": 0.716,
         "monthly_recall_pressure": 0.2523,
         "breakthrough_month_bridge": 0.294,
         "cold_rebound_champion": 0.1905,
@@ -55185,7 +55185,7 @@
         "status": "evaluated",
         "objective_edge": 0.0608,
         "positive_source_ratio": 1.0,
-        "positive_strength": 5.9438,
+        "positive_strength": 5.9463,
         "negative_strength": 0.0,
         "score_adjustment": 0.1596,
         "mode": "critical",
@@ -55197,7 +55197,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.8358
+            "strength": 0.8383
           },
           {
             "feature": "rank_error_correction",
@@ -55471,7 +55471,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.4231,
-        "low_probability_reverse_hit_recovery": 0.1831,
+        "low_probability_reverse_hit_recovery": 0.1829,
         "monthly_recall_pressure": 0.015,
         "breakthrough_month_bridge": 0.0087,
         "cold_rebound_champion": 0.3214,
@@ -55857,7 +55857,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.3748,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 0.077,
         "breakthrough_month_bridge": 0.1074,
         "cold_rebound_champion": 0.5093,
@@ -56148,7 +56148,7 @@
     {
       "number": 35,
       "rank": 9,
-      "score": 0.3805,
+      "score": 0.3804,
       "confidence_index": 69.2,
       "model_probability_percent": 12.82,
       "omission": 22,
@@ -56240,7 +56240,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.3287,
-        "low_probability_reverse_hit_recovery": 0.2566,
+        "low_probability_reverse_hit_recovery": 0.2534,
         "monthly_recall_pressure": 0.0275,
         "breakthrough_month_bridge": 0.0687,
         "cold_rebound_champion": 0.8448,
@@ -56334,7 +56334,7 @@
       "stability_count": 1,
       "stability_rate": 0.2,
       "pre_calibration_rank": 15,
-      "pre_calibration_score": 0.2662,
+      "pre_calibration_score": 0.266,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.2277,
@@ -56486,7 +56486,7 @@
         "repeat_reentry": false,
         "previous_prediction_reentry": false
       },
-      "pre_formula_lab_score": 0.5041,
+      "pre_formula_lab_score": 0.5039,
       "formula_lab": {
         "score": 0.4076,
         "rank": 20,
@@ -56495,7 +56495,7 @@
           "calendar_cycle"
         ]
       },
-      "pre_prediction_mode_rebuild_score": 0.4436,
+      "pre_prediction_mode_rebuild_score": 0.4435,
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 14,
@@ -56621,7 +56621,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.4112,
-        "low_probability_reverse_hit_recovery": 0.1831,
+        "low_probability_reverse_hit_recovery": 0.1829,
         "monthly_recall_pressure": 0.0,
         "breakthrough_month_bridge": 0.0077,
         "cold_rebound_champion": 0.3679,
@@ -56715,7 +56715,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 12,
-      "pre_calibration_score": 0.5238,
+      "pre_calibration_score": 0.5237,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.4558,
@@ -56926,9 +56926,9 @@
     {
       "number": 19,
       "rank": 11,
-      "score": 0.3552,
+      "score": 0.3551,
       "confidence_index": 65.9,
-      "model_probability_percent": 12.45,
+      "model_probability_percent": 12.44,
       "omission": 30,
       "repeat_guard": null,
       "previous_prediction_guard": null,
@@ -57112,7 +57112,7 @@
       "stability_count": 2,
       "stability_rate": 0.4,
       "pre_calibration_rank": 13,
-      "pre_calibration_score": 0.3429,
+      "pre_calibration_score": 0.3428,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.2098,
@@ -57262,7 +57262,7 @@
         "repeat_reentry": false,
         "previous_prediction_reentry": false
       },
-      "pre_formula_lab_score": 0.4108,
+      "pre_formula_lab_score": 0.4107,
       "formula_lab": {
         "score": 0.4496,
         "rank": 16,
@@ -57272,7 +57272,7 @@
           "tail_bucket_pressure"
         ]
       },
-      "pre_prediction_mode_rebuild_score": 0.4271,
+      "pre_prediction_mode_rebuild_score": 0.427,
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 16,
@@ -57786,7 +57786,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.3092,
-        "low_probability_reverse_hit_recovery": 0.1502,
+        "low_probability_reverse_hit_recovery": 0.1508,
         "monthly_recall_pressure": 0.02,
         "breakthrough_month_bridge": 0.0377,
         "cold_rebound_champion": 0.8873,
@@ -58119,9 +58119,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3344,
+          "signal": 0.3327,
           "weight": 0.06564,
-          "contribution": 0.02195
+          "contribution": 0.02184
         },
         {
           "model": "freq_50",
@@ -58173,7 +58173,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.7269,
-        "low_probability_reverse_hit_recovery": 0.3344,
+        "low_probability_reverse_hit_recovery": 0.3327,
         "monthly_recall_pressure": 0.0537,
         "breakthrough_month_bridge": 0.0803,
         "cold_rebound_champion": 0.1915,
@@ -58288,7 +58288,7 @@
         "status": "evaluated",
         "objective_edge": 0.056,
         "positive_source_ratio": 1.0,
-        "positive_strength": 4.4138,
+        "positive_strength": 4.4118,
         "negative_strength": 0.0,
         "score_adjustment": 0.1496,
         "mode": "critical",
@@ -58308,7 +58308,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.3915
+            "strength": 0.3895
           },
           {
             "feature": "multi_window_bagging",
@@ -58486,9 +58486,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.912,
+          "signal": 0.9141,
           "weight": 0.06564,
-          "contribution": 0.05987
+          "contribution": 0.06001
         },
         {
           "model": "zone_quota_pressure",
@@ -58568,7 +58568,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.6154,
-        "low_probability_reverse_hit_recovery": 0.912,
+        "low_probability_reverse_hit_recovery": 0.9141,
         "monthly_recall_pressure": 0.3143,
         "breakthrough_month_bridge": 0.413,
         "cold_rebound_champion": 0.4108,
@@ -58683,7 +58683,7 @@
         "status": "evaluated",
         "objective_edge": 0.0495,
         "positive_source_ratio": 0.862,
-        "positive_strength": 6.2771,
+        "positive_strength": 6.2796,
         "negative_strength": 1.0088,
         "score_adjustment": 0.1362,
         "mode": "critical",
@@ -58695,7 +58695,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 1.0678
+            "strength": 1.0703
           },
           {
             "feature": "zone_coverage_recovery",
@@ -59357,7 +59357,7 @@
         "zone_parity_pressure": 0.42,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.3374,
-        "low_probability_reverse_hit_recovery": 0.1502,
+        "low_probability_reverse_hit_recovery": 0.1508,
         "monthly_recall_pressure": 0.035,
         "breakthrough_month_bridge": 0.0774,
         "cold_rebound_champion": 0.3458,
@@ -59745,7 +59745,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.7608,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 0.2177,
         "breakthrough_month_bridge": 0.3046,
         "cold_rebound_champion": 0.215,
@@ -60080,9 +60080,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.4682,
+          "signal": 0.4709,
           "weight": 0.06564,
-          "contribution": 0.03074
+          "contribution": 0.03091
         },
         {
           "model": "multi_window_bagging",
@@ -60141,7 +60141,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.5037,
-        "low_probability_reverse_hit_recovery": 0.4682,
+        "low_probability_reverse_hit_recovery": 0.4709,
         "monthly_recall_pressure": 0.3726,
         "breakthrough_month_bridge": 0.4971,
         "cold_rebound_champion": 0.2316,
@@ -60255,7 +60255,7 @@
         "status": "evaluated",
         "objective_edge": 0.0576,
         "positive_source_ratio": 0.846,
-        "positive_strength": 5.0763,
+        "positive_strength": 5.0794,
         "negative_strength": 0.9225,
         "score_adjustment": 0.153,
         "mode": "critical",
@@ -60275,7 +60275,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.5482
+            "strength": 0.5513
           },
           {
             "feature": "rank_error_correction",
@@ -60485,9 +60485,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.431,
+          "signal": 0.4328,
           "weight": 0.06564,
-          "contribution": 0.0283
+          "contribution": 0.02841
         },
         {
           "model": "multi_window_bagging",
@@ -60532,7 +60532,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.3423,
-        "low_probability_reverse_hit_recovery": 0.431,
+        "low_probability_reverse_hit_recovery": 0.4328,
         "monthly_recall_pressure": 0.0674,
         "breakthrough_month_bridge": 0.1209,
         "cold_rebound_champion": 0.3318,
@@ -60626,7 +60626,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 11,
-      "pre_calibration_score": 0.5828,
+      "pre_calibration_score": 0.5827,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.3161,
@@ -60646,7 +60646,7 @@
         "status": "evaluated",
         "objective_edge": 0.0413,
         "positive_source_ratio": 0.823,
-        "positive_strength": 4.6749,
+        "positive_strength": 4.677,
         "negative_strength": 1.0088,
         "score_adjustment": 0.1192,
         "mode": "critical",
@@ -60658,7 +60658,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.5047
+            "strength": 0.5067
           },
           {
             "feature": "zone_coverage_recovery",
@@ -60884,14 +60884,14 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.427,
+          "signal": 0.4298,
           "weight": 0.06564,
-          "contribution": 0.02803
+          "contribution": 0.02821
         },
         {
           "model": "cross_consensus",
           "label": "多模型共識",
-          "signal": 0.654,
+          "signal": 0.6541,
           "weight": 0.03741,
           "contribution": 0.02447
         },
@@ -60923,7 +60923,7 @@
         "tail_zone": 0.52,
         "cycle_timing": 0.3229,
         "trend_alignment": 0.7299,
-        "cross_consensus": 0.654,
+        "cross_consensus": 0.6541,
         "bayesian_posterior": 0.2973,
         "monte_carlo_stability": 0.75,
         "distribution_balance": 0.526,
@@ -60931,7 +60931,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.8234,
-        "low_probability_reverse_hit_recovery": 0.427,
+        "low_probability_reverse_hit_recovery": 0.4298,
         "monthly_recall_pressure": 0.7673,
         "breakthrough_month_bridge": 0.7302,
         "cold_rebound_champion": 0.0077,
@@ -61046,7 +61046,7 @@
         "status": "evaluated",
         "objective_edge": 0.0841,
         "positive_source_ratio": 0.839,
-        "positive_strength": 5.2564,
+        "positive_strength": 5.2597,
         "negative_strength": 1.0088,
         "score_adjustment": -0.035,
         "mode": "critical",
@@ -61090,7 +61090,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.4999
+            "strength": 0.5032
           },
           {
             "feature": "zone_coverage_recovery",
@@ -61327,7 +61327,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.76,
         "rank_error_correction": 1.0,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 1.0,
         "breakthrough_month_bridge": 1.0,
         "cold_rebound_champion": 0.0,
@@ -61672,9 +61672,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.5241,
+          "signal": 0.5192,
           "weight": 0.06564,
-          "contribution": 0.03441
+          "contribution": 0.03408
         },
         {
           "model": "tail_transition_bridge",
@@ -61726,7 +61726,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.9992,
-        "low_probability_reverse_hit_recovery": 0.5241,
+        "low_probability_reverse_hit_recovery": 0.5192,
         "monthly_recall_pressure": 0.7548,
         "breakthrough_month_bridge": 0.6373,
         "cold_rebound_champion": 0.0051,
@@ -61820,7 +61820,7 @@
       "stability_count": 4,
       "stability_rate": 0.8,
       "pre_calibration_rank": 32,
-      "pre_calibration_score": 0.3367,
+      "pre_calibration_score": 0.3289,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": 0.5059,
@@ -61841,7 +61841,7 @@
         "status": "evaluated",
         "objective_edge": 0.0718,
         "positive_source_ratio": 0.852,
-        "positive_strength": 5.3295,
+        "positive_strength": 5.3237,
         "negative_strength": 0.9225,
         "score_adjustment": -0.035,
         "mode": "critical",
@@ -61877,7 +61877,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.6137
+            "strength": 0.6079
           },
           {
             "feature": "cross_consensus",
@@ -61959,14 +61959,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.5846,
-        "score_adjustment": 0.0657,
+        "priority_score": 0.5819,
+        "score_adjustment": 0.0648,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.5592,
+      "evidence_tie_break_score": 0.5569,
       "hard_iron_rule": {
         "blocked": true,
         "reasons": [
@@ -62046,9 +62046,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.6708,
+          "signal": 0.6728,
           "weight": 0.06564,
-          "contribution": 0.04403
+          "contribution": 0.04417
         },
         {
           "model": "zone_coverage_recovery",
@@ -62088,7 +62088,7 @@
         {
           "model": "cross_consensus",
           "label": "多模型共識",
-          "signal": 0.7144,
+          "signal": 0.7145,
           "weight": 0.03741,
           "contribution": 0.02673
         }
@@ -62113,7 +62113,7 @@
         "tail_zone": 0.76,
         "cycle_timing": 0.3754,
         "trend_alignment": 0.6393,
-        "cross_consensus": 0.7144,
+        "cross_consensus": 0.7145,
         "bayesian_posterior": 0.5405,
         "monte_carlo_stability": 0.6667,
         "distribution_balance": 0.0956,
@@ -62121,7 +62121,7 @@
         "zone_parity_pressure": 0.58,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.3889,
-        "low_probability_reverse_hit_recovery": 0.6708,
+        "low_probability_reverse_hit_recovery": 0.6728,
         "monthly_recall_pressure": 0.1082,
         "breakthrough_month_bridge": 0.1615,
         "cold_rebound_champion": 0.2991,
@@ -62235,7 +62235,7 @@
         "status": "evaluated",
         "objective_edge": 0.0538,
         "positive_source_ratio": 0.846,
-        "positive_strength": 5.5241,
+        "positive_strength": 5.5266,
         "negative_strength": 1.0088,
         "score_adjustment": 0.1451,
         "mode": "critical",
@@ -62255,7 +62255,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.7853
+            "strength": 0.7878
           },
           {
             "feature": "zone_coverage_recovery",
@@ -62271,7 +62271,7 @@
             "objective_edge": 0.0377,
             "recent_top5_avg_hits": 0.667,
             "recent_top10_avg_hits": 1.322,
-            "strength": 0.6549
+            "strength": 0.655
           },
           {
             "feature": "freq_50",
@@ -62329,7 +62329,7 @@
             "objective_edge": 0.0377,
             "recent_top5_avg_hits": 0.667,
             "recent_top10_avg_hits": 1.322,
-            "strength": 0.6549
+            "strength": 0.655
           },
           {
             "feature": "zone_coverage_recovery",
@@ -62526,7 +62526,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.1489,
-        "low_probability_reverse_hit_recovery": 0.1973,
+        "low_probability_reverse_hit_recovery": 0.1948,
         "monthly_recall_pressure": 0.2998,
         "breakthrough_month_bridge": 0.4062,
         "cold_rebound_champion": 0.2827,
@@ -62928,7 +62928,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 1.0,
         "rank_error_correction": 0.6932,
-        "low_probability_reverse_hit_recovery": 0.2398,
+        "low_probability_reverse_hit_recovery": 0.24,
         "monthly_recall_pressure": 0.7694,
         "breakthrough_month_bridge": 0.618,
         "cold_rebound_champion": 0.1053,
@@ -63245,9 +63245,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.7418,
+          "signal": 0.7363,
           "weight": 0.06564,
-          "contribution": 0.0487
+          "contribution": 0.04833
         },
         {
           "model": "tail_transition_bridge",
@@ -63312,7 +63312,7 @@
         "tail_zone": 0.6079,
         "cycle_timing": 0.5204,
         "trend_alignment": 0.1988,
-        "cross_consensus": 0.4086,
+        "cross_consensus": 0.4085,
         "bayesian_posterior": 0.8378,
         "monte_carlo_stability": 0.5,
         "distribution_balance": 0.4296,
@@ -63320,7 +63320,7 @@
         "zone_parity_pressure": 0.8559,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.0,
-        "low_probability_reverse_hit_recovery": 0.7418,
+        "low_probability_reverse_hit_recovery": 0.7363,
         "monthly_recall_pressure": 0.015,
         "breakthrough_month_bridge": 0.0213,
         "cold_rebound_champion": 0.7005,
@@ -63414,7 +63414,7 @@
       "stability_count": 0,
       "stability_rate": 0.0,
       "pre_calibration_rank": 16,
-      "pre_calibration_score": 0.1373,
+      "pre_calibration_score": 0.1372,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": -0.1273,
@@ -63432,11 +63432,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0424,
+        "objective_edge": 0.0423,
         "positive_source_ratio": 0.897,
-        "positive_strength": 5.3519,
+        "positive_strength": 5.3454,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1215,
+        "score_adjustment": 0.1213,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -63446,7 +63446,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.8685
+            "strength": 0.862
           },
           {
             "feature": "zone_coverage_recovery",
@@ -63552,14 +63552,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0122,
+        "priority_score": 0.0121,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.2596,
+      "evidence_tie_break_score": 0.2593,
       "hard_iron_rule": {
         "blocked": false,
         "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -63588,14 +63588,14 @@
           "latest_draw_number": false
         },
         "recall_signal": 0.2074,
-        "support_signal": 0.4014,
+        "support_signal": 0.4012,
         "repeated_failed_signal": 0.8125,
         "late_score": 0.0,
         "missed_score": 0.0,
         "monthly_score": 0.0,
         "tail_score": 0.7318,
         "zone_score": 0.9587,
-        "objective_score": 0.616,
+        "objective_score": 0.6153,
         "hit_score": 0.0367,
         "cross_score": 0.4615,
         "stability_score": 0.0,
@@ -63630,9 +63630,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.7468,
+          "signal": 0.7481,
           "weight": 0.06564,
-          "contribution": 0.04902
+          "contribution": 0.04911
         },
         {
           "model": "tail_transition_bridge",
@@ -63712,7 +63712,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.153,
-        "low_probability_reverse_hit_recovery": 0.7468,
+        "low_probability_reverse_hit_recovery": 0.7481,
         "monthly_recall_pressure": 0.0075,
         "breakthrough_month_bridge": 0.0,
         "cold_rebound_champion": 0.2901,
@@ -63827,9 +63827,9 @@
         "status": "evaluated",
         "objective_edge": 0.0492,
         "positive_source_ratio": 0.876,
-        "positive_strength": 4.3222,
+        "positive_strength": 4.3237,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1354,
+        "score_adjustment": 0.1355,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -63839,7 +63839,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.8743
+            "strength": 0.8759
           },
           {
             "feature": "zone_coverage_recovery",
@@ -63945,7 +63945,7 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0929,
+        "priority_score": 0.093,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
@@ -64059,9 +64059,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3306,
+          "signal": 0.331,
           "weight": 0.06564,
-          "contribution": 0.0217
+          "contribution": 0.02173
         },
         {
           "model": "missed_hit_recovery",
@@ -64113,7 +64113,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.6734,
-        "low_probability_reverse_hit_recovery": 0.3306,
+        "low_probability_reverse_hit_recovery": 0.331,
         "monthly_recall_pressure": 0.266,
         "breakthrough_month_bridge": 0.2969,
         "cold_rebound_champion": 0.215,
@@ -64228,7 +64228,7 @@
         "status": "evaluated",
         "objective_edge": 0.0451,
         "positive_source_ratio": 0.708,
-        "positive_strength": 2.9298,
+        "positive_strength": 2.9303,
         "negative_strength": 1.2062,
         "score_adjustment": 0.0934,
         "mode": "critical",
@@ -64248,7 +64248,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.387
+            "strength": 0.3875
           },
           {
             "feature": "missed_hit_recovery",
@@ -64523,7 +64523,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.2935,
-        "low_probability_reverse_hit_recovery": 0.1064,
+        "low_probability_reverse_hit_recovery": 0.1026,
         "monthly_recall_pressure": 0.0674,
         "breakthrough_month_bridge": 0.1209,
         "cold_rebound_champion": 0.5014,
@@ -64925,7 +64925,7 @@
         "zone_parity_pressure": 1.0,
         "missed_hit_recovery": 0.58,
         "rank_error_correction": 0.1275,
-        "low_probability_reverse_hit_recovery": 0.0372,
+        "low_probability_reverse_hit_recovery": 0.038,
         "monthly_recall_pressure": 0.0745,
         "breakthrough_month_bridge": 0.1286,
         "cold_rebound_champion": 0.5594,
@@ -65268,9 +65268,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3044,
+          "signal": 0.3012,
           "weight": 0.06564,
-          "contribution": 0.01998
+          "contribution": 0.01977
         },
         {
           "model": "pair",
@@ -65308,7 +65308,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 0.76,
         "rank_error_correction": 0.1752,
-        "low_probability_reverse_hit_recovery": 0.3044,
+        "low_probability_reverse_hit_recovery": 0.3012,
         "monthly_recall_pressure": 0.0962,
         "breakthrough_month_bridge": 0.1209,
         "cold_rebound_champion": 0.6123,
@@ -65402,7 +65402,7 @@
       "stability_count": 0,
       "stability_rate": 0.0,
       "pre_calibration_rank": 20,
-      "pre_calibration_score": 0.0935,
+      "pre_calibration_score": 0.0934,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": -0.066,
@@ -65421,11 +65421,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.037,
+        "objective_edge": 0.0369,
         "positive_source_ratio": 0.811,
-        "positive_strength": 3.9609,
+        "positive_strength": 3.9571,
         "negative_strength": 0.9225,
-        "score_adjustment": 0.1102,
+        "score_adjustment": 0.1101,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -65443,7 +65443,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.3564
+            "strength": 0.3526
           },
           {
             "feature": "pair",
@@ -65541,14 +65541,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0378,
+        "priority_score": 0.0377,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.2529,
+      "evidence_tie_break_score": 0.2527,
       "hard_iron_rule": {
         "blocked": false,
         "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -65569,19 +65569,19 @@
       "prediction_mode_rebuild": {
         "status": "applied",
         "original_rank": 28,
-        "score_adjustment": -0.2321,
+        "score_adjustment": -0.2322,
         "latest_repeat_reentry": {
           "latest_draw_number": false
         },
         "recall_signal": 0.2174,
-        "support_signal": 0.351,
+        "support_signal": 0.3508,
         "repeated_failed_signal": 0.75,
         "late_score": 0.0,
         "missed_score": 0.0,
         "monthly_score": 0.0,
         "tail_score": 0.7741,
         "zone_score": 1.0,
-        "objective_score": 0.58,
+        "objective_score": 0.5793,
         "hit_score": 0.1875,
         "cross_score": 0.3077,
         "stability_score": 0.0,
@@ -65641,18 +65641,18 @@
           "contribution": 0.02892
         },
         {
-          "model": "low_probability_reverse_hit_recovery",
-          "label": "低機率反向命中回補",
-          "signal": 0.3673,
-          "weight": 0.06564,
-          "contribution": 0.02411
-        },
-        {
           "model": "zone_coverage_recovery",
           "label": "分區覆蓋回補",
           "signal": 0.6588,
           "weight": 0.03658,
           "contribution": 0.0241
+        },
+        {
+          "model": "low_probability_reverse_hit_recovery",
+          "label": "低機率反向命中回補",
+          "signal": 0.3648,
+          "weight": 0.06564,
+          "contribution": 0.02395
         },
         {
           "model": "cold_rebound_champion",
@@ -65704,7 +65704,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.1302,
-        "low_probability_reverse_hit_recovery": 0.3673,
+        "low_probability_reverse_hit_recovery": 0.3648,
         "monthly_recall_pressure": 0.0337,
         "breakthrough_month_bridge": 0.0213,
         "cold_rebound_champion": 0.5034,
@@ -65819,9 +65819,9 @@
         "status": "evaluated",
         "objective_edge": 0.0339,
         "positive_source_ratio": 0.874,
-        "positive_strength": 4.2609,
+        "positive_strength": 4.258,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1039,
+        "score_adjustment": 0.1038,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -65831,7 +65831,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.43
+            "strength": 0.4271
           },
           {
             "feature": "zone_coverage_recovery",
@@ -66056,9 +66056,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.345,
+          "signal": 0.3435,
           "weight": 0.06564,
-          "contribution": 0.02265
+          "contribution": 0.02255
         },
         {
           "model": "cold_rebound_champion",
@@ -66096,7 +66096,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.1302,
-        "low_probability_reverse_hit_recovery": 0.345,
+        "low_probability_reverse_hit_recovery": 0.3435,
         "monthly_recall_pressure": 0.015,
         "breakthrough_month_bridge": 0.0184,
         "cold_rebound_champion": 0.5216,
@@ -66190,7 +66190,7 @@
       "stability_count": 0,
       "stability_rate": 0.0,
       "pre_calibration_rank": 18,
-      "pre_calibration_score": 0.1014,
+      "pre_calibration_score": 0.1013,
       "precision_calibration": {
         "mode": "critical",
         "adjustment": -0.0997,
@@ -66209,11 +66209,11 @@
       },
       "objective_feature_calibration": {
         "status": "evaluated",
-        "objective_edge": 0.0404,
+        "objective_edge": 0.0403,
         "positive_source_ratio": 0.889,
-        "positive_strength": 4.8856,
+        "positive_strength": 4.8838,
         "negative_strength": 0.6123,
-        "score_adjustment": 0.1173,
+        "score_adjustment": 0.1172,
         "mode": "critical",
         "zero_hit_mode": false,
         "top_sources": [
@@ -66223,7 +66223,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.4039
+            "strength": 0.4022
           },
           {
             "feature": "zone_coverage_recovery",
@@ -66329,14 +66329,14 @@
       },
       "slump_recall_coverage": {
         "status": "triggered",
-        "priority_score": 0.0202,
+        "priority_score": 0.0201,
         "score_adjustment": -0.17,
         "mode": "critical"
       },
       "failure_quarantine": {
         "active": false
       },
-      "evidence_tie_break_score": 0.2441,
+      "evidence_tie_break_score": 0.2439,
       "hard_iron_rule": {
         "blocked": false,
         "policy": "previous_prediction_no_copy_and_repeat_requires_passed_guard",
@@ -66362,14 +66362,14 @@
           "latest_draw_number": false
         },
         "recall_signal": 0.2192,
-        "support_signal": 0.3422,
+        "support_signal": 0.3421,
         "repeated_failed_signal": 1.0,
         "late_score": 0.0,
         "missed_score": 0.0,
         "monthly_score": 0.0,
         "tail_score": 0.8494,
         "zone_score": 0.9587,
-        "objective_score": 0.6027,
+        "objective_score": 0.602,
         "hit_score": 0.115,
         "cross_score": 0.3077,
         "stability_score": 0.0,
@@ -66419,9 +66419,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.6152,
+          "signal": 0.6138,
           "weight": 0.06564,
-          "contribution": 0.04038
+          "contribution": 0.04029
         },
         {
           "model": "tail_transition_bridge",
@@ -66494,7 +66494,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.0,
         "rank_error_correction": 0.8384,
-        "low_probability_reverse_hit_recovery": 0.6152,
+        "low_probability_reverse_hit_recovery": 0.6138,
         "monthly_recall_pressure": 0.2868,
         "breakthrough_month_bridge": 0.2369,
         "cold_rebound_champion": 0.1279,
@@ -66609,7 +66609,7 @@
         "status": "evaluated",
         "objective_edge": 0.0608,
         "positive_source_ratio": 0.889,
-        "positive_strength": 4.2533,
+        "positive_strength": 4.2517,
         "negative_strength": 0.5331,
         "score_adjustment": -0.035,
         "mode": "critical",
@@ -66629,7 +66629,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.7202
+            "strength": 0.7186
           },
           {
             "feature": "monthly_recall_pressure",
@@ -66891,7 +66891,7 @@
         "zone_parity_pressure": 0.8939,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.0743,
-        "low_probability_reverse_hit_recovery": 0.1973,
+        "low_probability_reverse_hit_recovery": 0.1948,
         "monthly_recall_pressure": 0.0699,
         "breakthrough_month_bridge": 0.1093,
         "cold_rebound_champion": 0.3808,
@@ -67239,7 +67239,7 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.4228,
+          "signal": 0.4229,
           "weight": 0.06564,
           "contribution": 0.02776
         },
@@ -67293,7 +67293,7 @@
         "zone_parity_pressure": 0.4359,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.0488,
-        "low_probability_reverse_hit_recovery": 0.4228,
+        "low_probability_reverse_hit_recovery": 0.4229,
         "monthly_recall_pressure": 0.0337,
         "breakthrough_month_bridge": 0.0213,
         "cold_rebound_champion": 1.0,
@@ -67408,7 +67408,7 @@
         "status": "evaluated",
         "objective_edge": 0.042,
         "positive_source_ratio": 0.889,
-        "positive_strength": 4.8996,
+        "positive_strength": 4.8997,
         "negative_strength": 0.6123,
         "score_adjustment": 0.1207,
         "mode": "critical",
@@ -67614,9 +67614,9 @@
         {
           "model": "low_probability_reverse_hit_recovery",
           "label": "低機率反向命中回補",
-          "signal": 0.3899,
+          "signal": 0.3908,
           "weight": 0.06564,
-          "contribution": 0.0256
+          "contribution": 0.02565
         },
         {
           "model": "cycle_timing",
@@ -67682,7 +67682,7 @@
         "zone_parity_pressure": 0.0,
         "missed_hit_recovery": 0.42,
         "rank_error_correction": 0.3428,
-        "low_probability_reverse_hit_recovery": 0.3899,
+        "low_probability_reverse_hit_recovery": 0.3908,
         "monthly_recall_pressure": 0.0537,
         "breakthrough_month_bridge": 0.0996,
         "cold_rebound_champion": 0.327,
@@ -67797,7 +67797,7 @@
         "status": "evaluated",
         "objective_edge": 0.0234,
         "positive_source_ratio": 0.796,
-        "positive_strength": 3.3305,
+        "positive_strength": 3.3315,
         "negative_strength": 0.8531,
         "score_adjustment": -0.045,
         "mode": "critical",
@@ -67809,7 +67809,7 @@
             "objective_edge": 0.1159,
             "recent_top5_avg_hits": 0.678,
             "recent_top10_avg_hits": 1.489,
-            "strength": 0.4565
+            "strength": 0.4575
           },
           {
             "feature": "missed_hit_recovery",
@@ -68081,7 +68081,7 @@
         "zone_parity_pressure": 0.4739,
         "missed_hit_recovery": 0.34,
         "rank_error_correction": 0.1286,
-        "low_probability_reverse_hit_recovery": 0.1619,
+        "low_probability_reverse_hit_recovery": 0.1606,
         "monthly_recall_pressure": 0.0699,
         "breakthrough_month_bridge": 0.087,
         "cold_rebound_champion": 0.8441,
@@ -68691,7 +68691,7 @@
             "zone_parity_pressure": 0.8559,
             "missed_hit_recovery": 0.42,
             "rank_error_correction": 0.5528,
-            "low_probability_reverse_hit_recovery": 0.1831,
+            "low_probability_reverse_hit_recovery": 0.1829,
             "monthly_recall_pressure": 0.0637,
             "breakthrough_month_bridge": 0.1064,
             "cold_rebound_champion": 0.3837,
@@ -68785,7 +68785,7 @@
           "stability_count": 5,
           "stability_rate": 1.0,
           "pre_calibration_rank": 7,
-          "pre_calibration_score": 0.6894,
+          "pre_calibration_score": 0.6893,
           "precision_calibration": {
             "mode": "critical",
             "adjustment": 0.4487,
@@ -69104,15 +69104,15 @@
         {
           "number": 31,
           "rank": 4,
-          "short_pack_precision_score": 1.3116,
-          "micro_confidence_score": 0.8021,
-          "score": 0.9586,
+          "short_pack_precision_score": 1.3117,
+          "micro_confidence_score": 0.8022,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1291,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "cross_validation_passed": 8,
           "stability_count": 3,
-          "recall_priority": 0.7661,
+          "recall_priority": 0.7662,
           "monthly_recall_pressure": 0.5333,
           "cold_rebound_champion": 0.2236,
           "multi_window_bagging": 0.9133,
@@ -69214,12 +69214,12 @@
         {
           "number": 15,
           "rank": 10,
-          "short_pack_precision_score": 1.1203,
+          "short_pack_precision_score": 1.1202,
           "micro_confidence_score": 0.5433,
           "score": 0.8165,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1448,
-          "objective_edge": 0.0587,
+          "objective_edge": 0.0586,
           "cross_validation_passed": 5,
           "stability_count": 4,
           "recall_priority": 0.6106,
@@ -69326,15 +69326,15 @@
         {
           "number": 31,
           "rank": 4,
-          "short_pack_precision_score": 1.3116,
-          "micro_confidence_score": 0.8021,
-          "score": 0.9586,
+          "short_pack_precision_score": 1.3117,
+          "micro_confidence_score": 0.8022,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1291,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "cross_validation_passed": 8,
           "stability_count": 3,
-          "recall_priority": 0.7661,
+          "recall_priority": 0.7662,
           "monthly_recall_pressure": 0.5333,
           "cold_rebound_champion": 0.2236,
           "multi_window_bagging": 0.9133,
@@ -69436,12 +69436,12 @@
         {
           "number": 15,
           "rank": 10,
-          "short_pack_precision_score": 1.1203,
+          "short_pack_precision_score": 1.1202,
           "micro_confidence_score": 0.5433,
           "score": 0.8165,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1448,
-          "objective_edge": 0.0587,
+          "objective_edge": 0.0586,
           "cross_validation_passed": 5,
           "stability_count": 4,
           "recall_priority": 0.6106,
@@ -69552,7 +69552,7 @@
             "zone_parity_pressure": 0.8559,
             "missed_hit_recovery": 0.42,
             "rank_error_correction": 0.5528,
-            "low_probability_reverse_hit_recovery": 0.1831,
+            "low_probability_reverse_hit_recovery": 0.1829,
             "monthly_recall_pressure": 0.0637,
             "breakthrough_month_bridge": 0.1064,
             "cold_rebound_champion": 0.3837,
@@ -69646,7 +69646,7 @@
           "stability_count": 5,
           "stability_rate": 1.0,
           "pre_calibration_rank": 7,
-          "pre_calibration_score": 0.6894,
+          "pre_calibration_score": 0.6893,
           "precision_calibration": {
             "mode": "critical",
             "adjustment": 0.4487,
@@ -69861,8 +69861,8 @@
         21,
         31
       ],
-      "score_sum": 1.9249,
-      "avg_score": 0.9625,
+      "score_sum": 1.9251,
+      "avg_score": 0.9626,
       "status": "watch",
       "official_release": false,
       "theoretical_probability": {
@@ -69974,15 +69974,15 @@
         {
           "number": 31,
           "rank": 4,
-          "short_pack_precision_score": 1.3116,
-          "micro_confidence_score": 0.8021,
-          "score": 0.9586,
+          "short_pack_precision_score": 1.3117,
+          "micro_confidence_score": 0.8022,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1291,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "cross_validation_passed": 8,
           "stability_count": 3,
-          "recall_priority": 0.7661,
+          "recall_priority": 0.7662,
           "monthly_recall_pressure": 0.5333,
           "cold_rebound_champion": 0.2236,
           "multi_window_bagging": 0.9133,
@@ -70084,12 +70084,12 @@
         {
           "number": 15,
           "rank": 10,
-          "short_pack_precision_score": 1.1203,
+          "short_pack_precision_score": 1.1202,
           "micro_confidence_score": 0.5433,
           "score": 0.8165,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1448,
-          "objective_edge": 0.0587,
+          "objective_edge": 0.0586,
           "cross_validation_passed": 5,
           "stability_count": 4,
           "recall_priority": 0.6106,
@@ -70196,15 +70196,15 @@
         {
           "number": 31,
           "rank": 4,
-          "short_pack_precision_score": 1.3116,
-          "micro_confidence_score": 0.8021,
-          "score": 0.9586,
+          "short_pack_precision_score": 1.3117,
+          "micro_confidence_score": 0.8022,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1291,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "cross_validation_passed": 8,
           "stability_count": 3,
-          "recall_priority": 0.7661,
+          "recall_priority": 0.7662,
           "monthly_recall_pressure": 0.5333,
           "cold_rebound_champion": 0.2236,
           "multi_window_bagging": 0.9133,
@@ -70306,12 +70306,12 @@
         {
           "number": 15,
           "rank": 10,
-          "short_pack_precision_score": 1.1203,
+          "short_pack_precision_score": 1.1202,
           "micro_confidence_score": 0.5433,
           "score": 0.8165,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1448,
-          "objective_edge": 0.0587,
+          "objective_edge": 0.0586,
           "cross_validation_passed": 5,
           "stability_count": 4,
           "recall_priority": 0.6106,
@@ -70397,7 +70397,7 @@
         21,
         37
       ],
-      "score_sum": 2.8793,
+      "score_sum": 2.8795,
       "avg_score": 0.9598,
       "status": "watch",
       "official_release": false,
@@ -70511,15 +70511,15 @@
         {
           "number": 31,
           "rank": 4,
-          "short_pack_precision_score": 1.3116,
-          "micro_confidence_score": 0.8021,
-          "score": 0.9586,
+          "short_pack_precision_score": 1.3117,
+          "micro_confidence_score": 0.8022,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1291,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "cross_validation_passed": 8,
           "stability_count": 3,
-          "recall_priority": 0.7661,
+          "recall_priority": 0.7662,
           "monthly_recall_pressure": 0.5333,
           "cold_rebound_champion": 0.2236,
           "multi_window_bagging": 0.9133,
@@ -70621,12 +70621,12 @@
         {
           "number": 15,
           "rank": 10,
-          "short_pack_precision_score": 1.1203,
+          "short_pack_precision_score": 1.1202,
           "micro_confidence_score": 0.5433,
           "score": 0.8165,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1448,
-          "objective_edge": 0.0587,
+          "objective_edge": 0.0586,
           "cross_validation_passed": 5,
           "stability_count": 4,
           "recall_priority": 0.6106,
@@ -70733,15 +70733,15 @@
         {
           "number": 31,
           "rank": 4,
-          "short_pack_precision_score": 1.3116,
-          "micro_confidence_score": 0.8021,
-          "score": 0.9586,
+          "short_pack_precision_score": 1.3117,
+          "micro_confidence_score": 0.8022,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1291,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "cross_validation_passed": 8,
           "stability_count": 3,
-          "recall_priority": 0.7661,
+          "recall_priority": 0.7662,
           "monthly_recall_pressure": 0.5333,
           "cold_rebound_champion": 0.2236,
           "multi_window_bagging": 0.9133,
@@ -70843,12 +70843,12 @@
         {
           "number": 15,
           "rank": 10,
-          "short_pack_precision_score": 1.1203,
+          "short_pack_precision_score": 1.1202,
           "micro_confidence_score": 0.5433,
           "score": 0.8165,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1448,
-          "objective_edge": 0.0587,
+          "objective_edge": 0.0586,
           "cross_validation_passed": 5,
           "stability_count": 4,
           "recall_priority": 0.6106,
@@ -70911,15 +70911,15 @@
         {
           "number": 31,
           "rank": 4,
-          "short_pack_precision_score": 1.3116,
-          "micro_confidence_score": 0.8021,
-          "score": 0.9586,
+          "short_pack_precision_score": 1.3117,
+          "micro_confidence_score": 0.8022,
+          "score": 0.9588,
           "probability_percent": 13.05,
           "posterior_hit_rate": 0.1291,
-          "objective_edge": 0.0676,
+          "objective_edge": 0.0677,
           "cross_validation_passed": 8,
           "stability_count": 3,
-          "recall_priority": 0.7661,
+          "recall_priority": 0.7662,
           "monthly_recall_pressure": 0.5333,
           "cold_rebound_champion": 0.2236,
           "multi_window_bagging": 0.9133,
@@ -70959,8 +70959,8 @@
         15,
         4
       ],
-      "score_sum": 4.4477,
-      "avg_score": 0.8895,
+      "score_sum": 4.4479,
+      "avg_score": 0.8896,
       "status": "watch",
       "official_release": false,
       "withheld_reason": "recent walk-forward pack performance did not pass official gate; output as daily research prediction",
