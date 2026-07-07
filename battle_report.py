@@ -4981,6 +4981,8 @@ def build_compact_html_report():
             "</tr>"
         )
     low_summary_rows = []
+    low_released_count = 0
+    low_withheld_count = 0
     for key in ["five_miss", "ten_miss", "fifteen_miss"]:
         pack = avoid_packs.get(key) or {}
         stat = ((industrial.get("unlikely_backtest") or {}).get("packs") or {}).get(key) or {}
@@ -4990,36 +4992,40 @@ def build_compact_html_report():
         diagnostic_numbers = pack.get("diagnostic_numbers") or pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []
         removed_numbers = pack.get("reverse_hit_removed_diagnostics") or []
         released = bool(released_numbers)
+        removed_text = f"{len(removed_numbers)}碼" if removed_numbers else "-"
         if released:
+            low_released_count += 1
             status_text = "已發布"
             numbers_text = fmt_numbers(released_numbers)
-            diagnostic_text = fmt_numbers(diagnostic_numbers) or "-"
             confidence_text = fmt_decimal(pack.get('confidence_index'), 1)
             avg_score_text = fmt_percent(pack.get('avg_avoid_score'))
-            detail_text = escape_html(pack.get('status', '已發布'))
+            detail_text = escape_html(pack.get('status', '已發布')) + f"；完整驗算在低機率頁"
         else:
+            low_withheld_count += 1
             status_text = "未發布不結算"
             numbers_text = "-"
-            diagnostic_text = fmt_numbers(diagnostic_numbers) or "-"
             confidence_text = "-"
             avg_score_text = "-"
             reason = pack.get("status") or "未達低機率發布門檻"
-            detail_text = escape_html(f"{reason}；診斷候選只供檢查，不列入達標檢討")
+            detail_text = escape_html(f"{reason}；診斷名單共 {len(diagnostic_numbers)} 碼，只放低機率頁，不列入達標檢討")
         low_summary_rows.append(
             "<tr>"
             f"<td>{escape_html(pack.get('name', key))}</td>"
             f"<td>{status_text}</td>"
             f"<td>{numbers_text}</td>"
-            f"<td>{diagnostic_text}</td>"
             f"<td>{confidence_text}</td>"
             f"<td>{avg_score_text}</td>"
             f"<td>{stat.get('rounds') or gate.get('rounds') or '-'}</td>"
             f"<td>{fmt_decimal(stat.get('avg_accidental_hits', reverse_guard.get('average_accidental_hits')))}</td>"
             f"<td>{fmt_percent(stat.get('zero_hit_rate', gate.get('zero_hit_rate')))}</td>"
-            f"<td>{fmt_numbers(removed_numbers) or '-'}</td>"
+            f"<td>{removed_text}</td>"
             f"<td>{detail_text} / <a href='{low_url}'>\u958b\u555f\u4f4e\u6a5f\u7387\u9801</a></td>"
             "</tr>"
         )
+    if low_released_count:
+        low_conclusion_text = f"本期低機率正式發布 {low_released_count} 包，扣留 {low_withheld_count} 包；正式暫避號可看本表，診斷細節在低機率頁。"
+    else:
+        low_conclusion_text = "本期低機率三包都有回測數據，但全部未達正式發布門檻；因此正式暫避號留空，不准當成5不中、10不中、15不中正式結論。完整診斷名單只放低機率頁。"
     super_single_html = compact_super_single_html(packs, candidates)
     return f"""<!doctype html>
 <html lang="zh-Hant">
@@ -5131,12 +5137,13 @@ def build_compact_html_report():
     <div class="band warn">
       <h2>{avoid_heading}</h2>
       <p>\u4f4e\u6a5f\u7387\u5df2\u5206\u6210\u4e09\u500b\u56fa\u5b9a\u5831\u8868\uff1a\u7576\u671f\u66ab\u907f\u3001\u6bcf\u65e5\u7d00\u9304\u3001\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406\u3002\u6bcf\u4e00\u5929\u90fd\u5fc5\u9808\u6709\u5be6\u969b\u958b\u734e\u3001\u9810\u6e2c\u547d\u4e2d\u8207\u4f4e\u6a5f\u7387\u8aa4\u4e2d\u3002</p>
+      <p><strong>{low_conclusion_text}</strong></p>
       <p>
         <a href="{low_url}">\u958b\u555f539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f\u9801</a>　
         <a href="{low_daily_url}">\u958b\u555f\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304</a>　
         <a href="{low_monthly_url}">\u958b\u555f\u4f4e\u6a5f\u7387\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406</a>
       </p>
-      <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u767c\u5e03\u72c0\u614b</th><th>\u6b63\u5f0f\u66ab\u907f\u865f</th><th>\u8a3a\u65b7\u5019\u9078</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u5254\u9664</th><th>\u8655\u7406\u7d50\u8ad6</th></tr></thead><tbody>{''.join(low_summary_rows)}</tbody></table>
+      <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u767c\u5e03\u72c0\u614b</th><th>\u6b63\u5f0f\u66ab\u907f\u865f</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u5254\u9664</th><th>\u8655\u7406\u7d50\u8ad6</th></tr></thead><tbody>{''.join(low_summary_rows)}</tbody></table>
     </div>
   </section>
   <section id="models" class="panel">

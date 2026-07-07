@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T09:20:57",
+  "generated_at": "2026-07-07T09:28:46",
   "status": "ok",
   "checked_files": 307,
   "failed_count": 0,
@@ -33,7 +33,7 @@
       "path": "battle_report.py",
       "status": "ok",
       "warnings": [],
-      "size": 313875
+      "size": 314431
     },
     {
       "path": "build_tw539_release.ps1",
@@ -63,7 +63,7 @@
       "path": "daily_integrity_audit.py",
       "status": "ok",
       "warnings": [],
-      "size": 26917
+      "size": 26990
     },
     {
       "path": "daily_midnight_recompute.ps1",
@@ -327,7 +327,7 @@
       "path": "reports\\539最新強化戰報.html",
       "status": "ok",
       "warnings": [],
-      "size": 88659
+      "size": 88824
     },
     {
       "path": "reports\\539每月預測總整理.html",
@@ -363,13 +363,13 @@
       "path": "reports\\daily_integrity_audit.json",
       "status": "ok",
       "warnings": [],
-      "size": 21987
+      "size": 22161
     },
     {
       "path": "reports\\daily_integrity_audit.md",
       "status": "ok",
       "warnings": [],
-      "size": 12508
+      "size": 12618
     },
     {
       "path": "reports\\dashboard.html",
@@ -423,7 +423,7 @@
       "path": "reports\\latest_battle_report.html",
       "status": "ok",
       "warnings": [],
-      "size": 88659
+      "size": 88824
     },
     {
       "path": "reports\\latest_battle_report.md",
@@ -591,7 +591,7 @@
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 92855
+      "size": 93020
     },
     {
       "path": "site\\latest.html",

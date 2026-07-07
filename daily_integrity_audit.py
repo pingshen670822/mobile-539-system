@@ -327,9 +327,10 @@ def build_audit():
     add_check(checks, "low_probability_unreleased_display_is_clean", (
         "\u672a\u767c\u5e03\u8a3a\u65b7\uff1a" not in battle_text
         and "\u672a\u767c\u5e03\u8a3a\u65b7\uff1a" not in low_probability_text
+        and "<th>\u8a3a\u65b7\u5019\u9078</th>" not in battle_text
         and "\u767c\u5e03\u72c0\u614b" in battle_text
         and "\u6b63\u5f0f\u66ab\u907f\u865f" in battle_text
-        and "\u8a3a\u65b7\u5019\u9078" in battle_text
+        and "\u6709\u56de\u6e2c\u6578\u64da" in battle_text
         and "\u767c\u5e03\u72c0\u614b" in low_probability_text
         and "\u6b63\u5f0f\u66ab\u907f\u865f" in low_probability_text
         and "\u8a3a\u65b7\u5019\u9078" in low_probability_text
