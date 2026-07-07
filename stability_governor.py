@@ -365,9 +365,20 @@ def apply_unlikely_gate(analysis):
     backtest = industrial.get("unlikely_backtest") or {}
     backtest_packs = backtest.get("packs") or {}
     packs = unlikely.get("avoid_packs") or {}
+    inversion_guard = unlikely.get("inversion_guard") or {}
+    inversion_packs = inversion_guard.get("blocked_packs") or {}
+    global_reverse_hit_numbers = set(_as_int_list(inversion_guard.get("recent_reverse_hit_numbers", [])))
     actions = []
     released_any = False
     for key, pack in list(packs.items()):
+        reverse_guard = inversion_packs.get(key) or {}
+        reverse_blocked = bool(reverse_guard.get("blocked"))
+        pack_reverse_hit_numbers = set(global_reverse_hit_numbers)
+        for item in reverse_guard.get("hit_numbers", []) or []:
+            try:
+                pack_reverse_hit_numbers.add(int(item.get("number")))
+            except (TypeError, ValueError):
+                continue
         stat = backtest_packs.get(key) or {}
         size = int(stat.get("avoid_size") or len(pack.get("numbers") or []))
         edge = float(stat.get("edge_vs_random", 0.0) or 0.0)
@@ -378,8 +389,14 @@ def apply_unlikely_gate(analysis):
         formula_status = str(pack.get("formula_lab_status") or "")
         original_numbers = _as_int_list(pack.get("numbers", []))
         formula_passed = bool(original_numbers and formula_status == "released" and formula_edge >= 0.02)
-        passed = bool(original_numbers and (legacy_passed or formula_passed))
-        diagnostic_numbers = original_numbers or _as_int_list(pack.get("rejected_candidates", []))
+        passed = bool(original_numbers and not reverse_blocked and (legacy_passed or formula_passed))
+        diagnostic_numbers = (
+            original_numbers
+            or _as_int_list(pack.get("diagnostic_numbers", []))
+            or _as_int_list(pack.get("rejected_candidates", []))
+        )
+        removed_reverse_diagnostics = [number for number in diagnostic_numbers if number in pack_reverse_hit_numbers]
+        diagnostic_numbers = [number for number in diagnostic_numbers if number not in pack_reverse_hit_numbers]
         pack["backtest_gate"] = {
             "status": "passed" if passed else "failed",
             "gate_model": "formula_lab_inverse_consensus" if formula_passed and not legacy_passed else "legacy_inverse_signal",
@@ -390,7 +407,18 @@ def apply_unlikely_gate(analysis):
             "zero_hit_rate": round(zero_rate, 3),
             "required_zero_hit_rate": threshold["min_zero_rate"],
             "rounds": stat.get("rounds", 0),
+            "reverse_hit_guard": reverse_guard,
         }
+        if passed:
+            original_numbers = [number for number in original_numbers if number not in pack_reverse_hit_numbers]
+            if len(original_numbers) != len(_as_int_list(pack.get("numbers", []))):
+                passed = False
+                pack["numbers"] = []
+                pack["status"] = "\u53cd\u5411\u547d\u4e2d\u865f\u6df7\u5165\u5df2\u6263\u7559"
+                pack["warning"] = "\u4f4e\u6a5f\u7387\u5305\u6df7\u5165\u8fd1\u671f\u53cd\u5411\u547d\u4e2d\u865f\uff0c\u5df2\u5f37\u5236\u6263\u7559\u91cd\u65b0\u6821\u6b63"
+                pack["reverse_hit_removed_diagnostics"] = removed_reverse_diagnostics
+            else:
+                pack["numbers"] = original_numbers
         if passed:
             released_any = True
             confidence = max(55.0, min(90.0, 55.0 + max(abs(edge), formula_edge) * 180 + zero_rate * 18))
@@ -401,22 +429,29 @@ def apply_unlikely_gate(analysis):
         else:
             pack["diagnostic_candidates"] = diagnostic_numbers
             pack["withheld_numbers"] = diagnostic_numbers
+            pack["reverse_hit_removed_diagnostics"] = removed_reverse_diagnostics
             pack["numbers"] = []
             pack["confidence_index"] = 0.0
             pack["confidence_label"] = "\u672a\u767c\u5e03"
-            pack["status"] = "\u56de\u6e2c\u4e0d\u5408\u683c\u672a\u767c\u5e03"
-            pack["warning"] = "\u8fd1\u7aef\u56de\u6e2c\u672a\u660e\u986f\u52dd\u904e\u96a8\u6a5f\uff0c\u5019\u9078\u4fdd\u7559\u5728\u8a3a\u65b7\u6b04\uff0c\u4e0d\u5217\u70ba\u6b63\u5f0f\u4f4e\u6a5f\u7387\u66ab\u907f\u865f\u78bc"
+            if reverse_blocked:
+                pack["status"] = "\u8fd1\u671f\u53cd\u5411\u547d\u4e2d\u504f\u9ad8\u5df2\u6263\u7559"
+                pack["warning"] = "\u6b64\u4f4e\u6a5f\u7387\u5305\u8fd1\u671f\u8aa4\u4e2d\u504f\u9ad8\uff0c\u7981\u6b62\u7576\u6210\u6b63\u5f0f\u4e0d\u4e2d\u865f\u78bc\uff0c\u6539\u5217\u53cd\u5411\u547d\u4e2d\u8b66\u8a0a"
+            else:
+                pack["status"] = "\u56de\u6e2c\u4e0d\u5408\u683c\u672a\u767c\u5e03"
+                pack["warning"] = "\u8fd1\u7aef\u56de\u6e2c\u672a\u660e\u986f\u52dd\u904e\u96a8\u6a5f\uff0c\u5019\u9078\u4fdd\u7559\u5728\u8a3a\u65b7\u6b04\uff0c\u4e0d\u5217\u70ba\u6b63\u5f0f\u4f4e\u6a5f\u7387\u66ab\u907f\u865f\u78bc"
             actions.append({
                 "type": "unlikely_gate",
                 "pack": key,
                 "withheld_numbers": diagnostic_numbers,
+                "reverse_hit_removed_diagnostics": removed_reverse_diagnostics,
                 "edge_vs_random": round(edge, 4),
                 "zero_hit_rate": round(zero_rate, 3),
+                "reverse_hit_blocked": reverse_blocked,
             })
     if not released_any:
         unlikely["diagnostic_numbers"] = unlikely.get("numbers", [])
         unlikely["numbers"] = []
-        unlikely["warning"] = "\u4f4e\u6a5f\u7387\u6a21\u578b\u8fd1\u671f\u672a\u901a\u904e\u56de\u6e2c\u9598\u9580\uff0c\u672c\u671f\u4e0d\u767c\u5e03\u6b63\u5f0f\u66ab\u907f\u865f\u78bc\uff0c\u8a3a\u65b7\u5019\u9078\u4ecd\u5b8c\u6574\u4fdd\u7559"
+        unlikely["warning"] = "\u4f4e\u6a5f\u7387\u6a21\u578b\u8fd1\u671f\u672a\u901a\u904e\u56de\u6e2c\u6216\u53cd\u5411\u547d\u4e2d\u6aa2\u67e5\uff0c\u672c\u671f\u4e0d\u767c\u5e03\u6b63\u5f0f\u66ab\u907f\u865f\u78bc\uff0c\u8a3a\u65b7\u5019\u9078\u4ecd\u5b8c\u6574\u4fdd\u7559"
     unlikely["avoid_packs"] = packs
     unlikely["release_status"] = "released" if released_any else "withheld_by_backtest_gate"
     industrial["unlikely_number_analysis"] = unlikely

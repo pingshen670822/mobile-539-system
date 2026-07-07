@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T05:18:27",
+  "generated_at": "2026-07-07T08:40:08",
   "month_count": 4,
   "months": [
     {
@@ -12,7 +12,7 @@
       "top5_avg_hits": 0.4,
       "top10_avg_hits": 0.8,
       "top15_avg_hits": 1.2,
-      "low_probability_avg_accidental_hits": 0.8667
+      "low_probability_avg_accidental_hits": 0.7333
     },
     {
       "month": "2026-06",

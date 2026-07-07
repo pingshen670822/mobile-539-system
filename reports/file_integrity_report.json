@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-06T08:06:59",
+  "generated_at": "2026-07-07T08:40:53",
   "status": "ok",
-  "checked_files": 289,
+  "checked_files": 307,
   "failed_count": 0,
   "warning_count": 0,
   "files": [
@@ -27,13 +27,13 @@
       "path": "analyze_539.py",
       "status": "ok",
       "warnings": [],
-      "size": 74825
+      "size": 77803
     },
     {
       "path": "battle_report.py",
       "status": "ok",
       "warnings": [],
-      "size": 277820
+      "size": 309794
     },
     {
       "path": "build_tw539_release.ps1",
@@ -63,7 +63,7 @@
       "path": "daily_integrity_audit.py",
       "status": "ok",
       "warnings": [],
-      "size": 14030
+      "size": 24400
     },
     {
       "path": "daily_midnight_recompute.ps1",
@@ -87,7 +87,7 @@
       "path": "industrial_engine.py",
       "status": "ok",
       "warnings": [],
-      "size": 281558
+      "size": 287969
     },
     {
       "path": "install_daily_task.ps1",
@@ -141,13 +141,13 @@
       "path": "pages_build.py",
       "status": "ok",
       "warnings": [],
-      "size": 16431
+      "size": 18653
     },
     {
       "path": "publish_free_github.ps1",
       "status": "ok",
       "warnings": [],
-      "size": 10426
+      "size": 10418
     },
     {
       "path": "README.md",
@@ -168,6 +168,12 @@
       "size": 3121
     },
     {
+      "path": "run_three_hour_sync_check.ps1",
+      "status": "ok",
+      "warnings": [],
+      "size": 5445
+    },
+    {
       "path": "setup_line_push.ps1",
       "status": "ok",
       "warnings": [],
@@ -177,7 +183,7 @@
       "path": "stability_governor.py",
       "status": "ok",
       "warnings": [],
-      "size": 20039
+      "size": 23587
     },
     {
       "path": "system_file_check.py",
@@ -201,7 +207,7 @@
       "path": "verify_mobile_sync.py",
       "status": "ok",
       "warnings": [],
-      "size": 6989
+      "size": 13209
     },
     {
       "path": "使用說明.txt",
@@ -225,7 +231,7 @@
       "path": "手機戰報更新狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 505
+      "size": 728
     },
     {
       "path": "手機控制台網址.txt",
@@ -237,31 +243,31 @@
       "path": "手機獨立版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 102
+      "size": 97
     },
     {
       "path": "手機雲端版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 102
+      "size": 97
     },
     {
       "path": "手機雲端發布狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 352
+      "size": 834
     },
     {
       "path": "打開最新手機版.html",
       "status": "ok",
       "warnings": [],
-      "size": 907
+      "size": 893
     },
     {
       "path": "每日自動更新排程修復.ps1",
       "status": "ok",
       "warnings": [],
-      "size": 6019
+      "size": 7993
     },
     {
       "path": "網路權限診斷.ps1",
@@ -273,7 +279,7 @@
       "path": "data\\539.csv",
       "status": "ok",
       "warnings": [],
-      "size": 712978
+      "size": 713125
     },
     {
       "path": "data\\mobile_access_token.txt",
@@ -294,28 +300,46 @@
       "size": 1128
     },
     {
+      "path": "reports\\539低機率每日紀錄.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 16056
+    },
+    {
+      "path": "reports\\539低機率每月每日總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 10963
+    },
+    {
+      "path": "reports\\539低機率每月總紀錄分析.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 10963
+    },
+    {
       "path": "reports\\539低機率精準暫避.html",
       "status": "ok",
       "warnings": [],
-      "size": 9314
+      "size": 8312
     },
     {
       "path": "reports\\539最新強化戰報.html",
       "status": "ok",
       "warnings": [],
-      "size": 79347
+      "size": 87994
     },
     {
       "path": "reports\\539每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 12945
+      "size": 13950
     },
     {
       "path": "reports\\539每期預測對比.html",
       "status": "ok",
       "warnings": [],
-      "size": 22454
+      "size": 22491
     },
     {
       "path": "reports\\cleanup_obsolete_runtime.json",
@@ -333,31 +357,31 @@
       "path": "reports\\daily_auto_task_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 1650
+      "size": 2355
     },
     {
       "path": "reports\\daily_integrity_audit.json",
       "status": "ok",
       "warnings": [],
-      "size": 14400
+      "size": 20941
     },
     {
       "path": "reports\\daily_integrity_audit.md",
       "status": "ok",
       "warnings": [],
-      "size": 7460
+      "size": 12301
     },
     {
       "path": "reports\\dashboard.html",
       "status": "ok",
       "warnings": [],
-      "size": 5886
+      "size": 5888
     },
     {
       "path": "reports\\file_integrity_report.json",
       "status": "ok",
       "warnings": [],
-      "size": 40231
+      "size": 42758
     },
     {
       "path": "reports\\file_integrity_report.md",
@@ -375,43 +399,43 @@
       "path": "reports\\health_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 5935
+      "size": 5966
     },
     {
       "path": "reports\\health_status.md",
       "status": "ok",
       "warnings": [],
-      "size": 432
+      "size": 434
     },
     {
       "path": "reports\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2149153
+      "size": 2136154
     },
     {
       "path": "reports\\latest_analysis.md",
       "status": "ok",
       "warnings": [],
-      "size": 6819
+      "size": 6810
     },
     {
       "path": "reports\\latest_battle_report.html",
       "status": "ok",
       "warnings": [],
-      "size": 79347
+      "size": 87994
     },
     {
       "path": "reports\\latest_battle_report.md",
       "status": "ok",
       "warnings": [],
-      "size": 25673
+      "size": 22994
     },
     {
       "path": "reports\\latest_battle_report.txt",
       "status": "ok",
       "warnings": [],
-      "size": 25673
+      "size": 22994
     },
     {
       "path": "reports\\line_push_status.json",
@@ -423,7 +447,7 @@
       "path": "reports\\mobile_sync_verification.json",
       "status": "ok",
       "warnings": [],
-      "size": 2480
+      "size": 2226
     },
     {
       "path": "reports\\mobile_update_status.json",
@@ -435,19 +459,19 @@
       "path": "reports\\model_competition.json",
       "status": "ok",
       "warnings": [],
-      "size": 28670
+      "size": 28827
     },
     {
       "path": "reports\\model_competition.md",
       "status": "ok",
       "warnings": [],
-      "size": 3131
+      "size": 3178
     },
     {
       "path": "reports\\monthly_prediction_review.json",
       "status": "ok",
       "warnings": [],
-      "size": 25636
+      "size": 14288
     },
     {
       "path": "reports\\network_permission_diagnostic.json",
@@ -465,7 +489,7 @@
       "path": "reports\\one_click_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 339
+      "size": 337
     },
     {
       "path": "reports\\post_draw_mobile_sync_status.json",
@@ -477,7 +501,7 @@
       "path": "reports\\prediction_history.json",
       "status": "ok",
       "warnings": [],
-      "size": 242202
+      "size": 261227
     },
     {
       "path": "reports\\previous_complete_month_review.json",
@@ -504,16 +528,46 @@
       "size": 12987
     },
     {
+      "path": "reports\\低機率每日紀錄.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 114962
+    },
+    {
+      "path": "reports\\低機率每月總紀錄分析.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 25570
+    },
+    {
+      "path": "site\\539低機率每日紀錄.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 16056
+    },
+    {
+      "path": "site\\539低機率每月每日總整理.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 10963
+    },
+    {
+      "path": "site\\539低機率每月總紀錄分析.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 10963
+    },
+    {
       "path": "site\\539低機率精準暫避.html",
       "status": "ok",
       "warnings": [],
-      "size": 9314
+      "size": 8312
     },
     {
       "path": "site\\539每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 12945
+      "size": 13950
     },
     {
       "path": "site\\clear-cache.html",
@@ -531,13 +585,13 @@
       "path": "site\\health_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 5935
+      "size": 5966
     },
     {
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 83124
+      "size": 92190
     },
     {
       "path": "site\\latest.html",
@@ -549,43 +603,85 @@
       "path": "site\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2149153
+      "size": 2136154
+    },
+    {
+      "path": "site\\low-probability-daily-record.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 114962
+    },
+    {
+      "path": "site\\low-probability-daily.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 16056
+    },
+    {
+      "path": "site\\low-probability-monthly-analysis.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 25570
+    },
+    {
+      "path": "site\\low-probability-monthly-daily-summary.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 10963
+    },
+    {
+      "path": "site\\low-probability-monthly.html",
+      "status": "ok",
+      "warnings": [],
+      "size": 10963
     },
     {
       "path": "site\\low-probability.html",
       "status": "ok",
       "warnings": [],
-      "size": 9314
+      "size": 8312
     },
     {
       "path": "site\\model_competition.json",
       "status": "ok",
       "warnings": [],
-      "size": 28670
+      "size": 28827
     },
     {
       "path": "site\\monthly-summary.html",
       "status": "ok",
       "warnings": [],
-      "size": 12945
+      "size": 13950
     },
     {
       "path": "site\\prediction-history.html",
       "status": "ok",
       "warnings": [],
-      "size": 22454
+      "size": 22491
     },
     {
       "path": "site\\prediction_history.json",
       "status": "ok",
       "warnings": [],
-      "size": 242202
+      "size": 261227
     },
     {
       "path": "site\\version.json",
       "status": "ok",
       "warnings": [],
       "size": 241
+    },
+    {
+      "path": "site\\低機率每日紀錄.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 114962
+    },
+    {
+      "path": "site\\低機率每月總紀錄分析.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 25570
     },
     {
       "path": "reports\\history\\2026-03_每月完整資料.json",
@@ -597,7 +693,7 @@
       "path": "reports\\history\\2026-04_每月完整資料.json",
       "status": "ok",
       "warnings": [],
-      "size": 19098
+      "size": 18317
     },
     {
       "path": "reports\\history\\2026-05_每月完整資料.json",
@@ -615,19 +711,19 @@
       "path": "reports\\history\\2026-06_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 34064
+      "size": 34136
     },
     {
       "path": "reports\\history\\2026-07_每月完整資料.json",
       "status": "ok",
       "warnings": [],
-      "size": 34617
+      "size": 54422
     },
     {
       "path": "reports\\history\\2026-07_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 12945
+      "size": 13950
     },
     {
       "path": "reports\\history\\period_115000077.json",
@@ -1149,7 +1245,13 @@
       "path": "reports\\history\\period_115000163.json",
       "status": "ok",
       "warnings": [],
-      "size": 4285
+      "size": 11436
+    },
+    {
+      "path": "reports\\history\\period_115000164.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 9468
     },
     {
       "path": "reports\\history\\每月資料保存索引.html",
@@ -1161,7 +1263,7 @@
       "path": "reports\\history\\每月資料保存索引.json",
       "status": "ok",
       "warnings": [],
-      "size": 1619
+      "size": 1618
     },
     {
       "path": "site\\history\\2026-03_每月完整資料.json",
@@ -1173,7 +1275,7 @@
       "path": "site\\history\\2026-04_每月完整資料.json",
       "status": "ok",
       "warnings": [],
-      "size": 19098
+      "size": 18317
     },
     {
       "path": "site\\history\\2026-05_每月完整資料.json",
@@ -1191,19 +1293,19 @@
       "path": "site\\history\\2026-06_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 34064
+      "size": 34136
     },
     {
       "path": "site\\history\\2026-07_每月完整資料.json",
       "status": "ok",
       "warnings": [],
-      "size": 34617
+      "size": 54422
     },
     {
       "path": "site\\history\\2026-07_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 12945
+      "size": 13950
     },
     {
       "path": "site\\history\\period_115000077.json",
@@ -1725,7 +1827,13 @@
       "path": "site\\history\\period_115000163.json",
       "status": "ok",
       "warnings": [],
-      "size": 4285
+      "size": 11436
+    },
+    {
+      "path": "site\\history\\period_115000164.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 9468
     },
     {
       "path": "site\\history\\每月資料保存索引.html",
@@ -1737,20 +1845,20 @@
       "path": "site\\history\\每月資料保存索引.json",
       "status": "ok",
       "warnings": [],
-      "size": 1619
+      "size": 1618
     }
   ],
   "data_consistency": {
     "status": "ok",
     "csv_latest": {
-      "period": 115000162,
-      "draw_date": "2026-07-04",
+      "period": 115000163,
+      "draw_date": "2026-07-06",
       "numbers": [
-        2,
+        1,
         10,
-        15,
-        31,
-        37
+        12,
+        14,
+        38
       ]
     },
     "checks": [
@@ -1758,25 +1866,25 @@
         "name": "analysis_matches_csv_latest_draw",
         "status": "ok",
         "csv_latest": {
-          "period": 115000162,
-          "draw_date": "2026-07-04",
+          "period": 115000163,
+          "draw_date": "2026-07-06",
           "numbers": [
-            2,
+            1,
             10,
-            15,
-            31,
-            37
+            12,
+            14,
+            38
           ]
         },
         "analysis_latest": {
-          "period": 115000162,
-          "draw_date": "2026-07-04",
+          "period": 115000163,
+          "draw_date": "2026-07-06",
           "numbers": [
-            2,
+            1,
             10,
-            15,
-            31,
-            37
+            12,
+            14,
+            38
           ]
         }
       },
@@ -1784,19 +1892,19 @@
         "name": "health_matches_csv_latest_draw",
         "status": "ok",
         "csv_latest": {
-          "period": 115000162,
-          "draw_date": "2026-07-04",
+          "period": 115000163,
+          "draw_date": "2026-07-06",
           "numbers": [
-            2,
+            1,
             10,
-            15,
-            31,
-            37
+            12,
+            14,
+            38
           ]
         },
         "health_latest": {
-          "period": 115000162,
-          "draw_date": "2026-07-04",
+          "period": 115000163,
+          "draw_date": "2026-07-06",
           "freshness_status": "fresh"
         }
       }

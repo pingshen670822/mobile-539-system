@@ -766,6 +766,49 @@ def rank_error_correction_scores(review):
     return normalize(values)
 
 
+def low_probability_reverse_hit_recovery_scores(review):
+    if not review or not review.get("has_review"):
+        return {n: 0.0 for n in range(NUMBER_MIN, NUMBER_MAX + 1)}
+    performance = (((review or {}).get("rolling_adjustment") or {}).get("low_probability_performance") or {})
+    packs = performance.get("packs") or {}
+    counts = Counter()
+    for item in performance.get("recent_hit_numbers", []):
+        try:
+            number = int(item.get("number"))
+            count = int(item.get("count", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        if NUMBER_MIN <= number <= NUMBER_MAX and count > 0:
+            counts[number] += count * 2
+    for pack in packs.values():
+        edge = float(pack.get("edge_vs_random", 0.0) or 0.0)
+        zero_rate = float(pack.get("zero_hit_rate", 0.0) or 0.0)
+        reverse_pressure = 1.0 + max(edge, 0.0) * 3.0 + max(0.0, 0.34 - zero_rate) * 1.4
+        for item in pack.get("hit_numbers", []):
+            try:
+                number = int(item.get("number"))
+                count = int(item.get("count", 0) or 0)
+            except (TypeError, ValueError):
+                continue
+            if NUMBER_MIN <= number <= NUMBER_MAX and count > 0:
+                counts[number] += count * reverse_pressure
+    if not counts:
+        return {n: 0.0 for n in range(NUMBER_MIN, NUMBER_MAX + 1)}
+    tail_counts = Counter({number % 10: count for number, count in counts.items()})
+    zone_counts = Counter({zone_label(number): count for number, count in counts.items()})
+    values = {}
+    max_count = max(counts.values()) or 1.0
+    max_tail = max(tail_counts.values()) or 1.0
+    max_zone = max(zone_counts.values()) or 1.0
+    for number in range(NUMBER_MIN, NUMBER_MAX + 1):
+        direct = counts.get(number, 0.0) / max_count
+        tail = tail_counts.get(number % 10, 0.0) / max_tail
+        zone = zone_counts.get(zone_label(number), 0.0) / max_zone
+        neighbor = 1.0 if any(1 <= abs(number - anchor) <= 2 for anchor in counts) else 0.0
+        values[number] = direct * 0.58 + tail * 0.18 + zone * 0.14 + neighbor * 0.10
+    return normalize(values)
+
+
 def monthly_recall_pressure_scores(review):
     if not review or not review.get("has_review"):
         return {n: 0.0 for n in range(NUMBER_MIN, NUMBER_MAX + 1)}
@@ -1101,6 +1144,7 @@ def build_feature_matrix(draws, review=None, include_dependency=True):
     zone_parity_pressure = zone_parity_pressure_scores(draws)
     missed_hit_recovery = missed_hit_recovery_scores(review)
     rank_error_correction = rank_error_correction_scores(review)
+    low_probability_reverse_hit_recovery = low_probability_reverse_hit_recovery_scores(review)
     monthly_recall_pressure = monthly_recall_pressure_scores(review)
     breakthrough_month_bridge = breakthrough_month_bridge_scores(review)
     cold_rebound_champion = cold_rebound_champion_scores(draws)
@@ -1129,6 +1173,7 @@ def build_feature_matrix(draws, review=None, include_dependency=True):
         zone_parity_pressure,
         missed_hit_recovery,
         rank_error_correction,
+        low_probability_reverse_hit_recovery,
         monthly_recall_pressure,
         breakthrough_month_bridge,
         cold_rebound_champion,
@@ -1149,6 +1194,7 @@ def build_feature_matrix(draws, review=None, include_dependency=True):
         shape_follow,
         zone_parity_pressure,
         rank_error_correction,
+        low_probability_reverse_hit_recovery,
         monthly_recall_pressure,
         breakthrough_month_bridge,
         cold_rebound_champion,
@@ -1184,6 +1230,7 @@ def build_feature_matrix(draws, review=None, include_dependency=True):
         feature_scores[number]["zone_parity_pressure"] = zone_parity_pressure[number]
         feature_scores[number]["missed_hit_recovery"] = missed_hit_recovery[number]
         feature_scores[number]["rank_error_correction"] = rank_error_correction[number]
+        feature_scores[number]["low_probability_reverse_hit_recovery"] = low_probability_reverse_hit_recovery[number]
         feature_scores[number]["monthly_recall_pressure"] = monthly_recall_pressure[number]
         feature_scores[number]["breakthrough_month_bridge"] = breakthrough_month_bridge[number]
         feature_scores[number]["cold_rebound_champion"] = cold_rebound_champion[number]
@@ -1227,6 +1274,7 @@ def industrial_weights(review=None):
         "zone_parity_pressure": 0.062,
         "missed_hit_recovery": 0.054,
         "rank_error_correction": 0.075,
+        "low_probability_reverse_hit_recovery": 0.084,
         "monthly_recall_pressure": 0.082,
         "breakthrough_month_bridge": 0.045,
         "cold_rebound_champion": 0.072,
@@ -1259,6 +1307,7 @@ def industrial_weights(review=None):
                 "zone_parity_pressure": 0.082,
                 "missed_hit_recovery": 0.074,
                 "rank_error_correction": 0.105,
+                "low_probability_reverse_hit_recovery": 0.138,
                 "monthly_recall_pressure": 0.132,
                 "breakthrough_month_bridge": 0.072,
                 "cold_rebound_champion": 0.108,
@@ -1284,6 +1333,7 @@ def industrial_weights(review=None):
                 weights[key] *= 0.74 if mode == "warning" else 0.58
         for key in [
             "rank_error_correction",
+            "low_probability_reverse_hit_recovery",
             "monthly_recall_pressure",
             "breakthrough_month_bridge",
             "cold_rebound_champion",
@@ -1333,6 +1383,7 @@ MODEL_SOURCE_LABELS = {
     "zone_parity_pressure": "\u5340\u9593\u5947\u5076\u58d3\u529b",
     "missed_hit_recovery": "\u6f0f\u547d\u4e2d\u56de\u6536",
     "rank_error_correction": "\u6392\u540d\u932f\u4f4d\u4fee\u6b63",
+    "low_probability_reverse_hit_recovery": "\u4f4e\u6a5f\u7387\u53cd\u5411\u547d\u4e2d\u56de\u88dc",
     "monthly_recall_pressure": "\u6708\u5ea6\u6f0f\u6293\u58d3\u529b\u56de\u62c9",
     "breakthrough_month_bridge": "上月失準突破回拉",
     "cold_rebound_champion": "\u51b7\u865f\u53cd\u5f48\u51a0\u8ecd\u6a21\u578b",
@@ -2701,6 +2752,16 @@ def score_numbers(draws, review=None, include_dependency=True, weights_override=
     weights = weights_override or industrial_weights(review)
     failed = failed_number_set(review)
     rolling = (review or {}).get("rolling_adjustment", {})
+    low_probability_performance = rolling.get("low_probability_performance") or {}
+    low_probability_reverse_hit_numbers = {
+        int(item.get("number"))
+        for item in low_probability_performance.get("recent_hit_numbers", [])
+        if item.get("number") and int(item.get("count", 0) or 0) > 0
+    }
+    for pack in (low_probability_performance.get("packs") or {}).values():
+        for item in pack.get("hit_numbers", []):
+            if item.get("number") and int(item.get("count", 0) or 0) > 0:
+                low_probability_reverse_hit_numbers.add(int(item.get("number")))
     penalized_reasons = {item.get("reason") for item in rolling.get("penalized_reasons", [])}
     boosted_reasons = {item.get("reason") for item in rolling.get("boosted_reasons", [])}
     repeated_failed_numbers = {int(item.get("number")) for item in rolling.get("repeated_failed_numbers", []) if item.get("number")}
@@ -2739,6 +2800,7 @@ def score_numbers(draws, review=None, include_dependency=True, weights_override=
                 or number in missed_actual_numbers
                 or values.get("rank_error_correction", 0) >= 0.68
                 or values.get("missed_hit_recovery", 0) >= 0.66
+                or values.get("low_probability_reverse_hit_recovery", 0) >= 0.64
                 or values.get("monthly_recall_pressure", 0) >= 0.74
                 or values.get("breakthrough_month_bridge", 0) >= 0.72
                 or values.get("cold_rebound_champion", 0) >= 0.72
@@ -2749,7 +2811,10 @@ def score_numbers(draws, review=None, include_dependency=True, weights_override=
             strong_reentry_signal = (
                 values.get("cross_consensus", 0) >= 0.78
                 and values.get("rank_error_correction", 0) >= 0.68
-                and values.get("missed_hit_recovery", 0) >= 0.62
+                and (
+                    values.get("missed_hit_recovery", 0) >= 0.62
+                    or values.get("low_probability_reverse_hit_recovery", 0) >= 0.66
+                )
                 and values.get("omission", 0) >= 0.50
                 and (
                     values.get("freq_50", 0) >= 0.62
@@ -2803,6 +2868,8 @@ def score_numbers(draws, review=None, include_dependency=True, weights_override=
             reasons[number].append("\u6f0f\u547d\u4e2d\u56de\u6536")
         if values["rank_error_correction"] >= 0.7:
             reasons[number].append("\u6392\u540d\u932f\u4f4d\u4fee\u6b63")
+        if values.get("low_probability_reverse_hit_recovery", 0) >= 0.7:
+            reasons[number].append("\u4f4e\u6a5f\u7387\u53cd\u5411\u547d\u4e2d\u56de\u88dc")
         if values["monthly_recall_pressure"] >= 0.7:
             reasons[number].append("\u6708\u5ea6\u6f0f\u6293\u58d3\u529b\u56de\u62c9")
         if values.get("breakthrough_month_bridge", 0) >= 0.7:
@@ -2841,6 +2908,9 @@ def score_numbers(draws, review=None, include_dependency=True, weights_override=
         if number in missed_actual_numbers and values["rank_error_correction"] >= 0.52:
             raw *= 1.26 if mode == "critical" else 1.18
             reasons[number].append("\u6efe\u52d5\u6aa2\u8a0e\u6f0f\u6293\u5be6\u958b\u865f\u88dc\u4f4d")
+        if number in low_probability_reverse_hit_numbers and values.get("low_probability_reverse_hit_recovery", 0) >= 0.52:
+            raw *= 1.24 if mode == "critical" else 1.18 if mode == "warning" else 1.12
+            reasons[number].append("\u4f4e\u6a5f\u7387\u932f\u6bba\u5f8c\u8f49\u5165\u9ad8\u6a5f\u7387\u56de\u88dc")
         if number in monthly_recall_numbers and values["rank_error_correction"] >= 0.45:
             raw *= 1.04 if number in failed else 1.14 if mode == "critical" else 1.09
             reasons[number].append("\u6708\u5ea6\u6f0f\u6293\u865f\u56de\u62c9")
@@ -5265,8 +5335,41 @@ def avoid_confidence_label(score):
     return "低"
 
 
-def build_unlikely_avoid_packs(rows, formula_avoid_plan=None):
+def low_probability_inversion_guard(review):
+    performance = (((review or {}).get("rolling_adjustment") or {}).get("low_probability_performance") or {})
+    packs = performance.get("packs") or {}
+    blocked = {}
+    for key, data in packs.items():
+        release_allowed = bool(data.get("release_allowed"))
+        blocked[key] = {
+            "blocked": not release_allowed,
+            "status": data.get("status") or ("usable" if release_allowed else "blocked_reverse_hit_risk"),
+            "rounds": data.get("rounds", 0),
+            "average_accidental_hits": data.get("average_accidental_hits"),
+            "random_expectation": data.get("random_expectation"),
+            "edge_vs_random": data.get("edge_vs_random"),
+            "zero_hit_rate": data.get("zero_hit_rate"),
+            "recent_accidental_hits": data.get("recent_accidental_hits", []),
+            "hit_numbers": data.get("hit_numbers", []),
+        }
+    recent_hit_numbers = {
+        int(item.get("number"))
+        for item in performance.get("recent_hit_numbers", [])
+        if item.get("number") and int(item.get("count", 0) or 0) >= 1
+    }
+    return {
+        "policy": "低機率包必須通過近期實戰結算；反向命中偏高時扣留，避免把會開的號碼包成低機率。",
+        "sample_size": performance.get("sample_size", 0),
+        "blocked_packs": blocked,
+        "recent_reverse_hit_numbers": sorted(recent_hit_numbers),
+        "status": "active" if blocked else "no_recent_low_probability_sample",
+    }
+
+
+def build_unlikely_avoid_packs(rows, formula_avoid_plan=None, inversion_guard=None):
     formula_avoid_plan = formula_avoid_plan or {}
+    inversion_guard = inversion_guard or {}
+    blocked_packs = inversion_guard.get("blocked_packs") or {}
     packs = {}
     for key, name, size in [
         ("five_miss", "5不中", 5),
@@ -5297,23 +5400,31 @@ def build_unlikely_avoid_packs(rows, formula_avoid_plan=None):
             )
         pack_rows = eligible_rows[:size]
         if len(pack_rows) < size:
-            selected_numbers = {int(item.get("number", 0) or 0) for item in pack_rows}
-            fallback_rows = [
-                item for item in rows
-                if int(item.get("number", 0) or 0) not in selected_numbers
-                and int(item.get("candidate_rank", 99) or 99) > 15
-                and float(item.get("risk_block_score", 0.0) or 0.0) < 0.50
-                and float(item.get("avoid_score", 0.0) or 0.0) >= 0.36
-            ]
-            pack_rows.extend(fallback_rows[: max(0, size - len(pack_rows))])
-        if len(pack_rows) < size:
             packs[key] = {
                 "name": name,
                 "numbers": [],
-                "status": "資料不足不產出",
+                "status": "合格低機率不足不硬湊",
                 "confidence_label": "低",
                 "rejected_candidates": [item.get("number") for item in rows[:size]],
-                "warning": "低機率研究不是絕對不開保證",
+                "qualified_count": len(pack_rows),
+                "required_count": size,
+                "warning": "合格低機率不足時扣留，禁止用備選硬湊造成反向命中",
+            }
+            continue
+        guard = blocked_packs.get(key) or {}
+        if guard.get("blocked"):
+            packs[key] = {
+                "name": name,
+                "numbers": [],
+                "diagnostic_numbers": [item["number"] for item in pack_rows],
+                "status": "近期反向命中偏高已扣留",
+                "confidence_label": "低",
+                "average_accidental_hits": guard.get("average_accidental_hits"),
+                "random_expectation": guard.get("random_expectation"),
+                "zero_hit_rate": guard.get("zero_hit_rate"),
+                "recent_accidental_hits": guard.get("recent_accidental_hits", []),
+                "reverse_hit_numbers": guard.get("hit_numbers", []),
+                "warning": "此暫避包近期誤中偏高，不能再標示為低機率不中",
             }
             continue
         avg_score = sum(float(item.get("avoid_score", 0.0) or 0.0) for item in pack_rows) / size
@@ -5329,7 +5440,7 @@ def build_unlikely_avoid_packs(rows, formula_avoid_plan=None):
             "formula_lab_edge": formula_pack.get("avg_avoid_edge"),
             "formula_lab_status": formula_pack.get("status"),
             "selection_model": "formula_lab_inverse_consensus" if formula_set else "inverse_signal_with_risk_separation_filter",
-            "selection_note": "正式候選不足時以低風險備選補齊" if len(eligible_rows[:size]) < size else "正式候選足額",
+            "selection_note": "只使用合格低機率號，不足時扣留不硬湊",
             "warning": "低機率研究不是絕對不開保證，只作避險與組合污染控管",
         }
     return packs
@@ -5351,6 +5462,8 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
         for number in pack.get("numbers", [])
         if number
     }
+    inversion_guard = low_probability_inversion_guard(review)
+    reverse_hit_numbers = set(inversion_guard.get("recent_reverse_hit_numbers") or [])
     stability_counts = {int(number): count for number, count in stability.get("consensus_counts", {}).items()}
     latest_set = set(draws[-1]["numbers"])
     previous_blocked = {
@@ -5391,6 +5504,9 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
         if number in recall_numbers:
             risk_block_score += 0.28
             reasons.append("\u6efe\u52d5\u6aa2\u8a0e\u6307\u5411\u6f0f\u6293\u56de\u88dc\uff0c\u4e0d\u5217\u4f4e\u6a5f\u7387")
+        if number in reverse_hit_numbers:
+            risk_block_score += 0.36
+            reasons.append("近期曾被低機率錯殺後開出，禁止再列低機率")
         if number in latest_set:
             if repeat_policy.get(number, {}).get("historical_support"):
                 risk_block_score += 0.12
@@ -5475,7 +5591,8 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
         "method": "formula_lab_inverse_consensus_with_risk_separation_filter",
         "warning": "\u6b64\u5340\u70ba\u98a8\u63a7\u907f\u958b\u89c0\u5bdf\uff0c\u4e0d\u662f\u7d55\u5c0d\u4e0d\u958b\u4fdd\u8b49",
         "numbers": rows[:limit],
-        "avoid_packs": build_unlikely_avoid_packs(rows, formula_avoid_plan),
+        "inversion_guard": inversion_guard,
+        "avoid_packs": build_unlikely_avoid_packs(rows, formula_avoid_plan, inversion_guard),
     }
 
 

@@ -66,7 +66,7 @@ function Write-PublishStatus {
   param(
     [string]$Status,
     [string]$Message,
-    [string]$Owner = "pingshen670924-dotcom",
+    [string]$Owner = "pingshen670822",
     [bool]$PromoteToPrimary = $false,
     [string]$VersionOverride = ""
   )

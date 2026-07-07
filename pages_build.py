@@ -14,9 +14,12 @@ SITE = ROOT / "site"
 REPORT = REPORTS / "539\u6700\u65b0\u5f37\u5316\u6230\u5831.html"
 HISTORY_REPORT = REPORTS / "539\u6bcf\u671f\u9810\u6e2c\u5c0d\u6bd4.html"
 LOW_PROBABILITY_REPORT = REPORTS / "539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f.html"
+LOW_PROBABILITY_DAILY_REPORT = REPORTS / "539\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304.html"
+LOW_PROBABILITY_MONTHLY_REPORT = REPORTS / "539\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790.html"
+LOW_PROBABILITY_MONTHLY_DAILY_REPORT = REPORTS / "539\u4f4e\u6a5f\u7387\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406.html"
 MONTHLY_SUMMARY_REPORT = REPORTS / "539\u6bcf\u6708\u9810\u6e2c\u7e3d\u6574\u7406.html"
 HISTORY_DIR = REPORTS / "history"
-REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "pingshen670924-dotcom/mobile-539-system")
+REPOSITORY = os.environ.get("GITHUB_REPOSITORY", "pingshen670822/mobile-539-system")
 TAIPEI = ZoneInfo("Asia/Taipei")
 
 
@@ -54,7 +57,7 @@ def read_json_or_empty(path):
 
 def update_mobile_pointer_files(version, latest_draw, mobile_built_at):
     timestamp = int(time.time())
-    cloud_url = f"https://pingshen670924-dotcom.github.io/mobile-539-system/clear-cache.html?v={version}&t={timestamp}"
+    cloud_url = f"https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v={version}&t={timestamp}"
     status_path = ROOT / "手機戰報更新狀態.json"
     cloud_status_path = ROOT / "手機雲端發布狀態.json"
     previous_status = read_json_or_empty(status_path)
@@ -161,6 +164,9 @@ def build():
       <p><a class="mobile-action refresh" href="clear-cache.html?v={version}">\u6e05\u9664\u820a\u7248\u5feb\u53d6\u4e26\u6253\u958b\u6700\u65b0\u624b\u6a5f\u7248</a></p>
       <p><a class="mobile-action history" href="prediction-history.html?v={version}">\u67e5\u770b\u6bcf\u671f\u9810\u6e2c\u5c0d\u6bd4</a></p>
       <p><a class="mobile-action secondary" href="monthly-summary.html?v={version}">\u67e5\u770b\u6bcf\u6708\u7e3d\u6574</a></p>
+      <p><a class="mobile-action secondary" href="low-probability-daily.html?v={version}">\u67e5\u770b\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304</a></p>
+      <p><a class="mobile-action secondary" href="low-probability-monthly.html?v={version}">\u67e5\u770b\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304</a></p>
+      <p><a class="mobile-action secondary" href="low-probability-monthly-daily-summary.html?v={version}">\u67e5\u770b\u4f4e\u6a5f\u7387\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406</a></p>
       <p><a class="mobile-action secondary" href="history/\u6bcf\u6708\u8cc7\u6599\u4fdd\u5b58\u7d22\u5f15.html?v={version}">\u67e5\u770b\u6bcf\u6708\u4fdd\u5b58\u8cc7\u6599</a></p>
       <p><a class="mobile-action" href="{repository_url('actions/workflows/daily-update.yml')}">\u767b\u5165\u96f2\u7aef\u5e73\u53f0\u5f8c\u7acb\u5373\u66f4\u65b0</a></p>
       <p><button class="mobile-action refresh" type="button" onclick="forceRefresh()">\u5f37\u5236\u91cd\u65b0\u8f09\u5165\u6700\u65b0\u624b\u6a5f\u6210\u679c</button></p>
@@ -228,15 +234,37 @@ def build():
     </script>'''
     html = html.replace("</body>", script + "</body>")
     (SITE / "index.html").write_text(html, encoding="utf-8")
-    for name in ["latest_analysis.json", "health_status.json", "model_competition.json", "prediction_history.json"]:
+    for name in [
+        "latest_analysis.json",
+        "health_status.json",
+        "model_competition.json",
+        "prediction_history.json",
+        "\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304.json",
+        "\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790.json",
+    ]:
         source = REPORTS / name
         if source.exists():
             shutil.copy2(source, SITE / name)
+    low_daily_json = REPORTS / "\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304.json"
+    low_monthly_json = REPORTS / "\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790.json"
+    if low_daily_json.exists():
+        shutil.copy2(low_daily_json, SITE / "low-probability-daily-record.json")
+    if low_monthly_json.exists():
+        shutil.copy2(low_monthly_json, SITE / "low-probability-monthly-analysis.json")
     if HISTORY_REPORT.exists():
         shutil.copy2(HISTORY_REPORT, SITE / "prediction-history.html")
     if LOW_PROBABILITY_REPORT.exists():
         shutil.copy2(LOW_PROBABILITY_REPORT, SITE / "539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f.html")
         shutil.copy2(LOW_PROBABILITY_REPORT, SITE / "low-probability.html")
+    if LOW_PROBABILITY_DAILY_REPORT.exists():
+        shutil.copy2(LOW_PROBABILITY_DAILY_REPORT, SITE / "539\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304.html")
+        shutil.copy2(LOW_PROBABILITY_DAILY_REPORT, SITE / "low-probability-daily.html")
+    if LOW_PROBABILITY_MONTHLY_REPORT.exists():
+        shutil.copy2(LOW_PROBABILITY_MONTHLY_REPORT, SITE / "539\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790.html")
+        shutil.copy2(LOW_PROBABILITY_MONTHLY_REPORT, SITE / "low-probability-monthly.html")
+    if LOW_PROBABILITY_MONTHLY_DAILY_REPORT.exists():
+        shutil.copy2(LOW_PROBABILITY_MONTHLY_DAILY_REPORT, SITE / "539\u4f4e\u6a5f\u7387\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406.html")
+        shutil.copy2(LOW_PROBABILITY_MONTHLY_DAILY_REPORT, SITE / "low-probability-monthly-daily-summary.html")
     if MONTHLY_SUMMARY_REPORT.exists():
         shutil.copy2(MONTHLY_SUMMARY_REPORT, SITE / "539\u6bcf\u6708\u9810\u6e2c\u7e3d\u6574\u7406.html")
         shutil.copy2(MONTHLY_SUMMARY_REPORT, SITE / "monthly-summary.html")

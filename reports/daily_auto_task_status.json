@@ -1,6 +1,6 @@
 ﻿{
     "status":  "passed",
-    "written_at":  "2026-07-06T09:59:51",
+    "written_at":  "2026-07-06T12:12:58",
     "runner":  "C:\\Users\\MSI\\Documents\\Codex\\539PredictionSystem\\main_one_click.ps1",
     "startup_tasks_removed":  [
 
@@ -30,6 +30,18 @@
                             "create_method":  "powershell"
                         }
                     ],
-    "rule":  "20:45 after-draw update and 00:05 full integrity recompute must exist; boot and logon startup runs must be removed.",
-    "message":  "Daily automatic update tasks are installed and startup tasks are removed."
+    "sync_monitor_tasks":  [
+                               {
+                                   "exists":  true,
+                                   "task":  "TW539 每3小時戰報手機同步檢測",
+                                   "runner":  "C:\\Users\\MSI\\Documents\\Codex\\539PredictionSystem\\run_three_hour_sync_check.ps1",
+                                   "create_exit_code":  0,
+                                   "native_error":  "",
+                                   "trigger":  "MSFT_TaskTimeTrigger",
+                                   "passed":  true,
+                                   "interval":  "every_3_hours"
+                               }
+                           ],
+    "rule":  "20:45 after-draw update, 00:05 full integrity recompute, and every-3-hour report/mobile sync monitor must exist; boot and logon startup runs must be removed.",
+    "message":  "Daily automatic update tasks and three-hour sync monitor are installed; startup tasks are removed."
 }

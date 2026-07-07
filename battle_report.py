@@ -24,9 +24,15 @@ ENHANCED_BATTLE_HTML = REPORT_DIR / "539\u6700\u65b0\u5f37\u5316\u6230\u5831.htm
 HISTORY_JSON = REPORT_DIR / "prediction_history.json"
 HISTORY_HTML = REPORT_DIR / "539\u6bcf\u671f\u9810\u6e2c\u5c0d\u6bd4.html"
 LOW_PROBABILITY_HTML = REPORT_DIR / "539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f.html"
+LOW_PROBABILITY_DAILY_JSON = REPORT_DIR / "\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304.json"
+LOW_PROBABILITY_DAILY_HTML = REPORT_DIR / "539\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304.html"
+LOW_PROBABILITY_MONTHLY_JSON = REPORT_DIR / "\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790.json"
+LOW_PROBABILITY_MONTHLY_HTML = REPORT_DIR / "539\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790.html"
+LOW_PROBABILITY_MONTHLY_DAILY_HTML = REPORT_DIR / "539\u4f4e\u6a5f\u7387\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406.html"
 MONTHLY_SUMMARY_HTML = REPORT_DIR / "539\u6bcf\u6708\u9810\u6e2c\u7e3d\u6574\u7406.html"
 HISTORY_DIR = REPORT_DIR / "history"
 TAIPEI_TZ = ZoneInfo("Asia/Taipei")
+LOW_PROBABILITY_PACK_ORDER = ["five_miss", "ten_miss", "fifteen_miss"]
 
 
 def taipei_now():
@@ -573,6 +579,7 @@ def save_prediction_history(history):
             continue
         path = HISTORY_DIR / f"period_{target}.json"
         atomic_write_text(path, json.dumps(item, ensure_ascii=False, indent=2))
+    save_low_probability_records(history)
     save_monthly_archives(history)
     return payload
 
@@ -607,6 +614,404 @@ def monthly_archive_stats(records):
         "top10_avg_hits": average("top10_hits"),
         "top15_avg_hits": average("top15_hits"),
         "low_probability_avg_accidental_hits": round(sum(low_hits) / len(low_hits), 4) if low_hits else 0.0,
+    }
+
+
+def low_probability_pack_name(key, value=None):
+    labels = {
+        "five_miss": "5不中",
+        "ten_miss": "10不中",
+        "fifteen_miss": "15不中",
+    }
+    if isinstance(value, dict) and value.get("name"):
+        return value.get("name")
+    return labels.get(key, str(key))
+
+
+def low_probability_record_from_history_item(item):
+    packs = item.get("unlikely_packs") or {}
+    hits = item.get("unlikely_pack_hits") or {}
+    actual_numbers = [int(number) for number in (item.get("actual_numbers") or [])]
+    actual_set = set(actual_numbers)
+    top5 = [int(number) for number in (item.get("top5") or [])]
+    top10 = [int(number) for number in (item.get("top10") or [])]
+    top15 = [int(number) for number in (item.get("top15") or [])]
+    keys = []
+    for key in LOW_PROBABILITY_PACK_ORDER:
+        if key in packs or key in hits:
+            keys.append(key)
+    for key in sorted((set(packs) | set(hits)) - set(keys)):
+        keys.append(key)
+
+    pack_records = []
+    for key in keys:
+        pack = packs.get(key) or {}
+        hit = hits.get(key) or {}
+        numbers = hit.get("numbers") or pack.get("numbers") or []
+        hit_numbers = hit.get("hit_numbers") or []
+        avoided_numbers = hit.get("avoided_numbers")
+        if avoided_numbers is None:
+            avoided_numbers = sorted(set(int(number) for number in numbers) - set(int(number) for number in hit_numbers))
+        passed = hit.get("passed")
+        accidental_hits = hit.get("accidental_hits")
+        if item.get("status") != "settled":
+            result = "待結算"
+        elif passed:
+            result = "達標"
+        else:
+            result = "未達標"
+        pack_records.append(
+            {
+                "key": key,
+                "name": low_probability_pack_name(key, hit or pack),
+                "numbers": [int(number) for number in numbers],
+                "target_accidental_hits": 0,
+                "accidental_hits": accidental_hits if accidental_hits is not None else None,
+                "hit_numbers": [int(number) for number in hit_numbers],
+                "avoided_numbers": [int(number) for number in avoided_numbers],
+                "passed": bool(passed) if passed is not None else None,
+                "result": result,
+                "confidence_index": pack.get("confidence_index"),
+                "avg_avoid_score": pack.get("avg_avoid_score"),
+                "min_avoid_score": pack.get("min_avoid_score"),
+                "selection_model": localize_text(str(pack.get("selection_model") or "")) if pack.get("selection_model") else "",
+                "status": pack.get("status") or result,
+            }
+        )
+
+    actual_date = item.get("actual_date") or ""
+    target_date = item.get("target_expected_date") or ""
+    month_source = actual_date or target_date or item.get("based_on_date") or item.get("created_at") or ""
+    return {
+        "month": str(month_source)[:7] if len(str(month_source)) >= 7 else "未分月份",
+        "status": item.get("status"),
+        "based_on_period": item.get("based_on_period"),
+        "based_on_date": item.get("based_on_date"),
+        "target_period": item.get("target_period"),
+        "target_expected_date": target_date,
+        "actual_period": item.get("actual_period"),
+        "actual_date": actual_date,
+        "actual_numbers": actual_numbers,
+        "top5": top5,
+        "top10": top10,
+        "top15": top15,
+        "top5_hits": item.get("top5_hits"),
+        "top10_hits": item.get("top10_hits"),
+        "top15_hits": item.get("top15_hits"),
+        "top10_hit_numbers": sorted(actual_set & set(top10)),
+        "top15_hit_numbers": sorted(actual_set & set(top15)),
+        "packs": pack_records,
+        "created_at": item.get("created_at"),
+        "settled_at": item.get("settled_at"),
+    }
+
+
+def low_probability_daily_records(history):
+    records = []
+    for item in history:
+        if item.get("status") not in {"settled", "pending"}:
+            continue
+        record = low_probability_record_from_history_item(item)
+        if record.get("packs"):
+            records.append(record)
+    records.sort(key=lambda item: (item.get("target_period") or 0, item.get("created_at") or ""), reverse=True)
+    return records
+
+
+def low_probability_monthly_analysis(daily_records):
+    by_month = defaultdict(list)
+    for record in daily_records:
+        if record.get("status") == "settled" and record.get("actual_date"):
+            by_month[str(record.get("actual_date"))[:7]].append(record)
+
+    months = []
+    for month in sorted(by_month.keys(), reverse=True):
+        records = sorted(by_month[month], key=lambda item: item.get("actual_date") or "")
+        pack_stats = {}
+        month_hit_counter = Counter()
+        daily_rows = []
+        for record in records:
+            parts = []
+            for pack in record.get("packs", []):
+                key = pack.get("key")
+                stat = pack_stats.setdefault(
+                    key,
+                    {
+                        "key": key,
+                        "name": pack.get("name"),
+                        "rounds": 0,
+                        "passed": 0,
+                        "failed": 0,
+                        "zero_hit_rounds": 0,
+                        "total_accidental_hits": 0,
+                        "max_accidental_hits": 0,
+                        "hit_numbers": Counter(),
+                        "worst_dates": [],
+                    },
+                )
+                accidental = int(pack.get("accidental_hits") or 0)
+                stat["rounds"] += 1
+                stat["total_accidental_hits"] += accidental
+                stat["max_accidental_hits"] = max(stat["max_accidental_hits"], accidental)
+                if pack.get("passed"):
+                    stat["passed"] += 1
+                else:
+                    stat["failed"] += 1
+                if accidental == 0:
+                    stat["zero_hit_rounds"] += 1
+                if accidental == stat["max_accidental_hits"] and accidental > 0:
+                    stat["worst_dates"].append(record.get("actual_date"))
+                for number in pack.get("hit_numbers") or []:
+                    stat["hit_numbers"][int(number)] += 1
+                    month_hit_counter[int(number)] += 1
+                parts.append(f"{pack.get('name')}誤中{accidental}")
+            daily_rows.append(
+                {
+                    "actual_date": record.get("actual_date"),
+                    "target_period": record.get("target_period"),
+                    "actual_numbers": record.get("actual_numbers"),
+                    "top5_hits": record.get("top5_hits"),
+                    "top10_hits": record.get("top10_hits"),
+                    "top15_hits": record.get("top15_hits"),
+                    "top10_hit_numbers": record.get("top10_hit_numbers") or [],
+                    "top15_hit_numbers": record.get("top15_hit_numbers") or [],
+                    "summary": "、".join(parts) or "-",
+                }
+            )
+
+        formatted_pack_stats = []
+        for key in LOW_PROBABILITY_PACK_ORDER + sorted(set(pack_stats) - set(LOW_PROBABILITY_PACK_ORDER)):
+            stat = pack_stats.get(key)
+            if not stat:
+                continue
+            rounds = stat["rounds"] or 1
+            hit_items = [
+                {"number": number, "count": count}
+                for number, count in stat["hit_numbers"].most_common(10)
+            ]
+            formatted_pack_stats.append(
+                {
+                    "key": key,
+                    "name": stat["name"],
+                    "rounds": stat["rounds"],
+                    "passed": stat["passed"],
+                    "failed": stat["failed"],
+                    "pass_rate": round(stat["passed"] / rounds, 4),
+                    "average_accidental_hits": round(stat["total_accidental_hits"] / rounds, 4),
+                    "zero_hit_rate": round(stat["zero_hit_rounds"] / rounds, 4),
+                    "max_accidental_hits": stat["max_accidental_hits"],
+                    "most_accidental_hit_numbers": hit_items,
+                    "worst_dates": sorted(set(stat["worst_dates"])),
+                    "judgement": "穩定" if stat["passed"] / rounds >= 0.7 else ("需觀察" if stat["passed"] / rounds >= 0.45 else "不穩定需降權"),
+                }
+            )
+
+        months.append(
+            {
+                "month": month,
+                "settled_days": len(records),
+                "pack_stats": formatted_pack_stats,
+                "daily_rows": daily_rows,
+                "most_accidental_hit_numbers": [
+                    {"number": number, "count": count}
+                    for number, count in month_hit_counter.most_common(12)
+                ],
+            }
+        )
+
+    return {
+        "generated_at": taipei_now().isoformat(timespec="seconds"),
+        "record_rule": "每一期開獎後都保存低機率5不中、10不中、15不中的原始暫避號、實際誤中、達標狀態與月份統計。",
+        "daily_record_count": len(daily_records),
+        "settled_record_count": sum(1 for item in daily_records if item.get("status") == "settled"),
+        "pending_record_count": sum(1 for item in daily_records if item.get("status") == "pending"),
+        "months": months,
+    }
+
+
+def build_low_probability_daily_html(daily_records):
+    rows = []
+    for record in daily_records:
+        high_hit_text = (
+            f"前五{record.get('top5_hits', '-')} / "
+            f"前十{record.get('top10_hits', '-')} / "
+            f"前十五{record.get('top15_hits', '-')}"
+        )
+        hit_numbers_text = (
+            f"前十：{fmt_numbers(record.get('top10_hit_numbers') or []) or '0'}；"
+            f"前十五：{fmt_numbers(record.get('top15_hit_numbers') or []) or '0'}"
+        )
+        pack_text = "、".join(
+            f"{pack.get('name')}：{fmt_numbers(pack.get('numbers') or []) or '-'} / {pack.get('result')}"
+            + (f" / 誤中{pack.get('accidental_hits')}" if pack.get("accidental_hits") is not None else "")
+            for pack in record.get("packs", [])
+        )
+        hit_text = "、".join(
+            f"{pack.get('name')}誤中{fmt_numbers(pack.get('hit_numbers') or []) or '0'}"
+            for pack in record.get("packs", [])
+            if pack.get("hit_numbers")
+        ) or "-"
+        rows.append(
+            "<tr>"
+            f"<td>{escape_html(record.get('based_on_date') or '-')}</td>"
+            f"<td>{escape_html(record.get('target_expected_date') or '-')}</td>"
+            f"<td>{escape_html(record.get('actual_date') or '-')}</td>"
+            f"<td>{escape_html(record.get('status') or '-')}</td>"
+            f"<td>{fmt_numbers(record.get('actual_numbers') or []) or '-'}</td>"
+            f"<td>{escape_html(high_hit_text)}</td>"
+            f"<td>{escape_html(hit_numbers_text)}</td>"
+            f"<td>{escape_html(pack_text)}</td>"
+            f"<td>{escape_html(hit_text)}</td>"
+            "</tr>"
+        )
+    generated_at = taipei_now().isoformat(timespec="seconds").replace("T", " ")
+    return f"""<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>539低機率每日紀錄</title>
+  <style>
+    body{{margin:0;background:#f8fafc;color:#172033;font-family:"Microsoft JhengHei",Arial,sans-serif;}}
+    header{{background:#7f1d1d;color:white;padding:22px 24px;}}
+    main{{max-width:1180px;margin:0 auto;padding:18px;}}
+    .band{{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:14px;overflow:auto;}}
+    table{{width:100%;border-collapse:collapse;min-width:1080px;}}
+    th,td{{border-bottom:1px solid #e5e7eb;padding:9px;text-align:left;vertical-align:top;}}
+    th{{background:#fee2e2;}}
+    a{{color:#0f766e;font-weight:800;}}
+    @media(max-width:680px){{main{{padding:10px}}header{{padding:16px}}}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>539低機率每日紀錄</h1>
+    <p>產生時間 {generated_at} / 每一天保存實際開獎、預測命中、低機率誤中與開獎後結果</p>
+</header>
+<main>
+  <section class="band">
+    <p><strong>本頁已同步合併在主戰報的「低機率」分頁。</strong>主戰報會直接顯示每日低機率檢討表，不需要只靠獨立頁查看。</p>
+    <p><a href="539低機率精準暫避.html">回到低機率暫避頁</a>　<a href="539低機率每月總紀錄分析.html">查看每月總紀錄分析</a>　<a href="latest_battle_report.html">回到主戰報</a></p>
+  </section>
+  <section class="band">
+    <table><thead><tr><th>預測依據日</th><th>目標開獎日</th><th>實際開獎日</th><th>狀態</th><th>實際開獎</th><th>預測命中</th><th>命中號碼</th><th>低機率包紀錄</th><th>低機誤中號碼</th></tr></thead><tbody>{''.join(rows) or '<tr><td colspan="9">尚無低機率每日紀錄</td></tr>'}</tbody></table>
+  </section>
+</main>
+</body>
+</html>"""
+
+
+def build_low_probability_monthly_html(monthly_analysis):
+    month_sections = []
+    index_rows = []
+    for month in monthly_analysis.get("months", []):
+        month_hit_text = "、".join(
+            f"{int(item.get('number')):02d}({item.get('count')})"
+            for item in month.get("most_accidental_hit_numbers", [])[:8]
+        ) or "-"
+        index_rows.append(
+            "<tr>"
+            f"<td>{escape_html(month.get('month'))}</td>"
+            f"<td>{month.get('settled_days')}</td>"
+            f"<td>{escape_html(month_hit_text)}</td>"
+            "</tr>"
+        )
+        pack_rows = []
+        for stat in month.get("pack_stats", []):
+            hit_text = "、".join(f"{int(item.get('number')):02d}({item.get('count')})" for item in stat.get("most_accidental_hit_numbers", [])[:8]) or "-"
+            pack_rows.append(
+                "<tr>"
+                f"<td>{escape_html(stat.get('name'))}</td>"
+                f"<td>{stat.get('rounds')}</td>"
+                f"<td>{fmt_decimal(stat.get('average_accidental_hits'))}</td>"
+                f"<td>{fmt_percent(stat.get('pass_rate'), True)}</td>"
+                f"<td>{fmt_percent(stat.get('zero_hit_rate'), True)}</td>"
+                f"<td>{stat.get('max_accidental_hits')}</td>"
+                f"<td>{escape_html(hit_text)}</td>"
+                f"<td>{escape_html(stat.get('judgement'))}</td>"
+                "</tr>"
+            )
+        daily_rows = []
+        for row in month.get("daily_rows", []):
+            high_hit_text = f"前五{row.get('top5_hits', '-')} / 前十{row.get('top10_hits', '-')} / 前十五{row.get('top15_hits', '-')}"
+            hit_number_text = f"前十：{fmt_numbers(row.get('top10_hit_numbers') or []) or '0'}；前十五：{fmt_numbers(row.get('top15_hit_numbers') or []) or '0'}"
+            daily_rows.append(
+                "<tr>"
+                f"<td>{escape_html(row.get('actual_date'))}</td>"
+                f"<td>{row.get('target_period')}</td>"
+                f"<td>{fmt_numbers(row.get('actual_numbers') or [])}</td>"
+                f"<td>{escape_html(high_hit_text)}</td>"
+                f"<td>{escape_html(hit_number_text)}</td>"
+                f"<td>{escape_html(row.get('summary'))}</td>"
+                "</tr>"
+            )
+        month_sections.append(
+            f"""
+            <section class="band">
+              <h2>{month_label(month.get('month'))}低機率總紀錄分析</h2>
+              <table><thead><tr><th>暫避包</th><th>結算期數</th><th>平均誤中</th><th>達標率</th><th>完全避開率</th><th>最高誤中</th><th>常誤中號</th><th>判定</th></tr></thead><tbody>{''.join(pack_rows) or '<tr><td colspan="8">沒有低機率月統計</td></tr>'}</tbody></table>
+              <h3>每一天實戰明細</h3>
+              <table><thead><tr><th>開獎日</th><th>期數</th><th>實際開獎</th><th>預測命中</th><th>命中號碼</th><th>低機率結果</th></tr></thead><tbody>{''.join(daily_rows) or '<tr><td colspan="6">沒有每日明細</td></tr>'}</tbody></table>
+            </section>
+            """
+        )
+    generated_at = monthly_analysis.get("generated_at", taipei_now().isoformat(timespec="seconds")).replace("T", " ")
+    return f"""<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>539低機率每月總紀錄分析</title>
+  <style>
+    body{{margin:0;background:#f8fafc;color:#172033;font-family:"Microsoft JhengHei",Arial,sans-serif;}}
+    header{{background:#7f1d1d;color:white;padding:22px 24px;}}
+    main{{max-width:1180px;margin:0 auto;padding:18px;}}
+    .band{{background:white;border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:14px;overflow:auto;}}
+    table{{width:100%;border-collapse:collapse;min-width:880px;margin-bottom:14px;}}
+    th,td{{border-bottom:1px solid #e5e7eb;padding:9px;text-align:left;vertical-align:top;}}
+    th{{background:#fee2e2;}}
+    a{{color:#0f766e;font-weight:800;}}
+    @media(max-width:680px){{main{{padding:10px}}header{{padding:16px}}}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>539低機率每月總紀錄分析</h1>
+  <p>產生時間 {generated_at} / 已保存每日紀錄 {monthly_analysis.get('daily_record_count')} 筆 / 已結算 {monthly_analysis.get('settled_record_count')} 筆</p>
+</header>
+<main>
+  <section class="band">
+    <p><a href="539低機率每日紀錄.html">查看低機率每日紀錄</a>　<a href="539低機率精準暫避.html">回到低機率暫避頁</a>　<a href="latest_battle_report.html">回到主戰報</a></p>
+    <p>{escape_html(monthly_analysis.get('record_rule'))}</p>
+  </section>
+  <section class="band">
+    <h2>月份索引</h2>
+    <table><thead><tr><th>月份</th><th>結算期數</th><th>常誤中號</th></tr></thead><tbody>{''.join(index_rows) or '<tr><td colspan="3">尚無月份統計</td></tr>'}</tbody></table>
+  </section>
+  {''.join(month_sections)}
+</main>
+</body>
+</html>"""
+
+
+def save_low_probability_records(history):
+    daily_records = low_probability_daily_records(history)
+    monthly_analysis = low_probability_monthly_analysis(daily_records)
+    atomic_write_text(LOW_PROBABILITY_DAILY_JSON, json.dumps({
+        "generated_at": taipei_now().isoformat(timespec="seconds"),
+        "record_rule": "每一期保存低機率原始暫避號、開獎後誤中號、成功避開號與達標判定。",
+        "records": daily_records,
+    }, ensure_ascii=False, indent=2))
+    atomic_write_text(LOW_PROBABILITY_MONTHLY_JSON, json.dumps(monthly_analysis, ensure_ascii=False, indent=2))
+    daily_html = localize_html_global_tokens(localize_html_visible_text(build_low_probability_daily_html(daily_records)))
+    monthly_html = localize_html_global_tokens(localize_html_visible_text(build_low_probability_monthly_html(monthly_analysis)))
+    atomic_write_text(LOW_PROBABILITY_DAILY_HTML, daily_html)
+    atomic_write_text(LOW_PROBABILITY_MONTHLY_HTML, monthly_html)
+    atomic_write_text(LOW_PROBABILITY_MONTHLY_DAILY_HTML, monthly_html)
+    return {
+        "daily_records": len(daily_records),
+        "settled_records": monthly_analysis.get("settled_record_count"),
+        "month_count": len(monthly_analysis.get("months", [])),
     }
 
 
@@ -3642,6 +4047,121 @@ def compact_low_probability_review_html(history):
     """
 
 
+def compact_low_probability_daily_review_html(history, limit=20):
+    records = low_probability_daily_records(history)
+    if not records:
+        return """
+        <div class="band">
+          <h2>\u4f4e\u6a5f\u7387\u6bcf\u65e5\u6aa2\u8a0e\u7d00\u9304</h2>
+          <p>\u5c1a\u7121\u4f4e\u6a5f\u7387\u6bcf\u65e5\u6aa2\u8a0e\u7d00\u9304\u3002</p>
+        </div>
+        """
+
+    rows = []
+    for record in records[:limit]:
+        status = record.get("status")
+        status_text = "\u5df2\u7d50\u7b97" if status == "settled" else ("\u5f85\u7d50\u7b97" if status == "pending" else escape_html(status or "-"))
+        actual_text = fmt_numbers(record.get("actual_numbers") or []) if status == "settled" else "\u5f85\u958b\u734e"
+        if not actual_text:
+            actual_text = "-"
+        high_hit_text = (
+            f"\u524d\u4e94{record.get('top5_hits', '-')} / "
+            f"\u524d\u5341{record.get('top10_hits', '-')} / "
+            f"\u524d\u5341\u4e94{record.get('top15_hits', '-')}"
+            if status == "settled"
+            else "\u5f85\u7d50\u7b97"
+        )
+        hit_numbers_text = (
+            f"\u524d\u5341\uff1a{fmt_numbers(record.get('top10_hit_numbers') or []) or '0'}\uff1b"
+            f"\u524d\u5341\u4e94\uff1a{fmt_numbers(record.get('top15_hit_numbers') or []) or '0'}"
+            if status == "settled"
+            else "\u5f85\u7d50\u7b97"
+        )
+        low_error_parts = []
+        low_error_hit_parts = []
+        result_parts = []
+        for pack in record.get("packs", []):
+            name = pack.get("name") or pack.get("key") or "-"
+            if status == "settled":
+                accidental = pack.get("accidental_hits")
+                low_error_parts.append(f"{name}\u8aa4\u4e2d{accidental if accidental is not None else '-'}")
+                hit_numbers = fmt_numbers(pack.get("hit_numbers") or []) or "0"
+                low_error_hit_parts.append(f"{name}\uff1a{hit_numbers}")
+                result_parts.append(f"{name}\uff1a{pack.get('result') or '-'}")
+            else:
+                low_error_parts.append(f"{name}\u5f85\u7d50\u7b97")
+                low_error_hit_parts.append(f"{name}\uff1a\u5f85\u7d50\u7b97")
+                result_parts.append(f"{name}\uff1a\u5f85\u7d50\u7b97")
+
+        rows.append(
+            "<tr>"
+            f"<td>{escape_html(record.get('based_on_date') or '-')}</td>"
+            f"<td>{escape_html(record.get('actual_date') or record.get('target_expected_date') or '-')}</td>"
+            f"<td>{escape_html(record.get('target_period') or record.get('actual_period') or '-')}</td>"
+            f"<td>{escape_html(status_text)}</td>"
+            f"<td>{actual_text}</td>"
+            f"<td>{escape_html(high_hit_text)}</td>"
+            f"<td>{escape_html(hit_numbers_text)}</td>"
+            f"<td>{escape_html('、'.join(low_error_parts) or '-')}</td>"
+            f"<td>{escape_html('、'.join(low_error_hit_parts) or '-')}</td>"
+            f"<td>{escape_html('、'.join(result_parts) or '-')}</td>"
+            "</tr>"
+        )
+
+    return f"""
+    <div class="band">
+      <h2>\u4f4e\u6a5f\u7387\u6bcf\u65e5\u6aa2\u8a0e\u7d00\u9304</h2>
+      <p>\u76f4\u63a5\u5c55\u793a\u6700\u8fd1 {min(len(records), limit)} \u671f\uff1b\u6bcf\u65e5\u5fc5\u9808\u5217\u51fa\u5be6\u969b\u958b\u734e\u3001\u9810\u6e2c\u547d\u4e2d\u3001\u4f4e\u6a5f\u7387\u8aa4\u4e2d\u8207\u9054\u6a19\u72c0\u614b\u3002</p>
+      <table class="verify-table"><thead><tr><th>\u9810\u6e2c\u4f9d\u64da\u65e5</th><th>\u958b\u734e\u65e5</th><th>\u671f\u6578</th><th>\u72c0\u614b</th><th>\u5be6\u969b\u958b\u734e</th><th>\u9810\u6e2c\u547d\u4e2d</th><th>\u547d\u4e2d\u865f\u78bc</th><th>\u4f4e\u6a5f\u7387\u8aa4\u4e2d</th><th>\u4f4e\u6a5f\u8aa4\u4e2d\u865f\u78bc</th><th>\u9054\u6a19\u72c0\u614b</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
+    </div>
+    """
+
+
+def compact_low_probability_inversion_guard_html(analysis):
+    industrial = analysis.get("industrial_engine") or {}
+    unlikely = industrial.get("unlikely_number_analysis") or {}
+    guard = unlikely.get("inversion_guard") or {}
+    blocked = guard.get("blocked_packs") or {}
+    if not blocked:
+        return """
+        <div class="band">
+          <h2>低機率反向命中警訊</h2>
+          <p>目前尚無足夠低機率實戰樣本可判定反向命中。</p>
+        </div>
+        """
+    labels = {"five_miss": "5不中", "ten_miss": "10不中", "fifteen_miss": "15不中"}
+    rows = []
+    for key in ["five_miss", "ten_miss", "fifteen_miss"]:
+        item = blocked.get(key) or {}
+        hit_numbers = "、".join(
+            f"{int(row.get('number')):02d}({row.get('count')})"
+            for row in item.get("hit_numbers", [])[:8]
+            if row.get("number")
+        ) or "-"
+        status = "扣留" if item.get("blocked") else "可用"
+        rows.append(
+            "<tr>"
+            f"<td>{labels.get(key, key)}</td>"
+            f"<td>{status}</td>"
+            f"<td>{item.get('rounds', '-')}</td>"
+            f"<td>{fmt_decimal(item.get('average_accidental_hits'), 3)}</td>"
+            f"<td>{fmt_decimal(item.get('random_expectation'), 3)}</td>"
+            f"<td>{fmt_percent(item.get('zero_hit_rate'), True)}</td>"
+            f"<td>{escape_html(','.join(str(v) for v in item.get('recent_accidental_hits', [])[:8]) or '-')}</td>"
+            f"<td>{escape_html(hit_numbers)}</td>"
+            "</tr>"
+        )
+    reverse_numbers = fmt_numbers(guard.get("recent_reverse_hit_numbers") or []) or "-"
+    return f"""
+    <div class="band warn">
+      <h2>低機率反向命中警訊</h2>
+      <p>鐵律：低機率包若近期誤中偏高，直接扣留；曾被低機率錯殺後開出的號碼，下一輪不得再列低機率，避免把會開的號碼包成不中。</p>
+      <p><strong>近期低機率錯殺號：</strong>{reverse_numbers}</p>
+      <table><thead><tr><th>暫避包</th><th>處理</th><th>結算期數</th><th>平均誤中</th><th>隨機基準</th><th>完全避開率</th><th>近期誤中序列</th><th>常誤中號</th></tr></thead><tbody>{''.join(rows)}</tbody></table>
+    </div>
+    """
+
+
 def compact_prediction_similarity_audit_html(history, latest_date, target_date):
     pending = next((item for item in history if item.get("status") == "pending"), None)
     if not pending:
@@ -3968,8 +4488,8 @@ def compact_monthly_prediction_summary_html(history, month=None):
       <ul>{''.join(f'<li>{escape_html(text)}</li>' for text in conclusion)}</ul>
     </div>
     <div class="band">
-      <h2>{label}每期明細表</h2>
-      <table class="month-table"><thead><tr><th>預測依據日</th><th>開獎日</th><th>當期前十預測</th><th>實際開獎</th><th>前十命中號</th><th>前五</th><th>前十</th><th>前十五</th><th>前十五命中號</th><th>強牌命中</th><th>低機率誤中</th></tr></thead><tbody>{''.join(daily_rows)}</tbody></table>
+      <h2>{label}每一天實戰檢討表（實際開獎、命中、低機率誤中）</h2>
+      <table class="month-table"><thead><tr><th>預測依據日</th><th>開獎日</th><th>當期前十預測</th><th>實際開獎</th><th>前十命中號</th><th>前五命中</th><th>前十命中</th><th>前十五命中</th><th>前十五命中號</th><th>強牌命中</th><th>低機率誤中</th></tr></thead><tbody>{''.join(daily_rows)}</tbody></table>
     </div>
     """
 
@@ -4387,8 +4907,12 @@ def build_compact_html_report():
     report_time = analysis.get("generated_at", taipei_now().isoformat(timespec="seconds")).replace("T", " ")
     audit_status = daily_audit.get("status", "\u672a\u6aa2\u67e5")
     low_url = LOW_PROBABILITY_HTML.name
+    low_daily_url = LOW_PROBABILITY_DAILY_HTML.name
+    low_monthly_url = LOW_PROBABILITY_MONTHLY_DAILY_HTML.name
     dual_track_html = compact_dual_track_html(analysis)
     low_review_html = compact_low_probability_review_html(history)
+    low_daily_review_html = compact_low_probability_daily_review_html(history)
+    low_inversion_guard_html = compact_low_probability_inversion_guard_html(analysis)
     similarity_audit_html = compact_prediction_similarity_audit_html(history, latest_date, target_date)
     hard_iron_html = compact_hard_iron_html(analysis)
     reality_gate_html = compact_reality_gate_html(analysis)
@@ -4421,8 +4945,12 @@ def build_compact_html_report():
     low_summary_rows = []
     for key in ["five_miss", "ten_miss", "fifteen_miss"]:
         pack = avoid_packs.get(key) or {}
+        stat = ((industrial.get("unlikely_backtest") or {}).get("packs") or {}).get(key) or {}
+        gate = pack.get("backtest_gate") or {}
+        reverse_guard = gate.get("reverse_hit_guard") or {}
         released_numbers = pack.get("numbers", [])
-        diagnostic_numbers = pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []
+        diagnostic_numbers = pack.get("diagnostic_numbers") or pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []
+        removed_numbers = pack.get("reverse_hit_removed_diagnostics") or []
         if released_numbers:
             numbers_text = fmt_numbers(released_numbers)
         elif diagnostic_numbers:
@@ -4435,6 +4963,10 @@ def build_compact_html_report():
             f"<td>{numbers_text}</td>"
             f"<td>{fmt_decimal(pack.get('confidence_index'), 1)}</td>"
             f"<td>{fmt_percent(pack.get('avg_avoid_score'))}</td>"
+            f"<td>{stat.get('rounds') or gate.get('rounds') or '-'}</td>"
+            f"<td>{fmt_decimal(stat.get('avg_accidental_hits', reverse_guard.get('average_accidental_hits')))}</td>"
+            f"<td>{fmt_percent(stat.get('zero_hit_rate', gate.get('zero_hit_rate')))}</td>"
+            f"<td>{fmt_numbers(removed_numbers) or '-'}</td>"
             f"<td>{escape_html(pack.get('status', '-'))} / <a href='{low_url}'>\u958b\u555f\u4f4e\u6a5f\u7387\u9801</a></td>"
             "</tr>"
         )
@@ -4544,11 +5076,17 @@ def build_compact_html_report():
       <h2>\u4f4e\u6a5f\u7387\u9054\u6a19\u6aa2\u8a0e\uff08{settled_for_heading.get('based_on_date', '-')} \u9810\u6e2c / {settled_for_heading.get('actual_date', '-')} \u958b\u734e\uff09</h2>
       {low_review_html}
     </div>
+    {low_inversion_guard_html}
+    {low_daily_review_html}
     <div class="band warn">
       <h2>{avoid_heading}</h2>
-      <p>\u4f4e\u6a5f\u7387\u5206\u6790\u5df2\u7368\u7acb\u958b\u9801\uff0c\u4e3b\u9801\u53ea\u4fdd\u7559 5\u4e0d\u4e2d\u300110\u4e0d\u4e2d\u300115\u4e0d\u4e2d\u6458\u8981\u3002</p>
-      <p><a href="{low_url}">\u958b\u555f539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f\u9801</a></p>
-      <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u660e\u7d30</th></tr></thead><tbody>{''.join(low_summary_rows)}</tbody></table>
+      <p>\u4f4e\u6a5f\u7387\u5df2\u5206\u6210\u4e09\u500b\u56fa\u5b9a\u5831\u8868\uff1a\u7576\u671f\u66ab\u907f\u3001\u6bcf\u65e5\u7d00\u9304\u3001\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406\u3002\u6bcf\u4e00\u5929\u90fd\u5fc5\u9808\u6709\u5be6\u969b\u958b\u734e\u3001\u9810\u6e2c\u547d\u4e2d\u8207\u4f4e\u6a5f\u7387\u8aa4\u4e2d\u3002</p>
+      <p>
+        <a href="{low_url}">\u958b\u555f539\u4f4e\u6a5f\u7387\u7cbe\u6e96\u66ab\u907f\u9801</a>　
+        <a href="{low_daily_url}">\u958b\u555f\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304</a>　
+        <a href="{low_monthly_url}">\u958b\u555f\u4f4e\u6a5f\u7387\u6bcf\u6708\u6bcf\u65e5\u7e3d\u6574\u7406</a>
+      </p>
+      <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u5254\u9664</th><th>\u660e\u7d30</th></tr></thead><tbody>{''.join(low_summary_rows)}</tbody></table>
     </div>
   </section>
   <section id="models" class="panel">
@@ -4621,8 +5159,11 @@ def build_low_probability_html_report():
     for key in ["five_miss", "ten_miss", "fifteen_miss"]:
         pack = avoid_packs.get(key) or {}
         stat = (backtest.get("packs") or {}).get(key) or {}
+        gate = pack.get("backtest_gate") or {}
+        reverse_guard = gate.get("reverse_hit_guard") or {}
         released_numbers = pack.get("numbers", [])
         diagnostic_numbers = pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []
+        removed_numbers = pack.get("reverse_hit_removed_diagnostics") or []
         if released_numbers:
             numbers_text = fmt_numbers(released_numbers)
         elif diagnostic_numbers:
@@ -4637,20 +5178,72 @@ def build_low_probability_html_report():
             f"<td>{fmt_percent(pack.get('avg_avoid_score'))}</td>"
             f"<td>{fmt_percent(pack.get('min_avoid_score'))}</td>"
             f"<td>{fmt_decimal(pack.get('formula_lab_edge'), 4)}</td>"
-            f"<td>{stat.get('rounds', '-')}</td>"
-            f"<td>{fmt_decimal(stat.get('avg_accidental_hits'))}</td>"
-            f"<td>{fmt_percent(stat.get('zero_hit_rate'))}</td>"
+            f"<td>{stat.get('rounds') or gate.get('rounds') or '-'}</td>"
+            f"<td>{fmt_decimal(stat.get('avg_accidental_hits', reverse_guard.get('average_accidental_hits')))}</td>"
+            f"<td>{fmt_percent(stat.get('zero_hit_rate', gate.get('zero_hit_rate')))}</td>"
+            f"<td>{fmt_decimal(reverse_guard.get('average_accidental_hits'))}</td>"
+            f"<td>{fmt_decimal(reverse_guard.get('random_expectation'))}</td>"
+            f"<td>{fmt_numbers(removed_numbers) or '-'}</td>"
             f"<td>{escape_html((pack.get('backtest_gate') or {}).get('gate_model', '-'))}</td>"
             f"<td>{escape_html(pack.get('status', '-'))}</td>"
             "</tr>"
         )
     number_rows = []
-    visible_unlikely_numbers = unlikely.get("numbers", []) or unlikely.get("diagnostic_numbers", [])
-    for item in visible_unlikely_numbers:
-        reasons = "\u3001".join(item.get("reasons") or [])
+    detail_by_number = {}
+    for item in (unlikely.get("numbers") or []) + (unlikely.get("diagnostic_numbers") or []):
+        try:
+            detail_by_number[int(item.get("number"))] = item
+        except (TypeError, ValueError):
+            continue
+    pack_membership = {}
+    removed_membership = {}
+    ordered_numbers = []
+    pack_labels = [("five_miss", "5不中"), ("ten_miss", "10不中"), ("fifteen_miss", "15不中")]
+    for key, label in pack_labels:
+        pack = avoid_packs.get(key) or {}
+        pack_numbers = pack.get("numbers") or pack.get("diagnostic_candidates") or pack.get("withheld_numbers") or []
+        for raw_number in pack_numbers:
+            try:
+                number = int(raw_number)
+            except (TypeError, ValueError):
+                continue
+            if number not in ordered_numbers:
+                ordered_numbers.append(number)
+            pack_membership.setdefault(number, []).append(label)
+        for raw_number in pack.get("reverse_hit_removed_diagnostics") or []:
+            try:
+                number = int(raw_number)
+            except (TypeError, ValueError):
+                continue
+            if number not in ordered_numbers:
+                ordered_numbers.append(number)
+            removed_membership.setdefault(number, []).append(label)
+    for number in sorted(detail_by_number):
+        if number not in ordered_numbers:
+            ordered_numbers.append(number)
+    for number in ordered_numbers:
+        item = detail_by_number.get(number, {})
+        reasons = list(item.get("reasons") or [])
+        if pack_membership.get(number):
+            reasons.append("診斷包：" + "、".join(pack_membership[number]))
+        if removed_membership.get(number):
+            reasons.append("反向剔除：" + "、".join(removed_membership[number]))
+        status_text = "正式候選" if item.get("eligible_for_avoid") and not removed_membership.get(number) else "診斷扣留"
+        if removed_membership.get(number):
+            status_text = "反向剔除"
+        warning_parts = []
+        if item.get("warning"):
+            warning_parts.append(str(item.get("warning")))
+        for key, label in pack_labels:
+            if number in [int(n) for n in (avoid_packs.get(key) or {}).get("diagnostic_candidates", []) if str(n).isdigit()] or number in [int(n) for n in (avoid_packs.get(key) or {}).get("withheld_numbers", []) if str(n).isdigit()]:
+                pack_status = (avoid_packs.get(key) or {}).get("status")
+                if pack_status:
+                    warning_parts.append(f"{label}：{pack_status}")
         number_rows.append(
             "<tr>"
-            f"<td class='num'>{int(item.get('number')):02d}</td>"
+            f"<td class='num'>{number:02d}</td>"
+            f"<td>{escape_html('、'.join(pack_membership.get(number, [])) or '-')}</td>"
+            f"<td>{escape_html('、'.join(removed_membership.get(number, [])) or '-')}</td>"
             f"<td>{fmt_percent(item.get('avoid_score'))}</td>"
             f"<td>{fmt_percent(item.get('appearance_score'))}</td>"
             f"<td>{item.get('candidate_rank', '-')}</td>"
@@ -4658,9 +5251,9 @@ def build_low_probability_html_report():
             f"<td>{fmt_percent(item.get('formula_avoid_score'))}</td>"
             f"<td>{item.get('formula_support_count', '-')}</td>"
             f"<td>{fmt_percent(item.get('risk_block_score'))}</td>"
-            f"<td>{'正式候選' if item.get('eligible_for_avoid') else '診斷不發布'}</td>"
-            f"<td>{escape_html(reasons)}</td>"
-            f"<td>{escape_html(item.get('warning', ''))}</td>"
+            f"<td>{status_text}</td>"
+            f"<td>{escape_html('、'.join(reasons) or '低機率扣留診斷資料')}</td>"
+            f"<td>{escape_html('；'.join(warning_parts) or '-')}</td>"
             "</tr>"
         )
     return f"""<!doctype html>
@@ -4693,7 +5286,11 @@ def build_low_probability_html_report():
   <section class="band note">
     <h2>\u4f4e\u6a5f\u7387\u8aaa\u660e</h2>
     <p>\u672c\u9801\u53ea\u653e\u7d93\u904e\u904b\u7b97\u7684\u66ab\u907f\u865f\u78bc\uff0c\u7528\u65bc\u907f\u514d\u7d44\u5408\u6c61\u67d3\u8207\u98a8\u96aa\u63a7\u7ba1\uff1b\u4f4e\u6a5f\u7387\u4e0d\u7b49\u65bc\u7d55\u5c0d\u4e0d\u958b\u3002</p>
-    <p><a href="latest_battle_report.html">\u56de\u5230\u4e3b\u6230\u5831</a></p>
+    <p>
+      <a href="latest_battle_report.html">\u56de\u5230\u4e3b\u6230\u5831</a>　
+      <a href="539\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304.html">\u4f4e\u6a5f\u7387\u6bcf\u65e5\u7d00\u9304</a>　
+      <a href="539\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790.html">\u4f4e\u6a5f\u7387\u6bcf\u6708\u7e3d\u7d00\u9304\u5206\u6790</a>
+    </p>
   </section>
   <section class="band">
     <h2>\u4e0a\u671f\u4f4e\u6a5f\u7387\u9054\u6a19\u6aa2\u8a0e\uff08{settled.get('based_on_date', '-')} \u9810\u6e2c -> {settled.get('actual_date', '-')} \u958b\u734e\uff09</h2>
@@ -4701,11 +5298,11 @@ def build_low_probability_html_report():
   </section>
   <section class="band">
     <h2>5\u4e0d\u4e2d / 10\u4e0d\u4e2d / 15\u4e0d\u4e2d \u66ab\u907f\u5305</h2>
-    <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u6700\u4f4e\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u53cd\u5411\u512a\u52e2</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u767c\u5e03\u6a21\u578b</th><th>\u72c0\u614b</th></tr></thead><tbody>{''.join(pack_rows)}</tbody></table>
+    <table><thead><tr><th>\u66ab\u907f\u5305</th><th>\u865f\u78bc</th><th>\u4fe1\u5fc3\u6307\u6a19</th><th>\u5e73\u5747\u66ab\u907f\u5206</th><th>\u6700\u4f4e\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u53cd\u5411\u512a\u52e2</th><th>\u56de\u6e2c\u671f</th><th>\u5e73\u5747\u8aa4\u4e2d</th><th>\u5b8c\u5168\u907f\u958b\u7387</th><th>\u53cd\u5411\u8fd130\u5e73\u5747</th><th>\u53cd\u5411\u96a8\u6a5f\u57fa\u6e96</th><th>\u53cd\u5411\u5254\u9664</th><th>\u767c\u5e03\u6a21\u578b</th><th>\u72c0\u614b</th></tr></thead><tbody>{''.join(pack_rows)}</tbody></table>
   </section>
   <section class="band">
     <h2>\u9010\u865f\u66ab\u907f\u7d30\u9805</h2>
-    <table><thead><tr><th>\u865f\u78bc</th><th>\u66ab\u907f\u5206</th><th>\u51fa\u73fe\u8a55\u5206</th><th>\u5019\u9078\u6392\u540d</th><th>\u516c\u5f0f\u6392\u540d</th><th>\u516c\u5f0f\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u652f\u6490\u6578</th><th>風險阻擋分</th><th>發布判定</th><th>\u66ab\u907f\u539f\u56e0</th><th>\u98a8\u63a7</th></tr></thead><tbody>{''.join(number_rows) or '<tr><td colspan="11">\u672c\u671f\u7121\u66ab\u907f\u7d30\u9805</td></tr>'}</tbody></table>
+    <table><thead><tr><th>\u865f\u78bc</th><th>\u6240\u5c6c\u66ab\u907f\u5305</th><th>\u53cd\u5411\u5254\u9664</th><th>\u66ab\u907f\u5206</th><th>\u51fa\u73fe\u8a55\u5206</th><th>\u5019\u9078\u6392\u540d</th><th>\u516c\u5f0f\u6392\u540d</th><th>\u516c\u5f0f\u66ab\u907f\u5206</th><th>\u516c\u5f0f\u652f\u6490\u6578</th><th>風險阻擋分</th><th>發布判定</th><th>\u66ab\u907f\u539f\u56e0</th><th>\u98a8\u63a7</th></tr></thead><tbody>{''.join(number_rows) or '<tr><td colspan="13">\u672c\u671f\u7121\u66ab\u907f\u7d30\u9805</td></tr>'}</tbody></table>
   </section>
 </main>
 </body>

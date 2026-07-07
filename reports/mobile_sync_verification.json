@@ -1,135 +1,95 @@
 {
-  "status": "ok",
-  "checked_at": "2026-07-06T08:06:56",
-  "local_version": "20260706080617",
-  "cloud_status": "published",
-  "cloud_version": "20260706080617",
-  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260706080617&t=1783296416",
+  "status": "failed",
+  "checked_at": "2026-07-07T08:40:51",
+  "local_version": "20260707084038",
+  "cloud_status": "local_ready_not_published",
+  "cloud_version": "20260707084038",
+  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707084038&t=1783384839",
   "local_latest_draw": {
-    "period": 115000162,
-    "draw_date": "2026-07-04",
+    "period": 115000163,
+    "draw_date": "2026-07-06",
     "numbers": [
-      2,
+      1,
       10,
-      15,
-      31,
-      37
+      12,
+      14,
+      38
     ]
   },
   "local_prediction": {
-    "generated_at": "2026-07-06T08:05:40",
+    "generated_at": "2026-07-07T07:58:13",
     "top10": [
-      30,
-      34,
-      26,
-      3,
-      13,
-      5,
-      24,
-      17,
-      7,
-      32
-    ],
-    "packs": {
-      "strong_single": [
-        30
-      ],
-      "two_hit_one": [
-        13,
-        30
-      ],
-      "three_hit_one": [
-        13,
-        30,
-        34
-      ],
-      "five_hit_two": [
-        3,
-        13,
-        26,
-        30,
-        32
-      ],
-      "nine_hit_three": [
-        3,
-        5,
-        13,
-        17,
-        24,
-        26,
-        30,
-        34,
-        7
-      ]
-    }
-  },
-  "remote_latest_draw": {
-    "period": 115000162,
-    "draw_date": "2026-07-04",
-    "numbers": [
-      2,
-      10,
-      15,
+      21,
       31,
-      37
-    ]
-  },
-  "remote_prediction": {
-    "generated_at": "2026-07-06T08:05:40",
-    "top10": [
-      30,
-      34,
-      26,
-      3,
-      13,
-      5,
-      24,
-      17,
-      7,
-      32
+      37,
+      15,
+      4,
+      36,
+      23,
+      16,
+      35,
+      29
     ],
     "packs": {
       "strong_single": [
-        30
+        21
       ],
       "two_hit_one": [
-        13,
-        30
+        21,
+        31
       ],
       "three_hit_one": [
-        13,
-        30,
-        34
+        31,
+        21,
+        37
       ],
       "five_hit_two": [
-        3,
-        13,
-        26,
-        30,
-        32
+        21,
+        31,
+        37,
+        15,
+        4
       ],
       "nine_hit_three": [
-        3,
-        5,
-        13,
-        17,
-        24,
-        26,
-        30,
-        34,
-        7
+        21,
+        31,
+        37,
+        15,
+        4,
+        23,
+        16,
+        35,
+        19
       ]
     }
   },
-  "remote_version": {
-    "version": "20260706080617",
-    "generated_at": "2026-07-06T08:05:40",
-    "mobile_built_at": "2026-07-06T08:06:17+08:00",
-    "latest_period": 115000162,
-    "latest_draw_date": "2026-07-04",
-    "cache_policy": "network_first_no_store"
+  "remote_latest_draw": {},
+  "remote_prediction": {},
+  "remote_version": {},
+  "html_sync": {
+    "expected": {
+      "strong_single": "21",
+      "nine_hit_three": "21 31 37 15 04 23 16 35 19"
+    },
+    "computer_report_contains_current_prediction": true,
+    "local_mobile_contains_current_prediction": true,
+    "remote_mobile_contains_current_prediction": false,
+    "computer_report_has_stale_core": false,
+    "local_mobile_has_stale_core": false,
+    "remote_mobile_has_stale_core": false
+  },
+  "low_probability_sync": {
+    "local_daily_records": 32,
+    "local_month_count": 2,
+    "local_site_daily_same": true,
+    "local_site_monthly_same": true,
+    "remote_daily_same": false,
+    "remote_monthly_same": false
   },
   "rule": "電腦版與手機雲端必須同版本、同開獎資料、同前十預測、同強牌包；雲端狀態必須為 published。",
   "remote_base": "https://pingshen670822.github.io/mobile-539-system",
-  "message": "手機雲端已與電腦版同步"
+  "failures": [
+    "手機雲端尚未發布成功",
+    "手機雲端讀取失敗: HTTP Error 404: Not Found"
+  ]
 }

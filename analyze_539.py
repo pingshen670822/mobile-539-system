@@ -830,7 +830,7 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
         with sqlite3.connect(db_path) as conn:
             rows = conn.execute(
                 """
-                SELECT candidates_json, actual_numbers_json, top5_hits, top10_hits, top15_hits
+                SELECT candidates_json, actual_numbers_json, top5_hits, top10_hits, top15_hits, unlikely_pack_hits_json
                 FROM predictions_539
                 WHERE status='settled'
                 ORDER BY actual_period DESC
@@ -853,6 +853,7 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
             "monthly_recall_numbers": monthly_review.get("missed_top10_numbers", []),
             "monthly_recall_tails": monthly_review.get("missed_tails", []),
             "monthly_recall_zones": monthly_review.get("missed_zones", []),
+            "low_probability_performance": {},
             "recent_performance": {},
         }
 
@@ -863,12 +864,21 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
     missed_actual_zones = Counter()
     late_hit_reasons = Counter()
     late_hit_numbers = Counter()
+    low_pack_stats = defaultdict(lambda: {
+        "rounds": 0,
+        "accidental_hits": 0,
+        "zero_hit_rounds": 0,
+        "recent_accidental_hits": [],
+        "hit_numbers": Counter(),
+    })
+    low_hit_numbers = Counter()
     top5_values = []
     top10_values = []
     top15_values = []
-    for candidates_json, actual_json, top5_hits, top10_hits, top15_hits in rows:
+    for candidates_json, actual_json, top5_hits, top10_hits, top15_hits, unlikely_pack_hits_json in rows:
         candidates = json.loads(candidates_json or "[]")
         actual = set(json.loads(actual_json or "[]"))
+        unlikely_hits = json.loads(unlikely_pack_hits_json or "{}")
         top10_numbers = {int(item.get("number")) for item in candidates[:10] if item.get("number")}
         for number in actual - top10_numbers:
             missed_actual_numbers[number] += 1
@@ -899,6 +909,17 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
                 if hit and 11 <= rank <= 15:
                     late_hit_reasons[reason] += 1
                     late_hit_numbers[number] += 1
+        for key, item in unlikely_hits.items():
+            stat = low_pack_stats[key]
+            accidental = int(item.get("accidental_hits") or 0)
+            stat["rounds"] += 1
+            stat["accidental_hits"] += accidental
+            stat["zero_hit_rounds"] += 1 if accidental == 0 else 0
+            stat["recent_accidental_hits"].append(accidental)
+            for number in item.get("hit_numbers") or []:
+                number = int(number)
+                stat["hit_numbers"][number] += 1
+                low_hit_numbers[number] += 1
 
     penalized = []
     boosted = []
@@ -928,6 +949,47 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
         "critical_slump": bool(len(top10_values) >= 3 and (avg(top10_values, 3) < 1.4 or avg(top15_values, 3) < 1.8)),
     }
 
+    pack_sizes = {"five_miss": 5, "ten_miss": 10, "fifteen_miss": 15}
+    zero_thresholds = {"five_miss": 0.65, "ten_miss": 0.35, "fifteen_miss": 0.25}
+    avg_thresholds = {"five_miss": 0.45, "ten_miss": 0.90, "fifteen_miss": 1.15}
+    low_probability_packs = {}
+    for key, stat in low_pack_stats.items():
+        rounds = stat["rounds"] or 1
+        size = pack_sizes.get(key, 0)
+        average_accidental_hits = stat["accidental_hits"] / rounds
+        zero_hit_rate = stat["zero_hit_rounds"] / rounds
+        random_expectation = (5 * size / 39) if size else 0.0
+        release_allowed = (
+            stat["rounds"] >= 5
+            and average_accidental_hits <= avg_thresholds.get(key, 0.75)
+            and zero_hit_rate >= zero_thresholds.get(key, 0.50)
+        )
+        low_probability_packs[key] = {
+            "rounds": stat["rounds"],
+            "size": size,
+            "average_accidental_hits": round(average_accidental_hits, 3),
+            "random_expectation": round(random_expectation, 3),
+            "edge_vs_random": round(average_accidental_hits - random_expectation, 4),
+            "zero_hit_rate": round(zero_hit_rate, 3),
+            "max_accidental_hits": max(stat["recent_accidental_hits"] or [0]),
+            "recent_accidental_hits": stat["recent_accidental_hits"][:10],
+            "release_allowed": release_allowed,
+            "status": "usable" if release_allowed else "blocked_reverse_hit_risk",
+            "hit_numbers": [
+                {"number": number, "count": count}
+                for number, count in stat["hit_numbers"].most_common(12)
+            ],
+        }
+    low_probability_performance = {
+        "policy": "low_probability_pack_must_pass_recent_real_settlement_before_release",
+        "sample_size": len(rows),
+        "packs": low_probability_packs,
+        "recent_hit_numbers": [
+            {"number": number, "count": count}
+            for number, count in low_hit_numbers.most_common(15)
+        ],
+    }
+
     return {
         "sample_size": len(rows),
         "policy": "daily_and_monthly_miss_review_rolls_into_next_prediction_with_recall_mode",
@@ -945,6 +1007,7 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
         "monthly_recall_numbers": monthly_review.get("missed_top10_numbers", [])[:15],
         "monthly_recall_tails": monthly_review.get("missed_tails", [])[:10],
         "monthly_recall_zones": monthly_review.get("missed_zones", []),
+        "low_probability_performance": low_probability_performance,
         "recent_performance": recent_performance,
     }
 

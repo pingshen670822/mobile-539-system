@@ -368,13 +368,13 @@
       "hit_rate": 0.25
     },
     {
-      "reason": "失敗號回補驗算",
+      "reason": "昨日預測號軟守門觀察",
       "hit": 1,
       "miss": 4,
       "hit_rate": 0.2
     },
     {
-      "reason": "昨日預測號軟守門觀察",
+      "reason": "失敗號回補驗算",
       "hit": 1,
       "miss": 4,
       "hit_rate": 0.2
