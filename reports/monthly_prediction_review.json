@@ -432,13 +432,13 @@
   ],
   "source_performance": [
     {
-      "reason": "分區漏抓回補",
+      "reason": "上期強牌失敗隔離",
       "hit": 1,
       "miss": 0,
       "hit_rate": 1.0
     },
     {
-      "reason": "上期強牌失敗隔離",
+      "reason": "分區漏抓回補",
       "hit": 1,
       "miss": 0,
       "hit_rate": 1.0
@@ -450,13 +450,13 @@
       "hit_rate": 0.333
     },
     {
-      "reason": "昨日預測號軟守門觀察",
+      "reason": "時間序列動能",
       "hit": 2,
       "miss": 8,
       "hit_rate": 0.2
     },
     {
-      "reason": "時間序列動能",
+      "reason": "昨日預測號軟守門觀察",
       "hit": 2,
       "miss": 8,
       "hit_rate": 0.2
