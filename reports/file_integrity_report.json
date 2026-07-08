@@ -1,17 +1,15 @@
 {
-  "generated_at": "2026-07-08T09:48:44",
-  "status": "warning",
+  "generated_at": "2026-07-08T09:52:59",
+  "status": "ok",
   "checked_files": 311,
   "failed_count": 0,
-  "warning_count": 1,
+  "warning_count": 0,
   "files": [
     {
       "path": "539一鍵全自動啟動.bat",
-      "status": "warning",
-      "warnings": [
-        "direct_cjk_found_in_code"
-      ],
-      "size": 647
+      "status": "ok",
+      "warnings": [],
+      "size": 587
     },
     {
       "path": "advanced_formula_lab.py",
@@ -143,7 +141,7 @@
       "path": "pages_build.py",
       "status": "ok",
       "warnings": [],
-      "size": 21358
+      "size": 21362
     },
     {
       "path": "publish_free_github.ps1",
@@ -251,7 +249,7 @@
       "path": "手機獨立版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 97
+      "size": 102
     },
     {
       "path": "手機雲端版網址.txt",
@@ -263,7 +261,7 @@
       "path": "手機雲端發布狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 372
+      "size": 352
     },
     {
       "path": "打開最新手機版.html",
@@ -371,13 +369,13 @@
       "path": "reports\\daily_integrity_audit.json",
       "status": "ok",
       "warnings": [],
-      "size": 22322
+      "size": 22343
     },
     {
       "path": "reports\\daily_integrity_audit.md",
       "status": "ok",
       "warnings": [],
-      "size": 12779
+      "size": 12799
     },
     {
       "path": "reports\\dashboard.html",
@@ -389,13 +387,13 @@
       "path": "reports\\file_integrity_report.json",
       "status": "ok",
       "warnings": [],
-      "size": 43160
+      "size": 43337
     },
     {
       "path": "reports\\file_integrity_report.md",
       "status": "ok",
       "warnings": [],
-      "size": 397
+      "size": 293
     },
     {
       "path": "reports\\full_system_scan.json",
@@ -497,7 +495,7 @@
       "path": "reports\\one_click_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 709
+      "size": 761
     },
     {
       "path": "reports\\post_draw_mobile_sync_status.json",
@@ -599,7 +597,7 @@
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 92264
+      "size": 92374
     },
     {
       "path": "site\\latest.html",
@@ -677,7 +675,7 @@
       "path": "site\\update-status.json",
       "status": "ok",
       "warnings": [],
-      "size": 3592
+      "size": 4340
     },
     {
       "path": "site\\version.json",
