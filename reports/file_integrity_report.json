@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T09:01:39",
+  "generated_at": "2026-07-08T09:27:17",
   "status": "ok",
   "checked_files": 310,
   "failed_count": 0,
@@ -33,7 +33,7 @@
       "path": "battle_report.py",
       "status": "ok",
       "warnings": [],
-      "size": 315318
+      "size": 316334
     },
     {
       "path": "build_tw539_release.ps1",
@@ -141,7 +141,7 @@
       "path": "pages_build.py",
       "status": "ok",
       "warnings": [],
-      "size": 18653
+      "size": 18961
     },
     {
       "path": "publish_free_github.ps1",
@@ -237,7 +237,7 @@
       "path": "手機戰報更新狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 505
+      "size": 728
     },
     {
       "path": "手機控制台網址.txt",
@@ -333,13 +333,13 @@
       "path": "reports\\539最新強化戰報.html",
       "status": "ok",
       "warnings": [],
-      "size": 86586
+      "size": 87077
     },
     {
       "path": "reports\\539每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 14977
+      "size": 15311
     },
     {
       "path": "reports\\539每期預測對比.html",
@@ -417,7 +417,7 @@
       "path": "reports\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2142797
+      "size": 2142735
     },
     {
       "path": "reports\\latest_analysis.md",
@@ -429,19 +429,19 @@
       "path": "reports\\latest_battle_report.html",
       "status": "ok",
       "warnings": [],
-      "size": 86586
+      "size": 87077
     },
     {
       "path": "reports\\latest_battle_report.md",
       "status": "ok",
       "warnings": [],
-      "size": 24137
+      "size": 24146
     },
     {
       "path": "reports\\latest_battle_report.txt",
       "status": "ok",
       "warnings": [],
-      "size": 24137
+      "size": 24146
     },
     {
       "path": "reports\\line_push_status.json",
@@ -573,7 +573,7 @@
       "path": "site\\539每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 14977
+      "size": 15311
     },
     {
       "path": "site\\clear-cache.html",
@@ -597,7 +597,7 @@
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 90782
+      "size": 91566
     },
     {
       "path": "site\\latest.html",
@@ -609,7 +609,7 @@
       "path": "site\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2142797
+      "size": 2142735
     },
     {
       "path": "site\\low-probability-daily-record.json",
@@ -657,7 +657,7 @@
       "path": "site\\monthly-summary.html",
       "status": "ok",
       "warnings": [],
-      "size": 14977
+      "size": 15311
     },
     {
       "path": "site\\prediction-history.html",
@@ -717,7 +717,7 @@
       "path": "reports\\history\\2026-06_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 34136
+      "size": 34470
     },
     {
       "path": "reports\\history\\2026-07_每月完整資料.json",
@@ -729,7 +729,7 @@
       "path": "reports\\history\\2026-07_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 14977
+      "size": 15311
     },
     {
       "path": "reports\\history\\period_115000077.json",
@@ -1305,7 +1305,7 @@
       "path": "site\\history\\2026-06_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 34136
+      "size": 34470
     },
     {
       "path": "site\\history\\2026-07_每月完整資料.json",
@@ -1317,7 +1317,7 @@
       "path": "site\\history\\2026-07_每月預測總整理.html",
       "status": "ok",
       "warnings": [],
-      "size": 14977
+      "size": 15311
     },
     {
       "path": "site\\history\\period_115000077.json",

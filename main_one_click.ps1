@@ -28,12 +28,19 @@ function Write-OneClickStatus {
     [string]$Step,
     [string]$Message
   )
+  $visibleUpdate = $false
+  if ($env:TW539_VISIBLE_UPDATE -eq "1") {
+    $visibleUpdate = $true
+  }
   $payload = @{
     status = $Status
     step = $Step
     message = $Message
     written_at = (Get-Date -Format "s")
     log = $RunLog
+    visible_update = $visibleUpdate
+    core_path = $ScriptDir
+    report_path = (Join-Path $ReportDir "latest_battle_report.html")
   }
   $payload | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $StatusPath -Encoding UTF8
 }
@@ -88,6 +95,13 @@ function Invoke-LoggedCommand {
 
 Set-Location -LiteralPath $ScriptDir
 $Python = Resolve-Python
+Write-OneClickStatus "running" "start" "TW539 visible one-click update started."
+Write-Host ""
+Write-Host "========================================"
+Write-Host "TW539 update is running visibly in this window."
+Write-Host "Every step will be printed here and saved to the status file."
+Write-Host "========================================"
+Write-Host ""
 Write-RunLog "TW539 one click full run started."
 Write-RunLog ("Python=" + $Python)
 

@@ -2,6 +2,7 @@
 import os
 import shutil
 import time
+import html as html_lib
 from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -53,6 +54,24 @@ def read_json_or_empty(path):
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return {}
+
+
+def status_zh(value):
+    mapping = {
+        "passed": "通過",
+        "ok": "正常",
+        "published": "已發布",
+        "running": "執行中",
+        "failed": "失敗",
+        "complete": "完成",
+    }
+    return mapping.get(str(value), str(value or "-"))
+
+
+def text_cell(value):
+    if value in (None, ""):
+        value = "-"
+    return html_lib.escape(str(value))
 
 
 def update_mobile_pointer_files(version, latest_draw, mobile_built_at):
@@ -156,6 +175,20 @@ def build():
     mobile_built_display = str(mobile_built_at).replace("T", " ").replace("+08:00", "")
     latest_draw = analysis.get("latest_draw", {})
     version = taipei_now().strftime("%Y%m%d%H%M%S")
+    one_click_status = read_json_or_empty(REPORTS / "one_click_status.json")
+    three_hour_status = read_json_or_empty(REPORTS / "three_hour_sync_check_status.json")
+    mobile_sync_status = read_json_or_empty(REPORTS / "mobile_sync_verification.json")
+    status_rows = [
+        ("\u4e00\u9375\u66f4\u65b0\u6700\u5f8c\u7d50\u679c", status_zh(one_click_status.get("status")), one_click_status.get("written_at", "-"), one_click_status.get("step", "-"), one_click_status.get("message", "-")),
+        ("\u6bcf3\u5c0f\u6642\u540c\u6b65\u6aa2\u6e2c", status_zh(three_hour_status.get("status")), three_hour_status.get("checked_at", "-"), three_hour_status.get("step", "-"), three_hour_status.get("message", "-")),
+        ("\u624b\u6a5f\u96f2\u7aef\u540c\u6b65", status_zh(mobile_sync_status.get("cloud_status") or mobile_sync_status.get("status")), mobile_sync_status.get("checked_at", "-"), mobile_sync_status.get("cloud_version", "-"), mobile_sync_status.get("message", "-")),
+    ]
+    status_table = "".join(
+        "<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>".format(
+            text_cell(name), text_cell(state), text_cell(when), text_cell(step), text_cell(message)
+        )
+        for name, state, when, step, message in status_rows
+    )
     controls = f"""
     <section class="band">
       <h2>\u624b\u6a5f\u7368\u7acb\u64cd\u4f5c</h2>
@@ -174,6 +207,10 @@ def build():
       <p>\u624b\u6a5f\u7248\u958b\u734e\u5f8c\u5373\u6642\u540c\u6b65\uff1a\u53f0\u5317\u6642\u9593 20:35 \u8d77\u9032\u5165\u5bc6\u96c6\u8ffd\u8e64\uff0c\u6bcf45\u79d2\u8ffd\u53f0\u5f69\u6700\u65b0\u8cc7\u6599\uff0c\u6293\u5230\u5f8c\u7acb\u523b\u91cd\u7b97\u3001\u91cd\u5efa\u96fb\u8166\u6230\u5831\u8207\u624b\u6a5f\u7248\u3002</p>
       <p>\u624b\u6a5f\u7248\u8207\u96fb\u8166\u7248\u53ef\u540c\u6642\u5b58\u5728\uff1a\u96fb\u8166\u7248\u5728\u672c\u6a5f\u8f38\u51fa\u5b8c\u6574\u6230\u5831\uff0c\u624b\u6a5f\u7248\u5728\u96f2\u7aef\u7368\u7acb\u66f4\u65b0\uff0c\u4e92\u4e0d\u8986\u84cb\u3002</p>
     </section>
+    <section class="band update-status">
+      <h2>\u66f4\u65b0\u57f7\u884c\u72c0\u614b</h2>
+      <table><thead><tr><th>\u9805\u76ee</th><th>\u72c0\u614b</th><th>\u6642\u9593</th><th>\u6b65\u9a5f\u6216\u7248\u672c</th><th>\u7d50\u679c\u8aaa\u660e</th></tr></thead><tbody>{status_table}</tbody></table>
+    </section>
     """
     style = """
     <style>
@@ -183,6 +220,7 @@ def build():
       .mobile-action.secondary{background:#0f766e}
       .mobile-action.history{background:#1d4ed8}
       .mobile-action.refresh{border:0;width:100%;font-size:16px;cursor:pointer;background:#b91c1c}
+      .update-status{background:#ecfdf5;border-color:#86efac}
       .band{overflow-x:auto}
       table{min-width:720px}
       @media (max-width:640px){
@@ -295,6 +333,14 @@ def build():
         "cache_policy": "network_first_no_store",
     }
     (SITE / "version.json").write_text(json.dumps(version_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    update_status_payload = {
+        "version": version,
+        "built_at": mobile_built_at,
+        "one_click": one_click_status,
+        "three_hour_sync": three_hour_status,
+        "mobile_sync": mobile_sync_status,
+    }
+    (SITE / "update-status.json").write_text(json.dumps(update_status_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     update_mobile_pointer_files(version, latest_draw, mobile_built_at)
     latest_html = f"""<!doctype html>
 <html lang="zh-Hant">

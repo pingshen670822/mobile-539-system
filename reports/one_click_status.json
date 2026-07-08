@@ -1,7 +1,10 @@
 ﻿{
-    "status":  "passed",
-    "message":  "All one-click steps passed.",
-    "step":  "complete",
-    "written_at":  "2026-07-06T08:06:59",
-    "log":  "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260703_第10版_預測模式重整版\\TW539Core\\logs\\one_click_run_20260706_080232.log"
+    "log":  "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260708_第06版_自動更新修正版\\TW539Core\\logs\\one_click_run_20260708_094119.log",
+    "written_at":  "2026-07-08T09:46:37",
+    "status":  "running",
+    "step":  "mobile cloud publish",
+    "visible_update":  true,
+    "message":  "Step is running.",
+    "report_path":  "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260708_第06版_自動更新修正版\\TW539Core\\reports\\latest_battle_report.html",
+    "core_path":  "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260708_第06版_自動更新修正版\\TW539Core"
 }
