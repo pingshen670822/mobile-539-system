@@ -1,10 +1,10 @@
 {
-  "status": "failed",
-  "checked_at": "2026-07-07T09:32:43",
+  "status": "ok",
+  "checked_at": "2026-07-07T09:34:45",
   "local_version": "20260707093215",
-  "cloud_status": "local_ready_not_published",
+  "cloud_status": "published",
   "cloud_version": "20260707093215",
-  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707093215&t=1783387935",
+  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260707093215&t=1783388019",
   "local_latest_draw": {
     "period": 115000163,
     "draw_date": "2026-07-06",
@@ -122,9 +122,9 @@
     }
   },
   "remote_version": {
-    "version": "20260707092829",
+    "version": "20260707093215",
     "generated_at": "2026-07-07T08:56:15",
-    "mobile_built_at": "2026-07-07T09:28:29+08:00",
+    "mobile_built_at": "2026-07-07T09:32:15+08:00",
     "latest_period": 115000163,
     "latest_draw_date": "2026-07-06",
     "cache_policy": "network_first_no_store"
@@ -146,15 +146,10 @@
     "local_month_count": 2,
     "local_site_daily_same": true,
     "local_site_monthly_same": true,
-    "remote_daily_same": false,
-    "remote_monthly_same": false
+    "remote_daily_same": true,
+    "remote_monthly_same": true
   },
   "rule": "電腦版與手機雲端必須同版本、同開獎資料、同前十預測、同強牌包；雲端狀態必須為 published。",
   "remote_base": "https://pingshen670822.github.io/mobile-539-system",
-  "failures": [
-    "手機雲端尚未發布成功",
-    "手機雲端版本號與電腦版不一致",
-    "手機雲端低機率每日紀錄未同步",
-    "手機雲端低機率每月總紀錄未同步"
-  ]
+  "message": "手機雲端已與電腦版同步"
 }

@@ -1,7 +1,7 @@
 ﻿{
     "status":  "passed",
-    "written_at":  "2026-07-06T12:12:58",
-    "runner":  "C:\\Users\\MSI\\Documents\\Codex\\539PredictionSystem\\main_one_click.ps1",
+    "written_at":  "2026-07-08T08:57:03",
+    "runner":  "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第05版_低機率主戰報精簡版\\TW539Core\\main_one_click.ps1",
     "startup_tasks_removed":  [
 
                               ],
@@ -34,7 +34,7 @@
                                {
                                    "exists":  true,
                                    "task":  "TW539 每3小時戰報手機同步檢測",
-                                   "runner":  "C:\\Users\\MSI\\Documents\\Codex\\539PredictionSystem\\run_three_hour_sync_check.ps1",
+                                   "runner":  "C:\\Users\\MSI\\Documents\\Codex\\2026-06-01\\539\\outputs\\TW539預測系統_20260707_第05版_低機率主戰報精簡版\\TW539Core\\run_three_hour_sync_check.ps1",
                                    "create_exit_code":  0,
                                    "native_error":  "",
                                    "trigger":  "MSFT_TaskTimeTrigger",
