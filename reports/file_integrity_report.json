@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T08:57:38",
+  "generated_at": "2026-07-08T09:01:39",
   "status": "ok",
   "checked_files": 310,
   "failed_count": 0,
@@ -237,7 +237,7 @@
       "path": "手機戰報更新狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 728
+      "size": 505
     },
     {
       "path": "手機控制台網址.txt",
@@ -249,19 +249,19 @@
       "path": "手機獨立版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 97
+      "size": 102
     },
     {
       "path": "手機雲端版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 97
+      "size": 102
     },
     {
       "path": "手機雲端發布狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 834
+      "size": 352
     },
     {
       "path": "打開最新手機版.html",
@@ -363,19 +363,19 @@
       "path": "reports\\daily_auto_task_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 2517
+      "size": 2505
     },
     {
       "path": "reports\\daily_integrity_audit.json",
       "status": "ok",
       "warnings": [],
-      "size": 22185
+      "size": 22322
     },
     {
       "path": "reports\\daily_integrity_audit.md",
       "status": "ok",
       "warnings": [],
-      "size": 12642
+      "size": 12779
     },
     {
       "path": "reports\\dashboard.html",
@@ -387,7 +387,7 @@
       "path": "reports\\file_integrity_report.json",
       "status": "ok",
       "warnings": [],
-      "size": 42760
+      "size": 43160
     },
     {
       "path": "reports\\file_integrity_report.md",
@@ -453,7 +453,7 @@
       "path": "reports\\mobile_sync_verification.json",
       "status": "ok",
       "warnings": [],
-      "size": 3159
+      "size": 3139
     },
     {
       "path": "reports\\mobile_update_status.json",

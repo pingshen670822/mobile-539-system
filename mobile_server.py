@@ -282,7 +282,7 @@ def page(message=""):
   <h2>\u7acb\u5373\u66f4\u65b0\u8207\u91cd\u65b0\u904b\u7b97</h2>
   <form method="post" action="/run">
     <input type="hidden" name="token" value="{html.escape(token)}">
-    <button type="submit">\u57f7\u884c\u4e3b\u7cfb\u7d71\u5168\u90e8\u66f4\u65b0</button>
+    <button type="submit">\u624b\u6a5f\u7acb\u523b\u66f4\u65b0\u5230\u6700\u65b0</button>
   </form>
   <p class="muted">\u82e5\u53f0\u5f69\u5c1a\u672a\u516c\u5e03\u6216\u7db2\u8def\u4e0d\u901a\uff0c\u7cfb\u7d71\u6703\u7981\u6b62\u7528\u820a\u8cc7\u6599\u767c\u5e03\u65b0\u9810\u6e2c\u3002</p>
 </section>

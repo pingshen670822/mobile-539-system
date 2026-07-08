@@ -5093,6 +5093,14 @@ def build_compact_html_report():
     <button data-tab="models">\u6a21\u578b\u56de\u6e2c</button>
     <button data-tab="system">\u5176\u4ed6\u7a3d\u6838</button>
   </nav>
+  <section class="band update-box">
+    <h2>\u7acb\u523b\u66f4\u65b0\u5230\u6700\u65b0</h2>
+    <p class="update-note">\u96fb\u8166\u7248\u6309\u4e3b\u7a0b\u5f0f\u6700\u5916\u5c64\u300c\u7acb\u523b\u66f4\u65b0\u5230\u6700\u65b0.bat\u300d\uff1b\u624b\u6a5f\u7248\u6309\u4e0b\u65b9\u5165\u53e3\u958b\u555f\u6700\u65b0\u540c\u6b65\u9801\u3002</p>
+    <p>
+      <a class="update-button" href="../../\u7acb\u523b\u66f4\u65b0\u5230\u6700\u65b0.bat">\u96fb\u8166\u7acb\u523b\u66f4\u65b0</a>
+      <a class="update-button mobile" href="https://pingshen670822.github.io/mobile-539-system/clear-cache.html">\u624b\u6a5f\u7acb\u523b\u66f4\u65b0\u5230\u6700\u65b0</a>
+    </p>
+  </section>
   <section class="band date-ribbon">
     <h2>\u672c\u5831\u8868\u65e5\u671f\u5c0d\u7167</h2>
     <div class="grid">
@@ -5436,6 +5444,10 @@ def build_monthly_summary_html_report(month=None):
     .bar-fill{{height:100%;}}
     .bar-label,.bar-value{{font-size:12px;font-weight:800;}}
     .warn{{background:#fff7ed;border-color:#fed7aa;}}
+    .update-box{{background:#ecfdf5;border-color:#86efac;}}
+    .update-button{{display:inline-block;background:#b91c1c;color:#fff!important;text-decoration:none;border-radius:7px;padding:12px 16px;font-weight:900;margin:6px 8px 6px 0;}}
+    .update-button.mobile{{background:#166534;}}
+    .update-note{{font-weight:800;color:#14532d;}}
     a{{color:#0f766e;font-weight:800;}}
     @media(max-width:680px){{main{{padding:10px}}header{{padding:16px}}table{{min-width:680px}}}}
   </style>

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-08T08:54:30",
+  "generated_at": "2026-07-08T09:13:26",
   "prediction_mode": "current_precision_stability_v47_daily_auto_rolling_precision_rebuild",
   "latest_draw": {
     "period": 115000164,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-07",
     "expected_latest_date": "2026-07-07",
     "lag_days": 0,
-    "checked_at": "2026-07-08T08:51:08"
+    "checked_at": "2026-07-08T09:10:05"
   },
   "windows": [
     {
@@ -4356,13 +4356,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "上期失敗號碼僅微降權",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
         },
         {
-          "reason": "上期失敗號碼僅微降權",
+          "reason": "與上期號碼近100期共現6次",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
@@ -7515,13 +7515,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "上期失敗號碼僅微降權",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
           },
           {
-            "reason": "上期失敗號碼僅微降權",
+            "reason": "與上期號碼近100期共現6次",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
@@ -35095,7 +35095,7 @@
     },
     "stability_governor": {
       "status": "corrected",
-      "checked_at": "2026-07-08T08:54:48",
+      "checked_at": "2026-07-08T09:13:43",
       "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
       "single_lock_audit": {
         "recent_single_rows": [
@@ -71705,6 +71705,5 @@
         "met_in_observed_samples": false
       }
     }
-  },
-  "official_prediction_status": "observation_only_inserted"
+  }
 }
