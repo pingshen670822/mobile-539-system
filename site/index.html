@@ -73,24 +73,24 @@
 <main>
     <section class="band">
       <h2>手機獨立操作</h2>
-      <p><strong>手機版最後建立：2026-07-08 09:46:37</strong></p>
-      <p>最新資料：115000164期 / 2026-07-07 / 版本 20260708094637</p>
+      <p><strong>手機版最後建立：2026-07-08 09:51:53</strong></p>
+      <p>最新資料：115000164期 / 2026-07-07 / 版本 20260708095153</p>
       <p><button class="mobile-action update-now" type="button" onclick="forceRefresh()">手機立刻更新到最新</button></p>
       <p><a class="mobile-action cloud-now" href="https://github.com/pingshen670822/mobile-539-system/actions/workflows/daily-update.yml">手機雲端重新運算入口</a></p>
-      <p><a class="mobile-action refresh" href="clear-cache.html?v=20260708094637">清除舊版快取並打開最新手機版</a></p>
-      <p><a class="mobile-action history" href="prediction-history.html?v=20260708094637">查看每期預測對比</a></p>
-      <p><a class="mobile-action secondary" href="monthly-summary.html?v=20260708094637">查看每月總整</a></p>
-      <p><a class="mobile-action secondary" href="low-probability-daily.html?v=20260708094637">查看低機率每日紀錄</a></p>
-      <p><a class="mobile-action secondary" href="low-probability-monthly.html?v=20260708094637">查看低機率每月總紀錄</a></p>
-      <p><a class="mobile-action secondary" href="low-probability-monthly-daily-summary.html?v=20260708094637">查看低機率每月每日總整理</a></p>
-      <p><a class="mobile-action secondary" href="history/每月資料保存索引.html?v=20260708094637">查看每月保存資料</a></p>
+      <p><a class="mobile-action refresh" href="clear-cache.html?v=20260708095153">清除舊版快取並打開最新手機版</a></p>
+      <p><a class="mobile-action history" href="prediction-history.html?v=20260708095153">查看每期預測對比</a></p>
+      <p><a class="mobile-action secondary" href="monthly-summary.html?v=20260708095153">查看每月總整</a></p>
+      <p><a class="mobile-action secondary" href="low-probability-daily.html?v=20260708095153">查看低機率每日紀錄</a></p>
+      <p><a class="mobile-action secondary" href="low-probability-monthly.html?v=20260708095153">查看低機率每月總紀錄</a></p>
+      <p><a class="mobile-action secondary" href="low-probability-monthly-daily-summary.html?v=20260708095153">查看低機率每月每日總整理</a></p>
+      <p><a class="mobile-action secondary" href="history/每月資料保存索引.html?v=20260708095153">查看每月保存資料</a></p>
       <p><button class="mobile-action refresh" type="button" onclick="forceRefresh()">強制重新載入最新手機成果</button></p>
       <p>手機版開獎後即時同步：台北時間 20:35 起進入密集追蹤，每45秒追台彩最新資料，抓到後立刻重算、重建電腦戰報與手機版。</p>
       <p>手機版與電腦版可同時存在：電腦版在本機輸出完整戰報，手機版在雲端獨立更新，互不覆蓋。</p>
     </section>
     <section class="band update-status">
       <h2>更新執行狀態</h2>
-      <table><thead><tr><th>項目</th><th>狀態</th><th>時間</th><th>步驟或版本</th><th>結果說明</th></tr></thead><tbody><tr><td>一鍵更新最後結果</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>每3小時同步檢測</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>手機雲端同步</td><td>已發布</td><td>2026-07-08T09:27:16</td><td>20260708092530</td><td>手機雲端已與電腦版同步</td></tr></tbody></table>
+      <table><thead><tr><th>項目</th><th>狀態</th><th>時間</th><th>步驟或版本</th><th>結果說明</th></tr></thead><tbody><tr><td>一鍵更新最後結果</td><td>通過</td><td>2026-07-08T09:50:26</td><td>complete</td><td>Visible one-click update completed; cloud publish was verified by GitHub Actions.</td></tr><tr><td>每3小時同步檢測</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>手機雲端同步</td><td>已發布</td><td>2026-07-08T09:50:33</td><td>20260708094637</td><td>手機雲端已與電腦版同步</td></tr></tbody></table>
     </section>
     
   <nav class="tabs">
@@ -419,7 +419,7 @@
 </script>
 
     <script>
-      window.MOBILE_BUILD_VERSION="20260708094637";
+      window.MOBILE_BUILD_VERSION="20260708095153";
       async function forceRefresh(){
         try{
           if("serviceWorker" in navigator){
@@ -442,7 +442,7 @@
           }
         }catch(e){}
       }
-      if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js?v=20260708094637");
+      if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js?v=20260708095153");
       setInterval(checkMobileVersion, 15000);
       window.addEventListener("focus", checkMobileVersion);
       document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkMobileVersion();});

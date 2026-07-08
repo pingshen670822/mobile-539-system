@@ -1,15 +1,17 @@
 {
-  "generated_at": "2026-07-08T09:27:17",
-  "status": "ok",
-  "checked_files": 310,
+  "generated_at": "2026-07-08T09:48:44",
+  "status": "warning",
+  "checked_files": 311,
   "failed_count": 0,
-  "warning_count": 0,
+  "warning_count": 1,
   "files": [
     {
       "path": "539一鍵全自動啟動.bat",
-      "status": "ok",
-      "warnings": [],
-      "size": 153
+      "status": "warning",
+      "warnings": [
+        "direct_cjk_found_in_code"
+      ],
+      "size": 647
     },
     {
       "path": "advanced_formula_lab.py",
@@ -33,13 +35,13 @@
       "path": "battle_report.py",
       "status": "ok",
       "warnings": [],
-      "size": 316334
+      "size": 316496
     },
     {
       "path": "build_tw539_release.ps1",
       "status": "ok",
       "warnings": [],
-      "size": 8742
+      "size": 8782
     },
     {
       "path": "cleanup_obsolete_runtime.ps1",
@@ -117,7 +119,7 @@
       "path": "main_one_click.ps1",
       "status": "ok",
       "warnings": [],
-      "size": 4024
+      "size": 4609
     },
     {
       "path": "mobile_server.py",
@@ -141,7 +143,7 @@
       "path": "pages_build.py",
       "status": "ok",
       "warnings": [],
-      "size": 18961
+      "size": 21358
     },
     {
       "path": "publish_free_github.ps1",
@@ -249,7 +251,7 @@
       "path": "手機獨立版網址.txt",
       "status": "ok",
       "warnings": [],
-      "size": 102
+      "size": 97
     },
     {
       "path": "手機雲端版網址.txt",
@@ -261,7 +263,7 @@
       "path": "手機雲端發布狀態.json",
       "status": "ok",
       "warnings": [],
-      "size": 352
+      "size": 372
     },
     {
       "path": "打開最新手機版.html",
@@ -333,7 +335,7 @@
       "path": "reports\\539最新強化戰報.html",
       "status": "ok",
       "warnings": [],
-      "size": 87077
+      "size": 87158
     },
     {
       "path": "reports\\539每月預測總整理.html",
@@ -405,7 +407,7 @@
       "path": "reports\\health_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 5966
+      "size": 5960
     },
     {
       "path": "reports\\health_status.md",
@@ -417,7 +419,7 @@
       "path": "reports\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2142735
+      "size": 2142828
     },
     {
       "path": "reports\\latest_analysis.md",
@@ -429,19 +431,19 @@
       "path": "reports\\latest_battle_report.html",
       "status": "ok",
       "warnings": [],
-      "size": 87077
+      "size": 87158
     },
     {
       "path": "reports\\latest_battle_report.md",
       "status": "ok",
       "warnings": [],
-      "size": 24146
+      "size": 24179
     },
     {
       "path": "reports\\latest_battle_report.txt",
       "status": "ok",
       "warnings": [],
-      "size": 24146
+      "size": 24179
     },
     {
       "path": "reports\\line_push_status.json",
@@ -495,7 +497,7 @@
       "path": "reports\\one_click_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 337
+      "size": 709
     },
     {
       "path": "reports\\post_draw_mobile_sync_status.json",
@@ -591,13 +593,13 @@
       "path": "site\\health_status.json",
       "status": "ok",
       "warnings": [],
-      "size": 5966
+      "size": 5960
     },
     {
       "path": "site\\index.html",
       "status": "ok",
       "warnings": [],
-      "size": 91566
+      "size": 92264
     },
     {
       "path": "site\\latest.html",
@@ -609,7 +611,7 @@
       "path": "site\\latest_analysis.json",
       "status": "ok",
       "warnings": [],
-      "size": 2142735
+      "size": 2142828
     },
     {
       "path": "site\\low-probability-daily-record.json",
@@ -670,6 +672,12 @@
       "status": "ok",
       "warnings": [],
       "size": 277403
+    },
+    {
+      "path": "site\\update-status.json",
+      "status": "ok",
+      "warnings": [],
+      "size": 3592
     },
     {
       "path": "site\\version.json",

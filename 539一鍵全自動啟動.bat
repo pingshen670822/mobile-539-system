@@ -1,10 +1,10 @@
 @echo off
 chcp 65001 >nul
-title TW539 一鍵全自動啟動 - 可視化執行中
+title TW539 visible full update
 echo.
 echo ========================================
-echo TW539 一鍵全自動啟動
-echo 全部更新步驟會顯示在這個視窗，不再隱藏執行。
+echo TW539 visible full update
+echo All update steps will be printed in this window.
 echo ========================================
 echo.
 set "TW539_VISIBLE_UPDATE=1"
@@ -12,9 +12,9 @@ set "TW539_VISIBLE_UPDATE=1"
 set "TW539_EXIT=%ERRORLEVEL%"
 echo.
 if "%TW539_EXIT%"=="0" (
-  echo TW539 全自動啟動完成。
+  echo TW539 update completed.
 ) else (
-  echo TW539 全自動啟動失敗，錯誤碼：%TW539_EXIT%
+  echo TW539 update failed. Exit code: %TW539_EXIT%
 )
 pause
 exit /b %TW539_EXIT%

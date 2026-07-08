@@ -51,7 +51,7 @@ def read_text_or_empty(path):
 
 def read_json_or_empty(path):
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(path.read_text(encoding="utf-8-sig"))
     except (OSError, json.JSONDecodeError):
         return {}
 
