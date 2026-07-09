@@ -1,6 +1,6 @@
 {
   "month": "2026-07",
-  "generated_at": "2026-07-10T03:04:51",
+  "generated_at": "2026-07-10T03:11:11",
   "stats": {
     "total_records": 9,
     "settled_records": 8,
@@ -451,9 +451,9 @@
       "strong_pack_hits": {},
       "unlikely_pack_hits": {},
       "status": "pending",
-      "created_at": "2026-07-09T19:04:49",
+      "created_at": "2026-07-09T19:11:09",
       "settled_at": null,
-      "snapshot_count": 1
+      "snapshot_count": 2
     },
     {
       "based_on_period": 115000165,
