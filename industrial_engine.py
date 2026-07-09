@@ -391,6 +391,67 @@ def failed_strong_pack_blocked(item, review=None):
     return bool(number in recent_failed_strong_pack_map(review) and not failed_strong_quarantine_release(item, review))
 
 
+def repeated_failed_miss_map(review=None):
+    rolling = (review or {}).get("rolling_adjustment", {}) or {}
+    return {
+        int(row.get("number")): int(row.get("miss_count", 0) or 0)
+        for row in rolling.get("repeated_failed_numbers", [])
+        if row.get("number")
+    }
+
+
+def single_repeat_failure_guard(item, review=None):
+    number = int(item.get("number"))
+    miss_count = repeated_failed_miss_map(review).get(number, 0)
+    if miss_count < 3:
+        return {
+            "passed": True,
+            "hard_blocked": False,
+            "miss_count": miss_count,
+            "penalty": 0.0,
+            "decision": "no_recent_single_failure_lock",
+        }
+    objective_edge = float((item.get("objective_feature_calibration") or {}).get("objective_edge", 0.0) or 0.0)
+    hit_edge = float((item.get("hit_through_calibration") or {}).get("edge_vs_baseline", 0.0) or 0.0)
+    cross = int((item.get("cross_validation") or {}).get("passed_count") or 0)
+    stability = int(item.get("stability_count") or 0)
+    score = float(item.get("score", 0.0) or 0.0)
+    if miss_count >= 12:
+        required = {"objective_edge": 0.095, "hit_edge": 0.055, "cross": 11, "stability": 5, "score": 0.91}
+        penalty = 0.55
+    elif miss_count >= 8:
+        required = {"objective_edge": 0.080, "hit_edge": 0.045, "cross": 10, "stability": 4, "score": 0.88}
+        penalty = 0.44
+    elif miss_count >= 5:
+        required = {"objective_edge": 0.065, "hit_edge": 0.035, "cross": 9, "stability": 4, "score": 0.84}
+        penalty = 0.32
+    else:
+        required = {"objective_edge": 0.050, "hit_edge": 0.025, "cross": 8, "stability": 3, "score": 0.80}
+        penalty = 0.20
+    passed = bool(
+        objective_edge >= required["objective_edge"]
+        and hit_edge >= required["hit_edge"]
+        and cross >= required["cross"]
+        and stability >= required["stability"]
+        and score >= required["score"]
+    )
+    return {
+        "passed": passed,
+        "hard_blocked": bool(not passed and miss_count >= 5),
+        "miss_count": miss_count,
+        "penalty": 0.0 if passed else penalty,
+        "decision": "single_reentry_passed" if passed else "single_reentry_blocked_by_recent_misses",
+        "required": required,
+        "actual": {
+            "objective_edge": round(objective_edge, 4),
+            "hit_edge": round(hit_edge, 4),
+            "cross": cross,
+            "stability": stability,
+            "score": round(score, 4),
+        },
+    }
+
+
 def previous_prediction_set(review, limit=15):
     if not review or not review.get("has_review"):
         return set()
@@ -2764,7 +2825,8 @@ def score_numbers(draws, review=None, include_dependency=True, weights_override=
                 low_probability_reverse_hit_numbers.add(int(item.get("number")))
     penalized_reasons = {item.get("reason") for item in rolling.get("penalized_reasons", [])}
     boosted_reasons = {item.get("reason") for item in rolling.get("boosted_reasons", [])}
-    repeated_failed_numbers = {int(item.get("number")) for item in rolling.get("repeated_failed_numbers", []) if item.get("number")}
+    repeated_failed_map = repeated_failed_miss_map(review)
+    repeated_failed_numbers = set(repeated_failed_map)
     late_hit_numbers = {int(item.get("number")) for item in rolling.get("late_hit_numbers", []) if item.get("number")}
     missed_actual_numbers = {int(item.get("number")) for item in rolling.get("missed_actual_numbers", []) if item.get("number")}
     missed_actual_tails = {int(item.get("tail")) for item in rolling.get("missed_actual_tails", []) if item.get("tail") is not None}
@@ -2900,7 +2962,15 @@ def score_numbers(draws, review=None, include_dependency=True, weights_override=
                 reasons[number].append("\u9023\u838a\u5b88\u9580\u672a\u901a\u904e")
         reason_set = set(reasons[number])
         if number in repeated_failed_numbers:
-            raw *= 0.48 if mode == "critical" else 0.58 if mode == "warning" else 0.66
+            miss_count = repeated_failed_map.get(number, 0)
+            if miss_count >= 12:
+                raw *= 0.16 if mode == "critical" else 0.22 if mode == "warning" else 0.30
+            elif miss_count >= 8:
+                raw *= 0.24 if mode == "critical" else 0.32 if mode == "warning" else 0.40
+            elif miss_count >= 5:
+                raw *= 0.36 if mode == "critical" else 0.44 if mode == "warning" else 0.52
+            else:
+                raw *= 0.48 if mode == "critical" else 0.58 if mode == "warning" else 0.66
             reasons[number].append("\u6efe\u52d5\u6aa2\u8a0e\u9023\u7e8c\u672a\u547d\u4e2d\u964d\u6b0a")
         if number in late_hit_numbers and values["rank_error_correction"] >= 0.55:
             raw *= 1.28 if mode == "critical" else 1.22 if mode == "warning" else 1.16
@@ -4019,13 +4089,9 @@ def super_single_candidate_decision(item, review=None):
     repeat_blocked = bool(item.get("repeat_guard") and not item["repeat_guard"].get("passed"))
     previous_blocked = previous_guard_blocks_item(item)
     failed_blocked = number in failed_number_set(review) and not failed_number_reentry_allowed(item, review)
-    rolling = (review or {}).get("rolling_adjustment", {}) or {}
-    repeated_failed = {
-        int(row.get("number")): int(row.get("miss_count", 0) or 0)
-        for row in rolling.get("repeated_failed_numbers", [])
-        if row.get("number")
-    }
+    repeated_failed = repeated_failed_miss_map(review)
     repeated_failed_count = repeated_failed.get(number, 0)
+    single_failure_guard = single_repeat_failure_guard(item, review)
     risk_penalty = 0.0
     risk_flags = []
     if repeat_blocked:
@@ -4043,6 +4109,9 @@ def super_single_candidate_decision(item, review=None):
     elif repeated_failed_count >= 5:
         risk_penalty += 0.22
         risk_flags.append("\u8fd1\u671f\u91cd\u8907\u5931\u6e96")
+    if not single_failure_guard.get("passed"):
+        risk_penalty += float(single_failure_guard.get("penalty", 0.0) or 0.0)
+        risk_flags.append("\u7368\u96bb\u91cd\u8907\u5931\u6e96\u786c\u9694\u96e2")
     if rank > 15:
         risk_penalty += 0.08
         risk_flags.append("\u6392\u540d\u843d\u5728\u524d15\u4e4b\u5916")
@@ -4067,6 +4136,8 @@ def super_single_candidate_decision(item, review=None):
         - risk_penalty
     )
     super_score = max(0.0, min(1.0, super_score))
+    if single_failure_guard.get("hard_blocked"):
+        super_score = min(super_score, 0.18)
     if super_score >= 0.78 and passed_layers >= 9 and not risk_flags:
         label = "\u6700\u5f37\u9ad8\u4fe1\u5fc3\u7368\u96bb"
     elif super_score >= 0.68 and passed_layers >= 7:
@@ -4085,6 +4156,7 @@ def super_single_candidate_decision(item, review=None):
         "risk_flags": risk_flags,
         "risk_penalty": round(risk_penalty, 4),
         "repeated_failed_count": repeated_failed_count,
+        "single_repeat_failure_guard": single_failure_guard,
         "decision_label": label,
         "selection_policy": "\u7368\u96bb\u5c08\u7528\uff1a\u7e3d\u5206\u3001\u6a5f\u7387\u3001\u5be6\u6230\u7a7f\u900f\u3001\u4ea4\u53c9\u9a57\u7b97\u3001\u56de\u6e2c\u6efe\u52d5\u3001\u98a8\u63a7\u516d\u5c64\u5408\u6210",
         "model_sources": item.get("model_sources", []),
@@ -4100,6 +4172,7 @@ def super_single_decision(candidates, review=None):
         rows.append(decision)
     rows.sort(
         key=lambda row: (
+            not (row.get("single_repeat_failure_guard") or {}).get("hard_blocked"),
             row["super_single_score"],
             row["passed_layer_count"],
             row["candidate"].get("score", 0),
@@ -4116,6 +4189,7 @@ def super_single_decision(candidates, review=None):
                 "super_single_score": row["super_single_score"],
                 "passed_layer_count": row["passed_layer_count"],
                 "risk_penalty": row["risk_penalty"],
+                "single_repeat_failure_guard": row.get("single_repeat_failure_guard"),
             }
             for row in rows[:8]
         ]
@@ -4823,6 +4897,9 @@ def strong_packs(candidates, review=None, governance=None):
             if failed_strong_pack_blocked(item, review):
                 removed.append(number)
                 continue
+            if size <= 3 and single_repeat_failure_guard(item, review).get("hard_blocked"):
+                removed.append(number)
+                continue
             if previous_guard_blocks_item(item):
                 removed.append(number)
                 continue
@@ -4878,6 +4955,7 @@ def strong_packs(candidates, review=None, governance=None):
                 if not hard_iron_blocked(item)
                 and not latest_repeat_reentry_blocked(item)
                 and not failed_strong_pack_blocked(item, review)
+                and not single_repeat_failure_guard(item, review).get("hard_blocked")
                 and not previous_guard_blocks_item(item)
             ]
             fallback_pool = clean_pool or selection_pool
@@ -4885,7 +4963,9 @@ def strong_packs(candidates, review=None, governance=None):
         avg_score = sum(score_map[n] for n in numbers) / len(numbers) if numbers else 0
         weak_numbers = [
             n for n in numbers
-            if previous_guard_blocks_item(candidate_map[n]) or hard_iron_blocked(candidate_map[n])
+            if previous_guard_blocks_item(candidate_map[n])
+            or hard_iron_blocked(candidate_map[n])
+            or single_repeat_failure_guard(candidate_map[n], review).get("hard_blocked")
         ]
         if key in short_pack_keys:
             packs[key] = pack(name, goal, sorted(numbers))
@@ -5339,6 +5419,7 @@ def low_probability_inversion_guard(review):
     performance = (((review or {}).get("rolling_adjustment") or {}).get("low_probability_performance") or {})
     packs = performance.get("packs") or {}
     blocked = {}
+    reverse_hit_counts = Counter()
     for key, data in packs.items():
         release_allowed = bool(data.get("release_allowed"))
         blocked[key] = {
@@ -5352,16 +5433,36 @@ def low_probability_inversion_guard(review):
             "recent_accidental_hits": data.get("recent_accidental_hits", []),
             "hit_numbers": data.get("hit_numbers", []),
         }
+        for item in data.get("hit_numbers", []):
+            try:
+                number = int(item.get("number"))
+                count = int(item.get("count", 0) or 0)
+            except (TypeError, ValueError):
+                continue
+            if NUMBER_MIN <= number <= NUMBER_MAX and count > 0:
+                reverse_hit_counts[number] += count
     recent_hit_numbers = {
         int(item.get("number"))
         for item in performance.get("recent_hit_numbers", [])
         if item.get("number") and int(item.get("count", 0) or 0) >= 1
     }
+    for item in performance.get("recent_hit_numbers", []):
+        try:
+            number = int(item.get("number"))
+            count = int(item.get("count", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        if NUMBER_MIN <= number <= NUMBER_MAX and count > 0:
+            reverse_hit_counts[number] += count
     return {
         "policy": "低機率包必須通過近期實戰結算；反向命中偏高時扣留，避免把會開的號碼包成低機率。",
         "sample_size": performance.get("sample_size", 0),
         "blocked_packs": blocked,
-        "recent_reverse_hit_numbers": sorted(recent_hit_numbers),
+        "recent_reverse_hit_numbers": sorted(recent_hit_numbers | set(reverse_hit_counts)),
+        "recent_reverse_hit_counts": [
+            {"number": number, "count": count}
+            for number, count in reverse_hit_counts.most_common(20)
+        ],
         "status": "active" if blocked else "no_recent_low_probability_sample",
     }
 
@@ -5464,6 +5565,11 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
     }
     inversion_guard = low_probability_inversion_guard(review)
     reverse_hit_numbers = set(inversion_guard.get("recent_reverse_hit_numbers") or [])
+    reverse_hit_counts = {
+        int(item.get("number")): int(item.get("count", 0) or 0)
+        for item in inversion_guard.get("recent_reverse_hit_counts", [])
+        if item.get("number")
+    }
     stability_counts = {int(number): count for number, count in stability.get("consensus_counts", {}).items()}
     latest_set = set(draws[-1]["numbers"])
     previous_blocked = {
@@ -5504,8 +5610,9 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
         if number in recall_numbers:
             risk_block_score += 0.28
             reasons.append("\u6efe\u52d5\u6aa2\u8a0e\u6307\u5411\u6f0f\u6293\u56de\u88dc\uff0c\u4e0d\u5217\u4f4e\u6a5f\u7387")
+        reverse_hit_count = reverse_hit_counts.get(number, 0)
         if number in reverse_hit_numbers:
-            risk_block_score += 0.36
+            risk_block_score += min(0.72, 0.40 + reverse_hit_count * 0.06)
             reasons.append("近期曾被低機率錯殺後開出，禁止再列低機率")
         if number in latest_set:
             if repeat_policy.get(number, {}).get("historical_support"):
@@ -5556,6 +5663,10 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
         )
         if risk_block_score >= 0.25:
             avoid_score = min(avoid_score, 0.42)
+        if reverse_hit_count >= 2:
+            avoid_score = min(avoid_score, 0.10)
+        elif reverse_hit_count == 1:
+            avoid_score = min(avoid_score, 0.18)
         if rank <= 15:
             avoid_score = min(avoid_score, 0.38)
         if number in latest_set:
@@ -5565,6 +5676,7 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
             and rank > 15
             and avoid_score >= 0.55
             and (formula_rank >= 18 or number in formula_avoid_numbers)
+            and reverse_hit_count == 0
         )
         if not reasons:
             reasons.append("\u7d9c\u5408\u8a55\u5206\u504f\u5f31")
@@ -5578,6 +5690,7 @@ def unlikely_number_analysis(draws, candidates, stability, review=None, limit=15
                 "weak_signal_count": weak_signal_count,
                 "evidence_score": round(evidence_score, 4),
                 "risk_block_score": round(risk_block_score, 4),
+                "reverse_hit_count": reverse_hit_count,
                 "formula_avoid_score": round(inverse_formula_score, 4),
                 "formula_rank": formula_rank,
                 "formula_support_count": formula_support,

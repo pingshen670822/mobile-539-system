@@ -952,8 +952,9 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
     }
 
     pack_sizes = {"five_miss": 5, "ten_miss": 10, "fifteen_miss": 15}
-    zero_thresholds = {"five_miss": 0.65, "ten_miss": 0.35, "fifteen_miss": 0.25}
-    avg_thresholds = {"five_miss": 0.45, "ten_miss": 0.90, "fifteen_miss": 1.15}
+    zero_thresholds = {"five_miss": 0.78, "ten_miss": 0.55, "fifteen_miss": 0.40}
+    avg_thresholds = {"five_miss": 0.28, "ten_miss": 0.68, "fifteen_miss": 0.98}
+    max_hit_thresholds = {"five_miss": 1, "ten_miss": 1, "fifteen_miss": 2}
     low_probability_packs = {}
     for key, stat in low_pack_stats.items():
         rounds = stat["rounds"] or 1
@@ -965,6 +966,7 @@ def rolling_failure_profile(db_path=DB_PATH, limit=30):
             stat["rounds"] >= 5
             and average_accidental_hits <= avg_thresholds.get(key, 0.75)
             and zero_hit_rate >= zero_thresholds.get(key, 0.50)
+            and max(stat["recent_accidental_hits"] or [0]) <= max_hit_thresholds.get(key, 2)
         )
         low_probability_packs[key] = {
             "rounds": stat["rounds"],

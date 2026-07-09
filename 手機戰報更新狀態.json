@@ -1,12 +1,11 @@
 {
-  "status": "local_ready",
-  "version": "20260708104020",
-  "built_at": "2026-07-08T10:40:20+08:00",
-  "latest_period": 115000164,
-  "latest_draw_date": "2026-07-07",
-  "site_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260708104020&t=1783478420",
-  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260708104020&t=1783478420",
-  "report_url": "http://172.16.1.24:5390/report?token=oL18nVAg_JbaDg&v=20260708104020&t=1783478420",
-  "control_url": "http://172.16.1.24:5390/?token=oL18nVAg_JbaDg&v=20260708104020&t=1783478420",
-  "sync_policy": "本機手機版已重建；雲端手機版必須等發布腳本成功後才可標記為已同步。"
+  "status": "sync_failed",
+  "version": "20260709090045",
+  "built_at": "2026-07-09T04:45:33+08:00",
+  "verified_at": "2026-07-09T09:01:08",
+  "latest_period": 115000165,
+  "latest_draw_date": "2026-07-08",
+  "site_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260709090045&t=1783558845",
+  "cloud_url": "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260709090045&t=1783558845",
+  "sync_policy": "手機雲端未達同步，請重新執行手機發布。"
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T04:45:31",
+  "generated_at": "2026-07-09T09:00:43",
   "total_periods": 81,
   "settled_periods": 33,
   "pending_periods": 1,
@@ -14,15 +14,15 @@
         31,
         21,
         15,
-        26
+        29
       ],
       "top10": [
         37,
         31,
         21,
         15,
-        26,
         29,
+        26,
         4,
         9,
         35,
@@ -33,17 +33,17 @@
         31,
         21,
         15,
-        26,
         29,
+        26,
         4,
         9,
         35,
         19,
         36,
         16,
-        24,
+        13,
         33,
-        13
+        27
       ],
       "unlikely_packs": {
         "five_miss": {
@@ -235,12 +235,12 @@
             28,
             22,
             19,
-            16,
             38,
-            25,
-            24
+            24,
+            18,
+            17
           ],
-          "qualified_count": 7,
+          "qualified_count": 6,
           "required_count": 10,
           "warning": "此低機率包近期誤中偏高，禁止當成正式不中號碼，改列反向命中警訊",
           "backtest_gate": {
@@ -332,9 +332,10 @@
             28,
             22,
             19,
-            16,
             38,
-            24
+            24,
+            18,
+            17
           ],
           "withheld_numbers": [
             39,
@@ -343,13 +344,12 @@
             28,
             22,
             19,
-            16,
             38,
-            24
+            24,
+            18,
+            17
           ],
-          "reverse_hit_removed_diagnostics": [
-            25
-          ],
+          "reverse_hit_removed_diagnostics": [],
           "confidence_index": 0.0
         },
         "fifteen_miss": {
@@ -364,17 +364,17 @@
             28,
             22,
             19,
-            16,
             38,
-            25,
             24,
             18,
             17,
-            10,
             5,
-            12
+            12,
+            34,
+            30,
+            23
           ],
-          "qualified_count": 7,
+          "qualified_count": 6,
           "required_count": 15,
           "warning": "此低機率包近期誤中偏高，禁止當成正式不中號碼，改列反向命中警訊",
           "backtest_gate": {
@@ -466,13 +466,15 @@
             28,
             22,
             19,
-            16,
             38,
             24,
             18,
             17,
             5,
-            12
+            12,
+            34,
+            30,
+            23
           ],
           "withheld_numbers": [
             39,
@@ -481,18 +483,17 @@
             28,
             22,
             19,
-            16,
             38,
             24,
             18,
             17,
             5,
-            12
+            12,
+            34,
+            30,
+            23
           ],
-          "reverse_hit_removed_diagnostics": [
-            25,
-            10
-          ],
+          "reverse_hit_removed_diagnostics": [],
           "confidence_index": 0.0
         }
       },
@@ -506,9 +507,9 @@
       "strong_pack_hits": {},
       "unlikely_pack_hits": {},
       "status": "pending",
-      "created_at": "2026-07-08T20:45:30",
+      "created_at": "2026-07-09T09:00:41",
       "settled_at": null,
-      "snapshot_count": 2
+      "snapshot_count": 1
     },
     {
       "based_on_period": 115000164,
@@ -1103,7 +1104,7 @@
       },
       "status": "settled",
       "created_at": "2026-07-08T09:46:31",
-      "settled_at": "2026-07-08T18:07:54",
+      "settled_at": "2026-07-09T08:57:52",
       "snapshot_count": 2
     },
     {
