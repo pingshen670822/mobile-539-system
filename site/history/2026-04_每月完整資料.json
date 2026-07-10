@@ -1,8 +1,8 @@
 {
   "month": "2026-04",
-  "generated_at": "2026-07-10T05:09:40",
+  "generated_at": "2026-07-11T02:15:37",
   "stats": {
-    "total_records": 20,
+    "total_records": 19,
     "settled_records": 0,
     "pending_records": 0,
     "top5_avg_hits": 0.0,
@@ -567,36 +567,6 @@
         25,
         31,
         38
-      ],
-      "top5_hits": null,
-      "top10_hits": null,
-      "top15_hits": null,
-      "top10_hit_numbers": [],
-      "strong_pack_hits": {},
-      "unlikely_packs": {},
-      "unlikely_pack_hits": {},
-      "status": "missing_prediction",
-      "created_at": "",
-      "settled_at": "",
-      "snapshot_count": 0,
-      "integrity_issue": "缺正式預測紀錄，不能結算命中率"
-    },
-    {
-      "based_on_period": null,
-      "based_on_date": null,
-      "target_period": 115000087,
-      "target_expected_date": "2026-04-08",
-      "top5": [],
-      "top10": [],
-      "top15": [],
-      "actual_period": 115000087,
-      "actual_date": "2026-04-08",
-      "actual_numbers": [
-        2,
-        4,
-        5,
-        6,
-        29
       ],
       "top5_hits": null,
       "top10_hits": null,
