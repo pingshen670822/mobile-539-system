@@ -428,17 +428,171 @@
       "confidence_index": 0.0
     }
   },
-  "actual_period": null,
-  "actual_date": null,
-  "actual_numbers": [],
-  "top5_hits": null,
-  "top10_hits": null,
-  "top15_hits": null,
-  "top10_hit_numbers": [],
-  "strong_pack_hits": {},
-  "unlikely_pack_hits": {},
-  "status": "pending",
+  "actual_period": 115000168,
+  "actual_date": "2026-07-11",
+  "actual_numbers": [
+    10,
+    25,
+    27,
+    35,
+    38
+  ],
+  "top5_hits": 1,
+  "top10_hits": 2,
+  "top15_hits": 2,
+  "top10_hit_numbers": [
+    25,
+    35
+  ],
+  "strong_pack_hits": {
+    "strong_single": {
+      "name": "最強單支",
+      "hit_goal": 1,
+      "numbers": [
+        31
+      ],
+      "hits": 0,
+      "passed": false
+    },
+    "two_hit_one": {
+      "name": "最強2中1",
+      "hit_goal": 1,
+      "numbers": [
+        31,
+        37
+      ],
+      "hits": 0,
+      "passed": false
+    },
+    "three_hit_one": {
+      "name": "最強3中1",
+      "hit_goal": 1,
+      "numbers": [
+        31,
+        37,
+        4
+      ],
+      "hits": 0,
+      "passed": false
+    },
+    "five_hit_two": {
+      "name": "最強5中2",
+      "hit_goal": 2,
+      "numbers": [
+        31,
+        37,
+        4,
+        25,
+        18
+      ],
+      "hits": 1,
+      "passed": false
+    },
+    "nine_hit_three": {
+      "name": "最強9中3",
+      "hit_goal": 3,
+      "numbers": [
+        4,
+        31,
+        37,
+        25,
+        18,
+        16,
+        19,
+        22,
+        35
+      ],
+      "hits": 2,
+      "passed": false
+    }
+  },
+  "unlikely_pack_hits": {
+    "five_miss": {
+      "name": "5不中",
+      "numbers": [],
+      "diagnostic_numbers": [
+        33,
+        24,
+        39,
+        38,
+        32
+      ],
+      "target": "未發布不結算",
+      "hit_goal": null,
+      "accidental_hits": null,
+      "hit_numbers": [],
+      "avoided_numbers": [],
+      "passed": null,
+      "settlement_status": "not_released",
+      "result": "未發布不結算",
+      "reason": "近期反向命中偏高已扣留",
+      "confidence_index": 0.0,
+      "avg_avoid_score": null,
+      "min_avoid_score": null
+    },
+    "ten_miss": {
+      "name": "10不中",
+      "numbers": [],
+      "diagnostic_numbers": [
+        33,
+        24,
+        39,
+        38,
+        32,
+        28,
+        23,
+        17,
+        21,
+        5
+      ],
+      "target": "未發布不結算",
+      "hit_goal": null,
+      "accidental_hits": null,
+      "hit_numbers": [],
+      "avoided_numbers": [],
+      "passed": null,
+      "settlement_status": "not_released",
+      "result": "未發布不結算",
+      "reason": "近期反向命中偏高已扣留",
+      "confidence_index": 0.0,
+      "avg_avoid_score": null,
+      "min_avoid_score": null
+    },
+    "fifteen_miss": {
+      "name": "15不中",
+      "numbers": [],
+      "diagnostic_numbers": [
+        33,
+        24,
+        39,
+        38,
+        32,
+        28,
+        23,
+        17,
+        21,
+        5,
+        35,
+        12,
+        7,
+        19
+      ],
+      "target": "未發布不結算",
+      "hit_goal": null,
+      "accidental_hits": null,
+      "hit_numbers": [],
+      "avoided_numbers": [],
+      "passed": null,
+      "settlement_status": "not_released",
+      "result": "未發布不結算",
+      "reason": "近期反向命中偏高已扣留",
+      "confidence_index": 0.0,
+      "avg_avoid_score": null,
+      "min_avoid_score": null
+    }
+  },
+  "status": "settled",
   "created_at": "2026-07-10T20:54:04",
-  "settled_at": null,
+  "settled_at": "2026-07-11T15:40:58",
   "snapshot_count": 2
 }

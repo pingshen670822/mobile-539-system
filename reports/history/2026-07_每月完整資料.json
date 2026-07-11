@@ -1,16 +1,460 @@
 {
   "month": "2026-07",
-  "generated_at": "2026-07-11T04:54:05",
+  "generated_at": "2026-07-11T23:43:22",
   "stats": {
-    "total_records": 10,
-    "settled_records": 9,
+    "total_records": 11,
+    "settled_records": 10,
     "pending_records": 1,
-    "top5_avg_hits": 0.6667,
-    "top10_avg_hits": 1.0,
-    "top15_avg_hits": 1.4444,
+    "top5_avg_hits": 0.7,
+    "top10_avg_hits": 1.1,
+    "top15_avg_hits": 1.5,
     "low_probability_avg_accidental_hits": 1.1
   },
   "records": [
+    {
+      "based_on_period": 115000168,
+      "based_on_date": "2026-07-11",
+      "target_period": 115000169,
+      "target_expected_date": "2026-07-13",
+      "top5": [
+        21,
+        34,
+        3,
+        1,
+        23
+      ],
+      "top10": [
+        21,
+        34,
+        3,
+        1,
+        23,
+        13,
+        15,
+        12,
+        36,
+        26
+      ],
+      "top15": [
+        21,
+        34,
+        3,
+        1,
+        23,
+        13,
+        15,
+        12,
+        36,
+        26,
+        9,
+        24,
+        5,
+        30,
+        39
+      ],
+      "unlikely_packs": {
+        "five_miss": {
+          "name": "5不中",
+          "numbers": [],
+          "status": "近期反向命中偏高已扣留",
+          "confidence_label": "未發布",
+          "rejected_candidates": [
+            39,
+            17,
+            7,
+            33,
+            28
+          ],
+          "qualified_count": 3,
+          "required_count": 5,
+          "warning": "此低機率包近期誤中偏高，禁止當成正式不中號碼，改列反向命中警訊",
+          "backtest_gate": {
+            "status": "failed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.091,
+            "required_edge_at_most": -0.08,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.55,
+            "required_zero_hit_rate": 0.52,
+            "rounds": 120,
+            "reverse_hit_guard": {
+              "blocked": true,
+              "status": "blocked_reverse_hit_risk",
+              "rounds": 24,
+              "average_accidental_hits": 0.75,
+              "random_expectation": 0.641,
+              "edge_vs_random": 0.109,
+              "zero_hit_rate": 0.458,
+              "recent_accidental_hits": [
+                2,
+                0,
+                0,
+                0,
+                1,
+                2,
+                1,
+                1,
+                0,
+                0
+              ],
+              "hit_numbers": [
+                {
+                  "number": 31,
+                  "count": 3
+                },
+                {
+                  "number": 36,
+                  "count": 2
+                },
+                {
+                  "number": 37,
+                  "count": 1
+                },
+                {
+                  "number": 26,
+                  "count": 1
+                },
+                {
+                  "number": 11,
+                  "count": 1
+                },
+                {
+                  "number": 15,
+                  "count": 1
+                },
+                {
+                  "number": 14,
+                  "count": 1
+                },
+                {
+                  "number": 1,
+                  "count": 1
+                },
+                {
+                  "number": 13,
+                  "count": 1
+                },
+                {
+                  "number": 9,
+                  "count": 1
+                },
+                {
+                  "number": 16,
+                  "count": 1
+                },
+                {
+                  "number": 6,
+                  "count": 1
+                }
+              ]
+            }
+          },
+          "diagnostic_candidates": [
+            39,
+            17,
+            7,
+            33,
+            28
+          ],
+          "withheld_numbers": [
+            39,
+            17,
+            7,
+            33,
+            28
+          ],
+          "reverse_hit_removed_diagnostics": [],
+          "confidence_index": 0.0
+        },
+        "ten_miss": {
+          "name": "10不中",
+          "numbers": [],
+          "status": "近期反向命中偏高已扣留",
+          "confidence_label": "未發布",
+          "rejected_candidates": [
+            39,
+            17,
+            7,
+            33,
+            28,
+            22,
+            19,
+            18,
+            4,
+            38
+          ],
+          "qualified_count": 3,
+          "required_count": 10,
+          "warning": "此低機率包近期誤中偏高，禁止當成正式不中號碼，改列反向命中警訊",
+          "backtest_gate": {
+            "status": "failed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.0237,
+            "required_edge_at_most": -0.12,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.242,
+            "required_zero_hit_rate": 0.22,
+            "rounds": 120,
+            "reverse_hit_guard": {
+              "blocked": true,
+              "status": "blocked_reverse_hit_risk",
+              "rounds": 24,
+              "average_accidental_hits": 1.25,
+              "random_expectation": 1.282,
+              "edge_vs_random": -0.0321,
+              "zero_hit_rate": 0.25,
+              "recent_accidental_hits": [
+                3,
+                1,
+                0,
+                0,
+                1,
+                2,
+                2,
+                1,
+                1,
+                0
+              ],
+              "hit_numbers": [
+                {
+                  "number": 31,
+                  "count": 3
+                },
+                {
+                  "number": 25,
+                  "count": 3
+                },
+                {
+                  "number": 11,
+                  "count": 2
+                },
+                {
+                  "number": 36,
+                  "count": 2
+                },
+                {
+                  "number": 6,
+                  "count": 2
+                },
+                {
+                  "number": 8,
+                  "count": 2
+                },
+                {
+                  "number": 10,
+                  "count": 1
+                },
+                {
+                  "number": 37,
+                  "count": 1
+                },
+                {
+                  "number": 26,
+                  "count": 1
+                },
+                {
+                  "number": 15,
+                  "count": 1
+                },
+                {
+                  "number": 14,
+                  "count": 1
+                },
+                {
+                  "number": 32,
+                  "count": 1
+                }
+              ]
+            }
+          },
+          "diagnostic_candidates": [
+            39,
+            17,
+            7,
+            33,
+            28,
+            22,
+            19,
+            18,
+            4,
+            38
+          ],
+          "withheld_numbers": [
+            39,
+            17,
+            7,
+            33,
+            28,
+            22,
+            19,
+            18,
+            4,
+            38
+          ],
+          "reverse_hit_removed_diagnostics": [],
+          "confidence_index": 0.0
+        },
+        "fifteen_miss": {
+          "name": "15不中",
+          "numbers": [],
+          "status": "近期反向命中偏高已扣留",
+          "confidence_label": "未發布",
+          "rejected_candidates": [
+            39,
+            17,
+            7,
+            33,
+            28,
+            22,
+            19,
+            18,
+            4,
+            38,
+            35,
+            29,
+            27,
+            2,
+            24
+          ],
+          "qualified_count": 3,
+          "required_count": 15,
+          "warning": "此低機率包近期誤中偏高，禁止當成正式不中號碼，改列反向命中警訊",
+          "backtest_gate": {
+            "status": "failed",
+            "gate_model": "legacy_inverse_signal",
+            "edge_vs_random": -0.0564,
+            "required_edge_at_most": -0.18,
+            "formula_avoid_edge": 0.0,
+            "required_formula_avoid_edge_at_least": 0.02,
+            "zero_hit_rate": 0.075,
+            "required_zero_hit_rate": 0.1,
+            "rounds": 120,
+            "reverse_hit_guard": {
+              "blocked": true,
+              "status": "blocked_reverse_hit_risk",
+              "rounds": 22,
+              "average_accidental_hits": 1.818,
+              "random_expectation": 1.923,
+              "edge_vs_random": -0.1049,
+              "zero_hit_rate": 0.136,
+              "recent_accidental_hits": [
+                3,
+                2,
+                2,
+                2,
+                2,
+                2,
+                2,
+                1,
+                1,
+                0
+              ],
+              "hit_numbers": [
+                {
+                  "number": 25,
+                  "count": 4
+                },
+                {
+                  "number": 31,
+                  "count": 3
+                },
+                {
+                  "number": 10,
+                  "count": 2
+                },
+                {
+                  "number": 14,
+                  "count": 2
+                },
+                {
+                  "number": 11,
+                  "count": 2
+                },
+                {
+                  "number": 36,
+                  "count": 2
+                },
+                {
+                  "number": 6,
+                  "count": 2
+                },
+                {
+                  "number": 20,
+                  "count": 2
+                },
+                {
+                  "number": 8,
+                  "count": 2
+                },
+                {
+                  "number": 37,
+                  "count": 1
+                },
+                {
+                  "number": 3,
+                  "count": 1
+                },
+                {
+                  "number": 26,
+                  "count": 1
+                }
+              ]
+            }
+          },
+          "diagnostic_candidates": [
+            39,
+            17,
+            7,
+            33,
+            28,
+            22,
+            19,
+            18,
+            4,
+            38,
+            35,
+            29,
+            27,
+            2,
+            24
+          ],
+          "withheld_numbers": [
+            39,
+            17,
+            7,
+            33,
+            28,
+            22,
+            19,
+            18,
+            4,
+            38,
+            35,
+            29,
+            27,
+            2,
+            24
+          ],
+          "reverse_hit_removed_diagnostics": [],
+          "confidence_index": 0.0
+        }
+      },
+      "actual_period": null,
+      "actual_date": null,
+      "actual_numbers": [],
+      "top5_hits": null,
+      "top10_hits": null,
+      "top15_hits": null,
+      "top10_hit_numbers": [],
+      "strong_pack_hits": {},
+      "unlikely_pack_hits": {},
+      "status": "pending",
+      "created_at": "2026-07-11T15:43:20",
+      "settled_at": null,
+      "snapshot_count": 1
+    },
     {
       "based_on_period": 115000167,
       "based_on_date": "2026-07-10",
@@ -441,18 +885,172 @@
           "confidence_index": 0.0
         }
       },
-      "actual_period": null,
-      "actual_date": null,
-      "actual_numbers": [],
-      "top5_hits": null,
-      "top10_hits": null,
-      "top15_hits": null,
-      "top10_hit_numbers": [],
-      "strong_pack_hits": {},
-      "unlikely_pack_hits": {},
-      "status": "pending",
+      "actual_period": 115000168,
+      "actual_date": "2026-07-11",
+      "actual_numbers": [
+        10,
+        25,
+        27,
+        35,
+        38
+      ],
+      "top5_hits": 1,
+      "top10_hits": 2,
+      "top15_hits": 2,
+      "top10_hit_numbers": [
+        25,
+        35
+      ],
+      "strong_pack_hits": {
+        "strong_single": {
+          "name": "最強單支",
+          "hit_goal": 1,
+          "numbers": [
+            31
+          ],
+          "hits": 0,
+          "passed": false
+        },
+        "two_hit_one": {
+          "name": "最強2中1",
+          "hit_goal": 1,
+          "numbers": [
+            31,
+            37
+          ],
+          "hits": 0,
+          "passed": false
+        },
+        "three_hit_one": {
+          "name": "最強3中1",
+          "hit_goal": 1,
+          "numbers": [
+            31,
+            37,
+            4
+          ],
+          "hits": 0,
+          "passed": false
+        },
+        "five_hit_two": {
+          "name": "最強5中2",
+          "hit_goal": 2,
+          "numbers": [
+            31,
+            37,
+            4,
+            25,
+            18
+          ],
+          "hits": 1,
+          "passed": false
+        },
+        "nine_hit_three": {
+          "name": "最強9中3",
+          "hit_goal": 3,
+          "numbers": [
+            4,
+            31,
+            37,
+            25,
+            18,
+            16,
+            19,
+            22,
+            35
+          ],
+          "hits": 2,
+          "passed": false
+        }
+      },
+      "unlikely_pack_hits": {
+        "five_miss": {
+          "name": "5不中",
+          "numbers": [],
+          "diagnostic_numbers": [
+            33,
+            24,
+            39,
+            38,
+            32
+          ],
+          "target": "未發布不結算",
+          "hit_goal": null,
+          "accidental_hits": null,
+          "hit_numbers": [],
+          "avoided_numbers": [],
+          "passed": null,
+          "settlement_status": "not_released",
+          "result": "未發布不結算",
+          "reason": "近期反向命中偏高已扣留",
+          "confidence_index": 0.0,
+          "avg_avoid_score": null,
+          "min_avoid_score": null
+        },
+        "ten_miss": {
+          "name": "10不中",
+          "numbers": [],
+          "diagnostic_numbers": [
+            33,
+            24,
+            39,
+            38,
+            32,
+            28,
+            23,
+            17,
+            21,
+            5
+          ],
+          "target": "未發布不結算",
+          "hit_goal": null,
+          "accidental_hits": null,
+          "hit_numbers": [],
+          "avoided_numbers": [],
+          "passed": null,
+          "settlement_status": "not_released",
+          "result": "未發布不結算",
+          "reason": "近期反向命中偏高已扣留",
+          "confidence_index": 0.0,
+          "avg_avoid_score": null,
+          "min_avoid_score": null
+        },
+        "fifteen_miss": {
+          "name": "15不中",
+          "numbers": [],
+          "diagnostic_numbers": [
+            33,
+            24,
+            39,
+            38,
+            32,
+            28,
+            23,
+            17,
+            21,
+            5,
+            35,
+            12,
+            7,
+            19
+          ],
+          "target": "未發布不結算",
+          "hit_goal": null,
+          "accidental_hits": null,
+          "hit_numbers": [],
+          "avoided_numbers": [],
+          "passed": null,
+          "settlement_status": "not_released",
+          "result": "未發布不結算",
+          "reason": "近期反向命中偏高已扣留",
+          "confidence_index": 0.0,
+          "avg_avoid_score": null,
+          "min_avoid_score": null
+        }
+      },
+      "status": "settled",
       "created_at": "2026-07-10T20:54:04",
-      "settled_at": null,
+      "settled_at": "2026-07-11T15:40:58",
       "snapshot_count": 2
     },
     {
