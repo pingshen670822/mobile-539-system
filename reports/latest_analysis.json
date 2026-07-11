@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T23:42:58",
+  "generated_at": "2026-07-12T00:14:59",
   "prediction_mode": "current_precision_stability_v47_daily_auto_rolling_precision_rebuild",
   "latest_draw": {
     "period": 115000168,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-11",
     "expected_latest_date": "2026-07-11",
     "lag_days": 0,
-    "checked_at": "2026-07-11T23:40:58"
+    "checked_at": "2026-07-12T00:12:57"
   },
   "windows": [
     {
@@ -2144,13 +2144,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "滾動檢討漏抓尾數區間補位",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "滾動檢討漏抓尾數區間補位",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -3117,13 +3117,13 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "滾動檢討漏抓尾數區間補位",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "滾動檢討漏抓尾數區間補位",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -4591,25 +4591,25 @@
           "hit_rate": 1.0
         },
         {
-          "reason": "上期失敗號碼僅微降權",
-          "hit": 1,
-          "miss": 1,
-          "hit_rate": 0.5
-        },
-        {
           "reason": "與上期號碼近100期共現6次",
           "hit": 1,
           "miss": 1,
           "hit_rate": 0.5
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "上期失敗號碼僅微降權",
+          "hit": 1,
+          "miss": 1,
+          "hit_rate": 0.5
+        },
+        {
+          "reason": "相似牌",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "相似牌",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -5549,13 +5549,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "滾動檢討漏抓尾數區間補位",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "滾動檢討漏抓尾數區間補位",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -6522,13 +6522,13 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "滾動檢討漏抓尾數區間補位",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "滾動檢討漏抓尾數區間補位",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -7996,25 +7996,25 @@
             "hit_rate": 1.0
           },
           {
-            "reason": "上期失敗號碼僅微降權",
-            "hit": 1,
-            "miss": 1,
-            "hit_rate": 0.5
-          },
-          {
             "reason": "與上期號碼近100期共現6次",
             "hit": 1,
             "miss": 1,
             "hit_rate": 0.5
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "上期失敗號碼僅微降權",
+            "hit": 1,
+            "miss": 1,
+            "hit_rate": 0.5
+          },
+          {
+            "reason": "相似牌",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "相似牌",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -35662,7 +35662,7 @@
     },
     "stability_governor": {
       "status": "corrected",
-      "checked_at": "2026-07-11T15:43:08",
+      "checked_at": "2026-07-11T16:15:09",
       "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
       "single_lock_audit": {
         "recent_single_rows": [
@@ -72340,5 +72340,5 @@
       }
     }
   },
-  "official_prediction_status": "observation_only_inserted"
+  "official_prediction_status": "observation_only_recalculated_same_as_official_refreshed"
 }

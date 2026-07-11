@@ -533,13 +533,13 @@
       "hit_rate": 1.0
     },
     {
-      "reason": "尾數轉移加權",
+      "reason": "滾動檢討漏抓尾數區間補位",
       "hit": 1,
       "miss": 2,
       "hit_rate": 0.333
     },
     {
-      "reason": "滾動檢討漏抓尾數區間補位",
+      "reason": "尾數轉移加權",
       "hit": 1,
       "miss": 2,
       "hit_rate": 0.333
