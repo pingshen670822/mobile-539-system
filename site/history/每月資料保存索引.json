@@ -1,5 +1,5 @@
-{
-  "generated_at": "2026-07-12T03:58:10",
+﻿{
+  "generated_at": "2026-07-13T14:05:52",
   "month_count": 4,
   "months": [
     {
@@ -9,10 +9,10 @@
       "total_records": 11,
       "settled_records": 10,
       "pending_records": 1,
-      "top5_avg_hits": 0.7,
-      "top10_avg_hits": 1.1,
-      "top15_avg_hits": 1.5,
-      "low_probability_avg_accidental_hits": 1.1
+      "top5_avg_hits": 0.4,
+      "top10_avg_hits": 0.6,
+      "top15_avg_hits": 1.3,
+      "low_probability_avg_accidental_hits": 0.8947
     },
     {
       "month": "2026-06",

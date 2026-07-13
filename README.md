@@ -1,52 +1,6 @@
-# 539 預測系統安裝說明
+﻿# 539 mobile cloud package
 
-## 最簡單安裝方式
+Version: 20260713140553
+Latest draw: 115000168 / 2026-07-11
 
-1. 先把 zip 完整解壓縮。
-2. 進入解壓縮後的資料夾。
-3. 雙擊：
-
-```text
-點我安裝539預測系統.bat
-```
-
-如果中文檔名無法執行，改雙擊：
-
-```text
-INSTALL_539_SOFTWARE.bat
-```
-
-安裝成功後，桌面會出現：
-
-```text
-539預測系統
-539 Prediction System
-```
-
-之後直接點桌面捷徑即可啟動。
-
-## 安裝位置
-
-```text
-C:\Users\MSI\Documents\Codex\539PredictionSystem
-```
-
-## 開機自動執行
-
-安裝後會建立 Windows 啟動資料夾檔案，登入 Windows 後自動執行主系統。
-
-## 解除安裝
-
-雙擊：
-
-```text
-點我解除安裝539預測系統.bat
-```
-
-或從開始功能表執行解除安裝捷徑。
-
-## 注意
-
-請不要直接在 zip 壓縮檔裡執行安裝，必須先解壓縮。
-
-本系統提供歷史統計、模型回測與戰報分析，不保證開獎命中或獲利。
+This repository snapshot is a public static mobile report package. It excludes local data, logs, reports, tokens, and desktop-only runtime files.

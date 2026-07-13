@@ -1,8 +1,0 @@
-﻿{
-    "status":  "ok",
-    "stopped_processes":  [
-                              22048
-                          ],
-    "started":  true,
-    "message":  "current_mobile_server_started"
-}
