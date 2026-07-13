@@ -1,4 +1,4 @@
-﻿# 539 mobile cloud package
+# 539 mobile cloud package
 
 Version: 20260713140553
 Latest draw: 115000168 / 2026-07-11

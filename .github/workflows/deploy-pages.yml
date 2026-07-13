@@ -1,4 +1,4 @@
-﻿name: deploy-mobile-539
+name: deploy-mobile-539
 
 on:
   workflow_dispatch:
