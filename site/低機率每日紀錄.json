@@ -1,17 +1,162 @@
 {
-  "generated_at": "2026-07-13T14:05:52",
+  "generated_at": "2026-07-14T07:16:02",
   "record_rule": "每一期保存低機率原始暫避號、開獎後誤中號、成功避開號與達標判定。",
   "records": [
     {
       "month": "2026-07",
       "status": "pending",
+      "based_on_period": 115000169,
+      "based_on_date": "2026-07-13",
+      "target_period": 115000170,
+      "target_expected_date": "2026-07-14",
+      "actual_period": null,
+      "actual_date": "",
+      "actual_numbers": [],
+      "top5": [
+        1,
+        37,
+        31,
+        38,
+        12
+      ],
+      "top10": [
+        1,
+        37,
+        31,
+        38,
+        12,
+        10,
+        36,
+        25,
+        19,
+        16
+      ],
+      "top15": [
+        1,
+        37,
+        31,
+        38,
+        12,
+        10,
+        36,
+        25,
+        19,
+        16,
+        15,
+        39,
+        30,
+        33,
+        21
+      ],
+      "top5_hits": null,
+      "top10_hits": null,
+      "top15_hits": null,
+      "top10_hit_numbers": [],
+      "top15_hit_numbers": [],
+      "packs": [
+        {
+          "key": "five_miss",
+          "name": "5不中",
+          "numbers": [],
+          "diagnostic_numbers": [
+            33,
+            32,
+            28,
+            2,
+            7
+          ],
+          "target_accidental_hits": 0,
+          "accidental_hits": null,
+          "hit_numbers": [],
+          "avoided_numbers": [],
+          "passed": null,
+          "released": false,
+          "result": "待結算",
+          "confidence_index": 0.0,
+          "avg_avoid_score": null,
+          "min_avoid_score": null,
+          "selection_model": "",
+          "status": "近期反向命中偏高已扣留"
+        },
+        {
+          "key": "ten_miss",
+          "name": "10不中",
+          "numbers": [],
+          "diagnostic_numbers": [
+            33,
+            28,
+            2,
+            7,
+            39,
+            16,
+            22,
+            29
+          ],
+          "target_accidental_hits": 0,
+          "accidental_hits": null,
+          "hit_numbers": [],
+          "avoided_numbers": [],
+          "passed": null,
+          "released": false,
+          "result": "待結算",
+          "confidence_index": 0.0,
+          "avg_avoid_score": null,
+          "min_avoid_score": null,
+          "selection_model": "",
+          "status": "近期反向命中偏高已扣留"
+        },
+        {
+          "key": "fifteen_miss",
+          "name": "15不中",
+          "numbers": [],
+          "diagnostic_numbers": [
+            33,
+            32,
+            28,
+            2,
+            7,
+            39,
+            16,
+            22,
+            29,
+            24,
+            18,
+            17,
+            27
+          ],
+          "target_accidental_hits": 0,
+          "accidental_hits": null,
+          "hit_numbers": [],
+          "avoided_numbers": [],
+          "passed": null,
+          "released": false,
+          "result": "待結算",
+          "confidence_index": 0.0,
+          "avg_avoid_score": null,
+          "min_avoid_score": null,
+          "selection_model": "",
+          "status": "近期反向命中偏高已扣留"
+        }
+      ],
+      "created_at": "2026-07-14T07:15:48",
+      "settled_at": null
+    },
+    {
+      "month": "2026-07",
+      "status": "settled",
       "based_on_period": 115000168,
       "based_on_date": "2026-07-11",
       "target_period": 115000169,
       "target_expected_date": "2026-07-13",
-      "actual_period": null,
-      "actual_date": "",
-      "actual_numbers": [],
+      "actual_period": 115000169,
+      "actual_date": "2026-07-13",
+      "actual_numbers": [
+        3,
+        4,
+        5,
+        34,
+        35
+      ],
       "top5": [
         15,
         21,
@@ -48,11 +193,18 @@
         22,
         30
       ],
-      "top5_hits": null,
-      "top10_hits": null,
-      "top15_hits": null,
-      "top10_hit_numbers": [],
-      "top15_hit_numbers": [],
+      "top5_hits": 1,
+      "top10_hits": 2,
+      "top15_hits": 3,
+      "top10_hit_numbers": [
+        5,
+        34
+      ],
+      "top15_hit_numbers": [
+        3,
+        5,
+        34
+      ],
       "packs": [
         {
           "key": "five_miss",
@@ -70,7 +222,7 @@
           "avoided_numbers": [],
           "passed": null,
           "released": false,
-          "result": "待結算",
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -98,7 +250,7 @@
           "avoided_numbers": [],
           "passed": null,
           "released": false,
-          "result": "待結算",
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -128,7 +280,7 @@
           "avoided_numbers": [],
           "passed": null,
           "released": false,
-          "result": "待結算",
+          "result": "未發布不結算",
           "confidence_index": 0.0,
           "avg_avoid_score": null,
           "min_avoid_score": null,
@@ -137,7 +289,7 @@
         }
       ],
       "created_at": "2026-07-13T14:05:50",
-      "settled_at": null
+      "settled_at": "2026-07-14T07:11:43"
     },
     {
       "month": "2026-07",

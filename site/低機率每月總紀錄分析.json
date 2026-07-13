@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-13T14:05:52",
+  "generated_at": "2026-07-14T07:16:02",
   "record_rule": "每一期開獎後都保存低機率5不中、10不中、15不中的原始暫避號、實際誤中、達標狀態與月份統計。",
-  "daily_record_count": 37,
-  "settled_record_count": 36,
+  "daily_record_count": 38,
+  "settled_record_count": 37,
   "pending_record_count": 1,
   "months": [
     {
       "month": "2026-07",
-      "settled_days": 10,
+      "settled_days": 11,
       "pack_stats": [
         {
           "key": "five_miss",
@@ -326,6 +326,30 @@
           "top10_hit_numbers": [],
           "top15_hit_numbers": [],
           "summary": "5不中暫避誤中0、10不中暫避誤中1、15不中暫避誤中2"
+        },
+        {
+          "actual_date": "2026-07-13",
+          "target_period": 115000169,
+          "actual_numbers": [
+            3,
+            4,
+            5,
+            34,
+            35
+          ],
+          "top5_hits": 1,
+          "top10_hits": 2,
+          "top15_hits": 3,
+          "top10_hit_numbers": [
+            5,
+            34
+          ],
+          "top15_hit_numbers": [
+            3,
+            5,
+            34
+          ],
+          "summary": "5不中未發布不結算、10不中未發布不結算、15不中未發布不結算"
         }
       ],
       "most_accidental_hit_numbers": [
