@@ -1,9 +1,9 @@
 {
-    "version":  "20260714071604",
-    "latest_draw_date":  "2026-07-13",
+    "version":  "20260715071358",
+    "latest_draw_date":  "2026-07-14",
     "safety":  "Public static files only; no local paths, LAN URLs, tokens, data directory, or reports directory.",
     "message":  "Latest mobile cloud package is ready.",
-    "latest_period":  115000169,
+    "latest_period":  115000170,
     "status":  "ready",
-    "cloud_url":  "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260714071604\u0026t=1783984793"
+    "cloud_url":  "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260715071358\u0026t=1784070840"
 }

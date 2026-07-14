@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-07-14T07:16:02",
+  "generated_at": "2026-07-15T07:13:57",
   "month_count": 4,
   "months": [
     {
       "month": "2026-07",
       "json_file": "2026-07_每月完整資料.json",
       "html_file": "2026-07_每月預測總整理.html",
-      "total_records": 12,
-      "settled_records": 11,
+      "total_records": 13,
+      "settled_records": 12,
       "pending_records": 1,
-      "top5_avg_hits": 0.4545,
-      "top10_avg_hits": 0.7273,
-      "top15_avg_hits": 1.4545,
+      "top5_avg_hits": 0.5833,
+      "top10_avg_hits": 0.8333,
+      "top15_avg_hits": 1.5833,
       "low_probability_avg_accidental_hits": 0.8947
     },
     {
@@ -42,7 +42,7 @@
       "month": "2026-04",
       "json_file": "2026-04_每月完整資料.json",
       "html_file": "2026-04_每月預測總整理.html",
-      "total_records": 17,
+      "total_records": 16,
       "settled_records": 0,
       "pending_records": 0,
       "top5_avg_hits": 0.0,
