@@ -1,31 +1,31 @@
 {
     "message":  "Latest mobile cloud package is ready.",
-    "updated_at":  "2026-07-15T07:13:58+08:00",
-    "version":  "20260715071358",
+    "updated_at":  "2026-07-15T09:13:15+08:00",
+    "version":  "20260715091315",
     "latest_draw_date":  "2026-07-14",
     "safety":  "Public static files only; no local paths, LAN URLs, tokens, data directory, or reports directory.",
-    "cloud_url":  "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260715071358\u0026t=1784071142",
+    "cloud_url":  "https://pingshen670822.github.io/mobile-539-system/clear-cache.html?v=20260715091315\u0026t=1784077996",
     "rows":  [
                  {
-                     "time":  "2026-07-15T07:13:58+08:00",
+                     "time":  "2026-07-15T09:13:15+08:00",
                      "status":  "passed",
                      "message":  "Latest draw 115000170 / 2026-07-14 updated; next prediction and battle report rebuilt.",
                      "item":  "auto_update_last_result",
-                     "version":  "20260715071358"
+                     "version":  "20260715091315"
                  },
                  {
-                     "time":  "2026-07-15T07:13:58+08:00",
+                     "time":  "2026-07-15T09:13:15+08:00",
                      "status":  "enabled",
                      "message":  "Schedule is installed; sync verification runs as backup.",
                      "item":  "three_hour_sync_check",
                      "version":  "every-3-hours"
                  },
                  {
-                     "time":  "2026-07-15T07:13:58+08:00",
+                     "time":  "2026-07-15T09:13:15+08:00",
                      "status":  "published",
                      "message":  "Mobile cloud is synced with the desktop report.",
                      "item":  "mobile_cloud_sync",
-                     "version":  "20260715071358"
+                     "version":  "20260715091315"
                  }
              ],
     "latest_period":  115000170,
