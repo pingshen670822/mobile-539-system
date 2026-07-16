@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T12:13:23",
+  "generated_at": "2026-07-16T15:31:04",
   "prediction_mode": "current_precision_stability_v47_daily_auto_rolling_precision_rebuild",
   "latest_draw": {
     "period": 115000171,
@@ -17,7 +17,7 @@
     "latest_date": "2026-07-15",
     "expected_latest_date": "2026-07-15",
     "lag_days": 0,
-    "checked_at": "2026-07-16T12:10:03"
+    "checked_at": "2026-07-16T15:28:41"
   },
   "windows": [
     {
@@ -4791,22 +4791,16 @@
       ],
       "source_performance": [
         {
-          "reason": "近100期偏熱(14次)",
-          "hit": 1,
-          "miss": 0,
-          "hit_rate": 1.0
-        },
-        {
           "reason": "月度漏抓壓力加權",
           "hit": 1,
           "miss": 0,
           "hit_rate": 1.0
         },
         {
-          "reason": "與上期號碼近100期共現6次",
+          "reason": "近100期偏熱(14次)",
           "hit": 1,
-          "miss": 1,
-          "hit_rate": 0.5
+          "miss": 0,
+          "hit_rate": 1.0
         },
         {
           "reason": "上期失敗號碼僅微降權",
@@ -4815,13 +4809,19 @@
           "hit_rate": 0.5
         },
         {
-          "reason": "尾數轉移加權",
+          "reason": "與上期號碼近100期共現6次",
+          "hit": 1,
+          "miss": 1,
+          "hit_rate": 0.5
+        },
+        {
+          "reason": "相似牌",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
         },
         {
-          "reason": "相似牌",
+          "reason": "尾數轉移加權",
           "hit": 1,
           "miss": 2,
           "hit_rate": 0.333
@@ -8396,22 +8396,16 @@
         ],
         "source_performance": [
           {
-            "reason": "近100期偏熱(14次)",
-            "hit": 1,
-            "miss": 0,
-            "hit_rate": 1.0
-          },
-          {
             "reason": "月度漏抓壓力加權",
             "hit": 1,
             "miss": 0,
             "hit_rate": 1.0
           },
           {
-            "reason": "與上期號碼近100期共現6次",
+            "reason": "近100期偏熱(14次)",
             "hit": 1,
-            "miss": 1,
-            "hit_rate": 0.5
+            "miss": 0,
+            "hit_rate": 1.0
           },
           {
             "reason": "上期失敗號碼僅微降權",
@@ -8420,13 +8414,19 @@
             "hit_rate": 0.5
           },
           {
-            "reason": "尾數轉移加權",
+            "reason": "與上期號碼近100期共現6次",
+            "hit": 1,
+            "miss": 1,
+            "hit_rate": 0.5
+          },
+          {
+            "reason": "相似牌",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
           },
           {
-            "reason": "相似牌",
+            "reason": "尾數轉移加權",
             "hit": 1,
             "miss": 2,
             "hit_rate": 0.333
@@ -35732,7 +35732,7 @@
     },
     "stability_governor": {
       "status": "corrected",
-      "checked_at": "2026-07-16T12:13:42",
+      "checked_at": "2026-07-16T15:31:16",
       "policy": "低機率必須回測明顯勝過隨機才發布；獨隻若近期重複失敗則降權改選，診斷資料完整保留",
       "single_lock_audit": {
         "recent_single_rows": [
